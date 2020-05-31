@@ -1,0 +1,67 @@
+<section>
+    <!-- <div class="register-modal-overlay" (click)="onCloseModal()"></div> -->
+    <div class="register-modal-overlay"></div>
+</section>
+
+<section>
+    <div id="section-register" class="card register-modal">
+        <span class="close-x animate__animated animate__zoomIn"><a (click)="onCloseModal()" style="cursor: pointer;">x</a></span>
+        <div class ="container-fluid d-flex justify-content-center">
+            <div class="row">
+                <div class="col-sm-12 mt-3">
+                    <h2 class="text-center">Welcome To Pregnancy Village!</h2>
+                    <p class="text-center pt-1"><i>Please fill-out to create your account.</i></p>
+                    <!-- <span id="emailError1" #emailError1 style="color: red;"><h2>test</h2></span>
+                    <span id="emailError" style="color: red;">{{ emailError }}</span> -->
+
+
+                    <form class="col-10 mx-auto" id="registerForm" [formGroup]="registerForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                        <div class="form-group mt-2 mx-auto">
+                            <input type="text" class="form-control col-12" id="registerFirstname" placeholder="Firstname"
+                                formControlName="firstName" 
+                                [class.is-invalid]="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
+                            <div class="invalid-feedback">Please fill-out your firstname</div>
+                        </div>
+
+                        <div class="form-group mt-3 mx-auto">
+                            <input type="text" class="form-control col-12" id="registerLastname" placeholder="Lastname"
+                                formControlName="lastName"
+                                [class.is-invalid]="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
+                            <div class="invalid-feedback">Please fill-out your lastname</div>
+                        </div>
+
+                        <div class="form-group mt-3 mx-auto">
+                            <input type="email" class="form-control col-12" id="registerEmail" placeholder="Email Address"
+                                formControlName="email"
+                                [class.is-invalid]="registerForm.get('email').invalid && registerForm.get('email').touched">
+                            <div *ngIf="registerForm.get('email').value === ''" class="invalid-feedback">Please fill-out your email address</div>
+                            <div *ngIf="registerForm.get('email').value != ''" class="invalid-feedback">Please enter a valid email address</div>
+                            <span id="emailError" style="color: red; font-size: 80%; line-height: 145%;">{{ emailError }}</span>
+                        </div>
+
+                        <div class="form-group mx-auto">
+                            <input type="password" class="form-control col-12" id="registerPassword" placeholder="Password: minimum of 8 characters"
+                             formControlName="password"
+                             [class.is-invalid]="registerForm.get('password').errors && registerForm.get('password').touched">
+                             <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">Please fill-out your password</div>
+                             <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('minlength') && registerForm.get('password').touched">minimum length of password is 5 characters</div>
+                        </div>
+
+                        <div class="form-group mx-auto">
+                            <input type="password" class="form-control col-12" id="registerConfirmPassword" placeholder="Confirm password"
+                            formControlName="confirmPassword" 
+                            [class.is-invalid]="(registerForm.hasError('mismatch') && registerForm.get('confirmPassword').touched) || (registerForm.get('confirmPassword').errors && registerForm.get('confirmPassword').touched)">
+                            <div class="invalid-feedback" *ngIf="registerForm.get('confirmPassword').errors && registerForm.get('confirmPassword').touched">Please confirm your password</div>
+                            <div class="invalid-feedback" >Password must match!</div>
+                        </div>
+
+                        <div class="form-group mx-auto pb-3">
+                            <button type="submit" class="col-sm-6 btn-ghost" [disabled]="registerForm.invalid">Sign up <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:24px"></i></button> 
+                            <!-- <span class="mt-2 pl-2"><a href="#"> Already have an account? Sign in</a></span> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

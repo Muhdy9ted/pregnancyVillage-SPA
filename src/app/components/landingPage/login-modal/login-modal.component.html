@@ -1,0 +1,83 @@
+<section>
+    <!-- <div class="login-modal-overlay" (click)="onCloseModal()"></div> -->
+    <div class="login-modal-overlay"></div>
+</section>
+
+<section *ngIf="!forgotPassword">
+    <div id="section-login" class="card login-modal">
+        <span class="close-x animate__animated animate__zoomIn"><a (click)="onCloseModal()" style="cursor: pointer;">x</a></span>
+        <div class ="container-fluid d-flex justify-content-center">
+            <div class="row">
+                <div class="col-sm-12 pt-2">
+                    <h2 class="text-center">Welcome To Pregnancy Village!</h2>
+                    <p class="text-center pt-1"><i>Please fill-out to login.</i></p>
+                    <p id="emailError" class="text-center" style="color: red; font-size: 80%; line-height: 145%;">{{ errorMessage1 }}</p>
+                    <form class="col-10 mx-auto mt-3" id="loginForm" #loginForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                        <!-- <div class=""> -->
+                            <!-- <label for="loginEmail" class="col-sm-12 col-form-label" 
+                              [class.green-icon]="loginEmail.valid" [class.red-icon]="loginEmail.invalid && loginEmail.touched">Email</label> -->
+                            <div class="form-group  mt-2 mx-auto ">
+                              <input type="email" class="form-control col-sm-12" id="loginEmail" placeholder="Email address" required 
+                                name="loginEmail" #loginEmail="ngModel" [(ngModel)]="authService.formDataLogin.username">
+                            </div>
+                        <!-- </div>  -->
+                        <!-- <div class=""> -->
+                            <!-- <label for="loginPassword" class="col-sm-12 col-form-label"
+                              [class.green-icon]="loginPassword.valid" [class.red-icon]="loginPassword.invalid && loginPassword.touched">Password</label> -->
+                            <div class="form-group mt-3 mx-auto mt-2">
+                              <input type="password" class="form-control col-sm-12" id="loginPassword" placeholder="Password" required minlength="5"
+                                name="loginPassword" #loginPassword="ngModel" [(ngModel)]="authService.formDataLogin.password">
+                            </div>
+                        <!-- </div> -->
+                        <div class="form-group row mt-3 pb-5 row">
+                            <button type="submit" [class.col-sm-4]="loginForm.invalid" class="btn-ghost pr-1" [disabled]="loginForm.invalid">Sign in <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:24px"></i></button> 
+                            <span class="col-sm-6 mt-2"><button class="color-black" (click)="this.forgotPassword = true"> Forgot password ?</button></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section *ngIf="forgotPassword">
+    <div id="section-login" class="card login-modal">
+        <span class="close-x animate__animated animate__zoomIn"><a (click)="onCloseModal()" style="cursor: pointer;">x</a></span>
+        <div class ="container-fluid d-flex justify-content-center">
+            <div class="row">
+                <div class="col-sm-12 pt-2">
+                    <h2 class="text-center">Welcome To Pregnancy Village!</h2>
+                    <p class="text-center pt-1"><i>Please fill-out to reset your password.</i></p>
+                    
+                    <form class="col-10 mx-auto mt-3" id="loginForm" #loginForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                        <!-- <div class=""> -->
+                            <!-- <label for="loginEmail" class="col-sm-12 col-form-label" 
+                              [class.green-icon]="loginEmail.valid" [class.red-icon]="loginEmail.invalid && loginEmail.touched">Email</label> -->
+                            <div class="form-group  mt-2 mx-auto ">
+                              <input type="email" class="form-control col-sm-12" id="loginEmail" placeholder="Email address" required 
+                                name="loginEmail" #loginEmail="ngModel" [(ngModel)]="authService.formDataLogin.username">
+                                <span id="emailError" style="color: red; font-size: 80%; line-height: 145%;">{{ errorMessage2 }}</span>
+                            </div>
+                        <!-- </div>  -->
+                        <!-- <div class=""> -->
+                            <!-- <label for="loginPassword" class="col-sm-12 col-form-label"
+                              [class.green-icon]="loginPassword.valid" [class.red-icon]="loginPassword.invalid && loginPassword.touched">Password</label> -->
+                            <!-- <div class="form-group mt-3 mx-auto mt-2">
+                              <input type="password" class="form-control col-sm-12" id="loginPassword" placeholder="Password" required minlength="5"
+                                name="loginPassword" #loginPassword="ngModel" [(ngModel)]="authService.formDataLogin.password">
+                            </div> -->
+                        <!-- </div> -->
+                        <div class="form-group row mt-3 pb-5 row">
+                            <button type="submit"  [class.col-sm-4]="loginForm.invalid" class="btn-ghost pr-1" [disabled]="loginForm.invalid">
+                                Send link <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:24px">
+                            </i></button> 
+                            <!-- <span class="col-sm-6 mt-2" ><a href="#" class="color-black"> Forgot password ?</a></span> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
