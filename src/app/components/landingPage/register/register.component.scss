@@ -1,0 +1,178 @@
+/*----------------------- Modal-overlay css starts ----------------------*/
+
+.register-modal-overlay:after {
+	content:"";
+	position:fixed;
+	left:0;
+	right:0;
+	top:0;
+    bottom:0;
+    width: 100vw;
+    height: 100vh;
+	background: linear-gradient(to bottom, #292929 0%, #191818 100%);
+    opacity: 0.8;
+    z-index: 2;
+}
+
+.register-modal{
+    position: fixed;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // width: 600px;
+    max-width: 100%;
+    height: 90vh;
+    max-height: 100%;
+    overflow: auto;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+
+    // position: fixed;
+    // top: 10vh;
+    // left: 31vw;
+    width: 50vw;
+    // padding: 16px;
+    border-radius: 23px;
+    z-index: 99;
+    box-shadow: 29px 31px 10px #00000029;
+    border: 1px solid #707070;
+    // background: rgb(255,255,255);
+    // background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(251,223,188,1) 5%, rgba(249,205,151,1) 16%, rgba(245,175,89,1) 33%, rgba(231,160,73,1) 50%, rgba(175,139,96,1) 65%, rgba(118,164,164,1) 100%, rgba(255,255,255,1) 100%); 
+    // background: #EFEFBB;  /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to bottom, #D4D3DD, #EFEFBB);  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to bottom, rgb(243, 199, 145), rgb(229, 217, 201)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    background: #B79891;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #94716B, #B79891);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, rgb(234, 206, 172), rgb(255, 255, 255)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.login-modal-close{
+    text-align: right;
+}
+
+.close-x{
+    font-size: 100%;
+    font-weight: 600;
+    margin-left: 95%;
+    margin-top: 0;
+    color: rgb(36, 34, 34);
+}
+
+/*----------------------- Modal-overlay css ends ----------------------*/
+
+/*----------------------- Register-div css starts ----------------------*/
+
+// #registerDiv{
+//     position: relative;
+// 	top: 0;
+//     left: 0px;
+//     width: 100%;
+//     background: transparent linear-gradient(120deg, #5CE6A7 0%, #B0DEBB 22%, #878282 78%, #707070 96%, #F29422 100%) 0% 0% no-repeat padding-box;
+// }
+
+// .img-small{
+//     position: relative;
+//     top: 60px;
+//     width: 400px;
+//     height: 260px;
+//     left: 60px;  
+// }
+// .img-small-overlap{
+//     position: relative;
+//     top: -70px;
+//     width: 400px;
+//     left: -100px;
+//     height: 260px;  
+//     z-index: 1;
+// }
+
+#section-register{
+	padding: 0;
+}
+
+#section-register h2{
+    font-size: 140%;
+    font-weight: 500;
+    text-transform: uppercase;
+    word-spacing: 1px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+#section-register p{
+	font-size: 80%;
+	line-height: 145%;
+	width: 70%;
+	margin-left: 15%;
+	word-spacing: 2px;
+    padding-bottom: 10px;
+}
+
+.form-control{
+	background-color: transparent;
+	border-bottom: 3px solid rgb(206, 141, 62);
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+}
+
+.form-control:focus{
+    /* border: none; */
+    box-shadow: none !important;
+}
+
+::-webkit-input-placeholder { /* Edge */
+    color: #84BFBF;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #84BFBF;
+  }
+  
+  ::placeholder {
+    font-size: 80%;
+    font-style: italic;
+    color: rgb(34, 31, 31);
+    opacity: 0.5;
+  }
+
+  .white-text{
+    color: #FFFFFF;
+}
+
+.btn{
+	color: #FFFFFF;
+	background: #5E5347 0% 0% no-repeat padding-box;
+	border: 1px solid #43425D;
+}
+
+input.ng-touched.ng-invalid{
+    border-color: #dc3545;
+}
+
+input.ng-valid{
+    border-color: #28a745;
+}
+
+.btn-ghost{
+    cursor: pointer;
+	position:relative;
+	display:inline-block;
+	padding-top:7px !important;
+	padding-bottom:11px !important;
+	padding-right: 20px !important;
+	padding-left: 20px !important;
+	background-color: transparent !important;
+	border: 1px solid #F29422;
+	color: #F29422;
+	border-radius: 40px;
+	margin-top: 5px;
+	-webkit-transition:0.2s all;
+    transition:0.2s all;
+    width: 40%;
+}
+
+:disabled{
+    cursor: default;
+}
