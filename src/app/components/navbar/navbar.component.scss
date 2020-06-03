@@ -1,0 +1,189 @@
+/*----------------------- Header css starts ----------------------*/
+
+header{
+    position: relative;
+    top: 0;
+}
+   
+   /*----------------------- Header css ends ----------------------*/
+   
+   /*----------------------- Navbar css starts ----------------------*/
+   
+nav{
+    position: absolute;
+    top: 0;
+    width: 100%;
+//    background-color: transparent;	
+    z-index: 1;
+    // border-bottom: 0.3px groove #fff;
+}
+
+.navbckgrdwhite{
+    background-color: white !important;
+    margin-bottom: 5px;	
+    z-index: 2;
+}
+
+.logo{
+    height: 50px;
+    width: auto;
+    float: left;
+    opacity: 1;
+}
+
+.logoCollapsed{
+    background-color: rgb(70, 63, 63);
+    // background-color: rgb(226, 190, 145);
+    height: 50px;
+    width: auto;
+    float: left;
+    opacity: 1;
+}
+
+#navbarSupportedContent a{
+	font: normal 600 70%/32px 'Muli', 'Arial', sans-serif;
+    text-decoration: none;
+	outline: none;
+    color: #FFFFFF;
+    text-transform: uppercase;
+	// top: 25px;
+	// height: 32px;
+	// text-align: left;
+	// letter-spacing: 0;
+	// word-spacing: 4px;
+	opacity: 1;
+	padding-bottom: 5px;
+	// margin-bottom: 5px;
+}
+
+#navbarSupportedContent a:hover,
+#navbarSupportedContent a:hover{
+	border-bottom: 2px solid #F29422;
+	// text-decoration: underline 2px solid #F29422;
+}
+
+
+.linkcolor{
+	color: rgb(70, 63, 63) !important;
+}
+
+// .btn:link,
+// .btn:visited{
+//     display: inline-block;
+//     padding: 10px 30px;
+//     font-weight: 300;
+//     text-decoration: none;
+//     border-radius: 200px;
+//     // transition: background-color 0.2s, border 0.2s, color 0.2s;
+// }
+
+// .btn-full:link,
+// .btn-full:visited{
+//     background-color: #e67e22;
+//     border: 1px solid #e67e22;
+//     color: #fff;
+//     margin-right: 15px;
+// }
+.btn-ghost{
+	position:relative;
+	display:inline-block;
+	padding-top:7px !important;
+	padding-bottom:5px !important;
+	padding-right: 20px !important;
+	padding-left: 20px !important;
+	background-color: transparent !important;
+	border: 1px solid #F29422;
+	color: #FFFFFF;
+	border-radius: 40px;
+	margin-top: 5px;
+	-webkit-transition:0.2s all;
+	transition:0.2s all;
+}
+
+.btn-ghost:hover{
+	// background-color:#fff;
+	// border: 1px solid #FF6700;
+	// color:#FF6700;
+	padding-right: 45px !important;
+}
+
+.btn-ghost:after {
+	// content:"\f178";
+	content: "\f2f6";
+	font-family:"Font Awesome 5 Free";
+	position:absolute;
+	width: 25px;
+	right: 10px;
+	text-align:center;
+	opacity:0;
+	-webkit-transition:0.2s all;
+	transition:0.2s all;
+}
+
+.btn-ghost:hover:after{
+	opacity:1;
+}
+
+.btn-ghost-collapsed{
+	position:relative;
+	display:inline-block;
+	padding-top:7px !important;
+	padding-bottom:5px !important;
+	padding-right: 20px !important;
+	padding-left: 20px !important;
+	background-color: transparent !important;
+	border: 1px solid #F29422;
+	color: black !important;
+	border-radius: 40px;
+	margin-top: 5px;
+	-webkit-transition:0.2s all;
+	transition:0.2s all;
+	width: 20%;
+}
+
+.btn-ghost-collapsed:hover{
+	// background-color:#fff;
+	// border: 1px solid #FF6700;
+	// color:#FF6700;
+	padding-right: 45px !important;
+}
+
+.btn-ghost-collapsed:after {
+	content:"\f178";
+	font-family:FontAwesome;
+	position:absolute;
+	width: 25px;
+	right: 10px;
+	text-align:center;
+	opacity:0;
+	-webkit-transition:0.2s all;
+	transition:0.2s all;
+}
+
+.btn-ghost-collapsed:hover:after{
+	opacity:1;
+}
+
+// .btn-ghost:link,
+// .btn-ghost:visited{
+//     border: 1px solid #e67e22 !important;
+//     color: #e67e22;
+// }
+
+// .btn:hover,
+// .btn:active{
+//     background-color: #cf6d17;
+// }
+
+// .btn-full:hover,
+// .btn-full:active{
+//     border: 1px solid #cf6d17;
+// }
+
+// .btn-ghost:hover,
+// .btn-ghost:active{
+//     border: 1px solid #cf6d17;
+//     color: #fff;
+// }
+
+/*----------------------- Navbar css ends ----------------------*/

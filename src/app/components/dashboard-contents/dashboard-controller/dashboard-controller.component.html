@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-sm-4">
+            <app-dashboard-menu (profileClicked)="viewSelected($event)" (cartClicked)="viewSelectedString=$event"></app-dashboard-menu>
+        </div>
+        <div class="col-sm-8">
+            <!-- <app-dashboard-current-view *ngIf="viewSelectedString; else redirect" [currentViewString] = "viewSelectedString"></app-dashboard-current-view>
+            <ng-template #redirect>
+                [routerLink]="['/']" routerLinkActive="router-link-active" 
+            </ng-template> -->
+            <p>welcome to your dashboard</p>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
