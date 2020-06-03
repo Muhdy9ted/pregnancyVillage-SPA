@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { LoginDTO } from '../models/login-dto.model';
 import { map } from 'rxjs/operators';
 import { RegisterUserDto } from '../models/register-user-dto.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 
 
@@ -25,6 +27,10 @@ export class AuthService {
   userToken: any;
   decodedToken: any;
   baseURL = environment.apiUrl + 'auth/';
+  jwtHelper = new JwtHelperService();
+  firstnameURL = '';
+
+
 
   constructor(public http: HttpClient) { }
 
@@ -34,13 +40,16 @@ export class AuthService {
   }
 
   loginModal() {
-    return  this.http.post(this.baseURL + 'login', this.formDataLogin, httpOptions).pipe(map((response: HttpResponse<any>) => {
+    return  this.http.post(this.baseURL + 'login', this.formDataLogin, httpOptions).pipe(map((response: any) => {
       console.log(response);
-      const userResponse = Object.entries(response);
+      const userResponse = response;
       if (userResponse) {
-        localStorage.setItem('token', JSON.stringify(userResponse[0][1]));
-        this.userToken = JSON.stringify(userResponse[0][1]);
+        localStorage.setItem('preg_token', response.data.tokenData.token);
+        this.decodedToken = this.jwtHelper.decodeToken(response.data.tokenData.token);
         console.log(this.decodedToken);
+        this.firstnameURL = this.decodedToken?.firstName;
+        // this.userToken = JSON.stringify(userResponse[0][1]);
+        // console.log(this.decodedToken);
         return this.userToken;
       }
       // if (response.state === 1) {
@@ -58,4 +67,17 @@ export class AuthService {
     console.log(username);
     return this.http.post(this.baseURL + 'reset_password', username);
   }
+
+  loggedIn() {
+    const token = localStorage.getItem('preg_token');
+    if (token) {
+      return this.jwtHelper.isTokenExpired(token);
+    }
+    return true;
+  }
+
+  loggedOut() {
+    localStorage.removeItem('preg_token');
+  }
+
 }

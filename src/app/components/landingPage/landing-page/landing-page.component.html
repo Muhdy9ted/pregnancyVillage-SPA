@@ -44,10 +44,20 @@
     
                     <ul class="navbar-nav ml-auto">
                         <a class="btn nav-link mr-3" [class.btn-ghost]="!isCollapsed" [class.btn-ghost-collapsed]="isCollapsed" 
-                            *ngIf="true" style="cursor: pointer;" role="button" (click)="onSignupClicked()">Sign up</a>
+                            *ngIf="isLoggedIn()" style="cursor: pointer;" role="button" (click)="onSignupClicked()">Sign up
+                        </a>
                         <!-- <a class="btn btn-primary mr-3 nav-link" *ngIf="true" [routerLink]="['/']"  role="button">Register</a> -->
                         <a class="btn nav-link mr-3" [class.btn-ghost]="!isCollapsed" [class.btn-ghost-collapsed]="isCollapsed"
-                            *ngIf="true" style="cursor: pointer;" role="button" (click)="onLoginClicked()">Sign in</a>
+                            *ngIf="isLoggedIn()" style="cursor: pointer;" role="button" (click)="onLoginClicked()">Sign in
+                        </a>
+                        <a class="btn nav-link mr-3" [class.btn-ghost]="!isCollapsed" [class.btn-ghost-collapsed]="isCollapsed" 
+                            *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="[firstname, 'profile']" style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
+                        </a>
+                        <!-- <a class="btn btn-primary mr-3 nav-link" *ngIf="true" [routerLink]="['/']"  role="button">Register</a> -->
+                        <a class="btn nav-link mr-3" [class.btn-ghost]="!isCollapsed" [class.btn-ghost-collapsed]="isCollapsed"
+                            *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" (click)="loggedOut()">Sign out
+                        </a>
+                            
                     </ul>
                 </div>
             </div>  

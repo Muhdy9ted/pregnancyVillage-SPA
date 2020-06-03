@@ -39,7 +39,7 @@ export class LoginModalComponent implements OnInit {
         this.spin = false;
         this.errorMessage1 = error;
       }, () => {
-        this.alertify.success('Welcome back');
+        this.alertify.success(`Welcome back ${this.authService.decodedToken?.firstName}`);
         // this.router.navigate(['/dashboard']);
       });
     } else {
