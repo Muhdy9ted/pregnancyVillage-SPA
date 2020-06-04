@@ -11,6 +11,16 @@ export class DashboardMenuComponent implements OnInit {
   @Output() profileClicked = new EventEmitter<string>();
   @Output() cartClicked = new EventEmitter<string>();
   // firstname = this.authService.firstnameURL;
+  isDroppedPost = false;
+  isDroppedProduct = false;
+  postItems: string[] = [
+    'Add Post',
+    'My Posts'
+  ];
+  productsItems: string[] = [
+    'Add Product',
+    'My Products'
+  ];
 
   constructor(private authService: AuthService) { }
 
@@ -23,5 +33,25 @@ export class DashboardMenuComponent implements OnInit {
 
   oncartClicked() {
     this.cartClicked.emit('cart');
+  }
+
+  // ngx-bootstrap dropdown
+  // onHidden(): void {
+  //   this.dropdownClicked = false;
+  // }
+
+  // onShown(): void {
+  //   this.dropdownClicked = !this.dropdownClicked;
+  // }
+
+  isOpenChangePost() {
+    this.isDroppedPost = !this.isDroppedPost;
+    this.isDroppedProduct = false;
+  }
+
+  isOpenChangeProduct() {
+    this.isDroppedProduct = !this.isDroppedProduct;
+    this.isDroppedPost = false;
+
   }
 }

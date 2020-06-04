@@ -1,0 +1,226 @@
+#section-menu{
+	padding: 8px 0;
+}
+
+
+#hero-image-div{
+	position: relative;
+	width: 100%;
+	height:100vh;
+	padding: 0;
+	// top: -75px;
+}
+
+.bg-image {
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	background-image: url(../../../../assets/css/img/preg6.jpg);
+	background-position:center;
+	background-size:cover;
+	background-attachment:fixed;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+.bg-image.overlay:after {
+	content:"";
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	background-image: linear-gradient(to right, rgb(59, 52, 46) 0%, rgb(188, 149, 102) 100%);
+	opacity: 0.8;
+}
+
+#hero-image-contents{
+	position: relative;
+	top: 5%;
+	height:calc(100vh - 20%);
+	color: #FFFFFF !important;
+	overflow: auto;
+	z-index: 1;
+	// padding: 5px 1px;
+	padding-bottom: 5px;
+	// position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+}
+
+.nav-item {
+    border-bottom: 1px solid rgb(110, 109, 107);
+}
+
+#section-menu a{
+	font: normal 600 70%/32px 'Muli', 'Arial', sans-serif;
+    text-decoration: none;
+	outline: none;
+    color: #FFFFFF;
+    text-transform: capitalize;
+	// top: 25px;
+	// height: 32px;
+	// text-align: left;
+	// letter-spacing: 0;
+	// word-spacing: 4px;
+	opacity: 1;
+	padding-bottom: 5px;
+	// margin-bottom: 5px;
+}
+
+#section-menu a:hover,
+#section-menu a:hover{
+	border-bottom: 2px solid rgb(188, 149, 102);
+	// text-decoration: underline 2px solid #F29422;
+}
+
+
+.active {
+	border-bottom: 2px solid #F29422;
+}
+
+// .drpdwn-list-active {
+//     background-color: transparent !important;
+//     padding-left: 3px !important;
+//     font-size: 50%;
+// }
+
+// .drpdwn-list {
+//     display: none;
+// }
+
+#basic-link-dropdown {
+    position: relative;
+    top: 0;
+    left: 0;    
+}
+
+#basic-link-dropdown .nav-item {
+    border-bottom: none;
+}
+
+#basic-link-dropdown .nav-item a{
+    border-bottom: 1px solid rgb(110, 109, 107);
+}
+
+#basic-link-dropdown .nav-item .active{
+ 	border-bottom: 2px solid #F29422;
+}
+
+#basic-link-dropdown .nav-item a:hover{
+	border-bottom: 2px solid rgb(188, 149, 102);
+}
+
+#section-menu .drpdwn-list-item {
+    position: relative;
+    top: 5%;
+    left: 30%;
+    color: #000;
+    padding-right: 10px;
+}
+
+.drpdwn-list-active{
+    background-color: #fff !important;
+    padding-left: 3px !important;
+    font-size: 80% !important;
+    animation: show .8s ease-in-out both;
+    padding-bottom: 5px;
+
+}
+
+.drpdwn-list{
+    padding-left: 0 !important;
+    font-size: 30% !important;
+    background-color: none;
+    display: none;
+    animation: hide .25s ease-in-out;
+}
+
+@keyframes show{
+     0%{
+        background-color: none;
+        padding-left: 0 !important;
+        font-size: 30% !important;
+        display: none;
+    }
+ 	100%{
+        display: block;
+        background-color: transparent !important;
+        padding-left: 3px !important;
+        font-size: 70% !important;        
+    }
+}
+
+@keyframes hide{
+    from{
+        display: block;
+        background-color: transparent !important;
+        padding-left: 3px !important;
+        font-size: 60% !important;     
+    }
+ 	to{
+        background-color: none;
+        padding-left: 0 !important;
+        font-size: 30% !important;   
+        display: none;      
+    }
+}
+
+
+//btw 0width to 576width
+@media (max-width: 576px) {
+    #section-menu a{
+        font-size: 70%;
+        
+    }
+}
+
+//btw 576width to 676width
+@media (min-width: 576px) {
+    #section-menu a{
+        font-size: 50%;
+        padding-left: 0 !important;
+    }
+}
+
+//btw 576width >>>>
+@media (min-width: 710px) {
+    #section-menu a{
+        font-size: 70%;
+        // padding-left: 4px !important;
+    }
+}
+
+//btw 576width >>>>
+@media (min-width: 992px) {
+    #section-menu a{
+        font-size: 70%;
+        padding-left: 30px !important;
+    }
+}
+// /* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+// @media screen and (min-width: 601px) {
+//     div.example {
+//       font-size: 80px;
+//     }
+//   }
+  
+//   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+//   @media screen and (max-width: 600px) {
+//     div.example {
+//       font-size: 30px;
+//     }
+//   }
+
+// @media (min-width: 768px) {
+//     html { font-size: 1.5rem; }
+// }
+// @media (min-width: 992px) {
+//     html { font-size: 1.75rem; }
+// }
+// @media (min-width: 1200px) {
+//     html { font-size: 2rem; }
+// }

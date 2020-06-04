@@ -22,6 +22,12 @@ import { DashboardCurrentViewComponent } from './components/dashboard-contents/d
 import { CartComponent } from './components/dashboard-contents/cart/cart.component';
 import { DashboardControllerComponent } from './components/dashboard-contents/dashboard-controller/dashboard-controller.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PostComponent } from './components/dashboard-contents/post/post.component';
+import { AddPostComponent } from './components/dashboard-contents/post/add-post/add-post.component';
+import { ViewPostsComponent } from './components/dashboard-contents/post/view-posts/view-posts.component';
+import { ProductsComponent } from './components/dashboard-contents/products/products.component';
+import { AddProductComponent } from './components/dashboard-contents/products/add-product/add-product.component';
+import { ViewProductsComponent } from './components/dashboard-contents/products/view-products/view-products.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +42,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CartComponent,
     DashboardControllerComponent,
     NavbarComponent,
+    PostComponent,
+    AddPostComponent,
+    ViewPostsComponent,
+    ProductsComponent,
+    AddProductComponent,
+    ViewProductsComponent,
   ],
   imports: [
     BrowserModule,
