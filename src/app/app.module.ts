@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HttpClientModule } from '@angular/common/http';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 
@@ -56,6 +57,7 @@ import { ViewProductsComponent } from './components/dashboard-contents/products/
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    TabsModule.forRoot(),
     FontAwesomeModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
