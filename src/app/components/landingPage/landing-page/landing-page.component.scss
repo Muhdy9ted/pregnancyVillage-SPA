@@ -326,6 +326,23 @@ nav{
 	opacity:1;
 }
 
+//btw 0width to 676width
+@media (max-width: 780px) {
+    .story-text {
+        display: none;
+        
+    }
+}
+
+
+// //btw 576width to 676width
+// @media (min-width: 576px) {
+//     #section-menu a{
+//         font-size: 50%;
+//         padding-left: 0 !important;
+//     }
+// }
+
 /*----------------------- Hero-Image css ends ----------------------*/
 
 /*----------------------- Section-features css starts ----------------------*/
@@ -381,6 +398,10 @@ nav{
     // word-spacing: 2px;
 	margin-bottom: 15px;
 	text-align: left;
+}
+
+#section-features .card{
+	box-shadow: none !important;
 }
 
 .card-text{
@@ -449,6 +470,55 @@ figure img:hover{
 .figure-img, .img-fluid, .rounded{
 	margin: 0 !important;
 	padding: 0 !important;
+}
+
+/*----------------------- Section-images css ends ----------------------*/
+
+/*----------------------- Section-tabset css starts ----------------------*/
+
+#section-tabset {
+	padding: 80px 0;
+	overflow: hidden;
+}
+
+.card {
+	margin-bottom: 10px;
+	box-shadow: -1px 2px #b9b9b9;
+
+}
+
+#section-tabset h2{
+    font-size: 180%;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+#section-tabset h2:after {
+	display: block;
+	height: 2px;
+	background-color: #F29422;
+	content: " ";
+	// font-family:"Font Awesome 5 Free";
+	// position:absolute;
+	width: 100px;
+	margin: 0 auto;
+	margin-top: 30px;
+	-webkit-transition:0.2s all;
+	transition:0.2s all;
+}
+
+tab .row .col-sm-6 .card {
+    width: 100%;
+	height: auto;
+	border: 1px transparent !important;
+	box-shadow: -1px 2px #b9b9b9;
+	background-color: #fff !important;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
 }
 
 

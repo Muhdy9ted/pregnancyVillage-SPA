@@ -29,6 +29,14 @@ import { ViewPostsComponent } from './components/dashboard-contents/post/view-po
 import { ProductsComponent } from './components/dashboard-contents/products/products.component';
 import { AddProductComponent } from './components/dashboard-contents/products/add-product/add-product.component';
 import { ViewProductsComponent } from './components/dashboard-contents/products/view-products/view-products.component';
+import { ForumComponent } from './components/forum/forum.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { FileUploadModule } from 'ng2-file-upload';
+
+export function tokenGetter() {
+  return (localStorage.getItem('preg_token'));
+  // const token =  JSON.parse(localStorage.getItem('token'));
+}
 
 @NgModule({
   declarations: [
@@ -49,6 +57,7 @@ import { ViewProductsComponent } from './components/dashboard-contents/products/
     ProductsComponent,
     AddProductComponent,
     ViewProductsComponent,
+    ForumComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,9 +67,17 @@ import { ViewProductsComponent } from './components/dashboard-contents/products/
     FormsModule,
     ReactiveFormsModule,
     TabsModule.forRoot(),
+    FileUploadModule,
     FontAwesomeModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        whitelistedDomains: ['pregnancy-village.herokuapp.com'],
+        blacklistedRoutes: ['https://pregnancy-village.herokuapp.com/v1/forum/auth']
+      }
+    })
   ],
   providers: [ErrorInterceptorProvider],
   bootstrap: [AppComponent]

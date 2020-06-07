@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ForumService } from 'src/app/_shared/services/forum.service';
+import { Router } from '@angular/router';
+import { AlertifyService } from 'src/app/_shared/services/alertify.service';
+import { Post } from 'src/app/_shared/models/post.model';
+import { FileUploader } from 'ng2-file-upload';
+import { Category } from 'src/app/_shared/models/category';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-post',
@@ -7,9 +15,106 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPostComponent implements OnInit {
 
-  constructor() { }
+  spin = false;
+  createdPost: any;
+  category: any;
+  categories: Category[];
+  categoriesValue = [];
+  uploader: FileUploader;
+  selectedFile = null;
+  selectedCategory = null;
 
-  ngOnInit(): void {
+  constructor(public forumService: ForumService, private router: Router, private alertify: AlertifyService) { }
+
+  ngOnInit() {
+    // this.createCategory();
+    this.loadCategories();
+    // console.log(this.categories);
+  }
+
+  initializeUploader() {
+    this.uploader = new FileUploader({
+      // url: URL,
+      disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
+      formatDataFunctionIsAsync: true,
+      formatDataFunction: async (item) => {
+        return new Promise( (resolve, reject) => {
+          resolve({
+            name: item._file.name,
+            length: item._file.size,
+            contentType: item._file.type,
+            date: new Date()
+          });
+        });
+      }
+    });
+
+  }
+
+  onFileSelected(event) {
+    this.selectedFile = event.originalTarget.files[0];
+    this.forumService.createPostDto.upload_file = this.selectedFile.name;
+
+    console.log(this.selectedFile);
+  }
+
+  onCategorySelected(event) {
+    this.forumService.createPostDto.category = event.target.value;
+  }
+
+  loadCategories() {
+    this.forumService.getCategories().subscribe((response: any) => {
+      // let items = Object.va
+      // temp.forEach(element => {
+      //   this.categories.push(element);
+      // });
+      this.categories = response.data;
+      console.log(this.categories);
+      this.categories.forEach(item => console.log(Object.entries(item)));
+      // const rest = response.data;
+      // console.log(rest);
+      // rest.forEach(item => {
+      //   const rest2 = Object.keys(item);
+      //   // console.log(rest2);
+      //   rest2.map(key => {
+      //     let value = item[key];
+      //     this.categoriesValue.push(value);
+      //   });
+      // });
+      // console.log(this.categoriesValue);
+      // const items = Object.entries(response.data[0]);
+      // console.log(items);
+      // console.log(items[1][1]);
+
+      // this.categories = items.map(item => {
+      //   const item2 = Object.entries(item[1]);
+      //   console.log(item2);
+      //   // return ({'item2[1]': item2[2]});
+      // });
+      // console.log(this.categories);
+
+      // this.categories = response;
+      // console.log(this.categories);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  createCategory() {
+    this.forumService.createCategory().subscribe((response: any) => {
+      this.category = response;
+      console.log(response);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  onSubmit() {
+    this.spin = true;
+    this.forumService.createPost().subscribe((response: any) => {
+      this.createdPost = response;
+      console.log(this.createdPost);
+    });
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { RegisterUserDto } from 'src/app/_shared/models/register-user-dto.model';
 import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 import { AuthService } from 'src/app/_shared/services/auth.service';
@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
 
   @Output() closeModalClicked = new EventEmitter<void>();
   @Output() cancelRegister = new EventEmitter();
+  @ViewChild('registerForm', {static: true}) registerFormRef: NgForm;
   // @ViewChild('emailError1', {static: true}) emailError1: ElementRef;
   registerForm: FormGroup;
   user: RegisterUserDto;
@@ -48,6 +49,7 @@ export class RegisterComponent implements OnInit {
       this.user = Object.assign({}, this.registerForm.value);
       this.authService.register(this.user).subscribe((userCredential) => {
         this.onCloseModal();
+        this.registerFormRef.reset();
         console.log(userCredential);
         this.alertify.success('Registration Successful');
         this.alertify.success('A confirmation mail has been sent to your email');

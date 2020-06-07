@@ -12,12 +12,12 @@
                     <h2 class="text-center">Welcome To Pregnancy Village!</h2>
                     <p class="text-center pt-1"><i>Please fill-out to login.</i></p>
                     <p id="emailError" class="text-center" style="color: red; font-size: 80%; line-height: 145%;">{{ errorMessage1 }}</p>
-                    <form class="col-10 mx-auto mt-3" id="loginForm" #loginForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                    <form class="col-10 mx-auto mt-2" id="loginForm" #loginForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
                         <!-- <div class=""> -->
                             <!-- <label for="loginEmail" class="col-sm-12 col-form-label" 
                               [class.green-icon]="loginEmail.valid" [class.red-icon]="loginEmail.invalid && loginEmail.touched">Email</label> -->
                             <div class="form-group  mt-2 mx-auto ">
-                              <input type="email" class="form-control col-sm-12" id="loginEmail" placeholder="Email address" required 
+                              <input type="email" class="form-control col-sm-12" id="loginEmail" placeholder="Email address" required email
                                 name="loginEmail" #loginEmail="ngModel" [(ngModel)]="authService.formDataLogin.username">
                             </div>
                         <!-- </div>  -->
@@ -30,7 +30,7 @@
                             </div>
                         <!-- </div> -->
                         <div class="form-group row mt-3 pb-5 row">
-                            <button type="submit" [class.col-sm-4]="loginForm.invalid" class="btn-ghost pr-1" [disabled]="loginForm.invalid">Sign in <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:24px"></i></button> 
+                            <button type="submit" [class.col-sm-4]="loginForm.invalid" class="btn-ghost pr-1" [disabled]="loginForm.invalid">Sign in <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:20px"></i></button> 
                             <span class="col-sm-6 mt-2"><button class="color-black" (click)="this.forgotPassword = true"> Forgot password ?</button></span>
                         </div>
                     </form>

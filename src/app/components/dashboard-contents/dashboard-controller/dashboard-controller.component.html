@@ -2,14 +2,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2">
-            <app-dashboard-menu (profileClicked)="viewSelected($event)" (cartClicked)="viewSelectedString=$event"></app-dashboard-menu>
+            <app-dashboard-menu></app-dashboard-menu>
         </div>
         <div class="col-sm-10">
             <!-- <app-dashboard-current-view *ngIf="viewSelectedString; else redirect" [currentViewString] = "viewSelectedString"></app-dashboard-current-view>
             <ng-template #redirect>
                 [routerLink]="['/']" routerLinkActive="router-link-active" 
             </ng-template> -->
-            <p>welcome to your dashboard</p>
+            <!-- <p>welcome to your dashboard</p> -->
             <router-outlet></router-outlet>
         </div>
     </div>

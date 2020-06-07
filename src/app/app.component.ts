@@ -21,8 +21,11 @@ export class AppComponent  implements OnInit {
     const token = localStorage.getItem('preg_token');
     if (token) {
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
-      console.log(this.authService.decodedToken);
-      this.authService.firstnameURL = this.authService.decodedToken?.firstName;
+      const userEmail = this.authService.decodedToken.email;
+      const pos = userEmail.indexOf('@');
+      this.authService.userID = userEmail.substring(0, pos );
+      // console.log(this.authService.decodedToken);
+      // this.authService.userIdURL = this.authService.decodedToken?.userId;
     }
   }
 }

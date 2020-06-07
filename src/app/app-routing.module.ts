@@ -16,7 +16,7 @@ import { ViewProductsComponent } from './components/dashboard-contents/products/
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
-  { path: ':user', component: DashboardControllerComponent , runGuardsAndResolvers: 'always', canActivate: [AuthGuard], children: [
+  { path: ':userId', component: DashboardControllerComponent , runGuardsAndResolvers: 'always', canActivate: [AuthGuard], children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     { path: 'dashboard', component: DashboardComponent},
     { path: 'profile', component: ProfileComponent},

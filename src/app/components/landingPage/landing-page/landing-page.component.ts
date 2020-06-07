@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_shared/services/auth.service';
 import { Router } from '@angular/router';
+import { ForumService } from 'src/app/_shared/services/forum.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,14 +13,13 @@ export class LandingPageComponent implements OnInit {
   clickedSignUp = false;
   clickedLogin = false;
   isCollapsed = false;
-  // firstname = this.authService.firstnameURL;
-  firstname = this.authService.decodedToken?.firstName;
-
-
-  constructor(public authService: AuthService, private route: Router) { }
+  userId = this.authService.userID;
+  topics: [];
+  post: any;
+  constructor(public authService: AuthService, private route: Router, public forumService: ForumService) { }
 
   ngOnInit(): void {
-    console.log(this.firstname);
+    // this.postTopics();
   }
 
   onSignupClicked() {
@@ -47,4 +47,16 @@ export class LandingPageComponent implements OnInit {
     this.route.navigate(['/']);
   }
 
+  loadForumTopics() {
+    this.forumService.getPosts().subscribe((response: any) => {
+      this.topics = response;
+      console.log( this.topics);
+    });
+  }
+
+  postTopics() {
+    this.forumService.createPost().subscribe((response: any) => {
+      this.post = response;
+    });
+  }
 }

@@ -28,7 +28,8 @@ export class AuthService {
   decodedToken: any;
   baseURL = environment.apiUrl + 'auth/';
   jwtHelper = new JwtHelperService();
-  firstnameURL = '';
+  userID = '';
+  // userIdURL = '';
 
 
 
@@ -46,8 +47,12 @@ export class AuthService {
       if (userResponse) {
         localStorage.setItem('preg_token', response.data.tokenData.token);
         this.decodedToken = this.jwtHelper.decodeToken(response.data.tokenData.token);
-        console.log(this.decodedToken);
-        this.firstnameURL = this.decodedToken?.firstName;
+        const userEmail = this.decodedToken.email;
+        const pos = userEmail.indexOf('@');
+        this.userID = userEmail.substring(0, pos );
+        // console.log(this.userID);
+        // console.log(this.decodedToken);
+        // this.userIdURL = this.decodedToken?.userId;
         // this.userToken = JSON.stringify(userResponse[0][1]);
         // console.log(this.decodedToken);
         return this.userToken;

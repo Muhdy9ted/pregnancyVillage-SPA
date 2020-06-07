@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/_shared/services/auth.service';
 import { Router } from '@angular/router';
 import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 import { LoginDTO } from 'src/app/_shared/models/login-dto.model';
-import { error } from 'protractor';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login-modal',
@@ -13,6 +13,7 @@ import { error } from 'protractor';
 
 export class LoginModalComponent implements OnInit {
 
+  @ViewChild('loginForm', {static: true}) loginForm: NgForm;
   @Output() closeModalClicked = new EventEmitter<void>();
   // user: LoginDTO = new LoginDTO();
   spin = false;
@@ -34,6 +35,7 @@ export class LoginModalComponent implements OnInit {
       this.authService.loginModal().subscribe((response) => {
         this.spin = false;
         this.onCloseModal();
+        this.loginForm.reset();
       // tslint:disable-next-line: no-shadowed-variable
       }, error => {
         this.spin = false;
@@ -46,6 +48,7 @@ export class LoginModalComponent implements OnInit {
       this.authService.forgotPassword().subscribe((response) => {
         console.log(response);
         this.onCloseModal();
+        this.loginForm.reset();
         this.forgotPassword = false;
       // tslint:disable-next-line: no-shadowed-variable
       }, error => {

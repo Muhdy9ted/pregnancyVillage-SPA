@@ -51,7 +51,7 @@
                             *ngIf="isLoggedIn()" style="cursor: pointer;" role="button" (click)="onLoginClicked()">Sign in
                         </a>
                         <a class="btn nav-link mr-3" [class.btn-ghost]="!isCollapsed" [class.btn-ghost-collapsed]="isCollapsed" 
-                            *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="[firstname, 'profile']" style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
+                            *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="[userId, 'profile']" style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
                         </a>
                         <!-- <a class="btn btn-primary mr-3 nav-link" *ngIf="true" [routerLink]="['/']"  role="button">Register</a> -->
                         <a class="btn nav-link mr-3" [class.btn-ghost]="!isCollapsed" [class.btn-ghost-collapsed]="isCollapsed"
@@ -77,13 +77,13 @@
                     <div class="col-sm-12 ml-3">
                         <h1 class="animate__animated animate__bounce"><span style="color: #F29422;">Pregnancy</span> Village</h1>
                         <!-- <p id="hero-image-slogan"><i>experience with us</i></p> -->
-                        <p class="animate__animated animate__backInLeft">
+                        <p class="animate__animated animate__backInLeft story-text">
                             Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
                             The platform allows women from anywhere share their experience during pregnancy,<br> 
                             give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
                             kids and women stuffs.
                         </p>
-                        <a class="btn btn-primary mr-3 nav-link mb-3" *ngIf="true" [routerLink]="['/']"  role="button">Forums</a>
+                        <a href="#forums" class="btn btn-primary mr-3 nav-link mb-3" *ngIf="true"  role="button">Forums</a>
                             <!-- <a class="btn btn-primary mr-3 nav-link" *ngIf="authService.loggedIn()" [routerLink]="['/register']"  role="button">Register</a>
                             <a class="btn btn-primary mr-3" *ngIf="authService.loggedIn()" style="cursor: pointer;" (click)="onLoginClicked()" role="button">Login</a>
                             <a class="btn btn-primary mr-3" *ngIf="!authService.loggedIn()" [routerLink]="['/dashboard']" style="cursor: pointer;" role="button">Profile</a> -->
@@ -200,11 +200,144 @@
 </section>
 
 <section>
-    <div id="section-images" class="container-fluid">
-        <tabset>
-            <tab heading="Basic title" id="tab1">Basic content</tab>
-            <tab heading="Basic Title 1">Basic content 1</tab>
-            <tab heading="Basic Title 2">Basic content 2</tab>
-        </tabset>
+    <div id="section-tabset" class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-sm-12">
+                <a name="forums"><h2> Join the Community and share &mdash; <span style="color: #F29422;">FORUMS</span></h2></a>
+                <!-- <p class="long-copy mb-4">
+                    Pregnancy village is Nigeria's first online community platform for pregnant women.
+                    The platform allows women from anywhere share their experience during pregnancy,<br> 
+                </p> -->
+            </div>
+        </div>
+        <div class="container-fluid mt-3" style="background-color: #fafafa;">    
+            <div class="container">
+                <tabset class="member-tabset">
+                    <tab heading="Pregnancy" id="tab1">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="card">
+                                    <div class="row card-body forums-list">
+                                        <div class="col-sm-2 author">
+                                            <h5 class="card-text text-muted"> Ayomide Sandra</h5>
+                                        </div>
+                                        <div class="col-sm-8 message">
+                                            <h5 class="card-title">Excessive Weight Gain</h5>
+                                            <p class="card-text">
+                                                Some quick example text to build on the card title and make up the bulk of the card's content.<br>
+                                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-2 icons">
+                                            <span style="font-size: 1em; color: #F29422;">
+                                                <i class="far fa-comments"></i>
+                                            </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
+
+                                        </div>
+                                    </div>   
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="card">
+                                    <div class="row card-body forums-list">
+                                        <div class="col-sm-2 author">
+                                            <h5 class="card-text text-muted"> Ayomide Sandra</h5>
+                                        </div>
+                                        <div class="col-sm-8 message">
+                                            <h5 class="card-title">Excessive Weight Gain</h5>
+                                            <p class="card-text">
+                                                Some quick example text to build on the card title and make up the bulk of the card's content.<br>
+                                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-2 icons">
+                                            <span style="font-size: 1em; color: #F29422;">
+                                                <i class="far fa-comments"></i>
+                                            </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
+
+                                        </div>
+                                    </div>   
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="card">
+                                    <div class="row card-body forums-list">
+                                        <div class="col-sm-2 author">
+                                            <h5 class="card-text text-muted"> Ayomide Sandra</h5>
+                                        </div>
+                                        <div class="col-sm-8 message">
+                                            <h5 class="card-title">Excessive Weight Gain</h5>
+                                            <p class="card-text">
+                                                Some quick example text to build on the card title and make up the bulk of the card's content.<br>
+                                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-2 icons">
+                                            <span style="font-size: 1em; color: #F29422;">
+                                                <i class="far fa-comments"></i>
+                                            </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
+
+                                        </div>
+                                    </div>   
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="card">
+                                    <div class="row card-body forums-list">
+                                        <div class="col-sm-2 author">
+                                            <h5 class="card-text text-muted"> Ayomide Sandra</h5>
+                                        </div>
+                                        <div class="col-sm-8 message">
+                                            <h5 class="card-title">Excessive Weight Gain</h5>
+                                            <p class="card-text">
+                                                Some quick example text to build on the card title and make up the bulk of the card's content.<br>
+                                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-2 icons">
+                                            <span style="font-size: 1em; color: #F29422;">
+                                                <i class="far fa-comments"></i>
+                                            </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
+
+                                        </div>
+                                    </div>   
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </tab>
+                    <tab heading="Anti-Natal">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="Depression">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                </tabset>
+            </div>
+        </div>  
     </div>
 </section>
