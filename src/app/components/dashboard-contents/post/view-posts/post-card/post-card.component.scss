@@ -1,0 +1,116 @@
+#post-card a{
+    color:  rgb(63, 63, 63) !important;
+    text-decoration: none;
+}
+
+#post-card a:link:hover{
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+#post-card .forum-list {
+    background-color:  #fff;
+    opacity: 0.6;
+    // padding: 20px 35px;
+    border-radius: 0px;
+    font-size: inherit;
+    font-weight: inherit;
+    text-transform: none;
+    color: rgb(63, 63, 63) !important;
+}
+
+.forum-cont {
+    cursor: pointer;
+}
+
+#post-card h5{
+    // padding: 0.375rem 1.75rem;
+    // background-color: transparent;
+    // font-size: 80%;
+    // font-weight: 600;
+    // text-transform: capitalize;
+    // font-size: 110%;
+    // font-weight: 600;
+    font: normal 400 80%/32px 'Muli', 'Arial', sans-serif;
+	// border-bottom: 3px solid rgb(206, 141, 62);
+	// border-top: 0;
+	// border-left: 0;
+	// border-right: 0;
+}
+
+.col-sm-12 {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+
+.text-sm-right {
+    font-size: 80%;
+}
+
+#post-card p{
+    font-size: 70%;
+    font-weight: 300;
+    line-height: 145%;
+}
+
+.card-text {
+    text-transform: capitalize;
+}
+
+.card-body {
+    // padding-top: 0;
+    padding-bottom: 0;
+    margin-top: -20px;
+}
+
+.author {
+    border-top: 1px solid  #F29422;
+}
+
+.date {
+    border-top: 1px solid rgb(63, 63, 63);
+
+}
+
+//btw 0width to 576width
+@media (max-width: 576px) {
+    h5{
+        font-size: 80%;
+        
+    }
+    p{
+        font-size: 70%;
+    }
+}
+
+//btw 576width to 676width
+@media (min-width: 576px) {
+    h5, p{
+        font-size: 50%;
+        // padding-left: 0 !important;
+    }
+}
+
+//btw 576width >>>>
+@media (min-width: 710px) {
+    h5{
+        font-size: 80%;
+        // padding-left: 4px !important;
+    }
+    p{
+        font-size: 70%;
+    }
+}
+
+//btw 576width >>>>
+@media (min-width: 992px) {
+    h5{
+        font-size: 80%;
+        // padding-left: 30px !important;
+    }
+    p{
+        font-size: 70%;
+    }
+}

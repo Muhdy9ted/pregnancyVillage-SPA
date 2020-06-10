@@ -32,6 +32,12 @@ import { ViewProductsComponent } from './components/dashboard-contents/products/
 import { ForumComponent } from './components/forum/forum.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FileUploadModule } from 'ng2-file-upload';
+import { PostCardComponent } from './components/dashboard-contents/post/view-posts/post-card/post-card.component';
+import { PostsListComponent } from './components/dashboard-contents/post/view-posts/posts-list/posts-list.component';
+import { GetPostsResolver } from './_shared/resolvers/getPosts.resolver';
+import { PostsDetailComponent } from './components/dashboard-contents/post/view-posts/posts-detail/posts-detail.component';
+import { GetPostResolver } from './_shared/resolvers/getPost.resolver';
+import { CommentComponent } from './components/dashboard-contents/post/view-posts/posts-detail/comment/comment.component';
 
 export function tokenGetter() {
   return (localStorage.getItem('preg_token'));
@@ -58,6 +64,10 @@ export function tokenGetter() {
     AddProductComponent,
     ViewProductsComponent,
     ForumComponent,
+    PostCardComponent,
+    PostsListComponent,
+    PostsDetailComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +89,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [ErrorInterceptorProvider],
+  providers: [ErrorInterceptorProvider, GetPostsResolver, GetPostResolver],
   bootstrap: [AppComponent]
 
 })

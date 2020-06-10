@@ -12,6 +12,9 @@ import { ViewPostsComponent } from './components/dashboard-contents/post/view-po
 import { ProductsComponent } from './components/dashboard-contents/products/products.component';
 import { AddProductComponent } from './components/dashboard-contents/products/add-product/add-product.component';
 import { ViewProductsComponent } from './components/dashboard-contents/products/view-products/view-products.component';
+import { GetPostsResolver } from './_shared/resolvers/getPosts.resolver';
+import { PostsDetailComponent } from './components/dashboard-contents/post/view-posts/posts-detail/posts-detail.component';
+import { GetPostResolver } from './_shared/resolvers/getPost.resolver';
 
 
 const routes: Routes = [
@@ -23,7 +26,9 @@ const routes: Routes = [
     { path: 'cart', component: CartComponent},
     { path: 'post', component: PostComponent, children: [
       { path: 'add-post', component: AddPostComponent},
-      { path: 'my-posts', component: ViewPostsComponent}
+      { path: 'my-posts', component: ViewPostsComponent, resolve: {posts: GetPostsResolver}, children: [
+        {path: ':postId', component: PostsDetailComponent, resolve: {post: GetPostResolver}}
+      ]}
     ]},
     {path: 'product', component: ProductsComponent, children: [
       {path: 'add-product', component: AddProductComponent},

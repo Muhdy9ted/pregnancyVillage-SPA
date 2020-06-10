@@ -1,1 +1,20 @@
-<p>view-posts works!</p>
+<div class="row">
+    <div class="col-sm-4">
+        <app-posts-list></app-posts-list>
+    </div>
+    <div class="col-sm-8">
+        <div id="section-menu" class="container-fluid">
+            <div id="hero-image-div">
+                <div class="bg-image overlay">            
+                    <div id="hero-image-contents" class="row">
+                        <div class="container-fluid">
+                            <div class="col-sm-11 mx-auto mt-3 forum-detail">
+                                <router-outlet></router-outlet>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

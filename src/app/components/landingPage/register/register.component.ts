@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
       this.user = Object.assign({}, this.registerForm.value);
       this.authService.register(this.user).subscribe((userCredential) => {
         this.onCloseModal();
-        this.registerFormRef.reset();
+        // this.registerFormRef.reset();
         console.log(userCredential);
         this.alertify.success('Registration Successful');
         this.alertify.success('A confirmation mail has been sent to your email');

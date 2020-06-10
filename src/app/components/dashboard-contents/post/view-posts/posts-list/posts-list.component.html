@@ -1,0 +1,17 @@
+<section>
+    <div id="section-menu" class="container-fluid">
+        <div id="hero-image-div">
+            <div class="bg-image overlay">            
+                <div id="hero-image-contents" class="row">
+                    <div class="container-fluid">
+                        <div class="col-sm-12">
+                            <div  *ngFor="let post of posts">
+                                <app-post-card [post] = "post"></app-post-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

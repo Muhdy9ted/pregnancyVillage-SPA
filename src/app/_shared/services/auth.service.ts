@@ -51,7 +51,7 @@ export class AuthService {
         const pos = userEmail.indexOf('@');
         this.userID = userEmail.substring(0, pos );
         // console.log(this.userID);
-        // console.log(this.decodedToken);
+        console.log(this.decodedToken);
         // this.userIdURL = this.decodedToken?.userId;
         // this.userToken = JSON.stringify(userResponse[0][1]);
         // console.log(this.decodedToken);
