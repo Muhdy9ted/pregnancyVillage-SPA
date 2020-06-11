@@ -15,6 +15,7 @@ import { ViewProductsComponent } from './components/dashboard-contents/products/
 import { GetPostsResolver } from './_shared/resolvers/getPosts.resolver';
 import { PostsDetailComponent } from './components/dashboard-contents/post/view-posts/posts-detail/posts-detail.component';
 import { GetPostResolver } from './_shared/resolvers/getPost.resolver';
+import { MemberProfileComponent } from './components/members-contents/member-profile/member-profile.component';
 
 
 const routes: Routes = [

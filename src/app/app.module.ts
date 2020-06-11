@@ -38,6 +38,8 @@ import { GetPostsResolver } from './_shared/resolvers/getPosts.resolver';
 import { PostsDetailComponent } from './components/dashboard-contents/post/view-posts/posts-detail/posts-detail.component';
 import { GetPostResolver } from './_shared/resolvers/getPost.resolver';
 import { CommentComponent } from './components/dashboard-contents/post/view-posts/posts-detail/comment/comment.component';
+import { MemberProfileComponent } from './components/members-contents/member-profile/member-profile.component';
+import { MembersListComponent } from './components/members-contents/members-list/members-list.component';
 
 export function tokenGetter() {
   return (localStorage.getItem('preg_token'));
@@ -68,6 +70,8 @@ export function tokenGetter() {
     PostsListComponent,
     PostsDetailComponent,
     CommentComponent,
+    MemberProfileComponent,
+    MembersListComponent,
   ],
   imports: [
     BrowserModule,
