@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_shared/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ForumService } from 'src/app/_shared/services/forum.service';
+import { GetPost } from 'src/app/_shared/models/getPost';
+import { Category } from 'src/app/_shared/models/category.model';
 
 @Component({
   selector: 'app-landing-page',
@@ -16,9 +18,30 @@ export class LandingPageComponent implements OnInit {
   userId = this.authService.userID;
   topics: [];
   post: any;
-  constructor(public authService: AuthService, private route: Router, public forumService: ForumService) { }
+  posts: GetPost[];
+  categoryPosts: Category[];
+
+  constructor(public authService: AuthService, private route: Router, private router: ActivatedRoute, public forumService: ForumService) { }
 
   ngOnInit(): void {
+
+    // this.router.data.subscribe(data => {
+    //   console.log(data);
+    // });
+
+    if (this.isLoggedIn()) {
+      console.log('login expired');
+    } else {
+        console.log('login valid');
+        this.router.data.subscribe(data => {
+        console.log(data);
+        this.categoryPosts = data.categoryPosts;
+        console.log(this.categoryPosts);
+      });
+    }
+
+    // this.loadForumTopics();
+    console.log('fuclk');
     // this.postTopics();
   }
 

@@ -3,7 +3,6 @@ import { ForumService } from 'src/app/_shared/services/forum.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 import { GetPost } from 'src/app/_shared/models/getPost';
-import { Category } from 'src/app/_shared/models/category';
 
 @Component({
   selector: 'app-posts-detail',

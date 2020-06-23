@@ -1,93 +1,108 @@
 <header>
-    <div class="container-fluid d-flex justify-content-center">
-        <nav class="navbar navbar-expand-lg navbar-light" [class.navbckgrdwhite]="isCollapsed">
-            <div class="container-fluid">
-                <a class="navbar-brand mr-5 animate__animated animate__rubberBand" [routerLink]="['/']"> 
-                    <img src="\assets\images\logo.png" alt="Pregnancy village logo" 
-                        [class.logo]="!isCollapsed" [class.logoCollapsed]="isCollapsed"> 
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-                    [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed"  
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" 
-                    style="background-color:#FFF;">
-                    <span class="navbar-toggler-icon" style="text-decoration: none;"></span>
-                </button>
-                        
-                <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="!isCollapsed" [isAnimated]="true">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                            <a class="nav-link" [routerLink]="['/']" [class.linkcolor]="isCollapsed">
-                                Home
-                            </a>
-                        </li>
-                        <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                            <a class="nav-link" [routerLink]="['/profile']" [class.linkcolor]="isCollapsed">
-                                Forums
-                            </a>
-                        </li>
-                        <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                            <a class="nav-link" [routerLink]="['/dashboard']" [class.linkcolor]="isCollapsed">
-                                Market
-                            </a>
-                        </li>
-                        <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                            <a class="nav-link" [routerLink]="['/dashboard']" [class.linkcolor]="isCollapsed">
-                                Cart
-                            </a>
-                        </li>
-                        <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                            <a class="nav-link" [routerLink]="['/dashboard']" [class.linkcolor]="isCollapsed">
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
-    
-                    <ul class="navbar-nav ml-auto">
-                        <a class="btn nav-link mr-3" [class.btn-ghost]="!isCollapsed" [class.btn-ghost-collapsed]="isCollapsed" 
-                            *ngIf="isLoggedIn()" style="cursor: pointer;" role="button" (click)="onSignupClicked()">Sign up
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid" [class.nav-white]="isCollapsed">
+            <a class="navbar-brand mr-auto animate__animated animate__rubberBand" [routerLink]="['/']"> 
+                <img src="\assets\images\logo.png" alt="Pregnancy village logo" [class.logo]="!isCollapsed" [class.logoCollapsed]="isCollapsed"> 
+            </a>
+            
+            <!-- testing purpose -->
+            <button type="button" class="badge">
+                <span class="text-white"> Notifications </span>
+            </button>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+                [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed"  
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#FFF;">
+                <span class="navbar-toggler-icon" style="text-decoration: none;"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="!isCollapsed" [isAnimated]="true">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link" [routerLink]="['/']" [class.linkcolor]="isCollapsed">
+                            Home
                         </a>
-                        <!-- <a class="btn btn-primary mr-3 nav-link" *ngIf="true" [routerLink]="['/']"  role="button">Register</a> -->
-                        <a class="btn nav-link mr-3" [class.btn-ghost]="!isCollapsed" [class.btn-ghost-collapsed]="isCollapsed"
-                            *ngIf="isLoggedIn()" style="cursor: pointer;" role="button" (click)="onLoginClicked()">Sign in
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link" [routerLink]="['/profile']" [class.linkcolor]="isCollapsed">
+                            Forums
                         </a>
-                        <a class="btn nav-link mr-3" [class.btn-ghost]="!isCollapsed" [class.btn-ghost-collapsed]="isCollapsed" 
-                            *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="[userId, 'profile']" style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link" [routerLink]="['/dashboard']" [class.linkcolor]="isCollapsed">
+                            Market
                         </a>
-                        <!-- <a class="btn btn-primary mr-3 nav-link" *ngIf="true" [routerLink]="['/']"  role="button">Register</a> -->
-                        <a class="btn nav-link mr-3" [class.btn-ghost]="!isCollapsed" [class.btn-ghost-collapsed]="isCollapsed"
-                            *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" (click)="loggedOut()">Sign out
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link" [routerLink]="['/dashboard']" [class.linkcolor]="isCollapsed">
+                            Consultancy
                         </a>
-                            
-                    </ul>
-                </div>
-            </div>  
-            <!-- <a class="btn btn-primary nav-link float-right" *ngIf="!authService.loggedIn()" style="cursor: pointer;" (click)="logout()" role="button">Logout {{ authService.decodedToken?.unique_name | titlecase}}</a> -->
-        </nav>    
-    </div>
-   
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link" href="#contact" [class.linkcolor]="isCollapsed">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav d-flex justify-content-end">
+                    <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed"
+                        [class.btn-sm]="isCollapsed" 
+                        *ngIf="isLoggedIn()" style="cursor: pointer;" role="button" (click)="onSignupClicked()">Sign up
+                    </a>
+                    <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed" 
+                        [class.btn-sm]="isCollapsed" 
+                        *ngIf="isLoggedIn()" style="cursor: pointer;" role="button" (click)="onLoginClicked()">Sign in
+                    </a>
+                    <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed" 
+                        [class.btn-sm]="isCollapsed" 
+                        *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="[userId, 'profile']" 
+                        style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
+                    </a>
+                    <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed" 
+                        [class.btn-sm]="isCollapsed" 
+                        *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" (click)="loggedOut()">Sign out
+                    </a>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <app-register *ngIf= "clickedSignUp" (closeModalClicked)="onSignupCloseModalClicked()"></app-register>
     <app-login-modal *ngIf= "clickedLogin" (closeModalClicked)="onSigninCloseModalClicked()"></app-login-modal>
 
-<!-- <app-login-modal *ngIf="clickedLogin" (closeModalClicked)="onCloseModalClicked()"></app-login-modal> -->
-
-    <div id="hero-image-div">
-        <div class="bg-image overlay">            
-            <div id="hero-image-contents" class="row">
+    <div id="hero-image-div" class="d-flex align-items-start">
+        <div class="bg-image overlay">  
+            <div id="hero-image-ad-contents">
                 <div class="container">
-                    <div class="col-sm-12 ml-3">
-                        <h1 class="animate__animated animate__bounce"><span style="color: #F29422;">Pregnancy</span> Village</h1>
-                        <!-- <p id="hero-image-slogan"><i>experience with us</i></p> -->
-                        <p class="animate__animated animate__backInLeft story-text">
-                            Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
-                            The platform allows women from anywhere share their experience during pregnancy,<br> 
-                            give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
-                            kids and women stuffs.
-                        </p>
-                        <a href="#forums" class="btn btn-primary mr-3 nav-link mb-3" *ngIf="true"  role="button">Forums</a>
-                            <!-- <a class="btn btn-primary mr-3 nav-link" *ngIf="authService.loggedIn()" [routerLink]="['/register']"  role="button">Register</a>
-                            <a class="btn btn-primary mr-3" *ngIf="authService.loggedIn()" style="cursor: pointer;" (click)="onLoginClicked()" role="button">Login</a>
-                            <a class="btn btn-primary mr-3" *ngIf="!authService.loggedIn()" [routerLink]="['/dashboard']" style="cursor: pointer;" role="button">Profile</a> -->
-                    </div>
+                    <div class="card col-8">
+                        <div class="card-body">
+                          <h5 class="card-title text-muted">Place your Ad</h5>
+                        </div>
+                      </div>
+                    </div>         
+                </div>
+                
+            <div id="hero-image-contents">
+                <div class="container">
+                    <h1 class=" animate__animated animate__bounce mb-0 mb-md-3"><span style="color: #F29422;">Pregnancy</span> Village</h1>
+                    <small class="small text-muted d-block d-md-none mt-0"><i>share with us</i></small>
+                    <p class="animate__animated animate__backInLeft d-none d-md-block">
+                        Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
+                        The platform allows women from anywhere share their experience during pregnancy,<br> 
+                        give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
+                        kids and women stuffs.
+                    </p>
+                    <a href="#forums" class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" 
+                        *ngIf="true"  role="button">Forums
+                    </a>
+
+                    <a class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" *ngIf="!authService.loggedIn()" [routerLink]="['/dashboard']" 
+                        style="cursor: pointer;" role="button" [routerLink]="[userId, 'profile']" 
+                        style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
+                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -95,61 +110,65 @@
 </header>
 
 <section>
-    <div id="section-features" class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h2> Share your stories with &mdash; <span style="color: #F29422;;">LOVE</span></h2>
-                <p class="long-copy mb-4">
-                    Pregnancy village is Nigeria's first online community platform for pregnant women.
-                    The platform allows women from anywhere share their experience during pregnancy,<br> 
-                </p>
+    <div id="section-features">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="container">
+                        <h2 class=""> Share your stories with &mdash; <span style="color: #F29422;;">LOVE</span></h2>
+                        <p class="mb-4 lead text-left">
+                            Pregnancy village is Nigeria's first online community platform for pregnant women.
+                            The platform allows women from anywhere share their experience during pregnancy,<br> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 mb-2">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title text-capitalize">Forums  <i class="ml-1 fas fa-users icon-big"></i></h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6 mb-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-capitalize">Market  <i class="ml-1 fas fa-store-alt icon-big"></i></h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-12 col-sm-6 mb-2">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title text-capitalize">Consultance <i class="fas fa-chalkboard-teacher ml-1 icon-big"></i></h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-12 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title  text-capitalize">Contact  <i class="ml-1 far fa-id-card icon-big"></i></h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                      <h3 class="card-title">FORUMS  <i class="ml-1 fas fa-users icon-big"></i></h3>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-sm-6 col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Market  <i class="ml-1 fas fa-store-alt icon-big"></i></h3>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                      <h3 class="card-title">Cart  <i class="ml-1 fas fa-shopping-cart icon-big"></i></h3>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                      <h3 class="card-title">Contact  <i class="ml-1 far fa-id-card icon-big"></i></h3>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div>        
 </section>
 
 <section>
-    <div id="section-images" class="container-fluid">
+    <div id="section-images">
         <ul class="list-group list-group-horizontal viewer">
             <div class="row">
-                <div class="col-sm-12">    
+                <div class="col-12 h-100">    
                     <li class="list-group-item view">
                         <figure class="figure">
                             <img src="../../../../assets/images/preg15.jpg" class="figure-img img-fluid rounded" alt="...">
@@ -200,144 +219,203 @@
 </section>
 
 <section>
-    <div id="section-tabset" class="container-fluid mt-2">
+    <div id="section-tabset" class="container mt-2">
         <div class="row">
             <div class="col-sm-12">
-                <a name="forums"><h2> Join the Community and share &mdash; <span style="color: #F29422;">FORUMS</span></h2></a>
-                <!-- <p class="long-copy mb-4">
-                    Pregnancy village is Nigeria's first online community platform for pregnant women.
-                    The platform allows women from anywhere share their experience during pregnancy,<br> 
-                </p> -->
+                <a name="forums"><h2 class=""> Join the Community and share &mdash; <span style="color: #F29422;">FORUMS</span></h2></a>
             </div>
         </div>
-        <div class="container-fluid mt-3" style="background-color: #fafafa;">    
+
+        <div class="container-fluid mt-3" style="background-color: #fafafa;" *ngIf="!isLoggedIn()">    
             <div class="container">
                 <tabset class="member-tabset">
-                    <tab heading="Pregnancy" id="tab1">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                                <div class="card">
-                                    <div class="row card-body forums-list">
-                                        <div class="col-sm-2 author">
-                                            <h5 class="card-text text-muted"> Ayomide Sandra</h5>
-                                        </div>
-                                        <div class="col-sm-8 message">
-                                            <h5 class="card-title">Excessive Weight Gain</h5>
-                                            <p class="card-text">
-                                                Some quick example text to build on the card title and make up the bulk of the card's content.<br>
-                                                Some quick example text to build on the card title and make up the bulk of the card's content.
-                                            </p>
-                                        </div>
-                                        <div class="col-sm-2 icons">
-                                            <span style="font-size: 1em; color: #F29422;">
-                                                <i class="far fa-comments"></i>
-                                            </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
-
-                                        </div>
-                                    </div>   
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div class="card">
-                                    <div class="row card-body forums-list">
-                                        <div class="col-sm-2 author">
-                                            <h5 class="card-text text-muted"> Ayomide Sandra</h5>
-                                        </div>
-                                        <div class="col-sm-8 message">
-                                            <h5 class="card-title">Excessive Weight Gain</h5>
-                                            <p class="card-text">
-                                                Some quick example text to build on the card title and make up the bulk of the card's content.<br>
-                                                Some quick example text to build on the card title and make up the bulk of the card's content.
-                                            </p>
-                                        </div>
-                                        <div class="col-sm-2 icons">
-                                            <span style="font-size: 1em; color: #F29422;">
-                                                <i class="far fa-comments"></i>
-                                            </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
-
-                                        </div>
-                                    </div>   
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div class="card">
-                                    <div class="row card-body forums-list">
-                                        <div class="col-sm-2 author">
-                                            <h5 class="card-text text-muted"> Ayomide Sandra</h5>
-                                        </div>
-                                        <div class="col-sm-8 message">
-                                            <h5 class="card-title">Excessive Weight Gain</h5>
-                                            <p class="card-text">
-                                                Some quick example text to build on the card title and make up the bulk of the card's content.<br>
-                                                Some quick example text to build on the card title and make up the bulk of the card's content.
-                                            </p>
-                                        </div>
-                                        <div class="col-sm-2 icons">
-                                            <span style="font-size: 1em; color: #F29422;">
-                                                <i class="far fa-comments"></i>
-                                            </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
-
-                                        </div>
-                                    </div>   
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div class="card">
-                                    <div class="row card-body forums-list">
-                                        <div class="col-sm-2 author">
-                                            <h5 class="card-text text-muted"> Ayomide Sandra</h5>
-                                        </div>
-                                        <div class="col-sm-8 message">
-                                            <h5 class="card-title">Excessive Weight Gain</h5>
-                                            <p class="card-text">
-                                                Some quick example text to build on the card title and make up the bulk of the card's content.<br>
-                                                Some quick example text to build on the card title and make up the bulk of the card's content.
-                                            </p>
-                                        </div>
-                                        <div class="col-sm-2 icons">
-                                            <span style="font-size: 1em; color: #F29422;">
-                                                <i class="far fa-comments"></i>
-                                            </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
-
-                                        </div>
-                                    </div>   
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </tab>
-                    <tab heading="Anti-Natal">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
+                    <!-- <div *ngFor="let post of categoryPosts"> -->
+                        <tab *ngFor="let post of categoryPosts" heading="{{post.name}}" id="tab1">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="card">
+                                        <div class="row card-body forums-list">
+                                            <div class="col-12 col-md-4 author">
+                                                <h5 class="card-text text-muted"> Ayomide Sandra</h5>
+                                            </div>
+                                            <div class="col-12 col-md-8 message">
+                                                <h5 class="card-title">Excessive Weight Gain</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk of the card's content.<br>
+                                                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                                                </p>
+                                            </div>
+                                            <!-- <div class="col-sm-2 icons">
+                                                <span style="font-size: 1em; color: #F29422;">
+                                                    <i class="far fa-comments"></i>
+                                                </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
+    
+                                            </div> -->
+                                        </div>   
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </tab>
-                    <tab heading="Depression">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
+                        </tab>
+                    <!-- </div> -->
+                </tabset>
+            </div>
+        </div>
+        <div class="container-fluid mt-3" style="background-color: #fafafa;"  *ngIf="isLoggedIn()">    
+            <div class="container">
+                <tabset class="member-tabset">
+
+
+                    <!-- <div *ngIf="isLoggedIn()"> -->
+                        <tab heading="Pregnancy" id="tab1">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="card">
+                                        <div class="row card-body forums-list">
+                                            <div class="col-12 col-lg-4 author">
+                                                <h5 class="card-text text-muted"> Ayomide Sandra</h5>
+                                            </div>
+                                            <div class="col-12 col-lg-8 message">
+                                                <h5 class="card-title">Excessive Weight Gain</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk of the card's content.<br>
+                                                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                                                </p>
+                                            </div>
+                                            <!-- <div class="col-sm-2 icons">
+                                                <span style="font-size: 1em; color: #F29422;">
+                                                    <i class="far fa-comments"></i>
+                                                </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
+    
+                                            </div> -->
+                                        </div>   
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="card">
+                                        <div class="row card-body forums-list">
+                                            <div class="col-12 col-lg-4 author">
+                                                <h5 class="card-text text-muted"> Ayomide Sandra</h5>
+                                            </div>
+                                            <div class="col-12 col-lg-8 message">
+                                                <h5 class="card-title">Excessive Weight Gain</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk of the card's content.<br>
+                                                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                                                </p>
+                                            </div>
+                                            <!-- <div class="col-sm-2 icons">
+                                                <span style="font-size: 1em; color: #F29422;">
+                                                    <i class="far fa-comments"></i>
+                                                </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
+    
+                                            </div> -->
+                                        </div>   
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="card">
+                                        <div class="row card-body forums-list">
+                                            <div class="col-12 col-lg-4 author">
+                                                <h5 class="card-text text-muted"> Ayomide Sandra</h5>
+                                            </div>
+                                            <div class="col-12 col-lg-8 message">
+                                                <h5 class="card-title">Excessive Weight Gain</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk of the card's content.<br>
+                                                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                                                </p>
+                                            </div>
+                                            <!-- <div class="col-sm-2 icons">
+                                                <span style="font-size: 1em; color: #F29422;">
+                                                    <i class="far fa-comments"></i>
+                                                </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
+    
+                                            </div> -->
+                                        </div>   
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="card">
+                                        <div class="row card-body forums-list">
+                                            <div class="col-12 col-lg-4 author">
+                                                <h5 class="card-text text-muted"> Ayomide Sandra</h5>
+                                            </div>
+                                            <div class="col-12 col-lg-8 message">
+                                                <h5 class="card-title">Excessive Weight Gain</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk of the card's content.<br>
+                                                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                                                </p>
+                                            </div>
+                                            <!-- <div class="col-sm-2 icons">
+                                                <span style="font-size: 1em; color: #F29422;">
+                                                    <i class="far fa-comments"></i>
+                                                </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
+    
+                                            </div> -->
+                                        </div>   
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </tab>
+                        <tab heading="Anti-Natal">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <a href="#" class="card-link">Card link</a>
+                                            <a href="#" class="card-link">Another link</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </tab>
+                        </tab>
+                        <tab heading="Depression">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <a href="#" class="card-link">Card link</a>
+                                            <a href="#" class="card-link">Another link</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tab>
+                    <!-- </div> -->
+                   
                 </tabset>
             </div>
         </div>  
     </div>
 </section>
+
+<section class="bg-drk">
+    <div id="contact-div" class="container text-white text-center py-5">
+        <a name="contact"><p class="lead text-uppercase">Reach out to us, we await</p></a>
+        <div class="row justify-content-center">
+            <div class="col-10 col-sm-8 border border-primary p-2 p-md-5">
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="your email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" placeholder="write us"></textarea>
+                    </div>
+                        <div class="input-group append">
+                            <button class="btn btn-primary">Send</button>
+                        </div>
+        
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

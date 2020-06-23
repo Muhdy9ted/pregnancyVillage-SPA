@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 import { Post } from 'src/app/_shared/models/post.model';
 import { FileUploader } from 'ng2-file-upload';
-import { Category } from 'src/app/_shared/models/category';
 import { NgForm } from '@angular/forms';
+import { Category } from 'src/app/_shared/models/category.model';
 
 
 @Component({

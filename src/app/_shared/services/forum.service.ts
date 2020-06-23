@@ -3,9 +3,11 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../models/post.model';
-import { Category } from '../models/category';
 import { GetPost } from '../models/getPost';
 import { AuthService } from './auth.service';
+import { Category } from '../models/category.model';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class ForumService {
 
   baseURL = environment.apiUrl;
   createPostDto = new Post();
+
 
   constructor(public http: HttpClient, private authService: AuthService) { }
 
@@ -46,5 +49,32 @@ export class ForumService {
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.baseURL + 'category/');
+  }
+
+  getPostsForLandingPage() {
+    return  this.http.get(this.baseURL + 'category/').pipe(map((response: any) => {
+      console.log(response.data);
+      const userResponse = response.data;
+      console.log(typeof userResponse);
+      if (userResponse) {
+        const categoriesForLP: Category[] = [];
+        userResponse.forEach(element => {
+          console.log(element);
+          categoriesForLP.push(element);
+        });
+        return categoriesForLP;
+        // localStorage.setItem('token', JSON.stringify(userResponse[0][1]));
+        // this.userToken = JSON.stringify(userResponse[0][1]);
+        // console.log(this.decodedToken);
+        // return this.userToken;
+      }
+      // if (response.state === 1) {
+      //   localStorage.setItem('token', JSON.stringify(response.data));
+      //   this.userToken = JSON.stringify(response.data);
+      //   return this.userToken;
+      // } else {
+      //   return response;
+      // }
+    }));
   }
 }

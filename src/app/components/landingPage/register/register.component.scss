@@ -1,3 +1,5 @@
+@import "../../../../scss/variables";
+
 /*----------------------- Modal-overlay css starts ----------------------*/
 
 .register-modal-overlay:after {
@@ -175,4 +177,32 @@ input.ng-valid{
 
 :disabled{
     cursor: default;
+}
+
+@media (max-width: 767.9px) {
+	.register-modal{
+        width: 90vw;
+    }
+    
+    .heading  {
+        margin-left: 35px;
+        margin-right: 35px;
+    }
+
+    .col-6.btn-ghost {
+        width: 100vw;
+    }
+	
+}
+
+@media (max-width: 991.9px){
+    .register-modal{
+        width: 70vw;
+        margin-left: 35px;
+        margin-right: 35px;
+    }
+
+    .col-6.btn-ghost {
+        width: 80vw;
+    }
 }

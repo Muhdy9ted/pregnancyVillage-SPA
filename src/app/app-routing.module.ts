@@ -16,14 +16,16 @@ import { GetPostsResolver } from './_shared/resolvers/getPosts.resolver';
 import { PostsDetailComponent } from './components/dashboard-contents/post/view-posts/posts-detail/posts-detail.component';
 import { GetPostResolver } from './_shared/resolvers/getPost.resolver';
 import { MemberProfileComponent } from './components/members-contents/member-profile/member-profile.component';
+import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info';
+import { GetCategoriesPostsLPageResolver } from './_shared/resolvers/getCategoriesPostLPage.resolver';
 
 
 const routes: Routes = [
-  {path: '', component: LandingPageComponent},
+  {path: '', component: LandingPageComponent, resolve: {categoryPosts: GetCategoriesPostsLPageResolver}},
   { path: ':userId', component: DashboardControllerComponent , runGuardsAndResolvers: 'always', canActivate: [AuthGuard], children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     { path: 'dashboard', component: DashboardComponent},
-    { path: 'profile', component: ProfileComponent},
+    { path: 'profile', component: ProfileComponent, resolve: {user: GetProfileInfoResolver}},
     { path: 'cart', component: CartComponent},
     { path: 'post', component: PostComponent, children: [
       { path: 'add-post', component: AddPostComponent},

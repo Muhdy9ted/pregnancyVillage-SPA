@@ -1,22 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../assets/css/spinner.css"; //spinner onload 
+@import "../../node_modules/alertifyjs//build/css/alertify.min.css"; //alertify notification
+@import "global"; //overwrite bootstrap classes and variables
+@import "variables"; //created custom variables
+@import "~bootstrap/scss/bootstrap"; //bootstrap4
 
-@import "~bootstrap/scss/bootstrap";
-@import "assets\css\spinner.css";
-@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap, mobile-first design
+@media (min-width: 0px) {
+    .nav-link:hover{
+		border-bottom: none;
+    }
+    .active {
+		border-bottom: none;
+	}
+    .badge {
+        background-color: white;
+    }
+}
 
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    .badge {
+        background-color: red;
+    }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    .badge {
+        background-color: green;
+    }
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .badge {
+        background-color: blue;
+    }
+ }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    .badge {
+        background-color: black;
+    }
+ }
 
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
 html{
-    background-color: fff;
-    color: #555;
+    background-color: $white;
+    color: $text-color;
     font-family: 'Muli', 'Arial', 'sans-serif';
     font-weight: 300px;
-    font-size: 20px;
+    font-size: 18px;
     text-rendering: optimizeLegibility;
 }
 
@@ -106,3 +145,22 @@ tabset ul.nav.nav-tabs li{
 //     border-top: 1px solid #eee;
 //     padding: 15px 0;
 //   }
+
+
+// primeng spinner
+@keyframes ui-progress-spinner-color {
+    100%,
+    0% {
+        stroke: #d62d20;
+    }
+    40% {
+        stroke: #0057e7;
+    }
+    66% {
+        stroke: #008744;
+    }
+    80%,
+    90% {
+        stroke: #ffa700;
+    }
+}

@@ -4,6 +4,10 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HttpClientModule } from '@angular/common/http';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 
@@ -30,7 +34,6 @@ import { ProductsComponent } from './components/dashboard-contents/products/prod
 import { AddProductComponent } from './components/dashboard-contents/products/add-product/add-product.component';
 import { ViewProductsComponent } from './components/dashboard-contents/products/view-products/view-products.component';
 import { ForumComponent } from './components/forum/forum.component';
-import { JwtModule } from '@auth0/angular-jwt';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PostCardComponent } from './components/dashboard-contents/post/view-posts/post-card/post-card.component';
 import { PostsListComponent } from './components/dashboard-contents/post/view-posts/posts-list/posts-list.component';
@@ -40,6 +43,10 @@ import { GetPostResolver } from './_shared/resolvers/getPost.resolver';
 import { CommentComponent } from './components/dashboard-contents/post/view-posts/posts-detail/comment/comment.component';
 import { MemberProfileComponent } from './components/members-contents/member-profile/member-profile.component';
 import { MembersListComponent } from './components/members-contents/members-list/members-list.component';
+import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info';
+import { TextMaskModule } from 'angular2-text-mask';
+import { FooterComponent } from './components/footer/footer.component';
+import { GetCategoriesPostsLPageResolver } from './_shared/resolvers/getCategoriesPostLPage.resolver';
 
 export function tokenGetter() {
   return (localStorage.getItem('preg_token'));
@@ -72,6 +79,7 @@ export function tokenGetter() {
     CommentComponent,
     MemberProfileComponent,
     MembersListComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +88,10 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    ProgressSpinnerModule,
+    MessagesModule,
+    MessageModule,
+    TextMaskModule,
     TabsModule.forRoot(),
     FileUploadModule,
     FontAwesomeModule,
@@ -93,7 +105,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [ErrorInterceptorProvider, GetPostsResolver, GetPostResolver],
+  providers: [ErrorInterceptorProvider, GetPostsResolver, GetPostResolver, GetProfileInfoResolver, GetCategoriesPostsLPageResolver],
   bootstrap: [AppComponent]
 
 })
