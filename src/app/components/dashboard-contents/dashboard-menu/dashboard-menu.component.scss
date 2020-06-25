@@ -1,13 +1,15 @@
+@import "../../../../scss/variables";
+
 #section-menu{
 	padding: 8px 0;
 }
-
 
 #hero-image-div{
 	position: relative;
 	width: 100%;
 	height:100vh;
-	padding: 0;
+    padding: 0;
+    margin-top: -2%;
 	// top: -75px;
 }
 
@@ -38,9 +40,9 @@
 
 #hero-image-contents{
 	position: relative;
-	top: 5%;
+	top: 8%;
 	height:calc(100vh - 20%);
-	color: #FFFFFF !important;
+	color: $white !important;
 	overflow: auto;
 	z-index: 1;
 	// padding: 5px 1px;
@@ -59,7 +61,7 @@
 	font: normal 600 70%/32px 'Muli', 'Arial', sans-serif;
     text-decoration: none;
 	outline: none;
-    color: #FFFFFF;
+    color: $white;
     text-transform: capitalize;
 	// top: 25px;
 	// height: 32px;
@@ -73,13 +75,13 @@
 
 #section-menu a:hover,
 #section-menu a:hover{
-	border-bottom: 2px solid rgb(188, 149, 102);
+	border-bottom: 2px solid $primary;
 	// text-decoration: underline 2px solid #F29422;
 }
 
 
 .active {
-	border-bottom: 2px solid #F29422;
+	border-bottom: 2px solid $primary;
 }
 
 // .drpdwn-list-active {
@@ -107,23 +109,23 @@
 }
 
 #basic-link-dropdown .nav-item .active{
- 	border-bottom: 2px solid #F29422;
+ 	border-bottom: 2px solid $primary;
 }
 
 #basic-link-dropdown .nav-item a:hover{
-	border-bottom: 2px solid rgb(188, 149, 102);
+	border-bottom: 2px solid $primary;
 }
 
 #section-menu .drpdwn-list-item {
     position: relative;
     top: 5%;
     left: 30%;
-    color: #000;
+    color: $black;
     padding-right: 14px;
 }
 
 .drpdwn-list-active{
-    background-color: #fff !important;
+    background-color: $white!important;
     padding-left: 3px !important;
     font-size: 80% !important;
     animation: show .8s ease-in-out both;
@@ -171,35 +173,51 @@
 
 
 //btw 0width to 576width
-@media (max-width: 576px) {
-    #section-menu a{
-        font-size: 70%;
+// @media (max-width: 576px) {
+//     #section-menu a{
+//         font-size: 70%;
         
-    }
-}
+//     }
+// }
 
 //btw 576width to 676width
-@media (min-width: 576px) {
-    #section-menu a{
-        font-size: 50%;
-        padding-left: 0 !important;
-    }
-}
+// @media (min-width: 576px) {
+//     #section-menu a{
+//         font-size: 50%;
+//         padding-left: 0 !important;
+//     }
+// }
 
 //btw 576width >>>>
-@media (min-width: 710px) {
-    #section-menu a{
-        font-size: 70%;
-        // padding-left: 4px !important;
-    }
-}
+// @media (min-width: 710px) {
+//     #section-menu a{
+//         font-size: 70%;
+//     }
+// }
 
 //btw 576width >>>>
-@media (min-width: 992px) {
-    #section-menu a{
-        font-size: 70%;
-        padding-left: 30px !important;
+// @media (min-width: 992px) {
+//     #section-menu a{
+//         font-size: 70%;
+//         padding-left: 30px !important;
+//     }
+// }
+
+@media (max-width: 991.9px) {
+    #hero-image-div{
+        margin-top: -7%;
+        margin-left: -6%;
+        // top: -75px;
     }
+
+    .sidebar-icons {
+        color: $primary;
+    }
+
+    .navbar-toggler {
+        border: 1px solid $primary;
+    }
+
 }
 // /* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
 // @media screen and (min-width: 601px) {

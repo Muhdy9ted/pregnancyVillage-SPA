@@ -13,7 +13,8 @@ export class NavbarComponent implements OnInit {
   clickedLogin = false;
   isCollapsed = false;
   // firstname = this.authService.firstnameURL;
-  firstname = this.authService.decodedToken?.firstName;
+  userId = this.authService.userID;
+
 
   constructor(public authService: AuthService, private route: Router) { }
 

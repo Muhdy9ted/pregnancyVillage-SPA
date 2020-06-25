@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ForumService } from 'src/app/_shared/services/forum.service';
 import { GetPost } from 'src/app/_shared/models/getPost';
 import { Category } from 'src/app/_shared/models/category.model';
+// import * as bgNavChange from '../../../js/bgNavChange.js';
+
 
 @Component({
   selector: 'app-landing-page',
@@ -24,6 +26,8 @@ export class LandingPageComponent implements OnInit {
   constructor(public authService: AuthService, private route: Router, private router: ActivatedRoute, public forumService: ForumService) { }
 
   ngOnInit(): void {
+    // bgNavChange();
+
 
     // this.router.data.subscribe(data => {
     //   console.log(data);
@@ -46,6 +50,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   onSignupClicked() {
+
     this.clickedSignUp = true;
   }
 

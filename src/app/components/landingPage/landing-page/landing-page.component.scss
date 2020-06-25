@@ -11,20 +11,28 @@ header{
 /*----------------------- Header css ends ----------------------*/
 
 /*----------------------- Navbar css starts ----------------------*/
+.navbar-fixed-top {
+	position:fixed !important;
+}
+
 nav {
-	position: absolute;
+	position: relative;
 	top: 0;
 	width: 100%;
-	background-color: transparent;	
+	// background-color: transparent;	
+	background-color: #5b5b5b;
 	transition: 0.2s;
 	z-index: 3;
-
+	
 
 	.navbckgrdwhite {
 		background-color: $white;
 		transition: all 0.2s;
 	}
 
+	.bgChange {
+		background-color: $text-color;
+	}
 	.nav-white {
 		background-color: $white;
 		transition: all 0.2s;
@@ -200,12 +208,35 @@ nav {
 		// .active {
 		// 	border-bottom: none;
 		// }
+
+		
+		.btn-ghost-collapsed.profile-btn{
+			width: 40% !important;
+		}
+
+		.nav-link.profile-btn:visited {
+			color: $black;
+		}
+
+		.profile-btn:hover{
+			width: 60px !important;
+			padding-right: 70px !important;
+		}
+	
+		.btn-ghost-collapsed.profile-btn:hover{
+			color: $white !important;
+			width: 95% !important;
+			padding-right: 65px !important;
+			transition: all 0.3s !important;
+		}
+	
 	}
 
 }
 
 @media (min-width: 992px) {
 	nav {
+
 
 		.logo {
 			height: 60px;
@@ -235,6 +266,7 @@ nav {
 		// .active {
 		// 	border-bottom: none;
 		// }
+
 	}
 
 }
@@ -245,7 +277,7 @@ nav {
 #hero-image-div{
 	position: relative;
 	width: 100%;
-	min-height:calc(100vh - 80px);
+	min-height:calc(100vh - 120px);
 	overflow: hidden;
 	padding: 0;
 	top: 0;
@@ -257,7 +289,7 @@ nav {
 		top:0;
 		bottom:0;
 		background-image: url(../../../../assets/css/img/preg6.jpg);
-		background-position: center center;
+		background-position: top center;
 		background-size:cover;
 		background-attachment:fixed;
 		background-repeat: no-repeat;
@@ -277,7 +309,7 @@ nav {
 
 	#hero-image-ad-contents {
 		position: relative;
-		top: 18%;
+		top: 5%;
 		overflow: hidden;
 		z-index: 2;
 
@@ -300,11 +332,19 @@ nav {
 		z-index: 2;
 	}
 	
-	h1{
+	#hero-image-contents h1{
+		letter-spacing: 1px;
 		color: $white;
 		text-transform: uppercase;
 	}
 	
+	#hero-image-contents p{
+		font-size: 0.8rem;
+		line-height: 160%;
+		word-spacing: 2px;
+		padding-bottom: 10px;
+	}
+
 	.btn-primary {
 		position:relative;
 		border: 1px solid transparent;
@@ -345,12 +385,7 @@ nav {
 		transition: 0.5s;
 	}
 
-	#hero-image-contents p{
-	font-size: 80%;
-	line-height: 160%;
-	word-spacing: 2px;
-	padding-bottom: 10px;
-}
+
 
 }
 
@@ -366,9 +401,20 @@ nav {
 		min-height:calc(100vh - 100px);
 		overflow: hidden;
 
-		#hero-image-contents {
-			top: 25%;
-			// height:calc(100vh - 20%);
+		#hero-image-ad-contents {
+			top: 15%;
+		}
+
+		// #hero-image-contents {
+		// 	top: 25%;	
+		// 	height:calc(100vh - 20%);
+		// }
+
+		.btn-primary.profile-btn:hover{
+			color: $primary !important;
+			width: 55% !important;
+			padding-right: 35px !important;
+			transition: all 0.3s !important;
 		}
 	}
 	
@@ -377,6 +423,10 @@ nav {
 
 @media (min-width: 992px) {
 	#hero-image-div{
+		top: 10vh;
+		// .bg-image {
+		// 	top: 12vh;
+		// }
 		.btn-primary {
 			width: 20%;
 		}
@@ -393,19 +443,20 @@ nav {
 /*----------------------- Section-features css starts ----------------------*/
 
 #section-features{
-	padding: 80px 0;
+	
+	padding: 100px 0;
 
-	h2 {
+	h1 {
 		// font-size: 180%;
-		// font-weight: 300;
+		font-weight: 300;
 		text-transform: uppercase;
-		// letter-spacing: 1px;
-		// word-spacing: 2px;
-		// margin-bottom: 30px;
+		letter-spacing: 1px;
+		word-spacing: 2px;
+		margin-bottom: 30px;
 		text-align: center;
 	}
 
-	h2:after {
+	h1:after {
 		display: block;
 		height: 2px;
 		background-color: $primary;
@@ -418,11 +469,30 @@ nav {
 		-webkit-transition:0.2s all;
 		transition:0.2s all;
 	}
-	
+
+	p {
+		font-size: 1rem;
+		line-height: 150%;
+		word-spacing: 2px;
+	}
+
 	.card{
 		border: none;
 		background-color: $bg-dark;
+		// height: 35vh;
+		overflow-y: auto;
 	}
+
+	.card-title {
+		font-weight: 400;
+	}
+
+	.card-text {
+		font-size: 0.8rem;
+		line-height: 130%;
+		word-spacing: 2px;
+	}
+
 	.icon-big{
 		font-size: 100%;
 		display: inline-block;
@@ -519,41 +589,70 @@ nav {
 	
 	}
 
-	h2{
+	h1 {
 		// font-size: 180%;
-		// font-weight: 300;
+		font-weight: 300;
 		text-transform: uppercase;
-		// letter-spacing: 1px;
-		// word-spacing: 2px;
-		// margin-bottom: 30px;
+		letter-spacing: 1px;
+		word-spacing: 2px;
+		margin-bottom: 30px;
 		text-align: center;
 	}
 
-	h2:after {
+	h1:after {
 		display: block;
 		height: 2px;
-		background-color: #F29422;
+		background-color: $primary;
 		content: " ";
 		// font-family:"Font Awesome 5 Free";
 		// position:absolute;
 		width: 100px;
 		margin: 0 auto;
-		margin-top: 30px;
+		margin-top: 20px;
 		-webkit-transition:0.2s all;
 		transition:0.2s all;
+	}
+
+	p {
+		font-size: 1rem;
+		line-height: 150%;
+		word-spacing: 2px;
+	}
+
+	.card-title {
+		font-weight: 400;
+	}
+
+	.card-text.text-muted {
+		font-size: 1rem;
+		line-height: 150%;
+		word-spacing: 2px;
+	}
+
+	.card-text {
+		font-size: 0.8rem;
+		line-height: 130%;
+		word-spacing: 2px;
 	}	
 
 	tab .row .col-sm-6 .card {
 		width: 100%;
-		height: auto;
+		height: 70vh;
 		border: 1px transparent !important;
 		box-shadow: -1px 2px #b9b9b9;
-		background-color: #fff !important;
+		background-color: $white !important;
 		margin-bottom: 10px;
 		padding-bottom: 10px;
+		overflow-y: auto;
 	}
 }
 
+@media (max-width: 991.9px) {
+	#section-tabset {
+		padding: 80px 20px;
+		overflow: hidden;
+	}
+}
 /*----------------------- Section-tabset css ends ----------------------*/
 
 /*----------------------- contact-div css starts ----------------------*/

@@ -7,6 +7,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {SidebarModule} from 'primeng/sidebar';
 import { JwtModule } from '@auth0/angular-jwt';
 
 
@@ -91,6 +92,7 @@ export function tokenGetter() {
     ProgressSpinnerModule,
     MessagesModule,
     MessageModule,
+    SidebarModule,
     TextMaskModule,
     TabsModule.forRoot(),
     FileUploadModule,

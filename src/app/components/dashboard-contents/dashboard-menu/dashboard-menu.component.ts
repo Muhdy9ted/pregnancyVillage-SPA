@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/_shared/services/auth.service';
 })
 export class DashboardMenuComponent implements OnInit {
 
+  visibleSidebar1;
   @Output() profileClicked = new EventEmitter<string>();
   @Output() cartClicked = new EventEmitter<string>();
   // firstname = this.authService.firstnameURL;

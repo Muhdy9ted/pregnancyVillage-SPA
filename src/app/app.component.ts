@@ -16,6 +16,7 @@ export class AppComponent  implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
+
     AOS.init();
 
     const token = localStorage.getItem('preg_token');

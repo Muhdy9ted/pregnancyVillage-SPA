@@ -3,3 +3,96 @@ $white: #fff;
 $black: #463f3f;
 $text-color: #555;
 $bg-dark: #e8e6e6;
+
+$widthXS: 1px;
+$widthSM: 576px;
+$widthMD: 768px;
+$widthLG: 992px;
+$widthXG: 1200px;
+
+/* XS Screen range */
+@mixin XS {
+    @media (min-width:$widthXS) {
+       @content;
+    }
+}
+
+@mixin XS-SM {
+    @media (min-width:$widthXS) and (max-width:$widthSM) {
+       @content;
+    }
+}
+
+@mixin XS-MD {
+    @media (min-width:$widthXS) and (max-width:$widthMD) {
+       @content;
+    }
+}
+
+@mixin XS-LG {
+    @media (min-width:$widthXS) and (max-width:$widthLG) {
+       @content;
+    }
+}
+
+/* SM Screen range */
+@mixin SM {
+    @media (min-width:$widthSM) {
+       @content;
+    }
+}
+
+@mixin SM-MD {
+    @media (min-width:$widthSM) and (max-width:$widthMD) {
+       @content;
+    }
+}
+
+@mixin SM-LG {
+    @media (min-width:$widthSM) and (max-width:$widthLG) {
+       @content;
+    }
+}
+
+/* MD Screen range */
+@mixin MD {
+    @media (min-width:$widthMD) {
+       @content;
+    }
+}
+
+@mixin MD-LG {
+    @media (min-width:$widthMD) and (max-width:$widthLG) {
+       @content;
+    }
+}
+
+@mixin MD-XG {
+    @media (min-width:$widthMD) and (max-width:$widthXG) {
+       @content;
+    }
+}
+
+/* LG Screen range */
+@mixin LG {
+    @media (min-width:$widthLG) {
+       @content;
+    }
+}
+
+@mixin LG-XG {
+    @media (min-width:$widthLG) and (max-width:$widthXG) {
+       @content;
+    }
+}
+
+/* XG Screen range */
+@mixin XG {
+    @media (min-width:$widthXG) {
+       @content;
+    }
+}
+
+
+
+

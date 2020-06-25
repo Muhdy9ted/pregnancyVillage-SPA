@@ -4,9 +4,26 @@
 @import "variables"; //created custom variables
 @import "~bootstrap/scss/bootstrap"; //bootstrap4
 
-// Extra small devices (portrait phones, less than 576px)
-// No media query for `xs` since this is the default in Bootstrap, mobile-first design
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    background-color: $white;
+    color: $text-color;
+    font-family: 'Muli', 'Arial', 'sans-serif';
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
 @media (min-width: 0px) {
+
+    html{
+        font-size: 16px;
+    }
+
     .nav-link:hover{
 		border-bottom: none;
     }
@@ -20,6 +37,10 @@
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
+    html{
+        font-size: 16px;
+    }
+
     .badge {
         background-color: red;
     }
@@ -27,6 +48,10 @@
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { 
+    html{
+        font-size: 18px;
+    }
+
     .badge {
         background-color: green;
     }
@@ -46,18 +71,7 @@
     }
  }
 
-*{
-    box-sizing: border-box;
-}
 
-html{
-    background-color: $white;
-    color: $text-color;
-    font-family: 'Muli', 'Arial', 'sans-serif';
-    font-weight: 300px;
-    font-size: 18px;
-    text-rendering: optimizeLegibility;
-}
 
 
 /*----------------------- Section-tabset on landing-page css starts ----------------------*/

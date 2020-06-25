@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" #nav id="nav">
         <div class="container-fluid" [class.nav-white]="isCollapsed">
             <a class="navbar-brand mr-auto animate__animated animate__rubberBand" [routerLink]="['/']"> 
                 <img src="\assets\images\logo.png" alt="Pregnancy village logo" [class.logo]="!isCollapsed" [class.logoCollapsed]="isCollapsed"> 
@@ -54,8 +54,8 @@
                         [class.btn-sm]="isCollapsed" 
                         *ngIf="isLoggedIn()" style="cursor: pointer;" role="button" (click)="onLoginClicked()">Sign in
                     </a>
-                    <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed" 
-                        [class.btn-sm]="isCollapsed" 
+                    <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed profile-btn" 
+                        [class.btn-sm]="isCollapsed"  
                         *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="[userId, 'profile']" 
                         style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
                     </a>
@@ -86,7 +86,7 @@
                 
             <div id="hero-image-contents">
                 <div class="container">
-                    <h1 class=" animate__animated animate__bounce mb-0 mb-md-3"><span style="color: #F29422;">Pregnancy</span> Village</h1>
+                    <h1 class="display-4 animate__animated animate__bounce mb-0 mb-md-3"><span style="color: #F29422;">Pregnancy</span> Village</h1>
                     <small class="small text-muted d-block d-md-none mt-0"><i>share with us</i></small>
                     <p class="animate__animated animate__backInLeft d-none d-md-block">
                         Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
@@ -98,7 +98,7 @@
                         *ngIf="true"  role="button">Forums
                     </a>
 
-                    <a class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" *ngIf="!authService.loggedIn()" [routerLink]="['/dashboard']" 
+                    <a class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block profile-btn" *ngIf="!authService.loggedIn()" [routerLink]="['/dashboard']" 
                         style="cursor: pointer;" role="button" [routerLink]="[userId, 'profile']" 
                         style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
                     </a>
@@ -115,8 +115,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="container">
-                        <h2 class=""> Share your stories with &mdash; <span style="color: #F29422;;">LOVE</span></h2>
-                        <p class="mb-4 lead text-left">
+                        <h1 class=""> Share your stories with &mdash; <span style="color: #F29422;;">LOVE</span></h1>
+                        <p class="mb-4 text-left">
                             Pregnancy village is Nigeria's first online community platform for pregnant women.
                             The platform allows women from anywhere share their experience during pregnancy,<br> 
                         </p>
@@ -124,7 +124,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-6 mb-2">
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
                     <div class="card">
                         <div class="card-body">
                           <h5 class="card-title text-capitalize">Forums  <i class="ml-1 fas fa-users icon-big"></i></h5>
@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 
-                <div class="col-12 col-sm-6 mb-2">
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-capitalize">Market  <i class="ml-1 fas fa-store-alt icon-big"></i></h5>
@@ -142,7 +142,7 @@
                     </div>
                 </div>
     
-                <div class="col-12 col-sm-6 mb-2">
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
                     <div class="card">
                         <div class="card-body">
                           <h5 class="card-title text-capitalize">Consultance <i class="fas fa-chalkboard-teacher ml-1 icon-big"></i></h5>
@@ -151,7 +151,7 @@
                     </div>
                 </div>
     
-                <div class="col-12 col-sm-6">
+                <div class="col-12 col-sm-6 col-lg-3 mb-2">
                     <div class="card">
                         <div class="card-body">
                           <h5 class="card-title  text-capitalize">Contact  <i class="ml-1 far fa-id-card icon-big"></i></h5>
@@ -219,10 +219,10 @@
 </section>
 
 <section>
-    <div id="section-tabset" class="container mt-2">
+    <div id="section-tabset" class="container-fluid my-2 pd-3">
         <div class="row">
             <div class="col-sm-12">
-                <a name="forums"><h2 class=""> Join the Community and share &mdash; <span style="color: #F29422;">FORUMS</span></h2></a>
+                <a name="forums"><h1 class=""> Join the Community and share &mdash; <span style="color: #F29422;">FORUMS</span></h1></a>
             </div>
         </div>
 
@@ -235,10 +235,10 @@
                                 <div class="col-md-6 col-12">
                                     <div class="card">
                                         <div class="row card-body forums-list">
-                                            <div class="col-12 col-md-4 author">
+                                            <div class="col-12 author">
                                                 <h5 class="card-text text-muted"> Ayomide Sandra</h5>
                                             </div>
-                                            <div class="col-12 col-md-8 message">
+                                            <div class="col-12 message">
                                                 <h5 class="card-title">Excessive Weight Gain</h5>
                                                 <p class="card-text">
                                                     Some quick example text to build on the card title and make up the bulk of the card's content.<br>
@@ -271,10 +271,10 @@
                                 <div class="col-md-6 col-12">
                                     <div class="card">
                                         <div class="row card-body forums-list">
-                                            <div class="col-12 col-lg-4 author">
+                                            <div class="col-12 author">
                                                 <h5 class="card-text text-muted"> Ayomide Sandra</h5>
                                             </div>
-                                            <div class="col-12 col-lg-8 message">
+                                            <div class="col-12 message">
                                                 <h5 class="card-title">Excessive Weight Gain</h5>
                                                 <p class="card-text">
                                                     Some quick example text to build on the card title and make up the bulk of the card's content.<br>
@@ -293,10 +293,10 @@
                                 <div class="col-md-6 col-12">
                                     <div class="card">
                                         <div class="row card-body forums-list">
-                                            <div class="col-12 col-lg-4 author">
+                                            <div class="col-12 author">
                                                 <h5 class="card-text text-muted"> Ayomide Sandra</h5>
                                             </div>
-                                            <div class="col-12 col-lg-8 message">
+                                            <div class="col-12 message">
                                                 <h5 class="card-title">Excessive Weight Gain</h5>
                                                 <p class="card-text">
                                                     Some quick example text to build on the card title and make up the bulk of the card's content.<br>
@@ -315,10 +315,10 @@
                                 <div class="col-md-6 col-12">
                                     <div class="card">
                                         <div class="row card-body forums-list">
-                                            <div class="col-12 col-lg-4 author">
+                                            <div class="col-12 author">
                                                 <h5 class="card-text text-muted"> Ayomide Sandra</h5>
                                             </div>
-                                            <div class="col-12 col-lg-8 message">
+                                            <div class="col-12 message">
                                                 <h5 class="card-title">Excessive Weight Gain</h5>
                                                 <p class="card-text">
                                                     Some quick example text to build on the card title and make up the bulk of the card's content.<br>
@@ -337,10 +337,10 @@
                                 <div class="col-md-6 col-12">
                                     <div class="card">
                                         <div class="row card-body forums-list">
-                                            <div class="col-12 col-lg-4 author">
+                                            <div class="col-12 author">
                                                 <h5 class="card-text text-muted"> Ayomide Sandra</h5>
                                             </div>
-                                            <div class="col-12 col-lg-8 message">
+                                            <div class="col-12 message">
                                                 <h5 class="card-title">Excessive Weight Gain</h5>
                                                 <p class="card-text">
                                                     Some quick example text to build on the card title and make up the bulk of the card's content.<br>
@@ -419,3 +419,5 @@
     </div>
 </section>
 <app-footer></app-footer>
+
+
