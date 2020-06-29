@@ -18,19 +18,19 @@ $widthXG: 1200px;
 }
 
 @mixin XS-SM {
-    @media (min-width:$widthXS) and (max-width:$widthSM) {
+    @media (min-width:$widthXS) and (max-width:575.9px) {
        @content;
     }
 }
 
 @mixin XS-MD {
-    @media (min-width:$widthXS) and (max-width:$widthMD) {
+    @media (min-width:$widthXS) and (max-width:767.9px) {
        @content;
     }
 }
 
 @mixin XS-LG {
-    @media (min-width:$widthXS) and (max-width:$widthLG) {
+    @media (min-width:$widthXS) and (max-width:991.9px) {
        @content;
     }
 }
@@ -43,13 +43,13 @@ $widthXG: 1200px;
 }
 
 @mixin SM-MD {
-    @media (min-width:$widthSM) and (max-width:$widthMD) {
+    @media (min-width:$widthSM) and (max-width:767.9px) {
        @content;
     }
 }
 
 @mixin SM-LG {
-    @media (min-width:$widthSM) and (max-width:$widthLG) {
+    @media (min-width:$widthSM) and (max-width:991.9px) {
        @content;
     }
 }
@@ -62,13 +62,13 @@ $widthXG: 1200px;
 }
 
 @mixin MD-LG {
-    @media (min-width:$widthMD) and (max-width:$widthLG) {
+    @media (min-width:$widthMD) and (max-width:991.9px) {
        @content;
     }
 }
 
 @mixin MD-XG {
-    @media (min-width:$widthMD) and (max-width:$widthXG) {
+    @media (min-width:$widthMD) and (max-width:1999.9px) {
        @content;
     }
 }
@@ -81,7 +81,7 @@ $widthXG: 1200px;
 }
 
 @mixin LG-XG {
-    @media (min-width:$widthLG) and (max-width:$widthXG) {
+    @media (min-width:$widthLG) and (max-width:1999.9px) {
        @content;
     }
 }

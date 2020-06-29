@@ -8,7 +8,9 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {SidebarModule} from 'primeng/sidebar';
+import {DialogModule} from 'primeng/dialog';
 import { JwtModule } from '@auth0/angular-jwt';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 
@@ -93,8 +95,10 @@ export function tokenGetter() {
     MessagesModule,
     MessageModule,
     SidebarModule,
+    DialogModule,
     TextMaskModule,
     TabsModule.forRoot(),
+    TooltipModule.forRoot(),
     FileUploadModule,
     FontAwesomeModule,
     CollapseModule.forRoot(),

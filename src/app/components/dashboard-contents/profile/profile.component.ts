@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   changePassword = false;
   editProfileForm: FormGroup;
   spin = false;
+  displayModal: boolean;
 // phoneMask = ['(', '+', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/,  '-', /\d/, /\d/, /\d/, '-',  /\d/, /\d/];
   phoneMask = ['(', '+', '2', '3', '4', ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/,  '-', /\d/, /\d/, /\d/, '-',  /\d/, /\d/];
 
@@ -32,6 +33,10 @@ export class ProfileComponent implements OnInit {
       this.createEditProfileForm();
     });
   }
+
+  showModalDialog() {
+    this.displayModal = true;
+}
 
   createEditProfileForm() {
     this.editProfileForm = this.fb.group({
