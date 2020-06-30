@@ -7,6 +7,7 @@ import { GetPost } from '../models/getPost';
 import { AuthService } from './auth.service';
 import { Category } from '../models/category.model';
 import { map } from 'rxjs/operators';
+import { element } from 'protractor';
 
 
 @Injectable({
@@ -14,8 +15,11 @@ import { map } from 'rxjs/operators';
 })
 export class ForumService {
 
-  baseURL = environment.apiUrl;
+  baseURL = environment.apiUrl; // 'https://pregnancy-village.herokuapp.com/v1/forum/'
   createPostDto = new Post();
+  categoriesForLP: Category[] = [];
+  categoryPosts: GetPost[] = [];
+
 
 
   constructor(public http: HttpClient, private authService: AuthService) { }
@@ -57,12 +61,12 @@ export class ForumService {
       const userResponse = response.data;
       console.log(typeof userResponse);
       if (userResponse) {
-        const categoriesForLP: Category[] = [];
+        // tslint:disable-next-line: no-shadowed-variable
         userResponse.forEach(element => {
           console.log(element);
-          categoriesForLP.push(element);
+          this.categoriesForLP.push(element);
         });
-        return categoriesForLP;
+        return this.categoriesForLP;
         // localStorage.setItem('token', JSON.stringify(userResponse[0][1]));
         // this.userToken = JSON.stringify(userResponse[0][1]);
         // console.log(this.decodedToken);
@@ -76,5 +80,9 @@ export class ForumService {
       //   return response;
       // }
     }));
+  }
+
+  postsByCategory(id) {
+    return this.http.get(this.baseURL +  `category/${id}`);
   }
 }

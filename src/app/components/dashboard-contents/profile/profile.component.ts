@@ -23,6 +23,9 @@ export class ProfileComponent implements OnInit {
   displayModal: boolean;
 // phoneMask = ['(', '+', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/,  '-', /\d/, /\d/, /\d/, '-',  /\d/, /\d/];
   phoneMask = ['(', '+', '2', '3', '4', ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/,  '-', /\d/, /\d/, /\d/, '-',  /\d/, /\d/];
+  editProfile = false;
+  beMerchant = false;
+  provService = false;
 
   constructor(public userService: UserService, private route: ActivatedRoute,
               private fb: FormBuilder, alertify: AlertifyService) { }
@@ -34,8 +37,19 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  showModalDialog() {
+  showModalDialogEP() {
+    this.editProfile = true;
     this.displayModal = true;
+}
+
+showModalDialogBM() {
+  this.beMerchant = true;
+  this.displayModal = true;
+}
+
+showModalDialogPS() {
+  this.provService = true;
+  this.displayModal = true;
 }
 
   createEditProfileForm() {
@@ -78,4 +92,5 @@ export class ProfileComponent implements OnInit {
   onSubmit() {
     console.log('testing');
   }
+
 }

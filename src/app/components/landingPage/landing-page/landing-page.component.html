@@ -24,7 +24,7 @@
                         </a>
                     </li>
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" [routerLink]="['/profile']" [class.linkcolor]="isCollapsed">
+                        <a class="nav-link" [routerLink]="['/forum']" [class.linkcolor]="isCollapsed">
                             Forums
                         </a>
                     </li>
@@ -226,20 +226,20 @@
             </div>
         </div>
 
-        <div class="container-fluid mt-3" style="background-color: #fafafa;" *ngIf="!isLoggedIn()">    
+        <div class="container-fluid mt-3" style="background-color: #fafafa;" *ngIf="isLoggedIn()">    
             <div class="container">
                 <tabset class="member-tabset">
                     <!-- <div *ngFor="let post of categoryPosts"> -->
-                        <tab *ngFor="let post of categoryPosts" heading="{{post.name}}" id="tab1">
+                        <tab *ngFor="let item of postsBycategory" heading="{{item.name}}" id="tab1">
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                                    <div class="card">
-                                        <div class="row card-body forums-list">
+                                    <div class="card" *ngFor="let post of item.posts">
+                                        <div class="row card-body forums-list" >
                                             <div class="col-12 author">
-                                                <h5 class="card-text text-muted"> Ayomide Sandra</h5>
+                                                <h5 class="card-text text-muted"> {{item.description}}</h5>
                                             </div>
                                             <div class="col-12 message">
-                                                <h5 class="card-title">Excessive Weight Gain</h5>
+                                                <h5 class="card-title">ttee</h5>
                                                 <p class="card-text">
                                                     Some quick example text to build on the card title and make up the bulk of the card's content.<br>
                                                     Some quick example text to build on the card title and make up the bulk of the card's content.

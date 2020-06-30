@@ -30,6 +30,7 @@ export class AuthService {
   jwtHelper = new JwtHelperService();
   userID = '';
   // userIdURL = '';
+  registeredEmail;
 
 
 
@@ -37,6 +38,7 @@ export class AuthService {
 
   register(user: RegisterUserDto): Observable<RegisterUserDto> {
     const {firstName, lastName, email, password} = user;
+    this.registeredEmail = email;
     return this.http.post<RegisterUserDto>(this.baseURL + 'register', {firstName, lastName, email, password});
   }
 
@@ -70,7 +72,7 @@ export class AuthService {
   forgotPassword() {
     const { username } = this.formDataLogin;
     console.log(username);
-    return this.http.post(this.baseURL + 'reset_password', username);
+    return this.http.post(this.baseURL + 'send_link', {email: username});
   }
 
   loggedIn() {
@@ -83,6 +85,11 @@ export class AuthService {
 
   loggedOut() {
     localStorage.removeItem('preg_token');
+  }
+
+  resendMail() {
+    console.log(this.registeredEmail);
+    return this.http.post(this.baseURL + 'resend', {email: this.registeredEmail});
   }
 
 }

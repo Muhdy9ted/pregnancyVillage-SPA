@@ -15,4 +15,5 @@ export interface GetPost {
 ​​​    topic: string;
 ​​​    totalCommentCount: number;
 ​​​    userId: string;
+    upload_file: string;
 }

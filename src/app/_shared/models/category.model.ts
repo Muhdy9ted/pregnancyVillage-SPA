@@ -1,3 +1,5 @@
+import { GetPost } from './getPost';
+
 export class Category {
     // tslint:disable-next-line: variable-name
     public __v: number;
@@ -9,4 +11,5 @@ export class Category {
 ​​    public name: string;
 ​​    public nameHash: string;
 ​​    public userId: string;
+    public posts: GetPost[];
 }

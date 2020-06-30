@@ -1,1 +1,49 @@
-<p>forum works!</p>
+<app-navbar></app-navbar>
+<section id="forum">
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>Trending posts</h2>
+                    <h1 class="display-4">Hello, world!</h1>
+                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    
+                </div>
+                <div class="col-sm-4">
+                    <h2>Something else</h2>
+                </div>
+                <div class="col-sm-4">
+                    <h2>Latest posts</h2>
+                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                </div>
+            </div>
+          </div>
+    
+        <div class="row">
+          <div class="col-8 col-md-8">
+            <h2 class="display-4 heading text-center">New Posts</h2>
+            <div class="col-12"  *ngFor="let post of posts">
+                <div class="col-4 col-lg-6 p-3">
+                    <img src="{{post.upload_file}}" class="img-fluid">
+                </div>
+                <div class="col-8">
+                  <h5 class="">{{post.topic}}</h5>
+                  <p class="">{{post.description}}</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="col-12 col-lg-4">
+                <h3>Trending Posts</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row my-5">
+          <div class="col-sm">col-sm</div>
+          <div class="col-sm">col-sm</div>
+          <div class="col-sm">col-sm</div>
+        </div>
+    </div>
+</section>
+
+<!-- <app-footer></app-footer> -->

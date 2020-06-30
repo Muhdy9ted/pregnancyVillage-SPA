@@ -22,21 +22,21 @@
 
             <div class="row container btns d-block d-sm-none d-md-block">
                 <div class="col-12 col-sm-8 offset-sm-3 d-flex flex-column flex-sm-row align-items-stretch">
-                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn1"  (click)="showModalDialog()" *ngIf="true"  role="button">Edit Profile</button>
-                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn2"  (click)="showModalDialog()" *ngIf="true"  role="button">Provide a service</button>
-                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn3"  (click)="showModalDialog()" *ngIf="true"  role="button">Become a merchant</button>
+                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn1"  (click)="showModalDialogEP()" *ngIf="true"  role="button">Edit Profile</button>
+                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn2"  (click)="showModalDialogBM()" *ngIf="true"  role="button">Provide a service</button>
+                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn3"  (click)="showModalDialogPS()" *ngIf="true"  role="button">Become a merchant</button>
                 </div>
             </div>
 
             <div class="row container btns d-none d-sm-block d-md-none">
                 <div class="col-12 col-sm-8 offset-sm-3 d-flex flex-column flex-sm-row align-items-stretch">
-                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn1" tooltip="Edit Profile" (click)="showModalDialog()" *ngIf="true"  role="button">
+                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn1" tooltip="Edit Profile" (click)="showModalDialogEP()" *ngIf="true"  role="button">
                         Edit Profile
                     </button>
-                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn2" (click)="showModalDialog()" *ngIf="true"  role="button" tooltip="Provide a service">
+                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn2" (click)="showModalDialogBM()" *ngIf="true"  role="button" tooltip="Provide a service">
                         Provide a serv..
                     </button>
-                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn3" (click)="showModalDialog()" *ngIf="true"  role="button"  tooltip="Become a Merchant">
+                    <button class="btn btn-primary mr-3 mb-3 text-truncate btn3" (click)="showModalDialogPS()" *ngIf="true"  role="button"  tooltip="Become a Merchant">
                         Become a merc..
                     </button>
                 </div>
@@ -76,11 +76,11 @@
             </div>
 
 
-            <p-dialog header="Godfather I" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-                <div class="card col-sm-7 profile-others ml-2 mt-2">
-                    <div class="card-body">
-                        <form class="col-10 mx-auto" id="registerForm" [formGroup]="editProfileForm" autocomplete="off" (ngSubmit)="onSubmit()">
-                            <div class="form-group mt-2 mx-auto">
+            <p-dialog class="my-3" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                <div class="card col-12 my-2">
+                    <div class="card-body" *ngIf="editProfile">
+                        <form class="col-12" id="registerForm" [formGroup]="editProfileForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
                                 <label for="firstName" class="col-sm-12 col-form-label" >Firstname</label>
                                 <input type="text" class="form-control col-12" id="editFirstname" placeholder="" 
                                     formControlName="firstName" 
@@ -88,16 +88,16 @@
                                 <div class="invalid-feedback">Please fill-out your firstname</div>
                             </div>
     
-                            <div class="form-group mt-3 mx-auto">
-                                <label for="lastName" class="col-sm-12 col-form-label" >Lastname</label>
-                                <input type="text"   class="form-control col-12" id="editLastname" placeholder=""
+                            <div class="form-group">
+                                <label for="lastName" class="col-12 col-form-label" >Lastname</label>
+                                <input type="text" class="form-control col-12" id="editLastname" placeholder=""
                                     formControlName="lastName"
                                     [class.is-invalid]="editProfileForm.get('lastName').invalid && editProfileForm.get('lastName').touched">
                                 <div class="invalid-feedback">Please fill-out your lastname</div>
                             </div>
     
-                            <div class="form-group mt-3 mx-auto">
-                                <label for="email" class="col-sm-12 col-form-label" >Email</label>           
+                            <div class="form-group">
+                                <label for="email" class="col-12 col-form-label" >Email</label>           
                                 <input type="email" class="form-control col-12" id="editEmail" placeholder=""
                                     formControlName="email"  readonly
                                     [class.is-invalid]="editProfileForm.get('email').invalid && editProfileForm.get('email').touched">
@@ -106,7 +106,7 @@
                                 <!-- <span id="emailError" style="color: red; font-size: 80%; line-height: 145%;">{{ emailError }}</span> -->
                             </div>
 
-                            <div class="form-group mt-3 mx-auto">
+                            <div class="form-group">
                                 <label for="phoneNumber" class="col-sm-12 col-form-label" >Phone Number</label>           
                                 <input type="text" class="form-control col-12" id="phoneNumber"
                                     formControlName="phoneNumber" placeholder="(+234) "  [textMask]="{mask:phoneMask}"
@@ -122,8 +122,8 @@
                                 
                             </div>
 
-                            <div class="form-group mx-auto"  *ngIf="this.changePassword">
-                                <label for="password" class="col-sm-12 col-form-label" >Password</label>   
+                            <div class="form-group"  *ngIf="this.changePassword">
+                                <label for="password" class="col-12 col-form-label" >Password</label>   
                                 <input type="password"  class="form-control col-12" id="editPassword" placeholder=""
                                     formControlName="password" #password autocomplete="new-password"
                                     [class.is-invalid]="editProfileForm.get('password').errors && editProfileForm.get('password').touched">
@@ -131,7 +131,7 @@
                                     <div class="invalid-feedback" *ngIf="editProfileForm.get('password').hasError('minlength') && editProfileForm.get('password').touched">minimum length of password is 5 characters</div>
                             </div>
     
-                            <div class="form-group mx-auto" *ngIf="this.changePassword">
+                            <div class="form-group" *ngIf="this.changePassword">
                                 <input type="password" class="form-control col-12" id="ConfirmPassword" placeholder="Confirm password"
                                 formControlName="confirmPassword" autocomplete="new-password"
                                 [class.is-invalid]="(editProfileForm.hasError('mismatch') && editProfileForm.get('confirmPassword').touched) || (editProfileForm.get('confirmPassword').errors && editProfileForm.get('confirmPassword').touched)">
@@ -145,6 +145,142 @@
                             </div>
                         </form>
                     </div>   
+
+                    <div class="card-body" *ngIf="provService">
+                        <form class="col-12" id="registerForm" [formGroup]="editProfileForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-12 col-form-label" >Firstname</label>
+                                <input type="text" class="form-control col-12" id="editFirstname" placeholder="" 
+                                    formControlName="firstName" 
+                                    [class.is-invalid]="editProfileForm.get('firstName').invalid && editProfileForm.get('firstName').touched">
+                                <div class="invalid-feedback">Please fill-out your firstname</div>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="lastName" class="col-12 col-form-label" >Lastname</label>
+                                <input type="text" class="form-control col-12" id="editLastname" placeholder=""
+                                    formControlName="lastName"
+                                    [class.is-invalid]="editProfileForm.get('lastName').invalid && editProfileForm.get('lastName').touched">
+                                <div class="invalid-feedback">Please fill-out your lastname</div>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="email" class="col-12 col-form-label" >Email</label>           
+                                <input type="email" class="form-control col-12" id="editEmail" placeholder=""
+                                    formControlName="email"  readonly
+                                    [class.is-invalid]="editProfileForm.get('email').invalid && editProfileForm.get('email').touched">
+                                <div *ngIf="editProfileForm.get('email').value === ''" class="invalid-feedback">Please fill-out your email address</div>
+                                <div *ngIf="editProfileForm.get('email').value != ''" class="invalid-feedback">Please enter a valid email address</div>
+                                <!-- <span id="emailError" style="color: red; font-size: 80%; line-height: 145%;">{{ emailError }}</span> -->
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phoneNumber" class="col-sm-12 col-form-label" >Phone Number</label>           
+                                <input type="text" class="form-control col-12" id="phoneNumber"
+                                    formControlName="phoneNumber" placeholder="(+234) "  [textMask]="{mask:phoneMask}"
+                                    [class.is-invalid]="editProfileForm.get('phoneNumber').invalid && editProfileForm.get('phoneNumber').touched">
+                                <div *ngIf="editProfileForm.get('phoneNumber').value === ''" class="invalid-feedback">Please fill-out your phone Number</div>
+                                <div *ngIf="editProfileForm.get('phoneNumber').value != ''" class="invalid-feedback">Please enter a valid Phone number</div>
+                                <!-- <span id="emailError" style="color: red; font-size: 80%; line-height: 145%;">{{ emailError }}</span>  -->
+                                </div>
+        
+                            <div class="form-group mx-auto" *ngIf="!this.changePassword">
+                                <button class="btn btn-ghost" (click)="onClickChangePassword(editProfileForm)"> change password</button>
+                                    
+                                
+                            </div>
+
+                            <div class="form-group"  *ngIf="this.changePassword">
+                                <label for="password" class="col-12 col-form-label" >Password</label>   
+                                <input type="password"  class="form-control col-12" id="editPassword" placeholder=""
+                                    formControlName="password" #password autocomplete="new-password"
+                                    [class.is-invalid]="editProfileForm.get('password').errors && editProfileForm.get('password').touched">
+                                    <div class="invalid-feedback" *ngIf="editProfileForm.get('password').hasError('required') && editProfileForm.get('password').touched">Please fill-out your password</div>
+                                    <div class="invalid-feedback" *ngIf="editProfileForm.get('password').hasError('minlength') && editProfileForm.get('password').touched">minimum length of password is 5 characters</div>
+                            </div>
+    
+                            <div class="form-group" *ngIf="this.changePassword">
+                                <input type="password" class="form-control col-12" id="ConfirmPassword" placeholder="Confirm password"
+                                formControlName="confirmPassword" autocomplete="new-password"
+                                [class.is-invalid]="(editProfileForm.hasError('mismatch') && editProfileForm.get('confirmPassword').touched) || (editProfileForm.get('confirmPassword').errors && editProfileForm.get('confirmPassword').touched)">
+                                <div class="invalid-feedback" *ngIf="editProfileForm.get('confirmPassword').errors && editProfileForm.get('confirmPassword').touched">Please confirm your password</div>
+                                <div class="invalid-feedback" >Password must match!</div>
+                            </div>
+    
+                            <div class="form-group mx-auto pb-3">
+                                <button type="submit" class="col-sm-6 btn-ghost" [disabled]="editProfileForm.invalid">Sign up <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:24px"></i></button> 
+                                <!-- <span class="mt-2 pl-2"><a href="#"> Already have an account? Sign in</a></span> -->
+                            </div>
+                        </form>
+                    </div> 
+
+                    <div class="card-body" *ngIf="beMerchant">
+                        <form class="col-12" id="registerForm" [formGroup]="editProfileForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-12 col-form-label" >Firstname</label>
+                                <input type="text" class="form-control col-12" id="editFirstname" placeholder="" 
+                                    formControlName="firstName" 
+                                    [class.is-invalid]="editProfileForm.get('firstName').invalid && editProfileForm.get('firstName').touched">
+                                <div class="invalid-feedback">Please fill-out your firstname</div>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="lastName" class="col-12 col-form-label" >Lastname</label>
+                                <input type="text" class="form-control col-12" id="editLastname" placeholder=""
+                                    formControlName="lastName"
+                                    [class.is-invalid]="editProfileForm.get('lastName').invalid && editProfileForm.get('lastName').touched">
+                                <div class="invalid-feedback">Please fill-out your lastname</div>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="email" class="col-12 col-form-label" >Email</label>           
+                                <input type="email" class="form-control col-12" id="editEmail" placeholder=""
+                                    formControlName="email"  readonly
+                                    [class.is-invalid]="editProfileForm.get('email').invalid && editProfileForm.get('email').touched">
+                                <div *ngIf="editProfileForm.get('email').value === ''" class="invalid-feedback">Please fill-out your email address</div>
+                                <div *ngIf="editProfileForm.get('email').value != ''" class="invalid-feedback">Please enter a valid email address</div>
+                                <!-- <span id="emailError" style="color: red; font-size: 80%; line-height: 145%;">{{ emailError }}</span> -->
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phoneNumber" class="col-sm-12 col-form-label" >Phone Number</label>           
+                                <input type="text" class="form-control col-12" id="phoneNumber"
+                                    formControlName="phoneNumber" placeholder="(+234) "  [textMask]="{mask:phoneMask}"
+                                    [class.is-invalid]="editProfileForm.get('phoneNumber').invalid && editProfileForm.get('phoneNumber').touched">
+                                <div *ngIf="editProfileForm.get('phoneNumber').value === ''" class="invalid-feedback">Please fill-out your phone Number</div>
+                                <div *ngIf="editProfileForm.get('phoneNumber').value != ''" class="invalid-feedback">Please enter a valid Phone number</div>
+                                <!-- <span id="emailError" style="color: red; font-size: 80%; line-height: 145%;">{{ emailError }}</span>  -->
+                                </div>
+        
+                            <div class="form-group mx-auto" *ngIf="!this.changePassword">
+                                <button class="btn btn-ghost" (click)="onClickChangePassword(editProfileForm)"> change password</button>
+                                    
+                                
+                            </div>
+
+                            <div class="form-group"  *ngIf="this.changePassword">
+                                <label for="password" class="col-12 col-form-label" >Password</label>   
+                                <input type="password"  class="form-control col-12" id="editPassword" placeholder=""
+                                    formControlName="password" #password autocomplete="new-password"
+                                    [class.is-invalid]="editProfileForm.get('password').errors && editProfileForm.get('password').touched">
+                                    <div class="invalid-feedback" *ngIf="editProfileForm.get('password').hasError('required') && editProfileForm.get('password').touched">Please fill-out your password</div>
+                                    <div class="invalid-feedback" *ngIf="editProfileForm.get('password').hasError('minlength') && editProfileForm.get('password').touched">minimum length of password is 5 characters</div>
+                            </div>
+    
+                            <div class="form-group" *ngIf="this.changePassword">
+                                <input type="password" class="form-control col-12" id="ConfirmPassword" placeholder="Confirm password"
+                                formControlName="confirmPassword" autocomplete="new-password"
+                                [class.is-invalid]="(editProfileForm.hasError('mismatch') && editProfileForm.get('confirmPassword').touched) || (editProfileForm.get('confirmPassword').errors && editProfileForm.get('confirmPassword').touched)">
+                                <div class="invalid-feedback" *ngIf="editProfileForm.get('confirmPassword').errors && editProfileForm.get('confirmPassword').touched">Please confirm your password</div>
+                                <div class="invalid-feedback" >Password must match!</div>
+                            </div>
+    
+                            <div class="form-group mx-auto pb-3">
+                                <button type="submit" class="col-sm-6 btn-ghost" [disabled]="editProfileForm.invalid">Sign up <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:24px"></i></button> 
+                                <!-- <span class="mt-2 pl-2"><a href="#"> Already have an account? Sign in</a></span> -->
+                            </div>
+                        </form>
+                    </div> 
                 </div>
                 <p-footer>
                     <button type="button" class="btn btn-secondary"  (click)="displayModal=false">Close</button>

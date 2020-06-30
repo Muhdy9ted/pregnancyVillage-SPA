@@ -142,8 +142,8 @@ p {
 .card {
 	// margin-bottom: 10px;
 	border: 1px solid #b9b9b9;
-	box-shadow: -1px 2px #b9b9b9;
-	background-color: #dcdad8;
+	box-shadow: -1px 2px $text-color;
+	background-color: $white;
 
 }
 
@@ -184,15 +184,26 @@ input.ng-valid{
 
 .btn2 {
     @include XS-SM{
-        width: 90% !important;
+        width: 80% !important;
     }
 }
 
 .btn3 {
-    @include XS_SM {
-        width: 100% !important;
+    @include XS-SM {
+        width: 80% !important;
     }
 }
+
+// .mydialog {
+//     @include XS-SM {
+//         width: 5vw !important;
+//     }
+// }
+
+// .mydialog {
+//          width: 5vw !important;
+//     }
+
 
 // @media (max-width: 575.9) {
 //     .btn1 {
@@ -207,6 +218,14 @@ input.ng-valid{
 // }
 
 // @media (max-width: 767.9px) {
+
+    
+// .mydialog {
+//     @include SM-MD {
+//         width: 95vw;
+//     }
+// }
+
     .row.container.btns {
         @include SM-MD {
             margin-right: 0;

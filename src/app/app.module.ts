@@ -50,6 +50,7 @@ import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info';
 import { TextMaskModule } from 'angular2-text-mask';
 import { FooterComponent } from './components/footer/footer.component';
 import { GetCategoriesPostsLPageResolver } from './_shared/resolvers/getCategoriesPostLPage.resolver';
+import { WelcomePageComponent } from './components/landingPage/welcome-page/welcome-page.component';
 
 export function tokenGetter() {
   return (localStorage.getItem('preg_token'));
@@ -83,6 +84,7 @@ export function tokenGetter() {
     MemberProfileComponent,
     MembersListComponent,
     FooterComponent,
+    WelcomePageComponent,
   ],
   imports: [
     BrowserModule,

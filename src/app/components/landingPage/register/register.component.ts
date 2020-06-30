@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { RegisterUserDto } from 'src/app/_shared/models/register-user-dto.model';
 import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 import { AuthService } from 'src/app/_shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,12 +21,18 @@ export class RegisterComponent implements OnInit {
   user: RegisterUserDto;
   spin = false;
   emailError: string;
+  regSent = false;
+  displayModal: boolean;
 
-  constructor(private fb: FormBuilder, private alertify: AlertifyService,
+
+  constructor(private fb: FormBuilder, private alertify: AlertifyService, private route: Router,
               private authService: AuthService) { }
 
   ngOnInit(): void {
     this.createRegisterForm();
+    // if (this.regSent) {
+    //   this.onRegSuccess();
+    // }
   }
 
 
@@ -44,36 +51,55 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.registerForm.valid) {
-      this.spin = true;
-      this.user = Object.assign({}, this.registerForm.value);
-      this.authService.register(this.user).subscribe((userCredential) => {
-        this.onCloseModal();
-        // this.registerFormRef.reset();
-        console.log(userCredential);
-        this.alertify.success('Registration Successful');
-        this.alertify.success('A confirmation mail has been sent to your email');
-      }, error => {
-        if (error) {
+    if (!this.regSent) {
+      if (this.registerForm.valid) {
+        this.spin = true;
+        this.user = Object.assign({}, this.registerForm.value);
+        this.authService.register(this.user).subscribe((userCredential) => {
+          // this.onCloseModal();
+          console.log(userCredential);
+          this.alertify.success('Registration Successful');
+          this.regSent = true;
           this.spin = false;
-          // this.emailError1.nativeElement.innerText = error;
-          // console.log(this.emailError1.nativeElement.id);
-          this.emailError = error;
-          // const RegisterError = Object.entries(error);
-          // console.log(RegisterError[7][1]);
-          // const emailerror = RegisterError[7][1];
-          // console.log(emailerror[0]);
-          // const errorNow2 = error.error.Email[0];
-          // console.log(errorNow2);
-          // this.emailError = errorNow2;
-          // document.getElementById('emailError1').textContent = error;
-        }
-      // }, () => {
-      // create a loginredirect method that will receive the user data to login and the userCredentials already gotten from registration
-      // this.authService.login(this.user).subscribe(() => {
-      // this.router.navigate(['/dashboard']);
-      // });
-      });
+          this.alertify.success('A confirmation mail has been sent to your email');
+        }, error => {
+          if (error) {
+            this.spin = false;
+            this.emailError = error;
+          }
+        });
+      }
+    } else {
+      if (this.registerForm.valid) {
+        this.spin = true;
+        // this.user = Object.assign({}, this.registerForm.value);
+        this.authService.resendMail().subscribe((response: any)  => {
+          console.log(response);
+          this.onCloseModal();
+          // this.registerFormRef.reset();
+          this.alertify.success('Registration Successful');
+          this.regSent = false;
+          this.alertify.success('A confirmation mail has been sent to your email');
+        }, error => {
+          if (error) {
+            this.spin = false;
+            this.emailError = error;
+            // const RegisterError = Object.entries(error);
+            // console.log(RegisterError[7][1]);
+            // const emailerror = RegisterError[7][1];
+            // console.log(emailerror[0]);
+            // const errorNow2 = error.error.Email[0];
+            // console.log(errorNow2);
+            // this.emailError = errorNow2;
+            // document.getElementById('emailError1').textContent = error;
+          }
+        // }, () => {
+        // create a loginredirect method that will receive the user data to login and the userCredentials already gotten from registration
+        // this.authService.login(this.user).subscribe(() => {
+        // this.router.navigate(['/dashboard']);
+        // });
+        });
+      }
     }
   }
 
@@ -83,5 +109,16 @@ export class RegisterComponent implements OnInit {
 
   cancel() {
     this.cancelRegister.emit(false);
+  }
+
+  showModalDialog() {
+    this.displayModal = true;
+  }
+
+  onResendMailClicked() {
+    this.authService.resendMail().subscribe((response: any) => {
+      console.log(response);
+    });
+    this.route.navigate(['/']);
   }
 }
