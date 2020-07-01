@@ -226,7 +226,7 @@
             </div>
         </div>
 
-        <div class="container-fluid mt-3" style="background-color: #fafafa;" *ngIf="isLoggedIn()">    
+        <div class="container-fluid mt-3" style="background-color: #fafafa;" *ngIf="!isLoggedIn()">    
             <div class="container">
                 <tabset class="member-tabset">
                     <!-- <div *ngFor="let post of categoryPosts"> -->
@@ -236,13 +236,12 @@
                                     <div class="card" *ngFor="let post of item.posts">
                                         <div class="row card-body forums-list" >
                                             <div class="col-12 author">
-                                                <h5 class="card-text text-muted"> {{item.description}}</h5>
+                                                <h5 class="card-text text-muted"> {{post.userId}}</h5>
                                             </div>
                                             <div class="col-12 message">
-                                                <h5 class="card-title">ttee</h5>
+                                                <h5 class="card-title">{{post.topic}}</h5>
                                                 <p class="card-text">
-                                                    Some quick example text to build on the card title and make up the bulk of the card's content.<br>
-                                                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                                                    {{post.description}}
                                                 </p>
                                             </div>
                                             <!-- <div class="col-sm-2 icons">
