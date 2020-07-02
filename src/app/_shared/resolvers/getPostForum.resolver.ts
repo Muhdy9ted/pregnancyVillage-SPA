@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 import { GetPost } from '../models/getPost';
 
 @Injectable()
-export class GetPostResolver implements Resolve<GetPost> {
+export class GetPostForumResolver implements Resolve<GetPost> {
 
     constructor(private forumService: ForumService, private router: Router, private alertify: AlertifyService) {}
 

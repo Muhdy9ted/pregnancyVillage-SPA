@@ -20,12 +20,16 @@ import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info';
 import { GetCategoriesPostsLPageResolver } from './_shared/resolvers/getCategoriesPostLPage.resolver';
 import { WelcomePageComponent } from './components/landingPage/welcome-page/welcome-page.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { GetForumPostsResolver } from './_shared/resolvers/getForumPosts.resolver';
+import { ForumDetailComponent } from './components/forum/forum-detail/forum-detail.component';
+import { GetPostForumResolver } from './_shared/resolvers/getPostForum.resolver';
 
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, resolve: {categoryPosts: GetCategoriesPostsLPageResolver}},
   {path: 'activated', component: WelcomePageComponent},
-  {path: 'forum', component: ForumComponent},
+  {path: 'forum', component: ForumComponent, resolve: {posts: GetForumPostsResolver}},
+  {path: 'forum/:postId', component: ForumDetailComponent},
   { path: ':userId', component: DashboardControllerComponent , runGuardsAndResolvers: 'always', canActivate: [AuthGuard], children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     { path: 'dashboard', component: DashboardComponent},

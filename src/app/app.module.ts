@@ -51,6 +51,9 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { FooterComponent } from './components/footer/footer.component';
 import { GetCategoriesPostsLPageResolver } from './_shared/resolvers/getCategoriesPostLPage.resolver';
 import { WelcomePageComponent } from './components/landingPage/welcome-page/welcome-page.component';
+import { GetForumPostsResolver } from './_shared/resolvers/getForumPosts.resolver';
+import { ForumDetailComponent } from './components/forum/forum-detail/forum-detail.component';
+import { GetPostForumResolver } from './_shared/resolvers/getPostForum.resolver';
 
 export function tokenGetter() {
   return (localStorage.getItem('preg_token'));
@@ -85,6 +88,7 @@ export function tokenGetter() {
     MembersListComponent,
     FooterComponent,
     WelcomePageComponent,
+    ForumDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,7 +117,8 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [ErrorInterceptorProvider, GetPostsResolver, GetPostResolver, GetProfileInfoResolver, GetCategoriesPostsLPageResolver],
+  providers: [ErrorInterceptorProvider, GetPostsResolver, GetPostResolver, GetProfileInfoResolver, GetCategoriesPostsLPageResolver,
+    GetForumPostsResolver, GetPostForumResolver],
   bootstrap: [AppComponent]
 
 })

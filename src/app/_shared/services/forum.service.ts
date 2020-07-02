@@ -40,6 +40,7 @@ export class ForumService {
   }
 
   getPost(id) {
+    console.log(id);
     return this.http.get(this.baseURL + `topic/${id}`);
   }
 

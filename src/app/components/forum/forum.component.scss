@@ -2,7 +2,66 @@
 
 #forum {
     padding: 80px 0;
-    .jumbotron {
-        background-color: $white;
+    margin-top: 40px;
+    background-color: #ecf0f1;
+    border-top: solid 1px #e0e4e5;
+    
+    a, a:hover, a:link, a:active {
+        text-decoration: none;
+        color: none;
     }
+
+    .post-section {
+        .posts .card {
+            background-color: $white;
+        }
+    
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            word-spacing: 2px;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            transition: all 0.3s ease-in-out;
+            line-height: 120%;
+        }
+
+        .card-title:hover {
+            border-bottom: 1px solid $text-color;
+            opacity: 0.9;
+            transition: all 0.3s;
+        }
+    
+        .card-text {
+            font-size: 0.8rem;
+            word-spacing: 2px;
+            line-height: 170%;
+        }
+
+        ul {
+            border: none !important;
+        }
+
+        li {
+            border: none !important;
+            color: $primary;
+            font-weight: 700;
+        }
+
+        .list-group {
+            border: none !important;
+        }
+
+        a, a:hover, a:link, a:active {
+            text-decoration: none;
+            color: none;
+        }
+    }
+
+    .category {
+        .card-text {
+            font-size: 0.8rem;
+        }
+    }
+ 
 }

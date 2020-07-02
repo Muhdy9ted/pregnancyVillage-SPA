@@ -17,3 +17,5 @@ export interface GetPost {
 ​​​    userId: string;
     upload_file: string;
 }
+
+
