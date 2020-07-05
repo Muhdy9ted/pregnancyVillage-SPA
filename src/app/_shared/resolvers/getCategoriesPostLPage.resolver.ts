@@ -17,7 +17,7 @@ export class GetCategoriesPostsLPageResolver implements Resolve<Category[]> {
         return this.forumService.getPostsForLandingPage().pipe(
             catchError(error => {
                 console.log(error);
-                this.alertify.message(' you are not logged in problem retrieving data');
+                // this.alertify.message(' you are not logged in problem retrieving data');
                 this.router.navigate(['/']);
                 return of(null);
             })

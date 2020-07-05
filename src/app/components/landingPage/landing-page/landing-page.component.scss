@@ -7,7 +7,7 @@ header{
  top: 0;
  left: 0;
 }
-
+ 
 /*----------------------- Header css ends ----------------------*/
 
 /*----------------------- Navbar css starts ----------------------*/
@@ -124,8 +124,8 @@ nav {
 		// padding-right: 20px !important;
 		// padding-left: 20px !important;
 		// background-color: transparent !important;
-		border: 1px solid #F29422;
-		color: #FFFFFF;
+		border: 1px solid $primary;
+		color: $white;
 		border-radius: 40px;
 		margin-top: 5px;
 		-webkit-transition:0.2s all;
@@ -277,7 +277,7 @@ nav {
 #hero-image-div{
 	position: relative;
 	width: 100%;
-	min-height:calc(100vh - 120px);
+	height:calc(100vh - 80px);
 	overflow: hidden;
 	padding: 0;
 	top: 0;
@@ -308,19 +308,38 @@ nav {
 		z-index: 1;
 	}
 
-	#hero-image-ad-contents {
-		position: relative;
-		top: 5%;
-		overflow: hidden;
-		z-index: 2;
+	// #hero-image-ad-contents {
+	// 	position: relative;
+	// 	top: 5%;
+	// 	overflow: hidden;
+	// 	z-index: 2;
 
-		.card{
-			height: 13vh;
-			width: auto;
-		}
+	// 	.card{
+	// 		height: 13vh;
+	// 		width: auto;
+	// 	}
 		
-		.card-body {
-			padding: 0;
+	// 	.card-body {
+	// 		padding: 0;
+	// 	}
+	// }
+
+	#hero-image-ad-contents {
+		@include XS{
+			position: relative;
+			top: 80px;
+			overflow: hidden;
+			z-index: 2;
+	
+			.card{
+				height: 13vh;
+				width: auto;
+			}
+			
+			.card-body {
+				padding: 0;
+			}
+			
 		}
 	}
 	
@@ -390,6 +409,11 @@ nav {
 
 }
 
+.btn1 {
+    @include XS-SM{
+        width: 80% !important;
+    }
+}
 
 
 
@@ -402,9 +426,9 @@ nav {
 		min-height:calc(100vh - 100px);
 		overflow: hidden;
 
-		#hero-image-ad-contents {
-			top: 15%;
-		}
+		// #hero-image-ad-contents {
+		// 	top: 15%;
+		// }
 
 		// #hero-image-contents {
 		// 	top: 25%;	
@@ -424,7 +448,7 @@ nav {
 
 @media (min-width: 992px) {
 	#hero-image-div{
-		top: 10vh;
+		// top: 10vh;
 		// .bg-image {
 		// 	top: 12vh;
 		// }
@@ -636,15 +660,16 @@ nav {
 		word-spacing: 2px;
 	}	
 
-	tab .row .col-sm-6 .card {
+	tab .card {
 		width: 100%;
+		height: 170px !important;
 		height: 70vh;
 		border: 1px transparent !important;
 		box-shadow: -1px 2px #b9b9b9;
 		background-color: $white !important;
 		margin-bottom: 10px;
 		padding-bottom: 10px;
-		overflow-y: auto;
+		// overflow-y: auto;
 	}
 }
 

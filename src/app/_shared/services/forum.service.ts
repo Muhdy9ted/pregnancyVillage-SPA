@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
 import { Category } from '../models/category.model';
 import { map } from 'rxjs/operators';
 import { element } from 'protractor';
+import { Comment } from '../models/comment.model';
 
 
 @Injectable({
@@ -17,6 +18,7 @@ export class ForumService {
 
   baseURL = environment.apiUrl; // 'https://pregnancy-village.herokuapp.com/v1/forum/'
   createPostDto = new Post();
+  createCommentDto = new Comment();
   categoriesForLP: Category[] = [];
   categoryPosts: GetPost[] = [];
 
@@ -44,8 +46,8 @@ export class ForumService {
     return this.http.get(this.baseURL + `topic/${id}`);
   }
 
-  createComment(comment: any) {
-    return this.http.post(this.baseURL + 'comment', comment); // reactions
+  createComment() {
+    return this.http.post(this.baseURL + 'comment',  this.createCommentDto); // reactions
   }
 
   createCategory() {
@@ -86,4 +88,5 @@ export class ForumService {
   postsByCategory(id) {
     return this.http.get(this.baseURL +  `category/${id}`);
   }
+
 }

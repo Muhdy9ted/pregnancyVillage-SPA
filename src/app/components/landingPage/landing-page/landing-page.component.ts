@@ -5,6 +5,7 @@ import { ForumService } from 'src/app/_shared/services/forum.service';
 import { GetPost } from 'src/app/_shared/models/getPost';
 import { Category } from 'src/app/_shared/models/category.model';
 import { element } from 'protractor';
+import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 // import * as bgNavChange from '../../../js/bgNavChange.js';
 
 
@@ -25,48 +26,23 @@ export class LandingPageComponent implements OnInit {
   categoryPosts: Category[];
   postsBycategory: Category[] = [];
 
-  constructor(public authService: AuthService, private route: Router, private router: ActivatedRoute, public forumService: ForumService) { }
+  constructor(public authService: AuthService, private route: Router, private router: ActivatedRoute, public forumService: ForumService,
+              private alertify: AlertifyService) { }
 
   ngOnInit(): void {
     // bgNavChange();
 
-
-    // this.router.data.subscribe(data => {
-    //   console.log(data);
-    // });
-
-    if (this.isLoggedIn()) {
-      console.log('login expired');
-      this.router.data.subscribe(data => {
-        console.log(data);
-        this.categoryPosts = data.categoryPosts;
-        console.log(this.categoryPosts);
-        // tslint:disable-next-line: no-shadowed-variable
-        this.categoryPosts.forEach(element => {
-          this.forumService.postsByCategory(element._id).subscribe((response: any) => {
-            // const postsResponse: GetPost[] = response;
-            console.log(response.data);
-            this.postsBycategory.push(response.data);
-            console.log(this.postsBycategory);
-
-            // this.postsBycategory.push(postsResponse);
-          });
+    this.router.data.subscribe(data => {
+      console.log(data);
+      this.categoryPosts = data.categoryPosts;
+      // tslint:disable-next-line: no-shadowed-variable
+      this.categoryPosts.forEach(element => {
+        this.forumService.postsByCategory(element._id).subscribe((response: any) => {
+          this.postsBycategory.push(response.data);
         });
-        console.log(this.postsBycategory);
       });
-      console.log('login expired2');
-    } else {
-        console.log('login valid');
-        this.router.data.subscribe(data => {
-        console.log(data);
-        this.categoryPosts = data.categoryPosts;
-        console.log(this.categoryPosts);
-      });
-    }
-
-    // this.loadForumTopics();
-    console.log('fuclk');
-    // this.postTopics();
+      console.log(this.postsBycategory);
+    });
   }
 
   onSignupClicked() {
@@ -93,6 +69,8 @@ export class LandingPageComponent implements OnInit {
   loggedOut() {
     this.authService.loggedOut();
     this.route.navigate(['/']);
+    this.alertify.success('logged out successfully');
+
   }
 
   loadForumTopics() {
@@ -106,5 +84,23 @@ export class LandingPageComponent implements OnInit {
     this.forumService.createPost().subscribe((response: any) => {
       this.post = response;
     });
+  }
+
+  limitString(title, limit = 40) {
+    const newTitle = [];
+    // check if the length of the title is greater than limit before we editl
+    if (title.length > limit) {
+      // get the individual words in the title (#split()) then formulate (#reduce()) a new title lesser than the specified limit
+      title.split(' ').reduce((acc, cur) => {
+        if (acc + cur.length <= limit) {
+            newTitle.push(cur);
+          }
+        return acc + cur.length; // update the accumulator for the next iteration
+      }, 0);
+
+      // return the result
+      return `${newTitle.join(' ')}...`;
+    }
+    return title;
   }
 }

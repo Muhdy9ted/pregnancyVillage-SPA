@@ -1,5 +1,5 @@
-// $primary: #F29422;
-$primary: #3f97e1;
+$primary: #F29422;
+// $primary: #3f97e1;
 $white: #fff;
 $black: #463f3f;
 $text-color: #555;
@@ -19,7 +19,7 @@ $widthXG: 1200px;
 }
 
 @mixin XS-SM {
-    @media (min-width:$widthXS) and (max-width:575.9px) {
+    @media (min-width:$widthXS) and (max-width:575.9px) { 
        @content;
     }
 }

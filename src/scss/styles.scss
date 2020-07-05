@@ -31,7 +31,7 @@ html{
 		border-bottom: none;
 	}
     .badge {
-        background-color: white;
+        background-color: $white;
     }
 }
 
@@ -101,8 +101,8 @@ tabset ul.nav.nav-tabs {
 tabset ul.nav.nav-tabs li{
     position: relative;
     top: 15px;
-    left: 35%;
-    transform: translate(-50%, -50%);
+    // left: 35%;
+    // transform: translate(-50%, -50%);
     font-size: 80%;
     font-weight: 600;
     text-transform: uppercase;

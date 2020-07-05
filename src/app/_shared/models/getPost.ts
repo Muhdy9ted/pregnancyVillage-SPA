@@ -1,4 +1,5 @@
 import { Category } from './category.model';
+import { GetComment } from './get-comment.model';
 
 export interface GetPost {
     __v: number;
@@ -6,7 +7,7 @@ export interface GetPost {
     active: boolean;
 ​​​    approval_status: string;
 ​​​    category: Category;
-​​​    comment: [];
+​​​    comment: GetComment[];
 ​​​    createdAt: string;
     description: string;
 ​​​    id: string;

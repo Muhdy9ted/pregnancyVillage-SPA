@@ -27,9 +27,9 @@ import { GetPostForumResolver } from './_shared/resolvers/getPostForum.resolver'
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, resolve: {categoryPosts: GetCategoriesPostsLPageResolver}},
-  {path: 'activated', component: WelcomePageComponent},
+  {path: 'welcome', component: WelcomePageComponent},
   {path: 'forum', component: ForumComponent, resolve: {posts: GetForumPostsResolver}},
-  {path: 'forum/:postId', component: ForumDetailComponent},
+  {path: 'forum/post/:postId', component: ForumDetailComponent,  resolve: {post: GetPostResolver}},
   { path: ':userId', component: DashboardControllerComponent , runGuardsAndResolvers: 'always', canActivate: [AuthGuard], children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     { path: 'dashboard', component: DashboardComponent},

@@ -8,7 +8,7 @@
     
     a, a:hover, a:link, a:active {
         text-decoration: none;
-        color: none;
+        color: $text-color;
     }
 
     .post-section {
@@ -22,14 +22,15 @@
             word-spacing: 2px;
             letter-spacing: 1px;
             text-transform: capitalize;
-            transition: all 0.3s ease-in-out;
+            // transition: all 0.3s ease-in-out;
             line-height: 120%;
         }
 
         .card-title:hover {
+            margin-bottom: 2px;
             border-bottom: 1px solid $text-color;
-            opacity: 0.9;
-            transition: all 0.3s;
+            opacity: 0.7;
+            transition: border 0.8s;
         }
     
         .card-text {
@@ -63,5 +64,98 @@
             font-size: 0.8rem;
         }
     }
+
+    .new-posts {
+        // font-size: 1.5rem;
+        position: relative;
+        font-weight: 600;
+        word-spacing: 2px;
+        letter-spacing: 1px;
+        line-height: 150%;
+    }
+
+    .new-posts:before {
+        @include XS-LG {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 30%;
+            // margin: 0 auto;
+            top: 15px;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+        @include LG {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 40%;
+            // margin: 0 auto;
+            top: 15px;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+    }
+    
+    .new-posts:after {
+        @include XS-LG {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 30%;
+            // margin: 0 auto;
+            top: 15px;
+            right: 0;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+        @include LG {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 40%;
+            // margin: 0 auto;
+            top: 15px;
+            right: 0;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+
+        // @include MD {
+        //     display: block;
+        //     height: 2px;
+        //     background-color: $primary;
+        //     content: " ";
+        //     // font-family:"Font Awesome 5 Free";
+        //     position:absolute;
+        //     width: 25%;
+        //     // margin: 0 auto;
+        //     top: 15px;
+        //     left: 70%;
+        //     -webkit-transition:0.2s all;
+        //     transition:0.2s all;
+        // }
+	}
  
+}
+
+a, a:hover, a:link, a:active {
+    text-decoration: none;
+    color: $text-color;
 }

@@ -74,7 +74,7 @@
 
     <div id="hero-image-div" class="d-flex align-items-start">
         <div class="bg-image overlay">  
-            <div id="hero-image-ad-contents">
+            <!-- <div id="hero-image-ad-contents">
                 <div class="container">
                     <div class="card col-8">
                         <div class="card-body">
@@ -82,7 +82,7 @@
                         </div>
                       </div>
                     </div>         
-                </div>
+                </div> -->
                 
             <div id="hero-image-contents">
                 <div class="container">
@@ -226,22 +226,22 @@
             </div>
         </div>
 
-        <div class="container-fluid mt-3" style="background-color: #fafafa;" *ngIf="!isLoggedIn()">    
+        <div class="container-fluid mt-3" style="background-color: #fafafa;">    
             <div class="container">
                 <tabset class="member-tabset">
                     <!-- <div *ngFor="let post of categoryPosts"> -->
                         <tab *ngFor="let item of postsBycategory" heading="{{item.name}}" id="tab1">
                             <div class="row">
-                                <div class="col-md-6 col-12">
-                                    <div class="card" *ngFor="let post of item.posts">
+                                <div class="col-12 col-md-6 col-lg-6" *ngFor="let post of item.posts">
+                                    <div class="card">
                                         <div class="row card-body forums-list" >
                                             <div class="col-12 author">
-                                                <h5 class="card-text text-muted"> {{post.userId}}</h5>
+                                                <h5 class="card-text text-muted"> {{limitString(post.userId, 20)}}</h5>
                                             </div>
                                             <div class="col-12 message">
-                                                <h5 class="card-title">{{post.topic}}</h5>
+                                                <h5 class="card-title">{{limitString(post.topic, 20)}}</h5>
                                                 <p class="card-text">
-                                                    {{post.description}}
+                                                    {{limitString(post.description, 70)}}
                                                 </p>
                                             </div>
                                             <!-- <div class="col-sm-2 icons">
@@ -259,140 +259,6 @@
                 </tabset>
             </div>
         </div>
-        <div class="container-fluid mt-3" style="background-color: #fafafa;"  *ngIf="isLoggedIn()">    
-            <div class="container">
-                <tabset class="member-tabset">
-
-
-                    <!-- <div *ngIf="isLoggedIn()"> -->
-                        <tab heading="Pregnancy" id="tab1">
-                            <div class="row">
-                                <div class="col-md-6 col-12">
-                                    <div class="card">
-                                        <div class="row card-body forums-list">
-                                            <div class="col-12 author">
-                                                <h5 class="card-text text-muted"> Ayomide Sandra</h5>
-                                            </div>
-                                            <div class="col-12 message">
-                                                <h5 class="card-title">Excessive Weight Gain</h5>
-                                                <p class="card-text">
-                                                    Some quick example text to build on the card title and make up the bulk of the card's content.<br>
-                                                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                                                </p>
-                                            </div>
-                                            <!-- <div class="col-sm-2 icons">
-                                                <span style="font-size: 1em; color: #F29422;">
-                                                    <i class="far fa-comments"></i>
-                                                </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
-    
-                                            </div> -->
-                                        </div>   
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="card">
-                                        <div class="row card-body forums-list">
-                                            <div class="col-12 author">
-                                                <h5 class="card-text text-muted"> Ayomide Sandra</h5>
-                                            </div>
-                                            <div class="col-12 message">
-                                                <h5 class="card-title">Excessive Weight Gain</h5>
-                                                <p class="card-text">
-                                                    Some quick example text to build on the card title and make up the bulk of the card's content.<br>
-                                                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                                                </p>
-                                            </div>
-                                            <!-- <div class="col-sm-2 icons">
-                                                <span style="font-size: 1em; color: #F29422;">
-                                                    <i class="far fa-comments"></i>
-                                                </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
-    
-                                            </div> -->
-                                        </div>   
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="card">
-                                        <div class="row card-body forums-list">
-                                            <div class="col-12 author">
-                                                <h5 class="card-text text-muted"> Ayomide Sandra</h5>
-                                            </div>
-                                            <div class="col-12 message">
-                                                <h5 class="card-title">Excessive Weight Gain</h5>
-                                                <p class="card-text">
-                                                    Some quick example text to build on the card title and make up the bulk of the card's content.<br>
-                                                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                                                </p>
-                                            </div>
-                                            <!-- <div class="col-sm-2 icons">
-                                                <span style="font-size: 1em; color: #F29422;">
-                                                    <i class="far fa-comments"></i>
-                                                </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
-    
-                                            </div> -->
-                                        </div>   
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="card">
-                                        <div class="row card-body forums-list">
-                                            <div class="col-12 author">
-                                                <h5 class="card-text text-muted"> Ayomide Sandra</h5>
-                                            </div>
-                                            <div class="col-12 message">
-                                                <h5 class="card-title">Excessive Weight Gain</h5>
-                                                <p class="card-text">
-                                                    Some quick example text to build on the card title and make up the bulk of the card's content.<br>
-                                                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                                                </p>
-                                            </div>
-                                            <!-- <div class="col-sm-2 icons">
-                                                <span style="font-size: 1em; color: #F29422;">
-                                                    <i class="far fa-comments"></i>
-                                                </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
-    
-                                            </div> -->
-                                        </div>   
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </tab>
-                        <tab heading="Anti-Natal">
-                            <div class="row">
-                                <div class="col-md-6 col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="card-link">Card link</a>
-                                            <a href="#" class="card-link">Another link</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </tab>
-                        <tab heading="Depression">
-                            <div class="row">
-                                <div class="col-md-6 col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="card-link">Card link</a>
-                                            <a href="#" class="card-link">Another link</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </tab>
-                    <!-- </div> -->
-                   
-                </tabset>
-            </div>
-        </div>  
     </div>
 </section>
 

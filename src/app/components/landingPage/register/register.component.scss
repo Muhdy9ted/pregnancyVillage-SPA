@@ -113,7 +113,7 @@
 
 .form-control{
 	background-color: transparent;
-	border-bottom: 3px solid rgb(206, 141, 62);
+	border-bottom: 3px solid $primary;
 	border-top: 0;
 	border-left: 0;
 	border-right: 0;
@@ -140,7 +140,7 @@
   }
 
   .white-text{
-    color: #FFFFFF;
+    color: $white;
 }
 
 .btn{
@@ -166,8 +166,8 @@ input.ng-valid{
 	padding-right: 20px !important;
 	padding-left: 20px !important;
 	background-color: transparent !important;
-	border: 1px solid #F29422;
-	color: #F29422;
+	border: 1px solid $primary;
+	color: $primary;
 	border-radius: 40px;
 	margin-top: 5px;
 	-webkit-transition:0.2s all;
@@ -195,7 +195,7 @@ input.ng-valid{
 	
 }
 
-@media (max-width: 991.9px){
+@media (min-width: 768px) and (max-width: 991.9px){
     .register-modal{
         width: 70vw;
         margin-left: 35px;

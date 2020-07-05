@@ -54,6 +54,7 @@ import { WelcomePageComponent } from './components/landingPage/welcome-page/welc
 import { GetForumPostsResolver } from './_shared/resolvers/getForumPosts.resolver';
 import { ForumDetailComponent } from './components/forum/forum-detail/forum-detail.component';
 import { GetPostForumResolver } from './_shared/resolvers/getPostForum.resolver';
+import { CommentListComponent } from './components/dashboard-contents/post/view-posts/posts-detail/comment/comment-list/comment-list.component';
 
 export function tokenGetter() {
   return (localStorage.getItem('preg_token'));
@@ -89,6 +90,7 @@ export function tokenGetter() {
     FooterComponent,
     WelcomePageComponent,
     ForumDetailComponent,
+    CommentListComponent,
   ],
   imports: [
     BrowserModule,
