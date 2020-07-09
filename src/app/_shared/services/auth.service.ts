@@ -44,7 +44,7 @@ export class AuthService {
 
   loginModal() {
     return  this.http.post(this.baseURL + 'login', this.formDataLogin, httpOptions).pipe(map((response: any) => {
-      console.log(response);
+      // console.log(response);
       const userResponse = response;
       if (userResponse) {
         localStorage.setItem('preg_token', response.data.tokenData.token);
@@ -53,7 +53,7 @@ export class AuthService {
         const pos = userEmail.indexOf('@');
         this.userID = userEmail.substring(0, pos );
         // console.log(this.userID);
-        console.log(this.decodedToken);
+        // console.log(this.decodedToken);
         // this.userIdURL = this.decodedToken?.userId;
         // this.userToken = JSON.stringify(userResponse[0][1]);
         // console.log(this.decodedToken);
@@ -71,7 +71,7 @@ export class AuthService {
 
   forgotPassword() {
     const { username } = this.formDataLogin;
-    console.log(username);
+    // console.log(username);
     return this.http.post(this.baseURL + 'send_link', {email: username});
   }
 
@@ -88,7 +88,7 @@ export class AuthService {
   }
 
   resendMail() {
-    console.log(this.registeredEmail);
+    // console.log(this.registeredEmail);
     return this.http.post(this.baseURL + 'resend', {email: this.registeredEmail});
   }
 

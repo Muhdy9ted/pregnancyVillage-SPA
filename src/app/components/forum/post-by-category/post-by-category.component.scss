@@ -1,0 +1,274 @@
+@import "../../../../scss/variables";
+
+#forum {
+    padding: 80px 0;
+    margin-top: 40px;
+    background-color: #ecf0f1;
+    border-top: solid 1px #e0e4e5;
+    
+    a, a:hover, a:link, a:active {
+        text-decoration: none;
+        color: $text-color;
+    }
+
+    .results__pages {
+        display: inline-block;
+        margin-top: 3rem;
+        padding: 0 3rem; 
+      }
+      
+      .results__pages::after {
+          content: "";
+          display: table;
+          clear: both; 
+      }
+      
+      .results__btn--prev {
+        float: left;
+        flex-direction: row-reverse; 
+      }
+      
+      .results__btn--next {
+        float: right; 
+      }
+      
+      
+      .btn-inline {
+          color: #F59A83;
+          font-size: 1.2rem;
+          border: none;
+          background-color: #F9F5F3;
+          padding: .8rem 1.2rem;
+          border-radius: 10rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          transition: all .2s; 
+      }
+      
+      .btn-inline svg {
+            height: 1.5rem;
+            width: 1.5rem;
+            fill: currentColor;
+            margin: 0 .2rem; 
+      }
+      
+      .btn-inline span {
+            margin: 0 .4rem; 
+      }
+      
+      .btn-inline:hover {
+            color: #F48982;
+            background-color: #F2EFEE; 
+      }
+          
+      .btn-inline:focus {
+            outline: none; 
+      }
+        
+    .post-section {
+        .posts .card {
+            background-color: $white;
+        }
+    
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            word-spacing: 2px;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            // transition: all 0.3s ease-in-out;
+            line-height: 120%;
+        }
+
+        .card-title:hover {
+            margin-bottom: 2px;
+            border-bottom: 1px solid $text-color;
+            opacity: 0.7;
+            transition: border 0.8s;
+        }
+    
+        .card-text {
+            font-size: 0.8rem;
+            word-spacing: 2px;
+            line-height: 170%;
+        }
+
+        ul {
+            border: none !important;
+        }
+
+        li {
+            border: none !important;
+            color: $primary;
+            font-weight: 700;
+        }
+
+        .list-group {
+            border: none !important;
+        }
+
+        a, a:hover, a:link, a:active {
+            text-decoration: none;
+            color: none;
+        }
+    }
+
+    .category {
+        .card-text {
+            font-size: 0.8rem;
+        }
+    }
+
+    .new-posts {
+        // font-size: 1.5rem;
+        position: relative;
+        font-weight: 600;
+        word-spacing: 2px;
+        letter-spacing: 1px;
+        line-height: 150%;
+    }
+
+    .new-posts:before {
+        @include XS {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 7%;
+            // margin: 0 auto;
+            top: 15px;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+        @include SM-MD {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 20%;
+            // margin: 0 auto;
+            top: 15px;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+        @include MD-LG {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 25%;
+            // margin: 0 auto;
+            top: 15px;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+        @include LG {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 30%;
+            // margin: 0 auto;
+            top: 15px;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+    }
+    
+    .new-posts:after {
+        @include XS {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 7%;
+            // margin: 0 auto;
+            top: 15px;
+            right: 0;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+        @include SM-MD {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 20%;
+            // margin: 0 auto;
+            top: 15px;
+            right: 0;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+        @include MD-LG {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 25%;
+            // margin: 0 auto;
+            top: 15px;
+            right: 0;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+        @include LG {
+            display: block;
+            height: 2px;
+            background-color: $primary;
+            content: " ";
+            // font-family:"Font Awesome 5 Free";
+            position:absolute;
+            width: 30%;
+            // margin: 0 auto;
+            top: 15px;
+            right: 0;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+
+
+        // @include MD {
+        //     display: block;
+        //     height: 2px;
+        //     background-color: $primary;
+        //     content: " ";
+        //     // font-family:"Font Awesome 5 Free";
+        //     position:absolute;
+        //     width: 25%;
+        //     // margin: 0 auto;
+        //     top: 15px;
+        //     left: 70%;
+        //     -webkit-transition:0.2s all;
+        //     transition:0.2s all;
+        // }
+	}
+ 
+}
+
+a, a:hover, a:link, a:active {
+    text-decoration: none;
+    color: $text-color;
+}

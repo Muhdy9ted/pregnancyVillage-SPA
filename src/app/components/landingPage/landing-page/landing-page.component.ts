@@ -33,7 +33,7 @@ export class LandingPageComponent implements OnInit {
     // bgNavChange();
 
     this.router.data.subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.categoryPosts = data.categoryPosts;
       // tslint:disable-next-line: no-shadowed-variable
       this.categoryPosts.forEach(element => {
@@ -41,7 +41,7 @@ export class LandingPageComponent implements OnInit {
           this.postsBycategory.push(response.data);
         });
       });
-      console.log(this.postsBycategory);
+      // console.log(this.postsBycategory);
     });
   }
 
@@ -76,7 +76,7 @@ export class LandingPageComponent implements OnInit {
   loadForumTopics() {
     this.forumService.getPosts().subscribe((response: any) => {
       this.topics = response;
-      console.log( this.topics);
+      // console.log( this.topics);
     });
   }
 

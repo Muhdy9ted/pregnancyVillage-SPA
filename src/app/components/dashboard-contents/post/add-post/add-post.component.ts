@@ -55,7 +55,7 @@ export class AddPostComponent implements OnInit {
     this.selectedFile = event.originalTarget.files[0];
     this.forumService.createPostDto.upload_file = this.selectedFile.name;
 
-    console.log(this.selectedFile);
+    // console.log(this.selectedFile);
   }
 
   onCategorySelected(event) {
@@ -69,8 +69,8 @@ export class AddPostComponent implements OnInit {
       //   this.categories.push(element);
       // });
       this.categories = response.data;
-      console.log(this.categories);
-      this.categories.forEach(item => console.log(Object.entries(item)));
+      // console.log(this.categories);
+      // this.categories.forEach(item => console.log(Object.entries(item)));
       // const rest = response.data;
       // console.log(rest);
       // rest.forEach(item => {
@@ -96,16 +96,17 @@ export class AddPostComponent implements OnInit {
       // this.categories = response;
       // console.log(this.categories);
     }, error => {
-      console.log(error);
+      this.alertify.error('error retreiving categories, please retry!');
+      // console.log(error);
     });
   }
 
   createCategory() {
     this.forumService.createCategory().subscribe((response: any) => {
       this.category = response;
-      console.log(response);
+      // console.log(response);
     }, error => {
-      console.log(error);
+      // console.log(error);
     });
   }
 
@@ -113,8 +114,18 @@ export class AddPostComponent implements OnInit {
     this.spin = true;
     this.forumService.createPost().subscribe((response: any) => {
       this.createdPost = response;
-      console.log(this.createdPost);
+      // console.log(this.createdPost);
+    }, error => {
+      this.alertify.error('your Post wasn\'t created, please retry!');
+    }, () => {
+      this.alertify.success('Post created successfully');
+      this.router.navigate(['/dashboard']);
     });
+  }
+
+  handleFileInput(files: FileList) {
+    // this.forumService.createCommentDto.comment_upload_file = files.item(0);
+    this.forumService.createPostDto.upload_file = files.item(0);
   }
 
 }

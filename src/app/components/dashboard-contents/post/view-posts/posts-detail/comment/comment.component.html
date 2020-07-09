@@ -1,28 +1,33 @@
 <div class="container">
         <div class="col-12">
-            <form class="form-style form-comment col-sm-10" id="commentForm" #commentForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+            <form class="form-style form-comment col-12 col-md-10" id="commentForm" #commentForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
     
-                <div class="form-group">
-                    <label for="topic">Reply</label>
+                <!-- <div class="form-group">
+                    <label for="content">Reply</label>
                     <input type="text" class="form-control" id="content" placeholder="enter your reply"  required name="content" #content="ngModel" minlength="1"
                       [(ngModel)]="forumService.createCommentDto.content">
-                    <!-- <span class="text-warning text-sm-left"><p>post's title should be more than 10 characters</p></span> -->
-                </div>
+                    <span class="text-warning text-sm-left"><p>post's title should be more than 10 characters</p></span>
+                </div> -->
                 <div class="form-group">
+                    <label for="content">Reply</label>
+                    <textarea type="text" class="form-control" id="content" placeholder="enter your reply"  required name="content" #content="ngModel" minlength="1"
+                    [(ngModel)]="forumService.createCommentDto.content" rows="3"></textarea>
+                  </div>
+                <!-- <div class="form-group">
                     <label for="upload">upload a File</label>
                     <input type="file" class="form-control-file" id="upload_file"  name="upload_file" #upload_file  (change)="handleFileInput($event.target.files)">
-                </div>
+                </div> -->
                 <!-- <div class="form-group">
                     <label for="uploadfile">attach a File</label>
                     <input type="file" class="form-control-file" id="uploadfile"  name="uploadfile" #uploadfile="ngModel" [(ngModel)]="forumService.createPostDto.upload_file">
                     <span  *ngFor="let item of uploader.queue">
                         <span class="text-white p-3">filename: </span><span class="text-white"> <strong>{{ item?.file?.name }}</strong> </span>
                         <span class="text-white">file-size: </span><span class="text-white" *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</span>
-                    </span>
+                    </span> 
                 </div> -->
                 
-                <div class="form-group pb-1 pl-3 row">
-                    <button type="submit" [class.col-sm-3]="commentForm.invalid" class="btn-ghost pr-1" [disabled]="commentForm.invalid">Submit <i *ngIf="false" class="fa fa-spinner fa-spin" style="font-size:20px"></i></button> 
+                <div class="form-group pb-1 pl-md-3 row">
+                    <button type="submit" [class.col-sm-3]="commentForm.invalid" class="btn-ghost pr-1 col-8 mx-auto" [disabled]="commentForm.invalid">Submit <i *ngIf="false" class="fa fa-spinner fa-spin" style="font-size:20px"></i></button> 
                 </div>
             </form>
     </div>

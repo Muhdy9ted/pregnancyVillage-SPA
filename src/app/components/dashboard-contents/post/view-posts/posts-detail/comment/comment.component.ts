@@ -24,16 +24,16 @@ export class CommentComponent implements OnInit {
   onSubmit() {
     this.forumService.createCommentDto.forum_id = this.route.snapshot.params.postId;
     this.spin = true;
-    console.log(this.forumService.createCommentDto);
+    // console.log(this.forumService.createCommentDto);
     this.forumService.createComment().subscribe((response: any) => {
-      console.log(response);
+      // console.log(response);
     }, error => {
       this.spin = false;
       this.alertify.message('unable to post your comment, please Login and try again');
-      console.log(error);
+      // console.log(error);
     }, () => {
       // this.alertify.success(`Welcome back ${this.authService.decodedToken?.firstName}`);
-      this.alertify.success('comment added successfully');
+      this.alertify.success('comment sent successfully');
       this.forumService.createCommentDto = new Comment();
       this.upload_file.nativeElement.value = null;
       // this.upload_file.innerHTML = null;
@@ -47,5 +47,5 @@ export class CommentComponent implements OnInit {
 
   handleFileInput(files: FileList) {
     this.forumService.createCommentDto.comment_upload_file = files.item(0);
-}
+  }
 }

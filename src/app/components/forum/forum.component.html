@@ -5,7 +5,8 @@
     <div class="row mt-2">
       <div class="col-12 col-lg-8 order-1 order-lg-0">
         <div class="posts">
-          <div class="card my-2 post-section" *ngFor="let post of posts">
+          <h5 class="new-posts text-center mt-2 mb-5 d-lg-none order-2 mt-2">NEW POSTS</h5>
+          <div class="card my-2 post-section" *ngFor="let post of posts |  paginate: { itemsPerPage: 10, currentPage: p, id: 'listing_pagination', totalItems: totalPosts }">
             <div class="card-body">
               <div class="row">
                 <div class="col-4" *ngIf="post.upload_file">
@@ -15,7 +16,7 @@
                   <img src="../../../assets/images/dark-photo.png" class="img-fluid">
                 </div>
                 <div class="col-8">
-                  <a [routerLink]="['/forum/post/', post.id]"><h5 class="card-title text-muted pt-2">{{limitForumTitle(post.topic)}}</h5></a>
+                  <a [routerLink]="['/forums/posts/', post.id]"><h5 class="card-title text-muted pt-2">{{limitForumTitle(post.topic)}}</h5></a>
                   <p class="card-text lead">{{limitForumpost(post.description)}}</p>
 
                       <ul class="list-group list-group-horizontal-sm">
@@ -35,7 +36,7 @@
                           </span> {{post.createdAt|date}}
                         </li>
                         <li class="list-group-item card-text text-muted ml-auto">
-                          {{post.category.name}}
+                          <a [routerLink]="['/category', post.category._id]" routerLinkActive="router-link-active"> {{post.category.name}} </a>
                         </li>
                       </ul>
                 </div>
@@ -43,7 +44,12 @@
             </div>
           </div>
         </div>
+        <div class="d-flex justify-content-center">
+          <pagination-controls  id= 'listing_pagination' maxSize="9" directionLinks="true" (pageChange)="p = $event"></pagination-controls>
+        </div>
+
       </div>
+      
       <div class="col-12 col-lg-4">
         <div class="row">
           <div class="col-12 order-12 order-lg-1 d-none d-lg-block">
@@ -56,14 +62,43 @@
                     </span>
                   </p></div>
                   <ul class="list-group list-group-flush">
-                  <li class="list-group-item card-text text-muted" *ngFor="let category of categories">  <a [routerLink]="['post/', category._id]"></a>{{category.name}}</li>
+                  <li class="list-group-item card-text text-muted" *ngFor="let category of categories">  <a [routerLink]="['category/', category._id]">{{limitForumTitle(category.name, 10)}}</a></li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-12 sidebar order-0 order-lg-2">
+          <div class="col-12 sidebar order-0 d-lg-none">
+            <div class="category">
+              <div class="card my-2">
+                <div class="card-body cat-header">
+                  <div class="card-title"><p>Trending 
+                    <span style="font-size: 1em; color: #F29422;">
+                      <i class="fas fa-chart-line"></i>
+                    </span>
+                  </p></div>
+                  <ul class="list-group list-group-flush">
+                  <li class="list-group-item card-text text-muted" *ngFor="let post of trendingPosts?.slice(0, 5)">
+                    <a [routerLink]="['/forums/posts/', post.id]"> 
+                      <div class="col-4 d-inline-block"  *ngIf="post.upload_file" >
+                        <img src="{{post.upload_file}}" class="img-fluid">
+                      </div>
+                      <div class="col-4 d-inline-block" *ngIf="!post.upload_file">
+                        <img src="../../../assets/images/dark-photo.png" class="img-fluid">
+                      </div>
+                      <div class="col-8 d-inline-block">
+                        {{limitForumTitle(post.topic, 20)}}
+                      </div>
+                    </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 sidebar d-none d-lg-flex order-lg-2">
             <div class="category">
               <div class="card my-2">
                 <div class="card-body cat-header">
@@ -94,7 +129,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-12 order-12 order-lg-1 d-block d-lg-none">
         <div class="category">

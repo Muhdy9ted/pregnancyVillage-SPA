@@ -27,5 +27,12 @@
 		margin-top: 20px;
 		-webkit-transition:0.2s all;
 		transition:0.2s all;
-	}
+    }
+    
+    @include XS-SM {
+        h1:after {
+            width: 200px;
+
+        }
+    }
 }

@@ -16,37 +16,68 @@ import { GetPostsResolver } from './_shared/resolvers/getPosts.resolver';
 import { PostsDetailComponent } from './components/dashboard-contents/post/view-posts/posts-detail/posts-detail.component';
 import { GetPostResolver } from './_shared/resolvers/getPost.resolver';
 import { MemberProfileComponent } from './components/members-contents/member-profile/member-profile.component';
-import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info';
 import { GetCategoriesPostsLPageResolver } from './_shared/resolvers/getCategoriesPostLPage.resolver';
 import { WelcomePageComponent } from './components/landingPage/welcome-page/welcome-page.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { GetForumPostsResolver } from './_shared/resolvers/getForumPosts.resolver';
 import { ForumDetailComponent } from './components/forum/forum-detail/forum-detail.component';
 import { GetPostForumResolver } from './_shared/resolvers/getPostForum.resolver';
+import { PostByCategoryComponent } from './components/forum/post-by-category/post-by-category.component';
+import { GetPostsByCategory } from './_shared/resolvers/getPostsByCategory.resolver';
+import { PreventUnsavedChanges } from './_shared/guards/prevent-unsaved-changes.guard';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info.resolver';
 
 
 const routes: Routes = [
+  // localhost:4200
   {path: '', component: LandingPageComponent, resolve: {categoryPosts: GetCategoriesPostsLPageResolver}},
+
+  // localhost:4200/welcome
   {path: 'welcome', component: WelcomePageComponent},
-  {path: 'forum', component: ForumComponent, resolve: {posts: GetForumPostsResolver}},
-  {path: 'forum/post/:postId', component: ForumDetailComponent,  resolve: {post: GetPostResolver}},
-  { path: ':userId', component: DashboardControllerComponent , runGuardsAndResolvers: 'always', canActivate: [AuthGuard], children: [
+
+  // localhost:4200/forums/posts
+  {path: 'forums/posts', component: ForumComponent, resolve: {posts: GetForumPostsResolver}},
+
+  // localhost:4200/forums/posts/id
+  {path: 'forums/posts/:postId', component: ForumDetailComponent,  resolve: {post: GetPostResolver}},
+
+  //  localhost:4200/category/id
+  {path: 'category/:categoryId', component: PostByCategoryComponent, resolve: {catPosts: GetPostsByCategory}},
+  {path: 'page-not-found', component: PageNotFoundComponent},
+
+  // localhost:4200/userid
+  {path: ':userId', component: DashboardControllerComponent , runGuardsAndResolvers: 'always', canActivate: [AuthGuard], children: [
+    // localhost:4200/userid
     { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-    { path: 'dashboard', component: DashboardComponent},
+
+    // localhost:4200/userid/dashboard
+    { path: 'dashboard', component: DashboardComponent, resolve: {user: GetProfileInfoResolver}, canDeactivate: [PreventUnsavedChanges]},
+
+    // localhost:4200/userid/profile
     { path: 'profile', component: ProfileComponent, resolve: {user: GetProfileInfoResolver}},
+
+    // localhost:4200/userid/cart
     { path: 'cart', component: CartComponent},
+
     { path: 'post', component: PostComponent, children: [
+      { path: '', redirectTo: 'my-posts', pathMatch: 'full'},
+      // localhost:4200/userid/add-post
       { path: 'add-post', component: AddPostComponent},
+
+      // localhost:4200/userid/my-posts
       { path: 'my-posts', component: ViewPostsComponent, resolve: {posts: GetPostsResolver}, children: [
-        {path: ':postId', component: PostsDetailComponent, resolve: {post: GetPostResolver}}
-      ]}
+        // localhost:4200/userid/post
+        // {path: ':postId', component: PostsDetailComponent, resolve: {post: GetPostResolver}}
+      ]},
+      {path: 'my-posts/:postId', component: PostsDetailComponent, resolve: {post: GetPostResolver}}
     ]},
     {path: 'product', component: ProductsComponent, children: [
       {path: 'add-product', component: AddProductComponent},
       {path: 'my-products', component: ViewProductsComponent}
     ]}
   ]},
-  {path: '**', redirectTo: '', pathMatch: 'full'},
+  {path: '**', redirectTo: 'page-not-found', pathMatch: 'full'},
 ];
 
 @NgModule({

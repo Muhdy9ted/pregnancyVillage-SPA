@@ -46,7 +46,7 @@ export class LoginModalComponent implements OnInit {
       });
     } else {
       this.authService.forgotPassword().subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         form.reset();
         this.onCloseModal();
         // this.loginForm.reset();
@@ -54,7 +54,7 @@ export class LoginModalComponent implements OnInit {
       // tslint:disable-next-line: no-shadowed-variable
       }, error => {
         this.spin = false;
-        console.log(error);
+        // console.log(error);
         this.errorMessage2 = 'check your email address and try again';
       }, () => {
         this.alertify.success('Welcome back');

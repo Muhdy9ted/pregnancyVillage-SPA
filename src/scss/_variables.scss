@@ -10,7 +10,7 @@ $widthSM: 576px;
 $widthMD: 768px;
 $widthLG: 992px;
 $widthXG: 1200px;
-
+ 
 /* XS Screen range */
 @mixin XS {
     @media (min-width:$widthXS) {

@@ -25,7 +25,7 @@ export class ForumDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.post = data.post.data;
-      console.log(this.post);
+      // console.log(this.post);
       // this.comments = this.post.comment;
     });
     // this.getPost();
@@ -35,14 +35,14 @@ export class ForumDetailComponent implements OnInit {
 
   getCategories() {
     this.forumService.getCategories().subscribe((response: any) => {
-      console.log(response);
+      // console.log(response);
       this.categories = response.data;
     });
   }
 
   getPost() {
     this.forumService.getPost(this.route.snapshot.params.postId).subscribe((response) => {
-      console.log(response);
+      // console.log(response);
     });
   }
 
@@ -66,15 +66,16 @@ export class ForumDetailComponent implements OnInit {
 
   getTrendingPosts() {
     this.forumService.getPosts().subscribe((response: any) => {
-      console.log(111, response.data);
+      // console.log(111, response.data);
       const result = response.data.sort((a, b) => {
         return a.createdAt < b.createdAt;
       });
-      console.log(222, result);
+      // console.log(222, result);
       const dateSort = result.sort((a, b) => {
-        return a.likes > b.likes;
+        return a.totalCommentCount < b.totalCommentCount;
       });
-      this.trendingPosts = dateSort.slice(0, 3);
+      this.trendingPosts = dateSort.slice(0, 10);
+      // console.log(this.posts);
 
     });
   }

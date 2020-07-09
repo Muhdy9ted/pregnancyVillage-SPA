@@ -66,9 +66,9 @@ showModalDialogPS() {
 
   passwordMatchValidator(formData: FormGroup) {
     if (formData.value.password) {
-      console.log(formData.value.password);
+      // console.log(formData.value.password);
     } else {
-      console.log('tester istired');
+      // console.log('tester istired');
     }
 
     return formData.get('password').value === formData.get('confirmPassword').value ? null : {mismatch: true};
@@ -80,7 +80,7 @@ showModalDialogPS() {
     if (this.changePassword) {
       this.editProfileForm.get('password').setValidators([Validators.minLength(5), Validators.required]);
       this.editProfileForm.get('password').updateValueAndValidity();
-      console.log(this.editProfileForm.get('phoneNumber').value);
+      // console.log(this.editProfileForm.get('phoneNumber').value);
     }
     // console.log(this.editProfileForm.value);
     // this.editProfileForm.value.password ='';
@@ -90,7 +90,7 @@ showModalDialogPS() {
    }
 
   onSubmit() {
-    console.log('testing');
+    // console.log('testing');
   }
 
 }

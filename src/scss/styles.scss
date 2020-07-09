@@ -23,7 +23,7 @@ html{
     html{
         font-size: 16px;
     }
-
+ 
     .nav-link:hover{
 		border-bottom: none;
     }
@@ -86,8 +86,9 @@ html{
 
 tabset ul.nav.nav-tabs {
     margin-bottom: 4%;
-    position: relative;
+    // position: relative;
     border: none;
+    text-align: center;
 }
 
 .nav-tabs {
@@ -120,6 +121,25 @@ tabset ul.nav.nav-tabs li{
     padding: 5px;
 }
 
+
+// .table {
+//     margin-left: -50px;
+//     word-wrap: break-word;
+// }
+
+.card.card-modal{
+    padding-top: 10px;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    display: none;
+}
+
+.ui-dialog .ui-dialog-content {
+    padding-top: 20px;
+}
 //   .nav-tabs > li.open, .member-tabset > .nav-tabs > li:hover {
 //     border-bottom: 4px solid #fbcdcf;
 //   }

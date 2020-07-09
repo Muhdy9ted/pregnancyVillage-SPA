@@ -5,7 +5,6 @@
             <div class="col-12 col-xl-9 order-0 order-lg-0">
                 <div class="card mt-1">
                     <h1 class="card-title mb-2 px-5 pt-5 pb-2 text-center" style="font-weight: 200;">{{post.topic}}</h1>
-                    <div> <p>this is {{post.comment}}</p></div>
                     <div class="col-12" *ngIf="post.upload_file">
                         <img src="{{post.upload_file}}" class="img-fluid card-img-top p-5" style="height: auto;">
                     </div>
@@ -14,11 +13,14 @@
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">{{post.topic}}</h3>
-                        <small class="text-muted">Category - {{post.category.name}}</small><br/>
+                        <a [routerLink]="['/category', post.category._id]" routerLinkActive="router-link-active"> <small class="text-muted">Category - {{post.category.name}}</small></a><br/>
                         <small class="text-muted"> Published on: {{post.createdAt|date}} </small><br/>
-                        <small class="text-muted"> Published by: <span class="text-capitalize"> {{post.userId}} </span> </small>
+                        <small class="text-muted"> Published by: <span class="text-capitalize"> {{post.userId}} </span> </small><br/>
+                        <small class="text-muted"> Comment: <span class="">  {{post.comment.length}} <i>comment(s)</i></span> </small><br/>
+                        <small class="text-muted"> Likes: <span class=""> {{post.likes}} <i>like(s)</i> </span> </small><br/>
+                        
                         <p class="card-text detail py-5">{{post.description}}</p>
-                        <div class="container-fluid col-sm-12 comment-div pt-3">
+                        <div class="container-fluid col-12 comment-div pt-3">
                             <h5> Comment(s)</h5>
                             <app-comment-list  *ngFor="let comment of post.comment" [comment] = "comment"></app-comment-list>
                             <app-comment></app-comment>
@@ -38,14 +40,43 @@
                             </span>
                           </p></div>
                           <ul class="list-group list-group-flush">
-                          <li class="list-group-item card-text text-muted" *ngFor="let category of categories">  <a [routerLink]="['post/', category._id]"></a>{{category.name}}</li>
+                          <li class="list-group-item card-text text-muted" *ngFor="let category of categories">  <a [routerLink]="['category/', category._id]">{{limitForumTitle(category.name, 10)}}</a></li>
                           </ul>
                         </div>
                       </div>
                     </div>
                   </div>
         
-                  <div class="col-12 sidebar order-1 order-lg-2">
+                  <div class="col-12 sidebar order-0 d-lg-none">
+                    <div class="category">
+                      <div class="card my-2">
+                        <div class="card-body cat-header">
+                          <div class="card-title"><p>Trending 
+                            <span style="font-size: 1em; color: #F29422;">
+                              <i class="fas fa-chart-line"></i>
+                            </span>
+                          </p></div>
+                          <ul class="list-group list-group-flush">
+                          <li class="list-group-item card-text text-muted" *ngFor="let post of trendingPosts?.slice(0, 5)">
+                            <a [routerLink]="['/forums/posts/', post.id]"> 
+                              <div class="col-4 d-inline-block"  *ngIf="post.upload_file" >
+                                <img src="{{post.upload_file}}" class="img-fluid">
+                              </div>
+                              <div class="col-4 d-inline-block" *ngIf="!post.upload_file">
+                                <img src="../../../assets/images/dark-photo.png" class="img-fluid">
+                              </div>
+                              <div class="col-8 d-inline-block">
+                                {{limitForumTitle(post.topic, 20)}}
+                              </div>
+                            </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 sidebar d-none d-lg-flex order-lg-2">
                     <div class="category">
                       <div class="card my-2">
                         <div class="card-body cat-header">
@@ -88,7 +119,7 @@
                         </span>
                       </p></div>
                       <ul class="list-group list-group-flush">
-                      <li class="list-group-item card-text text-muted" *ngFor="let category of categories">  <a [routerLink]="['post/', category._id]"></a>{{category.name}}</li>
+                      <li class="list-group-item card-text text-muted" *ngFor="let category of categories">  <a [routerLink]="['category/', category._id]">{{limitForumTitle(category.name, 10)}}</a></li>
                       </ul>
                     </div>
                   </div>
