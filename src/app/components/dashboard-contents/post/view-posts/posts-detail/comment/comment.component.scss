@@ -27,7 +27,7 @@ p{
 }
 
 .form-comment {
-    background-color:  rgb(204, 198, 198);
+    background-color:  #cfcfcf;
     opacity: 1;
     padding: 12px;
     border-radius: 5px;
@@ -51,17 +51,17 @@ p{
 .form-control{
     // padding: 0.375rem 1.75rem;
     // background-color: transparent;
-    font-size: 70%;
-    font-weight: 600;
+    font-size: 75%;
+    font-weight: 700;
     text-transform: none;
-	border-bottom: 3px solid rgb(206, 141, 62);
+	// border-bottom: 3px solid rgb(206, 141, 62);
 	border-top: 0;
 	border-left: 0;
 	border-right: 0;
 }
 
 ::-webkit-input-placeholder { /* Edge */
-    color: #84BFBF;
+    color: rgb(55, 65, 65);
 }
   
   :-ms-input-placeholder { /* Internet Explorer 10-11 */

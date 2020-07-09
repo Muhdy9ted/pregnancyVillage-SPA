@@ -11,6 +11,7 @@ import {SidebarModule} from 'primeng/sidebar';
 import {DialogModule} from 'primeng/dialog';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -46,7 +47,7 @@ import { GetPostResolver } from './_shared/resolvers/getPost.resolver';
 import { CommentComponent } from './components/dashboard-contents/post/view-posts/posts-detail/comment/comment.component';
 import { MemberProfileComponent } from './components/members-contents/member-profile/member-profile.component';
 import { MembersListComponent } from './components/members-contents/members-list/members-list.component';
-import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info';
+import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info.resolver';
 import { TextMaskModule } from 'angular2-text-mask';
 import { FooterComponent } from './components/footer/footer.component';
 import { GetCategoriesPostsLPageResolver } from './_shared/resolvers/getCategoriesPostLPage.resolver';
@@ -54,6 +55,14 @@ import { WelcomePageComponent } from './components/landingPage/welcome-page/welc
 import { GetForumPostsResolver } from './_shared/resolvers/getForumPosts.resolver';
 import { ForumDetailComponent } from './components/forum/forum-detail/forum-detail.component';
 import { GetPostForumResolver } from './_shared/resolvers/getPostForum.resolver';
+import { CommentListComponent } from './components/dashboard-contents/post/view-posts/posts-detail/comment/comment-list/comment-list.component';
+import { PostByCategoryComponent } from './components/forum/post-by-category/post-by-category.component';
+import { GetPostsByCategory } from './_shared/resolvers/getPostsByCategory.resolver';
+import { PreventUnsavedChanges } from './_shared/guards/prevent-unsaved-changes.guard';
+import { SpinnerComponent } from './components/spinners/spinner/spinner.component';
+import { SpinnerOverlayWrapperComponent } from './components/spinners/spinner-overlay-wrapper/spinner-overlay-wrapper.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RightSideBarComponent } from './components/right-side-bar/right-side-bar.component';
 
 export function tokenGetter() {
   return (localStorage.getItem('preg_token'));
@@ -89,6 +98,12 @@ export function tokenGetter() {
     FooterComponent,
     WelcomePageComponent,
     ForumDetailComponent,
+    CommentListComponent,
+    PostByCategoryComponent,
+    SpinnerComponent,
+    SpinnerOverlayWrapperComponent,
+    PageNotFoundComponent,
+    RightSideBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,6 +116,7 @@ export function tokenGetter() {
     MessagesModule,
     MessageModule,
     SidebarModule,
+    NgxPaginationModule,
     DialogModule,
     TextMaskModule,
     TabsModule.forRoot(),
@@ -117,8 +133,8 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [ErrorInterceptorProvider, GetPostsResolver, GetPostResolver, GetProfileInfoResolver, GetCategoriesPostsLPageResolver,
-    GetForumPostsResolver, GetPostForumResolver],
+  providers: [ErrorInterceptorProvider, GetPostsResolver, GetPostResolver, GetProfileInfoResolver,
+     GetCategoriesPostsLPageResolver, GetForumPostsResolver, GetPostForumResolver, GetPostsByCategory,  PreventUnsavedChanges],
   bootstrap: [AppComponent]
 
 })

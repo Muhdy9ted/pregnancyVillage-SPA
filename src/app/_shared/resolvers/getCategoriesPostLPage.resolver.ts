@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Post } from '../models/post.model';
 import { ForumService } from '../services/forum.service';
 import { Router, ActivatedRoute, Resolve } from '@angular/router';
 import { AlertifyService } from '../services/alertify.service';
@@ -16,27 +15,11 @@ export class GetCategoriesPostsLPageResolver implements Resolve<Category[]> {
     resolve(): Observable<Category[]> {
         return this.forumService.getPostsForLandingPage().pipe(
             catchError(error => {
-                console.log(error);
-                this.alertify.message(' you are not logged in problem retrieving data');
-                this.router.navigate(['/']);
+                // console.log(error);
+                this.alertify.message('error retrieving data, please refresh!');
+                // this.router.navigate(['/']);
                 return of(null);
             })
         );
     }
 }
-
-// export class GetCategoriesPostsLPageResolver implements Resolve<Category[]> {
-
-//     constructor(private forumService: ForumService, private router: Router, private alertify: AlertifyService) {}
-
-//     resolve(): Observable<Category[]> {
-//         return this.forumService.getPostsForLandingPage().pipe(
-//             catchError(error => {
-//                 console.log(error);
-//                 this.alertify.message(' you are not logged in problem retrieving data');
-//                 this.router.navigate(['/']);
-//                 return of(null);
-//             })
-//         );
-//     }
-// }

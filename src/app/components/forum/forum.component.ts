@@ -15,13 +15,15 @@ export class ForumComponent implements OnInit {
   response;
   categories: Category[];
   trendingPosts: GetPost[];
+  totalPosts;
+  p = 1;
 
   constructor( private forumService: ForumService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     // this.getPosts();
     this.route.data.subscribe(data => {
-      console.log(111, data.posts.data);
+      // console.log(111, data.posts.data);
       this.response = data.posts.data;
       // const result = data.post.data.sort((a, b) => {
       //   return a.createdAt < b.createdAt;
@@ -39,7 +41,7 @@ export class ForumComponent implements OnInit {
 
   getCategories() {
     this.forumService.getCategories().subscribe((response: any) => {
-      console.log(response);
+      // console.log(response);
       this.categories = response.data;
     });
   }
@@ -50,26 +52,26 @@ export class ForumComponent implements OnInit {
       const result = this.response.sort((a, b) => {
         return a.createdAt < b.createdAt;
       });
-      console.log(222, result);
+      // console.log(222, result);
 
       this.posts = result;
-      console.log(this.posts);
-
+      // console.log(this.posts);
+      this.totalPosts = this.posts.length;
     // });
   }
 
   getTrendingPosts() {
     this.forumService.getPosts().subscribe((response: any) => {
-      console.log(111, response.data);
+      // console.log(111, response.data);
       const result = response.data.sort((a, b) => {
         return a.createdAt < b.createdAt;
       });
-      console.log(222, result);
+      // console.log(222, result);
       const dateSort = result.sort((a, b) => {
-        return a.likes > b.likes;
+        return a.totalCommentCount < b.totalCommentCount;
       });
-      this.trendingPosts = dateSort.slice(0, 3);
-      console.log(this.posts);
+      this.trendingPosts = dateSort.slice(0, 10);
+      // console.log(this.posts);
 
     });
   }

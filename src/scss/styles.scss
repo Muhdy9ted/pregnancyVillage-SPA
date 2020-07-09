@@ -23,7 +23,7 @@ html{
     html{
         font-size: 16px;
     }
-
+ 
     .nav-link:hover{
 		border-bottom: none;
     }
@@ -31,7 +31,7 @@ html{
 		border-bottom: none;
 	}
     .badge {
-        background-color: white;
+        background-color: $white;
     }
 }
 
@@ -86,8 +86,9 @@ html{
 
 tabset ul.nav.nav-tabs {
     margin-bottom: 4%;
-    position: relative;
+    // position: relative;
     border: none;
+    text-align: center;
 }
 
 .nav-tabs {
@@ -101,8 +102,8 @@ tabset ul.nav.nav-tabs {
 tabset ul.nav.nav-tabs li{
     position: relative;
     top: 15px;
-    left: 35%;
-    transform: translate(-50%, -50%);
+    // left: 35%;
+    // transform: translate(-50%, -50%);
     font-size: 80%;
     font-weight: 600;
     text-transform: uppercase;
@@ -120,6 +121,25 @@ tabset ul.nav.nav-tabs li{
     padding: 5px;
 }
 
+
+// .table {
+//     margin-left: -50px;
+//     word-wrap: break-word;
+// }
+
+.card.card-modal{
+    padding-top: 10px;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    display: none;
+}
+
+.ui-dialog .ui-dialog-content {
+    padding-top: 20px;
+}
 //   .nav-tabs > li.open, .member-tabset > .nav-tabs > li:hover {
 //     border-bottom: 4px solid #fbcdcf;
 //   }

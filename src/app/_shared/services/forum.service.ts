@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
 import { Category } from '../models/category.model';
 import { map } from 'rxjs/operators';
 import { element } from 'protractor';
+import { Comment } from '../models/comment.model';
 
 
 @Injectable({
@@ -17,6 +18,7 @@ export class ForumService {
 
   baseURL = environment.apiUrl; // 'https://pregnancy-village.herokuapp.com/v1/forum/'
   createPostDto = new Post();
+  createCommentDto = new Comment();
   categoriesForLP: Category[] = [];
   categoryPosts: GetPost[] = [];
 
@@ -40,12 +42,12 @@ export class ForumService {
   }
 
   getPost(id) {
-    console.log(id);
+    // console.log(id);
     return this.http.get(this.baseURL + `topic/${id}`);
   }
 
-  createComment(comment: any) {
-    return this.http.post(this.baseURL + 'comment', comment); // reactions
+  createComment() {
+    return this.http.post(this.baseURL + 'comment',  this.createCommentDto); // reactions
   }
 
   createCategory() {
@@ -58,32 +60,19 @@ export class ForumService {
 
   getPostsForLandingPage() {
     return  this.http.get(this.baseURL + 'category/').pipe(map((response: any) => {
-      console.log(response.data);
+      // console.log(response.data);
       const userResponse = response.data;
-      console.log(typeof userResponse);
+      // console.log(typeof userResponse);
       if (userResponse) {
         // tslint:disable-next-line: no-shadowed-variable
-        userResponse.forEach(element => {
-          console.log(element);
-          this.categoriesForLP.push(element);
-        });
-        return this.categoriesForLP;
-        // localStorage.setItem('token', JSON.stringify(userResponse[0][1]));
-        // this.userToken = JSON.stringify(userResponse[0][1]);
-        // console.log(this.decodedToken);
-        // return this.userToken;
-      }
-      // if (response.state === 1) {
-      //   localStorage.setItem('token', JSON.stringify(response.data));
-      //   this.userToken = JSON.stringify(response.data);
-      //   return this.userToken;
-      // } else {
-      //   return response;
-      // }
+        this.categoriesForLP = userResponse;
+        }
+      return this.categoriesForLP;
     }));
   }
 
   postsByCategory(id) {
     return this.http.get(this.baseURL +  `category/${id}`);
   }
+
 }

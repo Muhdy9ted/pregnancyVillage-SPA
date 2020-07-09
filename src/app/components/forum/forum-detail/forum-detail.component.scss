@@ -1,0 +1,38 @@
+@import "../../../../scss/variables";
+
+#post {
+    padding: 80px 0;
+    margin-top: 40px;
+    background-color: #ecf0f1;
+    border-top: solid 1px #e0e4e5;
+    
+    a, a:hover, a:link, a:active {
+        text-decoration: none;
+        color: $text-color;
+    }
+
+    .card-title {
+        text-transform: capitalize;
+    }
+
+    h1:after {
+		display: block;
+		height: 2px;
+		background-color: $primary;
+		content: " ";
+		// font-family:"Font Awesome 5 Free";
+		// position:absolute;
+		width: 500px;
+		margin: 0 auto;
+		margin-top: 20px;
+		-webkit-transition:0.2s all;
+		transition:0.2s all;
+    }
+    
+    @include XS-SM {
+        h1:after {
+            width: 200px;
+
+        }
+    }
+}

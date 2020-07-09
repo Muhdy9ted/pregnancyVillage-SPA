@@ -195,7 +195,7 @@ input.ng-valid{
     }
 }
 
-@media (max-width: 991.9px){
+@media (min-width: 768px) and (max-width: 991.9px){
     .login-modal{
         width: 70vw;
         margin-left: 35px;

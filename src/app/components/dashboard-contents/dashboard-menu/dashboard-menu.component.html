@@ -1,7 +1,8 @@
-<section class="card-body d-lg-none">
-  <button class="navbar-toggler d-lg-none" type="button"  (click)="visibleSidebar1 = true" style="background-color:#FFF;">
+<section class="card-body d-lg-none row">
+  <button class="navbar-toggler d-lg-none col-2" type="button"  (click)="visibleSidebar1 = true" style="background-color:#FFF; height: 40px;">
     <span class="sidebar-icons"><i class="fas fa-bars"></i> <i class="fas fa-chevron-right"></i></span>
   </button>
+  <p class="alert alert-info mx-auto text-center col-9 " role="alert">Welcome to your Dashboard</p>
 </section>
 
 <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
@@ -22,27 +23,33 @@
   
                 <ul class="nav flex-column">
                   <li class="nav-item"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" (click)="visibleSidebar1 = false">
-                    <a class="nav-link"  [routerLink]="['dashboard']">dashboard</a>
+                    <a class="nav-link"  [routerLink]="['dashboard']">dashboard</a> 
                   </li>
                   <li class="nav-item pt-3"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" (click)="visibleSidebar1 = false">
-                    <a class="nav-link"  [routerLink]="['cart']">cart</a>
+                    <a class="nav-link disabled" aria-disabled="true"  [routerLink]="['/cart']">cart</a>
                   </li>
                   <span dropdown>
                     <li class="nav-item pt-3"  [class.active]="isDroppedPost" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" (click)="isOpenChangePost()">
                       <a class="nav-link" style="cursor: pointer;" id="basic-link" dropdownToggle (click)="false" aria-controls="basic-link-dropdown">posts</a>
                     </li>
                     <ul id="basic-link-dropdown d-flex flex-column" *dropdownMenu class="nav" role="menu" aria-labelledby="basic-link" [class.drpdwn-list]="!isDroppedPost" [class.drpdwn-list-active]="isDroppedPost">
-                      <li  class="nav-item" (click)="visibleSidebar1 = false">
+                      <!-- <li  class="nav-item" (click)="visibleSidebar1 = false">
                         <a class="nav-link drpdwn-list-item d-flex flex-column" [routerLink]="['post' + '/add-post']"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">add post</a>
+                      </li> -->
+                      <!-- <li  class="nav-item" (click)="visibleSidebar1 = false">
+                        <a class="nav-link drpdwn-list-item d-flex flex-column" [routerLink]="['post' + '/my-posts']"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">my posts</a>
+                      </li> -->
+                      <li  class="nav-item" (click)="visibleSidebar1 = false">
+                        <a class="nav-link drpdwn-list-item d-block"  [routerLink]="['post' + '/add-post']"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">Add Post</a>
                       </li>
                       <li  class="nav-item" (click)="visibleSidebar1 = false">
-                        <a class="nav-link drpdwn-list-item d-flex flex-column" [routerLink]="['post' + '/my-posts']"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">my posts</a>
+                        <a class="nav-link drpdwn-list-item" [routerLink]="['post' + '/my-posts']"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">View Posts</a>
                       </li>
                     </ul>
                   </span>
                   <span dropdown>
                     <li class="nav-item pt-3"  [class.active]="isDroppedProduct" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" (click)="isOpenChangeProduct()">
-                      <a class="nav-link" style="cursor: pointer;" id="basic-link" dropdownToggle (click)="false" aria-controls="basic-link-dropdown">My store</a>
+                      <a class="nav-link disabled" aria-disabled="true" style="cursor: pointer;" id="basic-link" dropdownToggle (click)="false" aria-controls="basic-link-dropdown">My store</a>
                     </li>
                     <ul id="basic-link-dropdown d-flex flex-column" *dropdownMenu class="nav" role="menu" aria-labelledby="basic-link" [class.drpdwn-list]="!isDroppedProduct" [class.drpdwn-list-active]="isDroppedProduct">
                       <li  class="nav-item" (click)="visibleSidebar1 = false">
@@ -53,10 +60,10 @@
                       </li>
                     </ul>
                   </span>
-                  <li class="nav-item pt-3"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" (click)="visibleSidebar1 = false">
-                    <a class="nav-link"  [routerLink]="['profile']" routerLinkActive="router-link-active" >profile</a>
-                    <!-- <a class="nav-link"  [routerLink]="['/' + firstname + '/profile']" routerLinkActive="router-link-active" >profile</a> -->
-                  </li>
+                  <!-- <li class="nav-item pt-3"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" (click)="visibleSidebar1 = false">
+                    <a class="nav-link disabled" aria-disabled="true"  [routerLink]="['profile']" routerLinkActive="router-link-active" >profile</a>
+                    <a class="nav-link"  [routerLink]="['/' + firstname + '/profile']" routerLinkActive="router-link-active" >profile</a>
+                  </li> -->
                 </ul>
               </div>
             </div>
@@ -85,7 +92,7 @@
                   <a class="nav-link"  [routerLink]="['dashboard']">dashboard</a>
                 </li>
                 <li class="nav-item pt-3"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                  <a class="nav-link"  [routerLink]="['cart']">cart</a>
+                  <a class="nav-link disabled" aria-disabled="true"  [routerLink]="['/cart']">cart</a>
                 </li>
                 <span dropdown>
                   <li class="nav-item pt-3"  [class.active]="isDroppedPost" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" (click)="isOpenChangePost()">
@@ -93,16 +100,16 @@
                   </li>
                   <ul id="basic-link-dropdown d-flex flex-column" *dropdownMenu class="nav" role="menu" aria-labelledby="basic-link" [class.drpdwn-list]="!isDroppedPost" [class.drpdwn-list-active]="isDroppedPost">
                     <li  class="nav-item">
-                      <a class="nav-link drpdwn-list-item d-flex flex-column" [routerLink]="['post' + '/add-post']"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">add post</a>
+                      <a class="nav-link drpdwn-list-item d-flex flex-column" [routerLink]="['post' + '/add-post']"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">Add post</a>
                     </li>
                     <li  class="nav-item">
-                      <a class="nav-link drpdwn-list-item d-flex flex-column" [routerLink]="['post' + '/my-posts']"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">my posts</a>
+                      <a class="nav-link drpdwn-list-item d-flex flex-column" [routerLink]="['post' + '/my-posts']"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">View posts</a>
                     </li>
                   </ul>
                 </span>
                 <span dropdown>
                   <li class="nav-item pt-3"  [class.active]="isDroppedProduct" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" (click)="isOpenChangeProduct()">
-                    <a class="nav-link" style="cursor: pointer;" id="basic-link" dropdownToggle (click)="false" aria-controls="basic-link-dropdown">My store</a>
+                    <a class="nav-link disabled" aria-disabled="true" style="cursor: pointer;" id="basic-link" dropdownToggle (click)="false" aria-controls="basic-link-dropdown">My store</a>
                   </li>
                   <ul id="basic-link-dropdown d-flex flex-column" *dropdownMenu class="nav" role="menu" aria-labelledby="basic-link" [class.drpdwn-list]="!isDroppedProduct" [class.drpdwn-list-active]="isDroppedProduct">
                     <li  class="nav-item">
@@ -113,10 +120,9 @@
                     </li>
                   </ul>
                 </span>
-                <li class="nav-item pt-3"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                <!-- <li class="nav-item pt-3"  [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
                   <a class="nav-link"  [routerLink]="['profile']" routerLinkActive="router-link-active" >profile</a>
-                  <!-- <a class="nav-link"  [routerLink]="['/' + firstname + '/profile']" routerLinkActive="router-link-active" >profile</a> -->
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>

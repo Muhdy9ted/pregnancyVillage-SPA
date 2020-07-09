@@ -11,7 +11,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).pipe(
             catchError(error => {
-                console.log(error);
+                // console.log(error);
                 // if (error.status === 412) {
                 //     return throwError(error.error.data.msg);
                 // }
@@ -39,7 +39,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                     const serverError = error.error.data;
                     const serverError2 = Object.assign({}, serverError);
                     let modalStateErrors = '';
-                    console.log(serverError2);
+                    // console.log(serverError2);
                     if (serverError2 && typeof serverError2 === 'object') {
                         for (const key in serverError2) {
                             if (serverError2[key]) {

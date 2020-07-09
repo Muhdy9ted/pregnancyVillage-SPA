@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" #nav id="nav">
         <div class="container-fluid" [class.nav-white]="isCollapsed">
-            <a class="navbar-brand mr-auto animate__animated animate__rubberBand" [routerLink]="['/']"> 
+            <a class="navbar-brand mr-auto animate__animated animate__rubberBand" routerLink= "/"> 
                 <img src="\assets\images\logo.png" alt="Pregnancy village logo" [class.logo]="!isCollapsed" [class.logoCollapsed]="isCollapsed"> 
             </a>
             
@@ -19,22 +19,22 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="!isCollapsed" [isAnimated]="true">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" [routerLink]="['/']" [class.linkcolor]="isCollapsed">
+                        <a class="nav-link" routerLink = "/" [class.linkcolor]="isCollapsed">
                             Home
                         </a>
                     </li>
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" [routerLink]="['/profile']" [class.linkcolor]="isCollapsed">
+                        <a class="nav-link" routerLink ="/forums/posts" [class.linkcolor]="isCollapsed">
                             Forums
                         </a>
                     </li>
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" [routerLink]="['/dashboard']" [class.linkcolor]="isCollapsed">
+                        <a class="nav-link disabled" aria-disabled="true" routerLink = "/dashboard" [class.linkcolor]="isCollapsed">
                             Market
                         </a>
                     </li>
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" [routerLink]="['/dashboard']" [class.linkcolor]="isCollapsed">
+                        <a class="nav-link disabled" aria-disabled="true" routerLink = "/dashboard" [class.linkcolor]="isCollapsed">
                             Consultancy
                         </a>
                     </li>
@@ -56,7 +56,7 @@
                     </a>
                     <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed profile-btn" 
                         [class.btn-sm]="isCollapsed"  
-                        *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="['profile']" 
+                        *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="['/' + userId, 'dashboard']" 
                         style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
                     </a>
                     <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed" 
@@ -69,3 +69,6 @@
         </div>
     </nav>
 </header>
+
+<app-register *ngIf= "clickedSignUp" (closeModalClicked)="onSignupCloseModalClicked()"></app-register>
+<app-login-modal *ngIf= "clickedLogin" (closeModalClicked)="onSigninCloseModalClicked()"></app-login-modal>

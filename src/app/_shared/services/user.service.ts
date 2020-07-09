@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserProfile } from '../models/user-profile.model';
+import { UpdateUser } from '../models/updateUser.model';
 // import { UserProfile } from '../models/userProfile';
 
 @Injectable({
@@ -13,7 +14,7 @@ import { UserProfile } from '../models/user-profile.model';
 })
 export class UserService {
 
-  baseURL = environment.apiUrl;
+  baseURL = environment.apiUrl; // 'https://pregnancy-village.herokuapp.com/v1/forum/'
   userProfileInfo: UserProfile = new UserProfile();
 
   constructor(public http: HttpClient) { }
@@ -24,6 +25,11 @@ export class UserService {
 
   listUsers() {
     return this.http.get(this.baseURL + 'auth/users');
+  }
+
+  updateUser(user: UpdateUser): Observable<UpdateUser> {
+    const {firstName, lastName, email, phoneNumber} = user;
+    return this.http.put<UpdateUser>(this.baseURL + 'users/profile/update', {firstName, lastName, email, phoneNumber});
   }
 
   // updateProfile() {

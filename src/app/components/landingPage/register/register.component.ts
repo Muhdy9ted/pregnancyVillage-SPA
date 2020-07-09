@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
         this.user = Object.assign({}, this.registerForm.value);
         this.authService.register(this.user).subscribe((userCredential) => {
           // this.onCloseModal();
-          console.log(userCredential);
+          // console.log(userCredential);
           this.alertify.success('Registration Successful');
           this.regSent = true;
           this.spin = false;
@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
         this.spin = true;
         // this.user = Object.assign({}, this.registerForm.value);
         this.authService.resendMail().subscribe((response: any)  => {
-          console.log(response);
+          // console.log(response);
           this.onCloseModal();
           // this.registerFormRef.reset();
           this.alertify.success('Registration Successful');
@@ -117,7 +117,7 @@ export class RegisterComponent implements OnInit {
 
   onResendMailClicked() {
     this.authService.resendMail().subscribe((response: any) => {
-      console.log(response);
+      // console.log(response);
     });
     this.route.navigate(['/']);
   }

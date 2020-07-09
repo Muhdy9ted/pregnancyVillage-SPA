@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_shared/services/auth.service';
 import { Router } from '@angular/router';
+import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +17,7 @@ export class NavbarComponent implements OnInit {
   userId = this.authService.userID;
 
 
-  constructor(public authService: AuthService, private route: Router) { }
+  constructor(public authService: AuthService, private route: Router, private alertify: AlertifyService) { }
 
   ngOnInit(): void {
   }
@@ -44,6 +45,8 @@ export class NavbarComponent implements OnInit {
   loggedOut() {
     this.authService.loggedOut();
     this.route.navigate(['/']);
+    this.alertify.success('logged out successfully');
+
   }
 
 }

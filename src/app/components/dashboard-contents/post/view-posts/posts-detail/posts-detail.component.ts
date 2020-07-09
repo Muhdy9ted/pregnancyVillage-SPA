@@ -18,7 +18,7 @@ export class PostsDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.post = data.post.data;
-      console.log(this.post);
+      // console.log(this.post);
     });
   }
 

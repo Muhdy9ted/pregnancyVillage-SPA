@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" #nav id="nav">
         <div class="container-fluid" [class.nav-white]="isCollapsed">
-            <a class="navbar-brand mr-auto animate__animated animate__rubberBand" [routerLink]="['/']"> 
+            <a class="navbar-brand mr-auto animate__animated animate__rubberBand" routerLink= "/"> 
                 <img src="\assets\images\logo.png" alt="Pregnancy village logo" [class.logo]="!isCollapsed" [class.logoCollapsed]="isCollapsed"> 
             </a>
             
@@ -19,22 +19,22 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="!isCollapsed" [isAnimated]="true">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" [routerLink]="['/']" [class.linkcolor]="isCollapsed">
+                        <a class="nav-link" routerLink = "/" [class.linkcolor]="isCollapsed">
                             Home
                         </a>
                     </li>
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" [routerLink]="['/profile']" [class.linkcolor]="isCollapsed">
+                        <a class="nav-link" routerLink ="/forums/posts" [class.linkcolor]="isCollapsed">
                             Forums
                         </a>
                     </li>
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" [routerLink]="['/dashboard']" [class.linkcolor]="isCollapsed">
+                        <a class="nav-link disabled" aria-disabled="true" routerLink = "/dashboard" [class.linkcolor]="isCollapsed">
                             Market
                         </a>
                     </li>
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" [routerLink]="['/dashboard']" [class.linkcolor]="isCollapsed">
+                        <a class="nav-link disabled" aria-disabled="true" routerLink = "/dashboard" [class.linkcolor]="isCollapsed">
                             Consultancy
                         </a>
                     </li>
@@ -56,7 +56,7 @@
                     </a>
                     <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed profile-btn" 
                         [class.btn-sm]="isCollapsed"  
-                        *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="[userId, 'profile']" 
+                        *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="['/' + userId, 'dashboard']" 
                         style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
                     </a>
                     <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed" 
@@ -69,12 +69,12 @@
         </div>
     </nav>
 
-    <!-- <app-register *ngIf= "clickedSignUp" (closeModalClicked)="onSignupCloseModalClicked()"></app-register>
-    <app-login-modal *ngIf= "clickedLogin" (closeModalClicked)="onSigninCloseModalClicked()"></app-login-modal> -->
+    <app-register *ngIf= "clickedSignUp" (closeModalClicked)="onSignupCloseModalClicked()"></app-register>
+    <app-login-modal *ngIf= "clickedLogin" (closeModalClicked)="onSigninCloseModalClicked()"></app-login-modal>
 
     <div id="hero-image-div" class="d-flex align-items-start">
         <div class="bg-image overlay">  
-            <div id="hero-image-ad-contents">
+            <!-- <div id="hero-image-ad-contents">
                 <div class="container">
                     <div class="card col-8">
                         <div class="card-body">
@@ -82,7 +82,7 @@
                         </div>
                       </div>
                     </div>         
-                </div>
+                </div> -->
                 
             <div id="hero-image-contents">
                 <div class="container">
@@ -98,8 +98,8 @@
                         *ngIf="true"  role="button">Forums
                     </a>
 
-                    <a class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block profile-btn" *ngIf="!authService.loggedIn()" [routerLink]="['/dashboard']" 
-                        style="cursor: pointer;" role="button" [routerLink]="[userId, 'profile']" 
+                    <a class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block profile-btn" *ngIf="!authService.loggedIn()"
+                        style="cursor: pointer;" role="button" [routerLink]="['/' + userId, 'dashboard']" 
                         style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
                     </a>
                     
@@ -108,11 +108,15 @@
         </div>
     </div>
 </header>
-<p-dialog class="my-3" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-    <h3 class="display-4">Your account has been activated</h3>
-    <p class="lead my-3"> Please sign in to continue</p>
+<p-dialog class="d-none d-md-block" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <p class="lead my-3">Your account has been activated, please sign-in to continue</p>
     <p-footer>
-        <button type="button" class="btn btn-secondary"  (click)="onLoginClicked()">Sign in</button>
-        <button type="button" class="btn btn-secondary"  (click)="onLoginClicked()">Close</button>
+        <button type="button" class="btn btn-outline-primary"  (click)="onLoginClicked()">Sign in</button>
+    </p-footer>
+</p-dialog>
+<p-dialog class="d-block d-md-none" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <p class="lead my-3">Your account has been activated, please sign-in to continue</p>
+    <p-footer>
+        <button type="button" class="btn btn-outline-primary"  (click)="onLoginClicked()">Sign in</button>
     </p-footer>
 </p-dialog>

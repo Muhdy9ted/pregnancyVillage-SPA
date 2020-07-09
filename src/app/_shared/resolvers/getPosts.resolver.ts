@@ -16,7 +16,7 @@ export class GetPostsResolver implements Resolve<GetPost[]> {
         return this.forumService.getUserPosts().pipe(
             catchError(error => {
                 this.alertify.message('problem retrieving data');
-                this.router.navigate(['dashboard']);
+                this.router.navigate(['/forums/posts']);
                 return of(null);
             })
         );
