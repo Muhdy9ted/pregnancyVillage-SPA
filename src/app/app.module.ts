@@ -12,7 +12,7 @@ import {DialogModule} from 'primeng/dialog';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { TimeagoModule } from 'ngx-timeago';
 
 
 
@@ -46,8 +46,6 @@ import { GetPostsResolver } from './_shared/resolvers/getPosts.resolver';
 import { PostsDetailComponent } from './components/dashboard-contents/post/view-posts/posts-detail/posts-detail.component';
 import { GetPostResolver } from './_shared/resolvers/getPost.resolver';
 import { CommentComponent } from './components/dashboard-contents/post/view-posts/posts-detail/comment/comment.component';
-import { MemberProfileComponent } from './components/members-contents/member-profile/member-profile.component';
-import { MembersListComponent } from './components/members-contents/members-list/members-list.component';
 import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info.resolver';
 import { TextMaskModule } from 'angular2-text-mask';
 import { FooterComponent } from './components/footer/footer.component';
@@ -95,8 +93,6 @@ export function tokenGetter() {
     PostsListComponent,
     PostsDetailComponent,
     CommentComponent,
-    MemberProfileComponent,
-    MembersListComponent,
     FooterComponent,
     WelcomePageComponent,
     ForumDetailComponent,
@@ -128,9 +124,7 @@ export function tokenGetter() {
     FontAwesomeModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
-    ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'Danger'
-    }),
+    TimeagoModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter,

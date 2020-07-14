@@ -253,7 +253,7 @@
                                     <div class="card">
                                         <div class="row card-body forums-list" >
                                             <div class="col-12 author">
-                                                <h6 class="card-text text-muted d-inline"> {{limitString(post.userId, 20)}}</h6> <p class=" d-inline-block ml-5 time">25 mins ago</p>
+                                                <h6 class="card-text text-muted d-inline"> {{limitString(post.userId, 20)}}</h6> <p class=" d-inline-block ml-5 time">{{post.createdAt|timeago:true}}</p>
                                             </div>
                                             <div class="col-12 message">
                                                 <a [routerLink]="['/forums/posts', post.id]"><h5 class="card-title">{{limitString(post.topic, 20)}}</h5></a>

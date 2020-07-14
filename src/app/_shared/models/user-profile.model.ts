@@ -14,4 +14,6 @@ export class UserProfile {
     ​​    password: string;
     ​​    role: string;
     ​​    userId: string;
+        phoneNumber?: string;
+
 }

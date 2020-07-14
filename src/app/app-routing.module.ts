@@ -15,7 +15,6 @@ import { ViewProductsComponent } from './components/dashboard-contents/products/
 import { GetPostsResolver } from './_shared/resolvers/getPosts.resolver';
 import { PostsDetailComponent } from './components/dashboard-contents/post/view-posts/posts-detail/posts-detail.component';
 import { GetPostResolver } from './_shared/resolvers/getPost.resolver';
-import { MemberProfileComponent } from './components/members-contents/member-profile/member-profile.component';
 import { GetCategoriesPostsLPageResolver } from './_shared/resolvers/getCategoriesPostLPage.resolver';
 import { WelcomePageComponent } from './components/landingPage/welcome-page/welcome-page.component';
 import { ForumComponent } from './components/forum/forum.component';
@@ -33,6 +32,9 @@ import { EditPostComponent } from './components/dashboard-contents/post/edit-pos
 const routes: Routes = [
   // localhost:4200
   {path: '', component: LandingPageComponent, resolve: {categoryPosts: GetCategoriesPostsLPageResolver}},
+
+  // localhost:4200/admin #lazyloading admin module
+  {path: 'admin', loadChildren: './components/Admin-Module/admin.module#AdminModule'},
 
   // localhost:4200/welcome
   {path: 'welcome', component: WelcomePageComponent},

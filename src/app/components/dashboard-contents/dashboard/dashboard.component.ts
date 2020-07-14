@@ -8,6 +8,8 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { UpdateUser } from 'src/app/_shared/models/updateUser.model';
 import { Route } from '@angular/compiler/src/core';
 import { AuthService } from 'src/app/_shared/services/auth.service';
+import { GetPost } from 'src/app/_shared/models/getPost';
+import { ForumService } from 'src/app/_shared/services/forum.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,6 +32,7 @@ export class DashboardComponent implements OnInit {
   beMerchant = false;
   provService = false;
   updateUser: UpdateUser;
+  postsCount: number;
 
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {
@@ -39,12 +42,17 @@ export class DashboardComponent implements OnInit {
   }
 
 constructor(public userService: UserService, private route: ActivatedRoute, private authService: AuthService,
-            private fb: FormBuilder, private alertify: AlertifyService, private router: Router) { }
+            private fb: FormBuilder, private alertify: AlertifyService, private router: Router, public forumService: ForumService) { }
 
 ngOnInit(): void {
   this.route.data.subscribe( data => {
     this.userService.userProfileInfo = data.user.data;
     this.createEditProfileForm();
+
+    this.forumService.getUserPosts().subscribe((response) => {
+      const obj = Object.entries(response);
+      this.postsCount = response.data.length;
+    });
   });
 
   // runs on ngoninit
@@ -94,7 +102,7 @@ createEditProfileForm() {
     firstName: [this.userService.userProfileInfo.firstName, [Validators.required,  Validators.minLength(3),  Validators.maxLength(30)]],
     lastName:  [this.userService.userProfileInfo.lastName, [Validators.required,  Validators.minLength(3),  Validators.maxLength(30)]],
     email: [this.userService.userProfileInfo.email, [Validators.required, Validators.email]],
-    phoneNumber: ['', []],
+    phoneNumber: [this.userService.userProfileInfo.phoneNumber, []],
     // password: [null, [Validators.minLength(5)]],
     // confirmPassword: [null, [Validators.minLength(5)]],
     // uploadImage: [null, []],

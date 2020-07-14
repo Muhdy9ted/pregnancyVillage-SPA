@@ -43,30 +43,34 @@ export class ForumService {
     // tslint:disable-next-line: variable-name
     // const {topic, category, description, upload_file} = this.createPostDto;
     // console.log(file_upload);
-    console.log(this.createPostDto);
+    // console.log(this.createPostDto);
     const formData = new FormData();
     formData.append('topic', this.createPostDto.topic);
     formData.append('category', this.createPostDto.category);
     formData.append('description', this.createPostDto.description);
     formData.append('upload_file', this.createPostDto.upload_file);
-    console.log(typeof this.createPostDto.upload_file);
-    console.log(typeof formData.get('upload_file'));
+    // console.log(typeof this.createPostDto.upload_file);
+    // console.log(typeof formData.get('upload_file'));
 
 
-    console.log(formData);
+    // console.log(formData);
 
     return this.http.post<any>(this.baseURL + 'topic/', formData);
   }
 
-  updateReactions(id: any, reactions: any) {
-    return this.http.patch<any>(this.baseURL + 'action/like/' + id, reactions, httpOptions );
+  updateReactionsLike(id: any, reactions: any) {
+    return this.http.patch<any>(this.baseURL + 'action/like/' + id, reactions);
+  }
+
+  updateReactionsUnlike(id: any, reactions: any) {
+    return this.http.patch<any>(this.baseURL + 'action/unlike/' + id, reactions);
   }
 
   updatePost(id: any) {
-    console.log(this.updatePostDTO);
+    // console.log(this.updatePostDTO);
     this.updatePostDTO.category = this.updatePostDTO.categoryObj._id;
     const {topic, description, comment, category} = this.updatePostDTO;
-    console.log({topic, description, comment});
+    // console.log({topic, description, comment});
     return this.http.put<any>(this.baseURL + 'topic/' + id, {topic, description, comment, category});
     // To update topic by id: Baseurl/forum/topic/:id. payload => topic, description, category, comment (PUT request)
   }
@@ -77,12 +81,12 @@ export class ForumService {
     return this.http.delete(this.baseURL + 'topic/' + id);
   }
 
-  getPosts(): Observable<GetPost> {
-    return this.http.get<GetPost>(this.baseURL  + 'topic/');
+  getPosts(): Observable<GetPost[]> {
+    return this.http.get<GetPost[]>(this.baseURL  + 'topic/');
   }
 
-  getUserPosts(): Observable<GetPost[]> {
-    return this.http.get<GetPost[]>(this.baseURL + `user/topic/all`);
+  getUserPosts(): Observable<any> {
+    return this.http.get(this.baseURL + `user/topic/all`);
   }
 
   getPost(id) {

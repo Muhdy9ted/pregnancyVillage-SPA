@@ -141,7 +141,7 @@ export class PostsDetailComponent implements OnInit {
   reaction() {
     if (!this.likedPost) {
       this.post.likes++;
-      this.forumService.updateReactions(this.post._id, this.post.likes).subscribe((response) => {
+      this.forumService.updateReactionsLike(this.post._id, this.post.likes).subscribe((response) => {
         this.likedPost = true;
         this.likedPost = true;
         this.alertify.success('like added successfully');
@@ -152,7 +152,7 @@ export class PostsDetailComponent implements OnInit {
       });
     } else if (this.likedPost) {
       this.post.likes--;
-      this.forumService.updateReactions(this.post._id, this.post.likes).subscribe((response) => {
+      this.forumService.updateReactionsUnlike(this.post._id, this.post.likes).subscribe((response) => {
         this.likedPost = false;
         this.alertify.success('you\'ve unliked the post successfully');
       }, error => {
