@@ -1,5 +1,9 @@
 @import "../../../../scss/variables"; //created custom variables
 
+.btn-primary {
+	background-color: $primary !important;
+}
+
 /*----------------------- Header css starts ----------------------*/
 
 header{
@@ -17,6 +21,7 @@ header{
 
 /* small screens */
 nav {
+	background-color: $primary;
 	@include XS {
 		position: relative;
 		top: 0;
@@ -83,7 +88,13 @@ nav {
 		.btn-outline-primary {
 			color: $primary;
 			outline: none;
-		}
+			border-color: $primary !important;
+		} 
+
+		.btn-outline-primary:hover {
+			background-color: $primary;
+
+		} 
 			
 		.btn-ghost-collapsed{
 			position:relative;
@@ -103,6 +114,7 @@ nav {
 		}
 
 		.btn-ghost-collapsed:after {
+			// content:"\f178";
 			content:"\f178";
 			font-family:FontAwesome;
 			position:absolute;
@@ -132,6 +144,7 @@ nav {
 			margin-top: 5px;
 			-webkit-transition:0.2s all;
 			transition:0.2s all;
+			background-color: $primary !important;
 		}
 
 		.btn-ghost:hover{
@@ -402,7 +415,8 @@ nav {
 		}
 
 		.btn-primary:after {
-			content:"\f0c0";
+			// content:"\f0c0";
+			content:"\f178";
 			font-family:FontAwesome;
 			position:absolute;
 			color: $primary;
@@ -487,15 +501,24 @@ nav {
 
 	p {
 		font-size: 1rem;
-		line-height: 150%;
+		line-height: 160%;
 		word-spacing: 2px;
 	}
 
 	.card{
 		border: none;
 		background-color: $bg-dark;
-		// height: 35vh;
+		height: 33vh;
 		overflow-y: auto;
+
+		@include SM{
+			height: 48vh;
+		}
+
+		// @include LG {
+		// 	height: 50vh;
+		// }
+	
 	}
 
 	.card-title {
@@ -503,9 +526,10 @@ nav {
 	}
 
 	.card-text {
-		font-size: 0.8rem;
-		line-height: 130%;
+		font-size: 0.9rem;
+		line-height: 150%;
 		word-spacing: 2px;
+		// letter-spacing: 1px;
 	}
 
 	.icon-big{
@@ -635,9 +659,10 @@ nav {
 	}
 
 	.card-title {
-		font-weight: 700;
+		font-weight: 600;
 		color: $text-color;
 		text-decoration: none;
+		font-size: 1.3rem;
 	}
 
 	a:link, a:hover, a:active, a:focus {
@@ -645,7 +670,7 @@ nav {
 	}
 
 	.card-text.text-muted {
-		font-size: 1rem;
+		font-size: 0.8rem;
 		line-height: 150%;
 		word-spacing: 2px;
 	}
@@ -655,6 +680,11 @@ nav {
 		line-height: 130%;
 		word-spacing: 2px;
 	}	
+
+	.time {
+		color: $primary;
+		font-size: 0.7rem;
+	}
 
 	tab .card {
 		width: 100%;
@@ -667,7 +697,49 @@ nav {
 		padding-bottom: 10px;
 		// overflow-y: auto;
 	}
+
+	.btn-primary {
+		position:relative;
+		border: 1px solid transparent;
+		color: $white;
+		outline: none;
+		border-radius: 20px;
+		margin-top: 5px;
+		text-transform: uppercase;
+		width: 35%;
+		-webkit-transition:0.2s all;
+		transition:0.2s all;
+	}
+
+	.btn-primary:hover {
+		background-color: $white !important;
+		border: 1px solid $primary;
+		color: $primary;
+		width: 45%;
+		padding-right: 55px !important;
+		transition: all 0.3s;
+	}
+
+	.btn-primary:after {
+		// content:"\f0c0";
+		content:"\f178";
+		font-family:FontAwesome;
+		position:absolute;
+		color: $primary;
+		width: 25px;
+		right: 10px;
+		text-align:center;
+		opacity:0;
+		-webkit-transition:0.2s all;
+		transition:0.2s all;
+	}
+
+	.btn-primary:hover:after{
+		opacity:1;
+		transition: 0.5s;
+	}
 }
+
 
 // @media (max-width: 991.9px) {
 // 	#section-tabset {
@@ -689,6 +761,9 @@ nav {
 	background-color: $text-color;
 }
 
+.btn-primary {
+	border-color: $primary;
+}
 /*----------------------- contact-div css ends ----------------------*/
 
 
@@ -738,3 +813,7 @@ nav {
        
 //     }
 // }
+
+.border-primary {
+	border-color:  $white !important;
+}

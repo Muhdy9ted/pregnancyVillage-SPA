@@ -65,7 +65,8 @@ export class RegisterComponent implements OnInit {
         }, error => {
           if (error) {
             this.spin = false;
-            this.emailError = error;
+            // console.log(error);
+            this.emailError = 'please use an appropriate email address';
           }
         });
       }

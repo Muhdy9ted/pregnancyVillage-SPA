@@ -151,7 +151,8 @@ p {
 }
 
 .btn-primary:after {
-	content:"\f0c0";
+    // content:"\f0c0";
+    content: "\f061";
 	font-family:FontAwesome;
 	position:absolute;
 	width: 30px;

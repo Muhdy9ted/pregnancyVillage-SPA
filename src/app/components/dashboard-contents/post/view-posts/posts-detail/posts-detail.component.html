@@ -1,24 +1,150 @@
-<section>
-    <div class="row forum-post">
-        <div class="col-sm-12 p-5">
-            <p class="author-line"><i> by:</i></p><span class="author"> {{post.userId}}</span>
-            <p class="category-line"><i> category:</i></p><span class="category"> {{post.category.name}}</span>
-            <div class="date">
-                <span style="font-size: 1em; color: #F29422;">
-                    <i class="fas fa-calendar-day"></i>
-                </span>
-                <p style="display: inline-block; margin-bottom: 0 !important;" class="pl-1"> {{post.createdAt | date}}</p>
+<section id="post">  
+    <div class="container-fluid">
+        <div class="row mt-2">
+            <div class="col-12 col-xl-9 order-0 order-lg-0">
+                <div class="card mt-1">
+                    <h1 class="card-title mb-2 px-5 pt-5 pb-2 text-center" style="font-weight: 200;">{{post.topic}}</h1>
+                    <div class="col-12" *ngIf="post.upload_file">
+                        <img src="{{post.upload_file}}" class="img-fluid card-img-top p-5" style="height: auto;">
+                    </div>
+                    <div class="col-12" *ngIf="!post.upload_file">
+                        <img src="../../../assets/images/dark-photo.png" class="img-fluid card-img-top p-5" style="height: auto;">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{post.topic}}</h3>
+                        <a [routerLink]="['/category', post.category._id]" routerLinkActive="router-link-active"> <small class="text-muted">Category - {{post.category.name}}</small></a><br/>
+                        <small class="text-muted"> Published on: {{post.createdAt|date}} </small><br/>
+                        <small class="text-muted"> Published by: <span class="text-capitalize"> {{post.userId}} </span> </small><br/>
+                        <small class="text-muted"> Comment: <span class="">  {{post.comment.length}} <i>comment(s)</i></span> </small><br/>
+                        <small class="text-muted"> Likes: <span class=""> {{post.likes}} <i>like(s)</i> </span> </small><br/>
+                        <a [routerLink]="['/' + this.userId + '/posts/my-posts/' + this.post._id + '/edit-post']" routerLinkActive="router-link-active">edit post</a>
+
+
+                      
+                        <p class="card-text detail py-5">{{post.description}}</p>
+                        
+                        <div class="d-flex justify-content-end">
+                          <button type="button"  [disabled]="likedPost" (click) = "reaction()" class="btn btn-sm btn-outline-info px-3 mr-3" style=" border-radius: 15px;"> <span style="font-size: 1rem;"><i class="fas fa-thumbs-up"></i></span></button>
+                          <button type="button"  [disabled]="!likedPost" (click) = "reaction()" class="btn btn-sm btn-outline-info px-3" style=" border-radius: 15px;"> <span style="font-size: 1rem;"><i class="fas fa-thumbs-down"></i></span></button>
+                        </div>
+                        <div class="d-flex justify-content-end mt-3">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" (click) = "updatePost()" class="btn btn-info">edit post  <span class="pl-2" style="font-size: 0.8rem;"><i class="far fa-edit"></i></span></button>
+                                <button type="button" (click) = "deletePost()" class="btn btn-danger">delete post <span class="pl-2" style="font-size: 0.8rem;"><i class="far fa-trash-alt"></i></span></button>
+                            </div>    
+                        </div>
+
+                        <div class="container-fluid col-12 comment-div pt-3">
+                            <h5> Comment(s)</h5>
+                            <app-comment-list  *ngFor="let comment of post.comment" [comment] = "comment"></app-comment-list>
+                            <app-comment></app-comment>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3 class="title">{{post.topic}}</h3>
-        </div>
-        <div class="col-sm-12 detail-div mb-5">
-            <p class="detail">{{post.description}}</p>
-        </div>
-        <!-- <div class="container-fluid"> -->
-            <div class="container-fluid col-sm-12 comment-div pt-3">
-                <h4> Comment(s)</h4> <h5></h5>
-                <app-comment></app-comment>
+            <div class="col-12 col-xl-3">
+                <div class="row">
+                  <div class="col-12 order-12 order-lg-1 d-none d-lg-block">
+                    <div class="category">
+                      <div class="card my-2">
+                        <div class="card-body cat-header">
+                          <div class="card-title"><p>Categories 
+                            <span style="font-size: 1em; color: #3f97e1;">
+                              <i class="fas fa-stream"></i>
+                            </span>
+                          </p></div>
+                          <ul class="list-group list-group-flush">
+                          <li class="list-group-item card-text text-muted" *ngFor="let category of categories">  
+                            <a [routerLink]="['/category', category._id]">{{limitForumTitle(category.name, 10)}}</a>
+                          </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="col-12 sidebar order-0 d-lg-none">
+                    <div class="category">
+                      <div class="card my-2">
+                        <div class="card-body cat-header">
+                          <div class="card-title"><p>Trending 
+                            <span style="font-size: 1em; color: #3f97e1;">
+                              <i class="fas fa-chart-line"></i>
+                            </span>
+                          </p></div>
+                          <ul class="list-group list-group-flush">
+                          <li class="list-group-item card-text text-muted" *ngFor="let post of trendingPosts?.slice(0, 5)">
+                            <a [routerLink]="['/forums/posts/', post.id]"> 
+                              <div class="col-4 d-inline-block"  *ngIf="post.upload_file" >
+                                <img src="{{post.upload_file}}" class="img-fluid">
+                              </div>
+                              <div class="col-4 d-inline-block" *ngIf="!post.upload_file">
+                                <img src="../../../assets/images/dark-photo.png" class="img-fluid">
+                              </div>
+                              <div class="col-8 d-inline-block">
+                                {{limitForumTitle(post.topic, 20)}}
+                              </div>
+                            </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 sidebar d-none d-lg-flex order-lg-2">
+                    <div class="category">
+                      <div class="card my-2">
+                        <div class="card-body cat-header">
+                          <div class="card-title"><p>Trending 
+                            <span style="font-size: 1em; color: #3f97e1;">
+                              <i class="fas fa-chart-line"></i>
+                            </span>
+                          </p></div>
+                          <ul class="list-group list-group-flush">
+                          <li class="list-group-item card-text text-muted" *ngFor="let post of trendingPosts">
+                            <a [routerLink]="['/forums/posts/', post.id]"> 
+                              <div class="col-4 d-inline-block"  *ngIf="post.upload_file" >
+                                <img src="{{post.upload_file}}" class="img-fluid">
+                              </div>
+                              <div class="col-4 d-inline-block" *ngIf="!post.upload_file">
+                                <img src="../../../assets/images/dark-photo.png" class="img-fluid">
+                              </div>
+                              <div class="col-8 d-inline-block">
+                                {{limitForumTitle(post.topic, 20)}}
+                              </div>
+                            </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        <!-- </div> -->
-    </div>
+            
+            <div class="row">
+              <div class="col-12 order-12 order-lg-1 d-block d-lg-none">
+                <div class="category">
+                  <div class="card my-2">
+                    <div class="card-body cat-header">
+                      <div class="card-title"><p>Categories 
+                        <span style="font-size: 1em; color: #3f97e1;">
+                          <i class="fas fa-stream"></i>
+                        </span>
+                      </p></div>
+                      <ul class="list-group list-group-flush">
+                      <li class="list-group-item card-text text-muted" *ngFor="let category of categories">  
+                        <a [routerLink]="['/category', category._id]">{{limitForumTitle(category.name, 10)}}</a>
+                      </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        
 </section>

@@ -4,6 +4,7 @@ import { ForumService } from 'src/app/_shared/services/forum.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 import { Category } from 'src/app/_shared/models/category.model';
+import { AuthService } from 'src/app/_shared/services/auth.service';
 
 @Component({
   selector: 'app-posts-list',
@@ -39,8 +40,10 @@ export class PostsListComponent implements OnInit {
   trendingPosts: GetPost[];
   totalPosts;
   p = 1;
+  userId = this.authService.userID;
 
-  constructor( private forumService: ForumService, private route: ActivatedRoute) { }
+
+  constructor( private forumService: ForumService, private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
     // this.getPosts();
@@ -86,14 +89,16 @@ export class PostsListComponent implements OnInit {
     this.forumService.getPosts().subscribe((response: any) => {
       // console.log(111, response.data);
       const result = response.data.sort((a, b) => {
+        // console.log(a.totalCommentCount - b.totalCommentCount);
+        // console.log(a.createdAt > b.createdAt);
         return a.createdAt < b.createdAt;
       });
       // console.log(222, result);
       const dateSort = result.sort((a, b) => {
-        return a.totalCommentCount < b.totalCommentCount;
+        return b.totalCommentCount - a.totalCommentCount;
       });
       this.trendingPosts = dateSort.slice(0, 10);
-      // console.log(this.posts);
+      // console.log(dateSort);
 
     });
   }

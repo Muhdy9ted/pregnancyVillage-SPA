@@ -27,6 +27,7 @@ import { GetPostsByCategory } from './_shared/resolvers/getPostsByCategory.resol
 import { PreventUnsavedChanges } from './_shared/guards/prevent-unsaved-changes.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info.resolver';
+import { EditPostComponent } from './components/dashboard-contents/post/edit-post/edit-post.component';
 
 
 const routes: Routes = [
@@ -60,17 +61,22 @@ const routes: Routes = [
     // localhost:4200/userid/cart
     { path: 'cart', component: CartComponent},
 
-    { path: 'post', component: PostComponent, children: [
+    { path: 'posts', component: PostComponent, children: [
       { path: '', redirectTo: 'my-posts', pathMatch: 'full'},
-      // localhost:4200/userid/add-post
+      // localhost:4200/userid/posts/add-post
       { path: 'add-post', component: AddPostComponent},
 
-      // localhost:4200/userid/my-posts
+      // localhost:4200/userid/posts/my-posts
       { path: 'my-posts', component: ViewPostsComponent, resolve: {posts: GetPostsResolver}, children: [
         // localhost:4200/userid/post
         // {path: ':postId', component: PostsDetailComponent, resolve: {post: GetPostResolver}}
       ]},
-      {path: 'my-posts/:postId', component: PostsDetailComponent, resolve: {post: GetPostResolver}}
+      // localhost:4200/userid/posts/my-posts/postid
+      {path: 'my-posts/:postId', component: PostsDetailComponent, resolve: {post: GetPostResolver}},
+
+      // localhost:4200/userid/posts/my-posts/postid
+      {path: 'my-posts/:postId/edit-post', component: EditPostComponent},
+
     ]},
     {path: 'product', component: ProductsComponent, children: [
       {path: 'add-product', component: AddProductComponent},

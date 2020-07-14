@@ -4,6 +4,6 @@ export class Comment {
     public content: string;
     public reactions = 0;
     // tslint:disable-next-line: variable-name
-    public comment_upload_file: File;
+    public comment_upload_file: any;
 
 }

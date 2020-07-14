@@ -1,5 +1,10 @@
 @import "../../../../scss/variables"; //created custom variables
 
+
+.btn-primary {
+	background-color: $primary !important;
+}
+
 /*----------------------- Header css starts ----------------------*/
 
 header{
@@ -15,179 +20,209 @@ header{
 	position:fixed !important;
 }
 
+/* small screens */
 nav {
-	position: relative;
-	top: 0;
-	width: 100%;
-	// background-color: transparent;	
-	background-color: #5b5b5b;
-	transition: 0.2s;
-	z-index: 3;
-	
-
-	.navbckgrdwhite {
-		background-color: $white;
-		transition: all 0.2s;
-	}
-
-	.bgChange {
-		background-color: $text-color;
-	}
-	.nav-white {
-		background-color: $white;
-		transition: all 0.2s;
-		padding-bottom: 40px;
-	}
-	
-	.navbar-brand {
-    	height: 50px;
-   		width: auto;
-    	opacity: 1;
-	}
+	background-color: $primary;
+	@include XS {
+		position: relative;
+		top: 0;
+		width: 100%;
+		// background-color: transparent;	
+		background-color: #5b5b5b;
+		transition: 0.2s;
+		z-index: 3;
 		
-	.logoCollapsed {
-		background-color: $black;
-		height: 50px;
-		width: auto;
-		margin-top: -5px;
-		opacity: 1;
-	}
 
-	.nav-link {
-		font: normal 600 70%/32px 'Muli', 'Arial', sans-serif;
-		text-decoration: none;
-		outline: none;
-		color: $white;
-		text-transform: uppercase;
-		opacity: 1;
-	}
+		.navbckgrdwhite {
+			background-color: $white;
+			transition: all 0.2s;
+		}
 
-	.nav-link:hover, .nav-link:focus, .nav-link:active, .nav-link:visited{
-		color: $white;
-		transition: border 0.2s;
-		border-bottom: 2px solid $primary;
-	}
-
-	.linkcolor{
-		color: $black !important;
-	}
-
-	.active {
-		color: $white;
-		transition: border 0.2s;
-		border-bottom: 2px solid $primary;
-	}
-
-	.btn-outline-primary {
-		color: $primary;
-		outline: none;
-	}
+		.bgChange {
+			background-color: $text-color;
+		}
+		.nav-white {
+			background-color: $white;
+			transition: all 0.2s;
+			padding-bottom: 40px;
+		}
 		
-	.btn-ghost-collapsed{
-		position:relative;
-		border-radius: 20px;
-		margin-top: 5px;
-		width: 25%;
-		height: auto;
-		-webkit-transition:0.2s all;
-		transition:0.2s all;
+		.navbar-brand {
+			height: 50px;
+			width: auto;
+			opacity: 1;
+		}
+			
+		.logoCollapsed {
+			background-color: $black;
+			height: 50px;
+			width: auto;
+			margin-top: -5px;
+			opacity: 1;
+		}
+
+		.nav-link {
+			font: normal 600 70%/32px 'Muli', 'Arial', sans-serif;
+			text-decoration: none;
+			outline: none;
+			color: $white;
+			text-transform: uppercase;
+			opacity: 1;
+		}
+
+		.nav-link:hover, .nav-link:focus, .nav-link:active, .nav-link:visited{
+			color: $white;
+			transition: border 0.2s;
+			border-bottom: 2px solid $primary;
+		}
+
+		.linkcolor{
+			color: $black !important;
+		}
+
+		.active {
+			color: $white;
+			transition: border 0.2s;
+			border-bottom: 2px solid $primary;
+		}
+
+		.btn-outline-primary {
+			color: $primary;
+			outline: none;
+			border-color: $primary !important;
+		} 
+
+		.btn-outline-primary:hover {
+			background-color: $primary;
+
+		} 
+			
+		.btn-ghost-collapsed{
+			position:relative;
+			border-radius: 20px;
+			margin-top: 5px;
+			width: 25%;
+			height: auto;
+			-webkit-transition:0.2s all;
+			transition:0.2s all;
+		}
+
+		.btn-ghost-collapsed:hover{
+			color: $white;
+			width: 35%;
+			padding-right: 45px !important;
+			transition: all 0.3s;
+		}
+
+		.btn-ghost-collapsed:after {
+			// content:"\f178";
+			content:"\f178";
+			font-family:FontAwesome;
+			position:absolute;
+			width: 25px;
+			right: 10px;
+			text-align:center;
+			color: $white;
+			opacity:0;
+			-webkit-transition:0.2s all;
+			transition:0.2s all;
+		}
+
+		.btn-ghost-collapsed:hover:after{
+			opacity:1;
+			transition: 0.5s;
+		}
+		
+		.btn-primary{
+			// padding-top:7px !important;
+			// padding-bottom:5px !important;
+			// padding-right: 20px !important;
+			// padding-left: 20px !important;
+			// background-color: transparent !important;
+			border: 1px solid $primary;
+			color: $white;
+			border-radius: 40px;
+			margin-top: 5px;
+			-webkit-transition:0.2s all;
+			transition:0.2s all;
+			background-color: $primary !important;
+		}
+
+		.btn-ghost:hover{
+			// background-color:#fff;
+			// border: 1px solid #FF6700;
+			// color:#FF6700;
+			padding-right: 45px !important;
+		}
+		
+		.btn-ghost:after {
+			// content:"\f178";
+			content: "\f2f6";
+			font-family:"Font Awesome 5 Free";
+			position:absolute;
+			width: 25px;
+			right: 10px;
+			text-align:center;
+			opacity:0;
+			-webkit-transition:0.2s all;
+			transition:0.2s all;
+		}
+		
+		.btn-ghost:hover:after{
+			opacity:1;
+		}
+
+		.btn-ghost-collapsed.profile-btn{
+			width: 30% !important;
+		}
 	}
 
-	.btn-ghost-collapsed:hover{
-		color: $white;
-		width: 35%;
-		padding-right: 45px !important;
-		transition: all 0.3s;
-	}
-
-	.btn-ghost-collapsed:after {
-		content:"\f178";
-		font-family:FontAwesome;
-		position:absolute;
-		width: 25px;
-		right: 10px;
-		text-align:center;
-		color: $white;
-		opacity:0;
-		-webkit-transition:0.2s all;
-		transition:0.2s all;
-	}
-
-	.btn-ghost-collapsed:hover:after{
-		opacity:1;
-		transition: 0.5s;
-	}
-	
-	.btn-primary{
-		// padding-top:7px !important;
-		// padding-bottom:5px !important;
-		// padding-right: 20px !important;
-		// padding-left: 20px !important;
-		// background-color: transparent !important;
-		border: 1px solid $primary;
-		color: $white;
-		border-radius: 40px;
-		margin-top: 5px;
-		-webkit-transition:0.2s all;
-		transition:0.2s all;
-	}
-
-	.btn-ghost:hover{
-		// background-color:#fff;
-		// border: 1px solid #FF6700;
-		// color:#FF6700;
-		padding-right: 45px !important;
-	}
-	
-	.btn-ghost:after {
-		// content:"\f178";
-		content: "\f2f6";
-		font-family:"Font Awesome 5 Free";
-		position:absolute;
-		width: 25px;
-		right: 10px;
-		text-align:center;
-		opacity:0;
-		-webkit-transition:0.2s all;
-		transition:0.2s all;
-	}
-	
-	.btn-ghost:hover:after{
-		opacity:1;
-	}
-
-}
-
-
-@media (max-width: 767.9px) {
-	nav {
+	@include XS-MD {
 		// background-color: #5b5b5b;	
 
 		.nav-link:hover {
 			border-bottom: none;
 		}
 
-		// .logo {
-		// 	height: 60px;
-		// 	width: auto;
-		// }
+		.logo {
+			height: 60px;
+			width: auto ;
+		}
 
-		// .active {
-		// 	border-bottom: none;
-		// }
+		.nav-white {
+			background-color: $white;
+			transition: all 0.2s;
+			padding-bottom: 30px;
+			margin-left: -20px;
+			padding-left: 8px;
+			margin-top: -10px;
+			padding-top: 9px;
+			// margin-right: -15px !important;
+			// padding-right: 25px;
+		}
+
+		.btn-ghost-collapsed.profile-btn{
+			width: 25%;
+		}
+
+		.nav-link.profile-btn:visited {
+			color: $black;
+		}
+
+		.profile-btn:hover{
+			width: 60px !important;
+			padding-right: 70px !important;
+		}
+	
+		.btn-ghost-collapsed.profile-btn:hover{
+			color: $white !important;
+			width: 95% !important;
+			padding-right: 65px !important;
+			transition: all 0.3s !important;
+		}
 	}
 
-}
-
-@media (max-width: 991.9px) {
-	nav {
-		// background-color: #5b5b5b;	
-
-		// .nav-link:hover {
-		// 	border-bottom: none;
-		// }
-
-		
+	@include MD-LG {
 		.nav-white {
 			background-color: $white;
 			transition: all 0.2s;
@@ -211,7 +246,7 @@ nav {
 
 		
 		.btn-ghost-collapsed.profile-btn{
-			width: 40% !important;
+			width: 25% !important;
 		}
 
 		.nav-link.profile-btn:visited {
@@ -229,25 +264,20 @@ nav {
 			padding-right: 65px !important;
 			transition: all 0.3s !important;
 		}
-	
+
 	}
 
-}
-
-@media (min-width: 992px) {
-	nav {
-
-
+	@include LG {
 		.logo {
 			height: 60px;
-			width: auto;
+			width: auto ;
 		}
 
 		.btn-ghost-collapsed{
 			// position:relative;
 			// border-radius: 20px;
 			margin-top: 0;
-			min-width: 60%;
+			min-width: 60% ;
 			// padding-bottom: 0 !important;
 			// padding-top: 0 !important;
 
@@ -258,8 +288,8 @@ nav {
 	
 		.btn-ghost-collapsed:hover{
 			// color: $white;
-			width: 55%;
-			padding-right: 65px !important;
+			width: 55% ;
+			padding-right: 65px;
 			// transition: all 0.3s;
 		}
 
@@ -268,10 +298,9 @@ nav {
 		// }
 
 	}
-
 }
-/*----------------------- Navbar css ends ----------------------*/
 
+/*----------------------- Navbar css ends ----------------------*/
 /*----------------------- Hero-Image css starts ----------------------*/
 
 #hero-image-div{
@@ -415,11 +444,6 @@ nav {
     }
 }
 
-
-
-
-
-
 @media (max-width: 991.9px) {
 	#hero-image-div{
 		position: relative;
@@ -464,3 +488,93 @@ nav {
 	}
 }
 /*----------------------- Hero-Image css ends ----------------------*/
+
+.btn-outline-primary {
+	color: $primary;
+	outline: none;
+	border-color: $primary !important;
+} 
+
+.btn-outline-primary:hover {
+	background-color: $primary;
+
+} 
+	
+.btn-ghost-collapsed{
+	position:relative;
+	border-radius: 20px;
+	margin-top: 5px;
+	width: 25%;
+	height: auto;
+	-webkit-transition:0.2s all;
+	transition:0.2s all;
+}
+
+.btn-ghost-collapsed:hover{
+	color: $white;
+	width: 35%;
+	padding-right: 45px !important;
+	transition: all 0.3s;
+}
+
+.btn-ghost-collapsed:after {
+	// content:"\f178";
+	content:"\f178";
+	font-family:FontAwesome;
+	position:absolute;
+	width: 25px;
+	right: 10px;
+	text-align:center;
+	color: $white;
+	opacity:0;
+	-webkit-transition:0.2s all;
+	transition:0.2s all;
+}
+
+.btn-ghost-collapsed:hover:after{
+	opacity:1;
+	transition: 0.5s;
+}
+
+.btn-primary{
+	// padding-top:7px !important;
+	// padding-bottom:5px !important;
+	// padding-right: 20px !important;
+	// padding-left: 20px !important;
+	// background-color: transparent !important;
+	border: 1px solid $primary;
+	color: $white;
+	border-radius: 40px;
+	margin-top: 5px;
+	-webkit-transition:0.2s all;
+	transition:0.2s all;
+	background-color: $primary !important;
+}
+
+.btn-ghost:hover{
+	// background-color:#fff;
+	// border: 1px solid #FF6700;
+	// color:#FF6700;
+	padding-right: 45px !important;
+}
+
+.btn-ghost:after {
+	// content:"\f178";
+	content: "\f2f6";
+	font-family:"Font Awesome 5 Free";
+	position:absolute;
+	width: 25px;
+	right: 10px;
+	text-align:center;
+	opacity:0;
+	-webkit-transition:0.2s all;
+	transition:0.2s all;
+}
+
+.btn-ghost:hover:after{
+	opacity:1;
+}
+
+.btn-ghost-collapsed.profile-btn{
+	width: 30% !important;
+}

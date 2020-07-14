@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetPost } from 'src/app/_shared/models/getPost';
 import { ForumService } from 'src/app/_shared/services/forum.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 import { Category } from 'src/app/_shared/models/category.model';
 import { GetComment } from 'src/app/_shared/models/get-comment.model';
@@ -17,10 +17,11 @@ export class ForumDetailComponent implements OnInit {
   trendingPosts: GetPost[];
   categories: Category[];
   // comments: GetComment[];
+  likedPost = false;
 
 
-
-  constructor(private forumService: ForumService, private route: ActivatedRoute, alertify: AlertifyService) { }
+  constructor(private forumService: ForumService, private route: ActivatedRoute, private alertify: AlertifyService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(data => {
@@ -68,15 +69,44 @@ export class ForumDetailComponent implements OnInit {
     this.forumService.getPosts().subscribe((response: any) => {
       // console.log(111, response.data);
       const result = response.data.sort((a, b) => {
+        // console.log(a.totalCommentCount - b.totalCommentCount);
+        // console.log(a.createdAt > b.createdAt);
         return a.createdAt < b.createdAt;
       });
       // console.log(222, result);
       const dateSort = result.sort((a, b) => {
-        return a.totalCommentCount < b.totalCommentCount;
+        return b.totalCommentCount - a.totalCommentCount;
       });
       this.trendingPosts = dateSort.slice(0, 10);
-      // console.log(this.posts);
+      // console.log(dateSort);
 
     });
+  }
+
+  reaction() {
+    if (!this.likedPost) {
+      this.post.likes++;
+      this.forumService.updateReactions(this.post._id, this.post.likes).subscribe((response) => {
+        this.likedPost = true;
+        this.likedPost = true;
+        this.alertify.success('like added successfully');
+      }, error => {
+        this.alertify.error('like wasn\'t added, please retry');
+      }, () => {
+        this.router.navigate(['/forums/posts/' + this.post._id ]);
+      });
+    } else if (this.likedPost) {
+      this.post.likes--;
+      this.forumService.updateReactions(this.post._id, this.post.likes).subscribe((response) => {
+        this.likedPost = false;
+        this.alertify.success('you\'ve unliked the post successfully');
+      }, error => {
+        this.alertify.error('like wasn\'t added, please retry');
+      }, () => {
+        this.router.navigate(['/forums/posts/' + this.post._id ]);
+      });
+    } else {
+      alert('error');
+    }
   }
 }

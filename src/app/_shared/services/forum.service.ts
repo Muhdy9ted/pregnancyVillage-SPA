@@ -9,6 +9,17 @@ import { Category } from '../models/category.model';
 import { map } from 'rxjs/operators';
 import { element } from 'protractor';
 import { Comment } from '../models/comment.model';
+import { UpdatePost } from '../models/update-post.model';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+    // 'Access-Control-Allow-Origin': 'http://localhost:4200/'
+
+  })
+};
 
 
 @Injectable({
@@ -21,6 +32,8 @@ export class ForumService {
   createCommentDto = new Comment();
   categoriesForLP: Category[] = [];
   categoryPosts: GetPost[] = [];
+  updatePostDTO = new UpdatePost();
+
 
 
 
@@ -30,7 +43,38 @@ export class ForumService {
     // tslint:disable-next-line: variable-name
     // const {topic, category, description, upload_file} = this.createPostDto;
     // console.log(file_upload);
-    return this.http.post<any>(this.baseURL + 'topic/', this.createPostDto);
+    console.log(this.createPostDto);
+    const formData = new FormData();
+    formData.append('topic', this.createPostDto.topic);
+    formData.append('category', this.createPostDto.category);
+    formData.append('description', this.createPostDto.description);
+    formData.append('upload_file', this.createPostDto.upload_file);
+    console.log(typeof this.createPostDto.upload_file);
+    console.log(typeof formData.get('upload_file'));
+
+
+    console.log(formData);
+
+    return this.http.post<any>(this.baseURL + 'topic/', formData);
+  }
+
+  updateReactions(id: any, reactions: any) {
+    return this.http.patch<any>(this.baseURL + 'action/like/' + id, reactions, httpOptions );
+  }
+
+  updatePost(id: any) {
+    console.log(this.updatePostDTO);
+    this.updatePostDTO.category = this.updatePostDTO.categoryObj._id;
+    const {topic, description, comment, category} = this.updatePostDTO;
+    console.log({topic, description, comment});
+    return this.http.put<any>(this.baseURL + 'topic/' + id, {topic, description, comment, category});
+    // To update topic by id: Baseurl/forum/topic/:id. payload => topic, description, category, comment (PUT request)
+  }
+
+
+  deletePost(id: any) {
+    // to delete topic by id : Basseurl/forum/topic/:id (DELETE)
+    return this.http.delete(this.baseURL + 'topic/' + id);
   }
 
   getPosts(): Observable<GetPost> {

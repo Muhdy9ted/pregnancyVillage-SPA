@@ -12,6 +12,7 @@ import {DialogModule} from 'primeng/dialog';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 
 
@@ -63,6 +64,7 @@ import { SpinnerComponent } from './components/spinners/spinner/spinner.componen
 import { SpinnerOverlayWrapperComponent } from './components/spinners/spinner-overlay-wrapper/spinner-overlay-wrapper.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RightSideBarComponent } from './components/right-side-bar/right-side-bar.component';
+import { EditPostComponent } from './components/dashboard-contents/post/edit-post/edit-post.component';
 
 export function tokenGetter() {
   return (localStorage.getItem('preg_token'));
@@ -104,6 +106,7 @@ export function tokenGetter() {
     SpinnerOverlayWrapperComponent,
     PageNotFoundComponent,
     RightSideBarComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -125,6 +128,9 @@ export function tokenGetter() {
     FontAwesomeModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'Danger'
+    }),
     JwtModule.forRoot({
       config: {
         tokenGetter,

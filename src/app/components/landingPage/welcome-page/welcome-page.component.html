@@ -28,16 +28,16 @@
                             Forums
                         </a>
                     </li>
-                    <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                    <!-- <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
                         <a class="nav-link disabled" aria-disabled="true" routerLink = "/dashboard" [class.linkcolor]="isCollapsed">
                             Market
                         </a>
-                    </li>
-                    <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                    </li> -->
+                    <!-- <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
                         <a class="nav-link disabled" aria-disabled="true" routerLink = "/dashboard" [class.linkcolor]="isCollapsed">
                             Consultancy
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
                         <a class="nav-link" href="#contact" [class.linkcolor]="isCollapsed">
                             Contact
@@ -86,7 +86,7 @@
                 
             <div id="hero-image-contents">
                 <div class="container">
-                    <h1 class="display-4 animate__animated animate__bounce mb-0 mb-md-3"><span style="color: #F29422;">Pregnancy</span> Village</h1>
+                    <h1 class="display-4 animate__animated animate__bounce mb-0 mb-md-3"><span style="color: #3f97e1;">Pregnancy</span> Village</h1>
                     <small class="small text-muted d-block d-md-none mt-0"><i>share with us</i></small>
                     <p class="animate__animated animate__backInLeft d-none d-md-block">
                         Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
@@ -94,6 +94,12 @@
                         give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
                         kids and women stuffs.
                     </p>
+                    <small class="animate__animated animate__backInLeft d-md-none">
+                        Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
+                        The platform allows women from anywhere share their experience during pregnancy,<br> 
+                        give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
+                        kids and women stuffs.
+                    </small><br>
                     <a href="#forums" class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" 
                         *ngIf="true"  role="button">Forums
                     </a>
@@ -111,12 +117,12 @@
 <p-dialog class="d-none d-md-block" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
     <p class="lead my-3">Your account has been activated, please sign-in to continue</p>
     <p-footer>
-        <button type="button" class="btn btn-outline-primary"  (click)="onLoginClicked()">Sign in</button>
+        <button type="button" class="btn btn-primary"  (click)="onLoginClicked()">Sign in</button>
     </p-footer>
 </p-dialog>
 <p-dialog class="d-block d-md-none" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
     <p class="lead my-3">Your account has been activated, please sign-in to continue</p>
     <p-footer>
-        <button type="button" class="btn btn-outline-primary"  (click)="onLoginClicked()">Sign in</button>
+        <button type="button" class="btn btn-primary"  (click)="onLoginClicked()">Sign in</button>
     </p-footer>
 </p-dialog>

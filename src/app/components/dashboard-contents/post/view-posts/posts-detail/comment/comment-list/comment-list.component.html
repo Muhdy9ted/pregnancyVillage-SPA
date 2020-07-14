@@ -4,6 +4,10 @@
             <h6>{{comment?.userId}}</h6>
             <p style="display: inline-block;" class="pl-2"> {{comment?.content}}</p>
             <p style="display: inline-block;" class="px-1 date text-white">{{comment?.createdAt|date}}</p> <small class="text-muted ml-5" *ngIf="comment?.reactions > 0">{{comment?.reactions}}</small>
+            <!-- <div class="d-flex justify-content-end">
+                <button type="button"  [disabled]="likedComment" (click) = "reaction()" class="btn btn-sm btn-outline-info px-3 mr-3" style=" border-radius: 15px;"> <span style="font-size: 1rem;"><i class="fas fa-thumbs-up"></i></span></button>
+                <button type="button"  [disabled]="!likedComment" (click) = "reaction()"  class="btn btn-sm btn-outline-info px-3" style=" border-radius: 15px;"> <span style="font-size: 1rem;"><i class="fas fa-thumbs-down"></i></span></button>
+            </div> -->
         </div>
     </div>
 </div>

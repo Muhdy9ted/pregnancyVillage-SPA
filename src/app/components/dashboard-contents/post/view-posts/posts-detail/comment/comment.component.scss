@@ -1,3 +1,5 @@
+@import "../../../../../../../scss/variables";
+
 .col-sm-12 {
     padding-left: 0 !important;
     padding-right:  0 !important;
@@ -14,7 +16,7 @@ p{
     line-height: 160%;
     word-spacing: 2px;
     font-weight: 501;
-    color: rgb(63, 63, 63) !important;
+    color: $text-color !important;
     // padding-bottom: 10px;
 }
 
@@ -22,7 +24,7 @@ p{
     position: absolute;
     right: 5%;
     top: 7%;
-    color: rgb(240, 168, 81) !important;
+    color: $primary !important;
     font-size: 70%;
 }
 
@@ -41,7 +43,7 @@ p{
 } 
 
 .text-warning {
-    color: rgb(188, 149, 102);
+    color: $primary;
     text-transform: lowercase;
     font-size: 70%;
     font-weight: 500;
@@ -117,8 +119,8 @@ textarea.ng-valid{
 	padding-right: 20px !important;
 	padding-left: 20px !important;
 	background-color: white !important;
-	border: 1px solid #F29422;
-	color: #F29422;
+	border: 1px solid $primary;
+	color: $primary;
 	border-radius: 40px;
 	margin-top: 5px;
 	-webkit-transition:0.2s all;

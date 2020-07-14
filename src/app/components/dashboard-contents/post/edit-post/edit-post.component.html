@@ -1,0 +1,57 @@
+<section>
+    <div id="section-menu" class="container-fluid">
+        <div id="hero-image-div">
+            <div class="bg-image overlay">            
+                <div id="hero-image-contents" class="row">
+                    <div class="container-fluid">
+                        <div class="col-sm-12">
+                            <div class="container col-sm-7 mx-auto form-cont">
+                                <form class="form-style" id="editPostForm" #editPostForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                                    <div class="form-group">
+                                      <label for="topic">Post's title</label>
+                                      <input type="text" class="form-control" id="topic" placeholder="enter the title of your post here"  required name="topic" #topic="ngModel" minlength="10"
+                                        [(ngModel)]="forumService.updatePostDTO.topic">
+                                      <span class="text-warning text-sm-left"><p>post's title should be more than 10 characters</p></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="select">select a category</label>
+                                        <select class="form-control" required id="category" name="category" >
+                                            <!-- <option value="" [disabled]="true" [selected]="true" [hidden]="true">select your option</option> -->
+                                            <option [value]="forumService.updatePostDTO.categoryObj._id">{{forumService.updatePostDTO.categoryObj.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="details">Post's write-up</label>
+                                      <textarea type="text" class="form-control" id="description" rows="3" placeholder="write your heart out!!!" required name="description" #description="ngModel" minlength="30"
+                                        [(ngModel)]="forumService.updatePostDTO.description"></textarea>
+                                      <span class="text-warning text-sm-left"><p>post's write-up should be more than 30 characters</p></span>
+                                    </div> 
+
+                                        <!-- <div class="form-group">
+                                            <label for="upload">upload a File</label>
+                                            <input type="file" class="form-control-file" id="upload_file"  name="upload_file" #upload_file  (change)="handleFileInput($event.target.files)">
+                                        </div> -->
+                                    <!-- <div class="form-group">
+                                        <label for="upload">attach a File</label>
+                                        <input type="file" class="form-control-file" id="upload_file"  name="upload_file" (change)="onFileSelected($event)">
+                                    </div> -->
+                                    <!-- <div class="form-group">
+                                        <label for="uploadfile">attach a File</label>
+                                        <input type="file" class="form-control-file" id="uploadfile"  name="uploadfile" #uploadfile="ngModel" [(ngModel)]="forumService.createPostDto.upload_file">
+                                        <span  *ngFor="let item of uploader.queue">
+                                            <span class="text-white p-3">filename: </span><span class="text-white"> <strong>{{ item?.file?.name }}</strong> </span>
+                                            <span class="text-white">file-size: </span><span class="text-white" *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</span>
+                                        </span>
+                                    </div> -->
+                                    <div class="form-group pb-1 row">
+                                        <button type="submit" [class.col-sm-3]="editPostForm.invalid" class="btn-ghost pr-1" [disabled]="editPostForm.invalid">Submit <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:20px"></i></button> 
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

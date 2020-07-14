@@ -68,14 +68,16 @@ export class PostByCategoryComponent implements OnInit {
     this.forumService.getPosts().subscribe((response: any) => {
       // console.log(111, response.data);
       const result = response.data.sort((a, b) => {
+        // console.log(a.totalCommentCount - b.totalCommentCount);
+        // console.log(a.createdAt > b.createdAt);
         return a.createdAt < b.createdAt;
       });
       // console.log(222, result);
       const dateSort = result.sort((a, b) => {
-        return a.totalCommentCount < b.totalCommentCount;
+        return b.totalCommentCount - a.totalCommentCount;
       });
       this.trendingPosts = dateSort.slice(0, 10);
-      // console.log(this.posts);
+      // console.log(dateSort);
 
     });
   }

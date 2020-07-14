@@ -28,16 +28,16 @@
                             Forums
                         </a>
                     </li>
-                    <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                    <!-- <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
                         <a class="nav-link disabled" aria-disabled="true" routerLink = "/dashboard" [class.linkcolor]="isCollapsed">
                             Market
                         </a>
-                    </li>
-                    <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                    </li> -->
+                    <!-- <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
                         <a class="nav-link disabled" aria-disabled="true" routerLink = "/dashboard" [class.linkcolor]="isCollapsed">
                             Consultancy
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
                         <a class="nav-link" href="#contact" [class.linkcolor]="isCollapsed">
                             Contact
@@ -86,7 +86,7 @@
                 
             <div id="hero-image-contents">
                 <div class="container">
-                    <h1 class="display-4 animate__animated animate__bounce mb-0 mb-md-3"><span style="color: #F29422;">Pregnancy</span> Village</h1>
+                    <h1 class="display-4 animate__animated animate__bounce mb-0 mb-md-3"><span style="color: #3f97e1;">Pregnancy</span> Village</h1>
                     <small class="small text-muted d-block d-md-none mt-0"><i>share with us</i></small>
                     <p class="animate__animated animate__backInLeft d-none d-md-block">
                         Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
@@ -94,6 +94,12 @@
                         give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
                         kids and women stuffs.
                     </p>
+                    <small class="animate__animated animate__backInLeft d-md-none">
+                        Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
+                        The platform allows women from anywhere share their experience during pregnancy,<br> 
+                        give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
+                        kids and women stuffs.
+                    </small><br>
                     <a href="#forums" class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" 
                         *ngIf="true"  role="button">Forums
                     </a>
@@ -115,7 +121,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="container">
-                        <h1 class=""> Share your stories with &mdash; <span style="color: #F29422;;">LOVE</span></h1>
+                        <h1 class=""> Share your stories with &mdash; <span style="color: #3f97e1;">LOVE</span></h1>
                         <p class="mb-4 text-left">
                             Pregnancy village is Nigeria's first online community platform for pregnant women.
                             The platform allows women from anywhere share their experience during pregnancy,<br> 
@@ -128,7 +134,10 @@
                     <div class="card">
                         <div class="card-body">
                           <h5 class="card-title text-capitalize">Forums  <i class="ml-1 fas fa-users icon-big"></i></h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <p class="card-text">Connect with other mothers and mothers-to-be on our pregnancy forum. 
+                              Ask questions and share tips on getting pregnant, journey through pregnancy, 
+                              delivery, parenting, feeding and baby care.
+                           </p>
                         </div>
                     </div>
                 </div>
@@ -137,7 +146,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-capitalize">Market  <i class="ml-1 fas fa-store-alt icon-big"></i></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Find the best product for you and your baby in our online shop.
+                                Become a vendor or buy pregnancy care products, maternity pillow, maternity lingerie,
+                                 bedsheets, baby products et al, at the best price.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -145,8 +157,11 @@
                 <div class="col-12 col-sm-6 col-lg-3 mb-2">
                     <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title text-capitalize">Consultance <i class="fas fa-chalkboard-teacher ml-1 icon-big"></i></h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <h5 class="card-title text-capitalize">Consultancy <i class="fas fa-chalkboard-teacher ml-1 icon-big"></i></h5>
+                          <p class="card-text">Book a one-on-one consultation session with our in-house doctors, 
+                              obstetrician and midwife who listens to your concerns,
+                               answer your questions provide useful information and suggestions on healthy pregnancy practices.
+                          </p>
                         </div>
                     </div>
                 </div>
@@ -155,7 +170,9 @@
                     <div class="card">
                         <div class="card-body">
                           <h5 class="card-title  text-capitalize">Contact  <i class="ml-1 far fa-id-card icon-big"></i></h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <p class="card-text">Hi, there. How may we help you?
+                            For further inquiries, complaints or feedback. Kindly reach out to us and tell us how we can help you.
+                          </p>
                         </div>
                     </div>
                 </div>
@@ -222,7 +239,7 @@
     <div id="section-tabset" class="container-fluid my-2 pd-3">
         <div class="row">
             <div class="col-sm-12">
-                <a name="forums"><h1 class=""> Join the Community and share &mdash; <span style="color: #F29422;">FORUMS</span></h1></a>
+                <a name="forums"><h1 class=""> Join the Community and share &mdash; <span style="color: #3f97e1;">FORUMS</span></h1></a>
             </div>
         </div>
 
@@ -232,16 +249,22 @@
                     <!-- <div *ngFor="let post of categoryPosts"> -->
                         <tab *ngFor="let item of postsBycategory" heading="{{item.name}}" id="tab1">
                             <div class="row">
-                                <div class="col-12 col-md-6 col-lg-6" *ngFor="let post of item.posts.slice(0,4)">
+                                <div class="col-12 col-md-6" *ngFor="let post of item.posts.slice(0,12)">
                                     <div class="card">
                                         <div class="row card-body forums-list" >
                                             <div class="col-12 author">
-                                                <h5 class="card-text text-muted"> {{limitString(post.userId, 20)}}</h5>
+                                                <h6 class="card-text text-muted d-inline"> {{limitString(post.userId, 20)}}</h6> <p class=" d-inline-block ml-5 time">25 mins ago</p>
                                             </div>
                                             <div class="col-12 message">
                                                 <a [routerLink]="['/forums/posts', post.id]"><h5 class="card-title">{{limitString(post.topic, 20)}}</h5></a>
-                                                <p class="card-text">
+                                                <p class="card-text d-sm-none d-md-block d-lg-none">
                                                     {{limitString(post.description, 70)}}
+                                                </p>
+                                                <p class="card-text d-none d-sm-block d-md-none">
+                                                    {{limitString(post.description, 120)}}
+                                                </p>
+                                                <p class="card-text d-none d-lg-block">
+                                                    {{limitString(post.description, 150)}}
                                                 </p>
                                             </div>
                                             <!-- <div class="col-sm-2 icons">
@@ -258,6 +281,9 @@
                     <!-- </div> -->
                 </tabset>
             </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a class="nav-link" routerLink ="/forums/posts" class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" role="button">View more topics..</a>
         </div>
     </div>
 </section>

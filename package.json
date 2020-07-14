@@ -28,6 +28,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "alertifyjs": "^1.13.1",
+    "angular-confirmation-popover": "^6.0.0",
     "angular2-text-mask": "^9.0.0",
     "animate.css": "^4.1.0",
     "aos": "^2.3.4",

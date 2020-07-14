@@ -7,7 +7,7 @@ import { CanDeactivate } from '@angular/router';
   })
 export class PreventUnsavedChanges implements CanDeactivate<DashboardComponent> {
     canDeactivate(component: DashboardComponent) {
-        if (component.editProfileForm.dirty) {
+        if (component.editProfileForm?.dirty) {
             return confirm('Are you sure you want to continue, any unsaved changes will be lost');
         }
         return true;

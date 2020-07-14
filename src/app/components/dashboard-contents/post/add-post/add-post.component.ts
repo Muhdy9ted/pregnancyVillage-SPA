@@ -6,6 +6,7 @@ import { Post } from 'src/app/_shared/models/post.model';
 import { FileUploader } from 'ng2-file-upload';
 import { NgForm } from '@angular/forms';
 import { Category } from 'src/app/_shared/models/category.model';
+import { AuthService } from 'src/app/_shared/services/auth.service';
 
 
 @Component({
@@ -23,8 +24,11 @@ export class AddPostComponent implements OnInit {
   uploader: FileUploader;
   selectedFile = null;
   selectedCategory = null;
+  userId = this.authService.userID;
 
-  constructor(public forumService: ForumService, private router: Router, private alertify: AlertifyService) { }
+
+  constructor(public forumService: ForumService, private router: Router, private alertify: AlertifyService,
+              private authService: AuthService) { }
 
   ngOnInit() {
     // this.createCategory();
@@ -116,16 +120,18 @@ export class AddPostComponent implements OnInit {
       this.createdPost = response;
       // console.log(this.createdPost);
     }, error => {
-      this.alertify.error('your Post wasn\'t created, please retry!');
+      this.spin = false;
+      this.alertify.error('your post wasn\'t created, please retry!');
     }, () => {
       this.alertify.success('Post created successfully');
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/' + this.userId + '/posts/my-posts']);
     });
   }
 
   handleFileInput(files: FileList) {
     // this.forumService.createCommentDto.comment_upload_file = files.item(0);
     this.forumService.createPostDto.upload_file = files.item(0);
+    console.log(this.forumService.createPostDto);
   }
 
 }
