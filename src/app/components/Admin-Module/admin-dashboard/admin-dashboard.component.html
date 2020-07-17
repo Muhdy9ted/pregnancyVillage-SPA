@@ -1,0 +1,55 @@
+<app-admin-navbar></app-admin-navbar>
+<section id="admin">
+    <div class="container body-container">
+        <div class="row mt-2">
+            <div class="col-4 mb-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current users</h5>
+                        <p class="card-text">{{numberOfUsers}} current users</p>
+                        <a [routerLink]="['/admin/users-list']" routerLinkActive="router-link-active"  class="btn btn-primary">view</a>
+                    </div>
+                    </div>
+            </div>
+            <div class="col-4 mb-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Posts</h5>
+                        <p class="card-text">{{numberOfPosts}} current posts</p>
+                        <a [routerLink]="['/admin/posts']" routerLinkActive="router-link-active"  class="btn btn-primary">view</a>
+                    </div>
+                    </div>
+            </div>
+            <div class="col-4 mb-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Categories</h5>
+                        <p class="card-text">{{numberOfCategories}} current categories</p>
+                        <a [routerLink]="['/admin/categories']" routerLinkActive="router-link-active"  class="btn btn-primary">view</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 mb-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Products</h5>
+                        <p class="card-text">0 current products</p>
+                        <!-- <a href="#"  class="btn btn-primary">view</a> -->
+                        <button class="btn btn-primary" [disabled]=true></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 mb-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Services</h5>
+                        <p class="card-text">0 current Services</p>
+                        <!-- <a href="#"  class="btn btn-primary">view</a> -->
+                        <button class="btn btn-primary" [disabled]=true></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-adminfooter></app-adminfooter>

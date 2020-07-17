@@ -1,4 +1,4 @@
-import { Component,  OnInit  } from '@angular/core';
+import { Component,  OnInit, OnDestroy  } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, Event, NavigationCancel, NavigationError, ActivatedRoute, Params } from '@angular/router';
 import * as AOS from 'aos';
 import { AuthService } from './_shared/services/auth.service';
@@ -10,10 +10,12 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent  implements OnInit {
+export class AppComponent  implements OnInit,  OnDestroy {
   title = 'pregnancyvillage-front';
   jwtHelper = new JwtHelperService();
   showSpinner = false;
+  mySubscription;
+
 
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe((routerEvent: Event) => {
@@ -25,9 +27,19 @@ export class AppComponent  implements OnInit {
         this.showSpinner = false;
       }
     });
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+         // Trick the Router into believing it's last link wasn't previously loaded
+         this.router.navigated = false;
+      }
+    });
+
   }
 
   ngOnInit() {
+    // console.log('admin loades too');
 
     AOS.init();
 
@@ -39,6 +51,12 @@ export class AppComponent  implements OnInit {
       this.authService.userID = userEmail.substring(0, pos );
       // console.log(this.authService.decodedToken);
       // this.authService.userIdURL = this.authService.decodedToken?.userId;
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
     }
   }
 }

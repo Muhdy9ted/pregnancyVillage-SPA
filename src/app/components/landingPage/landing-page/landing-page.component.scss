@@ -21,7 +21,7 @@ header{
 
 /* small screens */
 nav {
-	background-color: $primary;
+	// background-color: $primary !important;
 	@include XS {
 		position: relative;
 		top: 0;
@@ -318,25 +318,26 @@ nav {
 			right:0;
 			top:0;
 			bottom:0;
-			background-image: url(../../../../assets/css/img/preg6.jpg);
+			// background-image: url(../../../../assets/css/img/preg6.jpg);
+			background-image: url(../../../../assets/css/img/hero-image.jpg);
 			background-position: top center;
-			background-size:cover;
+			background-size: contain;
 			background-attachment:fixed;
 			background-repeat: no-repeat;
 		}
 	
-		.bg-image.overlay:after {
-			content:"";
-			position:absolute;
-			left:0;
-			right:0;
-			top:0;
-			bottom:0;
-			background-image: linear-gradient(to right, #292929 0%, #332f2f 100%);
-			// background-image: linear-gradient(to right, #3f97e1 0%, #3f97e1 100%);
-			opacity: 0.8;
-			z-index: 1;
-		}
+		// .bg-image.overlay:after {
+		// 	content:"";
+		// 	position:absolute;
+		// 	left:0;
+		// 	right:0;
+		// 	top:0;
+		// 	bottom:0;
+		// 	background-image: linear-gradient(to right, #292929 0%, #332f2f 100%);
+		// 	// background-image: linear-gradient(to right, #3f97e1 0%, #3f97e1 100%);
+		// 	opacity: 0.8;
+		// 	z-index: 1;
+		// }
 
 		// #hero-image-ad-contents {
 		// 	position: relative;
@@ -473,7 +474,7 @@ nav {
 
 #section-features{
 	
-	padding: 100px 0;
+	padding: 0 0;
 
 	h1 {
 		// font-size: 180%;

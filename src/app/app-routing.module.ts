@@ -30,11 +30,13 @@ import { EditPostComponent } from './components/dashboard-contents/post/edit-pos
 
 
 const routes: Routes = [
+  {path: 'admin', loadChildren: () => import('./components/Admin-Module/admin.module').then(m => m.AdminModule)},
+
   // localhost:4200
   {path: '', component: LandingPageComponent, resolve: {categoryPosts: GetCategoriesPostsLPageResolver}},
 
   // localhost:4200/admin #lazyloading admin module
-  {path: 'admin', loadChildren: './components/Admin-Module/admin.module#AdminModule'},
+
 
   // localhost:4200/welcome
   {path: 'welcome', component: WelcomePageComponent},
@@ -47,7 +49,7 @@ const routes: Routes = [
 
   //  localhost:4200/category/id
   {path: 'category/:categoryId', component: PostByCategoryComponent, resolve: {catPosts: GetPostsByCategory}},
-  {path: 'page-not-found', component: PageNotFoundComponent},
+  // {path: 'page-not-found', component: PageNotFoundComponent},
 
   // localhost:4200/userid
   {path: ':userId', component: DashboardControllerComponent , runGuardsAndResolvers: 'always', canActivate: [AuthGuard], children: [
