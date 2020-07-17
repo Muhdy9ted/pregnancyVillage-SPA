@@ -147,6 +147,7 @@ export class PostsDetailComponent implements OnInit {
         this.alertify.success('like added successfully');
       }, error => {
         this.alertify.error('like wasn\'t added, please retry');
+        this.post.likes--;
       }, () => {
         this.router.navigate(['/forums/posts/' + this.post._id ]);
       });
@@ -157,6 +158,7 @@ export class PostsDetailComponent implements OnInit {
         this.alertify.success('you\'ve unliked the post successfully');
       }, error => {
         this.alertify.error('like wasn\'t added, please retry');
+        this.post.likes ++;
       }, () => {
         this.router.navigate(['/forums/posts/' + this.post._id ]);
       });

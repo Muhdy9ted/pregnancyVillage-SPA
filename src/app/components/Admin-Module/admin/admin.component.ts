@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/_shared/services/auth.service';
+import { Router } from '@angular/router';
+import { AlertifyService } from 'src/app/_shared/services/alertify.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(public authService: AuthService, private router: Router, private alertify: AlertifyService) {
+  //  {
+  //   router.events
+  //     .subscribe(console.log);
+  //   }
   }
 
+  ngOnInit(): void {
+
+  }
 }

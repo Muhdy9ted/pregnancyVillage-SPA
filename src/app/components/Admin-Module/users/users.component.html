@@ -1,0 +1,104 @@
+<app-admin-navbar></app-admin-navbar>
+<section id="admin">
+    <div class="container body-container">
+        <div class="row">
+            <div class="col-12 justify-content-center">
+                <ul class="list-group list-group-flush p-2">
+                    <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2" *ngFor="let user of users">
+                        <button type="button" (click)="showInfo(user)" class="btn btn-link">{{user.firstName |titlecase}} {{user.lastName |titlecase}}</button>
+
+                        <span>
+                            <span *ngIf="user.isVerified"><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Verified</span></span>
+                            <!-- <span><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Suspended</span></span> -->
+                            <span *ngIf="!user.isVerified"><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Not verified</span></span>
+                            <span *ngIf="user.active"><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Active</span></span>
+                            <!-- <span><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Suspended</span></span> -->
+                            <span *ngIf="!user.active"><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Deactivated</span></span> 
+                            <button type="button" [disabled]="!user.active" (click)="suspendUser(user._id)" class="btn btn-danger mr-2">suspend</button>
+                            <button type="button" [disabled]="user.active" (click)="unsuspendUser(user._id)" class="btn btn-warning">unsuspend</button> 
+                        </span>
+                    </li>
+                </ul>
+
+                <p-dialog class="my-3 d-block d-lg-none" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                    <div class="card col-10 my-2 container mx-auto card-modal">
+                        <ul class="list-group list-group-flush p-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user?.firstName |titlecase}}
+                              <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-user"></i></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user?.lastName |titlecase}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-user"></i></span>
+                              </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user?.createdAt |date}}
+                              <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-calendar-alt"></i></span>
+                            </li>
+                             
+                            <!-- <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user.phoneNumber}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="fas fa-phone"></i></span>
+                            </li> -->
+                            <li class="list-group-item d-flex d-sm-none d-lg-flex justify-content-between align-items-center card-text mb-2 font-weight-bold small">
+                                {{user?.email}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-envelope"></i></span>
+                            </li>
+                            <li class="list-group-item d-none d-sm-flex d-lg-none justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user?.email}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-envelope"></i></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold small">
+                                <!-- {{userService.userProfileInfo.email}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-envelope"></i></span> -->
+                            </li>
+                          </ul>
+                    </div>
+                    <p-footer>
+                        <button type="button" class="btn btn-secondary"  (click)="displayModal=false">Close</button>
+                    </p-footer>
+                </p-dialog>
+            
+                <p-dialog class="my-3 d-none d-lg-block" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                    <div class="card col-8 my-2 container mx-auto">
+                        <ul class="list-group list-group-flush p-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user?.firstName |titlecase}}
+                              <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-user"></i></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user?.lastName |titlecase}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-user"></i></span>
+                              </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user?.createdAt |date}}
+                              <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-calendar-alt"></i></span>
+                            </li>
+                             
+                            <!-- <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user.phoneNumber}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="fas fa-phone"></i></span>
+                            </li> -->
+                            <li class="list-group-item d-flex d-sm-none d-lg-flex justify-content-between align-items-center card-text mb-2 font-weight-bold small">
+                                {{user?.email}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-envelope"></i></span>
+                            </li>
+                            <li class="list-group-item d-none d-sm-flex d-lg-none justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user?.email}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-envelope"></i></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold small">
+                                <!-- {{userService.userProfileInfo.email}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-envelope"></i></span> -->
+                            </li>
+                          </ul>
+                    </div>
+                    <p-footer>
+                        <button type="button" class="btn btn-secondary"  (click)="displayModal=false">Close</button>
+                    </p-footer>
+                </p-dialog>
+            </div>
+        </div>
+    </div>
+</section>
+<app-adminfooter></app-adminfooter>

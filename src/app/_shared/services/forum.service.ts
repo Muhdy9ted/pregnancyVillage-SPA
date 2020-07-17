@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 import { element } from 'protractor';
 import { Comment } from '../models/comment.model';
 import { UpdatePost } from '../models/update-post.model';
+import { CreateCategory } from '../models/create-category.model';
 
 
 const httpOptions = {
@@ -33,6 +34,7 @@ export class ForumService {
   categoriesForLP: Category[] = [];
   categoryPosts: GetPost[] = [];
   updatePostDTO = new UpdatePost();
+  createCategoryDTO = new CreateCategory();
 
 
 
@@ -59,11 +61,11 @@ export class ForumService {
   }
 
   updateReactionsLike(id: any, reactions: any) {
-    return this.http.patch<any>(this.baseURL + 'action/like/' + id, reactions);
+    return this.http.patch<any>(this.baseURL + 'action/like/' + id, {});
   }
 
   updateReactionsUnlike(id: any, reactions: any) {
-    return this.http.patch<any>(this.baseURL + 'action/unlike/' + id, reactions);
+    return this.http.patch<any>(this.baseURL + 'action/unlike/' + id, {});
   }
 
   updatePost(id: any) {
@@ -99,7 +101,13 @@ export class ForumService {
   }
 
   createCategory() {
-    return this.http.post(this.baseURL + 'category/', {name: 'Food', description: 'Everything relating to meals during pregnancy period'});
+    const {name, description} = this.createCategoryDTO;
+    return this.http.post(this.baseURL + 'category/', {name, description});
+  }
+
+  updateCategory(id: any) {
+    const {name, description} = this.createCategoryDTO;
+    return this.http.put(this.baseURL + 'category/' + id, {name, description});
   }
 
   getCategories(): Observable<Category[]> {
@@ -123,4 +131,13 @@ export class ForumService {
     return this.http.get(this.baseURL +  `category/${id}`);
   }
 
+  approvePost(id: any) {
+    return this.http.patch(this.baseURL + 'topic/approve/' + id, {});
+
+  }
+
+  declinePost(id: any) {
+    return this.http.patch(this.baseURL + 'topic/unapproved/' + id, {});
+
+  }
 }

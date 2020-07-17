@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserProfile } from '../models/user-profile.model';
 import { UpdateUser } from '../models/updateUser.model';
+import { UserCred } from '../models/user-cred.model';
 // import { UserProfile } from '../models/userProfile';
 
 @Injectable({
@@ -24,12 +25,20 @@ export class UserService {
   }
 
   listUsers() {
-    return this.http.get(this.baseURL + 'auth/users');
+    return this.http.get(this.baseURL + 'auth/users').pipe(map((response: any) => response.data));
   }
 
   updateUser(user: UpdateUser): Observable<UpdateUser> {
     const {firstName, lastName, email, phoneNumber} = user;
     return this.http.put<UpdateUser>(this.baseURL + 'users/profile/update', {firstName, lastName, email, phoneNumber});
+  }
+
+  suspendUser(id: any) {
+    return this.http.patch(this.baseURL + 'auth/users/suspend/' + id, {}); // Baseurll/forum/topic/approve/:id (PATCH)
+  }
+
+  unsuspendUser(id: any) {
+    return this.http.patch(this.baseURL + 'auth/users/unsuspend/' + id, {}); // Baseurll/forum/topic/approve/:id (PATCH)
   }
 
   // updateProfile() {

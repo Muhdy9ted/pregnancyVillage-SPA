@@ -1,0 +1,279 @@
+<app-admin-navbar></app-admin-navbar>
+<section id="admin">
+    <div class="container body-container">
+        <div class="row">
+            <div class="col-12 justify-content-center">
+                <ul class="list-group list-group-flush p-2">
+                    <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-5">
+                        <button type="button" (click)="showDisplayModal1()" class="btn btn-success btn-block-lg">Create New Category</button>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 mt-3" *ngFor="let category of postsBycategory">
+                        {{category.name}}
+
+                        <span>
+                            <span><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">{{category.posts.length}} posts</span></span> 
+                            <button type="button" (click)="showDisplayModal2(category)" class="btn btn-primary mr-2">update</button>
+                            <button type="button" (click)="showDisplayModal3(category)" class="btn btn-warning">view posts</button> 
+                        </span>
+                    </li>
+                </ul>
+
+                <p-dialog class="my-3 d-block d-lg-none" [(visible)]="displayModal3" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                    <div class="card col-12 my-2 container card-modal">
+                        <ul class="list-group list-group-flush p-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2" *ngFor="let post of category?.posts">
+                                  {{post?.topic}} <strong> {{post?.userId}}</strong>
+
+
+                                <span>
+                                    <span *ngIf="post?.approval_status === 'approved'"><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Approved</span></span>
+                                    <span *ngIf="post?.approval_status === 'declined'"><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Declined</span></span> 
+                                    <!-- <button type="button" (click)="approvePost(post._id)" class="btn btn-danger mr-2">Approve</button> -->
+                                    <!-- <button type="button" (click)="declinePost(post._id)" class="btn btn-warning">Decline Post</button>  -->
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <p-footer>
+                        <button type="button" class="btn btn-secondary"  (click)="displayModal3=false">Close</button>
+                    </p-footer>
+                </p-dialog>
+
+                <p-dialog class="my-3 d-none d-lg-block" [(visible)]="displayModal3" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                    <div class="card col-12 my-2 container">
+                        <ul class="list-group list-group-flush p-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2" *ngFor="let post of category?.posts">
+                                  {{post?.topic}} <strong> {{post?.userId}}</strong>
+
+
+                                <span>
+                                    <span *ngIf="post?.approval_status === 'approved'"><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Approved</span></span>
+                                    <span *ngIf="post?.approval_status === 'declined'"><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Declined</span></span> 
+                                    <!-- <button type="button" (click)="approvePost(post._id)" class="btn btn-danger mr-2">Approve</button> -->
+                                    <!-- <button type="button" (click)="declinePost(post._id)" class="btn btn-warning">Decline Post</button>  -->
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <p-footer>
+                        <button type="button" class="btn btn-secondary"  (click)="displayModal3=false">Close</button>
+                    </p-footer>
+                </p-dialog>
+
+
+                <p-dialog class="my-3 d-block d-lg-none" [(visible)]="displayModal1" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                    <div class="card col-12 my-2 container card-modal">
+                        <div class="container col-12 form-cont">
+                            <form class="form-style" id="categoryForm" #categoryForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmitCreateCat()">
+                                <div class="form-group">
+                                  <label for="topic">Category's title</label>
+                                  <input type="text" class="form-control" id="ttitle" placeholder="enter the title of the category here"  required name="title" #topic="ngModel" minlength="3"
+                                    [(ngModel)]="forumService.createCategoryDTO.name">
+                                  <span class="text-warning text-sm-left"><p>category's title should be more than 3 characters</p></span>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="select">select a category</label>
+                                    <select class="form-control" required id="category" name="category" (change)="onCategorySelected($event)" >
+                                        <option value="" [disabled]="true" [selected]="true" [hidden]="true">select your option</option>
+                                        <option *ngFor="let category of this.categories" [value]="category._id">{{category.name}}</option>
+
+                                    </select>
+                                </div> -->
+                                <div class="form-group">
+                                  <label for="details">Category's description</label>
+                                  <textarea type="text" class="form-control" id="description" rows="3" placeholder="write your heart out!!!" required name="description" #description="ngModel" minlength="30"
+                                    [(ngModel)]="forumService.createCategoryDTO.description"></textarea>
+                                  <span class="text-warning text-sm-left"><p>category's description should be more than 30 characters</p></span>
+                                </div> 
+
+                                    <!-- <div class="form-group">
+                                        <label for="upload">upload a File</label>
+                                        <input type="file" class="form-control-file" id="upload_file"  name="upload_file" #upload_file  (change)="handleFileInput($event.target.files)">
+                                    </div> -->
+                                <!-- <div class="form-group">
+                                    <label for="upload">attach a File</label>
+                                    <input type="file" class="form-control-file" id="upload_file"  name="upload_file" (change)="onFileSelected($event)">
+                                </div> -->
+                                <!-- <div class="form-group">
+                                    <label for="uploadfile">attach a File</label>
+                                    <input type="file" class="form-control-file" id="uploadfile"  name="uploadfile" #uploadfile="ngModel" [(ngModel)]="forumService.createPostDto.upload_file">
+                                    <span  *ngFor="let item of uploader.queue">
+                                        <span class="text-white p-3">filename: </span><span class="text-white"> <strong>{{ item?.file?.name }}</strong> </span>
+                                        <span class="text-white">file-size: </span><span class="text-white" *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</span>
+                                    </span>
+                                </div> -->
+                                <div class="form-group pb-1 row">
+                                    <button type="submit" [class.col-sm-3]="categoryForm.invalid" class="btn-ghost btn-block" [disabled]="categoryForm.invalid">Submit <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:20px"></i></button> 
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <p-footer>
+                        <button type="button" class="btn btn-secondary"  (click)="displayModal1=false">Close</button>
+                    </p-footer>
+                </p-dialog>
+            
+                <p-dialog class="my-3 d-none d-lg-block" [(visible)]="displayModal1" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                    <div class="card col-12 my-2 container">
+                        <div class="container col-12 form-cont">
+                            <form class="form-style" id="categoryForm" #categoryForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmitCreateCat()">
+                                <div class="form-group">
+                                  <label for="topic">Category's title</label>
+                                  <input type="text" class="form-control" id="ttitle" placeholder="enter the title of the category here"  required name="title" #topic="ngModel" minlength="3"
+                                    [(ngModel)]="forumService.createCategoryDTO.name">
+                                  <span class="text-warning text-sm-left"><p>category's title should be more than 3 characters</p></span>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="select">select a category</label>
+                                    <select class="form-control" required id="category" name="category" (change)="onCategorySelected($event)" >
+                                        <option value="" [disabled]="true" [selected]="true" [hidden]="true">select your option</option>
+                                        <option *ngFor="let category of this.categories" [value]="category._id">{{category.name}}</option>
+
+                                    </select>
+                                </div> -->
+                                <div class="form-group">
+                                  <label for="details">Category's description</label>
+                                  <textarea type="text" class="form-control" id="description" rows="3" placeholder="write your heart out!!!" required name="description" #description="ngModel" minlength="30"
+                                    [(ngModel)]="forumService.createCategoryDTO.description"></textarea>
+                                  <span class="text-warning text-sm-left"><p>category's description should be more than 30 characters</p></span>
+                                </div> 
+
+                                    <!-- <div class="form-group">
+                                        <label for="upload">upload a File</label>
+                                        <input type="file" class="form-control-file" id="upload_file"  name="upload_file" #upload_file  (change)="handleFileInput($event.target.files)">
+                                    </div> -->
+                                <!-- <div class="form-group">
+                                    <label for="upload">attach a File</label>
+                                    <input type="file" class="form-control-file" id="upload_file"  name="upload_file" (change)="onFileSelected($event)">
+                                </div> -->
+                                <!-- <div class="form-group">
+                                    <label for="uploadfile">attach a File</label>
+                                    <input type="file" class="form-control-file" id="uploadfile"  name="uploadfile" #uploadfile="ngModel" [(ngModel)]="forumService.createPostDto.upload_file">
+                                    <span  *ngFor="let item of uploader.queue">
+                                        <span class="text-white p-3">filename: </span><span class="text-white"> <strong>{{ item?.file?.name }}</strong> </span>
+                                        <span class="text-white">file-size: </span><span class="text-white" *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</span>
+                                    </span>
+                                </div> -->
+                                <div class="form-group pb-1 row">
+                                    <button type="submit" [class.col-sm-3]="categoryForm.invalid" class="btn-ghost btn-block" [disabled]="categoryForm.invalid">Submit <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:20px"></i></button> 
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <p-footer>
+                        <button type="button" class="btn btn-secondary"  (click)="displayModal1=false">Close</button>
+                    </p-footer>
+                </p-dialog>
+
+
+
+
+                <p-dialog class="my-3 d-block d-lg-none" [(visible)]="displayModal2" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                    <div class="card col-12 my-2 container card-modal">
+                        <div class="container col-12 form-cont">
+                            <form class="form-style" id="updateCategoryForm" #updateCategoryForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmitUpdateCat()">
+                                <div class="form-group">
+                                  <label for="topic">Category's title</label>
+                                  <input type="text" class="form-control" id="ttitle" placeholder="enter the title of the category here"  required name="title" #topic="ngModel" minlength="3"
+                                    [(ngModel)]="forumService.createCategoryDTO.name">
+                                  <span class="text-warning text-sm-left"><p>category's title should be more than 3 characters</p></span>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="select">select a category</label>
+                                    <select class="form-control" required id="category" name="category" (change)="onCategorySelected($event)" >
+                                        <option value="" [disabled]="true" [selected]="true" [hidden]="true">select your option</option>
+                                        <option *ngFor="let category of this.categories" [value]="category._id">{{category.name}}</option>
+
+                                    </select>
+                                </div> -->
+                                <div class="form-group">
+                                  <label for="details">Category's description</label>
+                                  <textarea type="text" class="form-control" id="description" rows="3" placeholder="write your heart out!!!" required name="description" #description="ngModel" minlength="30"
+                                    [(ngModel)]="forumService.createCategoryDTO.description"></textarea>
+                                  <span class="text-warning text-sm-left"><p>category's description should be more than 30 characters</p></span>
+                                </div> 
+
+                                    <!-- <div class="form-group">
+                                        <label for="upload">upload a File</label>
+                                        <input type="file" class="form-control-file" id="upload_file"  name="upload_file" #upload_file  (change)="handleFileInput($event.target.files)">
+                                    </div> -->
+                                <!-- <div class="form-group">
+                                    <label for="upload">attach a File</label>
+                                    <input type="file" class="form-control-file" id="upload_file"  name="upload_file" (change)="onFileSelected($event)">
+                                </div> -->
+                                <!-- <div class="form-group">
+                                    <label for="uploadfile">attach a File</label>
+                                    <input type="file" class="form-control-file" id="uploadfile"  name="uploadfile" #uploadfile="ngModel" [(ngModel)]="forumService.createPostDto.upload_file">
+                                    <span  *ngFor="let item of uploader.queue">
+                                        <span class="text-white p-3">filename: </span><span class="text-white"> <strong>{{ item?.file?.name }}</strong> </span>
+                                        <span class="text-white">file-size: </span><span class="text-white" *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</span>
+                                    </span>
+                                </div> -->
+                                <div class="form-group pb-1 row">
+                                    <button type="submit" [class.col-sm-3]="updateCategoryForm.invalid" class="btn-ghost btn-block" [disabled]="updateCategoryForm.invalid">Submit <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:20px"></i></button> 
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <p-footer>
+                        <button type="button" class="btn btn-secondary"  (click)="displayModal2=false">Close</button>
+                    </p-footer>
+                </p-dialog>
+            
+                <p-dialog class="my-3 d-none d-lg-block" [(visible)]="displayModal2" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                    <div class="card col-12 my-2 container">
+                        <div class="container col-12 form-cont">
+                            <form class="form-style" id="updateCategoryForm" #updateCategoryForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmitUpdateCat()">
+                                <div class="form-group">
+                                  <label for="topic">Category's title</label>
+                                  <input type="text" class="form-control" id="ttitle" placeholder="enter the title of the category here"  required name="title" #topic="ngModel" minlength="3"
+                                    [(ngModel)]="forumService.createCategoryDTO.name">
+                                  <span class="text-warning text-sm-left"><p>category's title should be more than 3 characters</p></span>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="select">select a category</label>
+                                    <select class="form-control" required id="category" name="category" (change)="onCategorySelected($event)" >
+                                        <option value="" [disabled]="true" [selected]="true" [hidden]="true">select your option</option>
+                                        <option *ngFor="let category of this.categories" [value]="category._id">{{category.name}}</option>
+
+                                    </select>
+                                </div> -->
+                                <div class="form-group">
+                                  <label for="details">Category's description</label>
+                                  <textarea type="text" class="form-control" id="description" rows="3" placeholder="write your heart out!!!" required name="description" #description="ngModel" minlength="30"
+                                    [(ngModel)]="forumService.createCategoryDTO.description"></textarea>
+                                  <span class="text-warning text-sm-left"><p>category's description should be more than 30 characters</p></span>
+                                </div> 
+
+                                    <!-- <div class="form-group">
+                                        <label for="upload">upload a File</label>
+                                        <input type="file" class="form-control-file" id="upload_file"  name="upload_file" #upload_file  (change)="handleFileInput($event.target.files)">
+                                    </div> -->
+                                <!-- <div class="form-group">
+                                    <label for="upload">attach a File</label>
+                                    <input type="file" class="form-control-file" id="upload_file"  name="upload_file" (change)="onFileSelected($event)">
+                                </div> -->
+                                <!-- <div class="form-group">
+                                    <label for="uploadfile">attach a File</label>
+                                    <input type="file" class="form-control-file" id="uploadfile"  name="uploadfile" #uploadfile="ngModel" [(ngModel)]="forumService.createPostDto.upload_file">
+                                    <span  *ngFor="let item of uploader.queue">
+                                        <span class="text-white p-3">filename: </span><span class="text-white"> <strong>{{ item?.file?.name }}</strong> </span>
+                                        <span class="text-white">file-size: </span><span class="text-white" *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</span>
+                                    </span>
+                                </div> -->
+                                <div class="form-group pb-1 row">
+                                    <button type="submit" [class.col-sm-3]="updateCategoryForm.invalid" class="btn-ghost btn-block" [disabled]="updateCategoryForm.invalid">Submit <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:20px"></i></button> 
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <p-footer>
+                        <button type="button" class="btn btn-secondary"  (click)="displayModal2=false">Close</button>
+                    </p-footer>
+                </p-dialog>
+            </div>
+        </div>
+    </div>
+</section>
+<app-adminfooter></app-adminfooter>

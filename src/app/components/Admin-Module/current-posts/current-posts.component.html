@@ -1,0 +1,108 @@
+<app-admin-navbar></app-admin-navbar>
+<section id="admin">
+    <div class="container body-container">
+        <div class="row">
+            <div class="col-12 justify-content-center">
+                <ul class="list-group list-group-flush p-2">
+                    <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2" *ngFor="let post of posts">
+                        <button type="button" (click)="showInfo(post)" class="btn btn-link">  {{post.topic}} <strong> {{post.userId}}</strong></button>
+
+
+                        <span>
+                            <span *ngIf="post.approval_status === 'approved'"><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Approved</span></span>
+                            <span *ngIf="post.approval_status === 'declined'"><span class="badge badge-info mr-5 p-2" style="background-color: #17a2b8;">Declined</span></span> 
+                            <!-- <button type="button" (click)="approvePost(post._id)" class="btn btn-danger mr-2">Approve</button> -->
+                            <button type="button" (click)="declinePost(post._id)" class="btn btn-warning">Decline Post</button> 
+                        </span>
+                    </li>
+                </ul>
+
+                <p-dialog class="my-3 d-block d-lg-none" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                    <div class="card col-10 my-2 container mx-auto card-modal">
+                        <ul class="list-group list-group-flush p-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{post?.topic}}
+                              <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;">Titles</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{post?.userId}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;">Author</span>
+                              </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{post?.createdAt |date}}
+                              <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-calendar-alt"></i></span>
+                            </li>
+                             
+                            <!-- <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user.phoneNumber}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="fas fa-phone"></i></span>
+                            </li> -->
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold small">
+                                {{post?.comment.length}} comments
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;">comments</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{post?.likes}} likes
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;">likes</span>
+                            </li>
+                            <!-- <li class="list-group-item d-none d-sm-flex d-lg-none justify-content-between align-items-center card-text mb-2 font-weight-bold"> -->
+                                <p>{{post?.description}}</p>
+                                <!-- <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-envelope"></i></span> -->
+                            <!-- </li> -->
+                            <!-- <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold small"> -->
+                                <!-- {{userService.userProfileInfo.email}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-envelope"></i></span> -->
+                            <!-- </li> -->
+                          </ul>
+                    </div>
+                    <p-footer>
+                        <button type="button" class="btn btn-secondary"  (click)="displayModal=false">Close</button>
+                    </p-footer>
+                </p-dialog>
+            
+                <p-dialog class="my-3 d-none d-lg-block" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">                    <div class="card col-10 my-2 container mx-auto card-modal">
+                        <ul class="list-group list-group-flush p-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{post?.topic}}
+                              <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;">Title</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{post?.userId}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;">Author</span>
+                              </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{post?.createdAt |date}}
+                              <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-calendar-alt"></i></span>
+                            </li>
+                             
+                            <!-- <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{user.phoneNumber}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="fas fa-phone"></i></span>
+                            </li> -->
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold small">
+                                {{post?.comment.length}} comments
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;">comments</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold">
+                                {{post?.likes}} likes
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;">likes</span>
+                            </li>
+                            <!-- <li class="list-group-item d-none d-sm-flex d-lg-none justify-content-between align-items-center card-text mb-2 font-weight-bold"> -->
+                               <p> {{post?.description}}</p>
+                                <!-- <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-envelope"></i></span> -->
+                            <!-- </li> -->
+                            <!-- <li class="list-group-item d-flex justify-content-between align-items-center card-text mb-2 font-weight-bold small"> -->
+                                <!-- {{userService.userProfileInfo.email}}
+                                <span class="badge badge-info badge-pill p-2" style="background-color: #17a2b8;"><i class="far fa-envelope"></i></span> -->
+                            <!-- </li> -->
+                          </ul>
+                    </div>
+                    <p-footer>
+                        <button type="button" class="btn btn-secondary"  (click)="displayModal=false">Close</button>
+                    </p-footer>
+                </p-dialog>
+            </div>
+        </div>
+    </div>
+</section>
+<app-adminfooter></app-adminfooter>
