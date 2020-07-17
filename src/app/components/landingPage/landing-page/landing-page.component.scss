@@ -21,7 +21,7 @@ header{
 
 /* small screens */
 nav {
-	// background-color: $primary !important;
+	background-color: $primary !important;
 	@include XS {
 		position: relative;
 		top: 0;
@@ -86,13 +86,23 @@ nav {
 		}
 
 		.btn-outline-primary {
-			color: $primary;
+			color: white;
 			outline: none;
-			border-color: $primary !important;
+			border-color: white !important;
+
+			@include XS-LG{
+				color: $primary;
+				outline: none;
+				border-color: $primary !important;
+			}
 		} 
 
 		.btn-outline-primary:hover {
 			background-color: $primary;
+
+			@include XS-LG{
+				background-color: white;
+			}
 
 		} 
 			
@@ -107,7 +117,7 @@ nav {
 		}
 
 		.btn-ghost-collapsed:hover{
-			color: $white;
+			color: $primary;
 			width: 35%;
 			padding-right: 45px !important;
 			transition: all 0.3s;
@@ -121,7 +131,7 @@ nav {
 			width: 25px;
 			right: 10px;
 			text-align:center;
-			color: $white;
+			color: $primary;
 			opacity:0;
 			-webkit-transition:0.2s all;
 			transition:0.2s all;
