@@ -48,11 +48,11 @@ ngOnInit(): void {
   this.route.data.subscribe( data => {
     this.userService.userProfileInfo = data.user.data;
     this.createEditProfileForm();
+  });
 
-    this.forumService.getUserPosts().subscribe((response) => {
-      const obj = Object.entries(response);
-      this.postsCount = response.data.length;
-    });
+  this.forumService.getUserPosts().subscribe((response) => {
+    const obj = Object.entries(response);
+    this.postsCount = response.data.length;
   });
 
   // runs on ngoninit
