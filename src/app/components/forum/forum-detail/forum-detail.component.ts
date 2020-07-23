@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 import { Category } from 'src/app/_shared/models/category.model';
 import { GetComment } from 'src/app/_shared/models/get-comment.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-forum-detail',
@@ -19,7 +20,6 @@ export class ForumDetailComponent implements OnInit {
   // comments: GetComment[];
   likedPost = false;
 
-
   constructor(private forumService: ForumService, private route: ActivatedRoute, private alertify: AlertifyService,
               private router: Router) { }
 
@@ -32,6 +32,25 @@ export class ForumDetailComponent implements OnInit {
     // this.getPost();
     this.getTrendingPosts();
     this.getCategories();
+
+
+    // forcing a page reload and hereby re-initializing the component
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+
+    // on the the re-initialized component, the route data is stale,so i did another fresh call to the service and updated the post-variable
+    if (this.forumService.reloadPage) {
+      this.forumService.getPost( this.route.snapshot.params.postId).subscribe((response) => {
+        // console.log(response);
+        // tslint:disable-next-line: no-string-literal
+        this.post = response['data'];
+      }, error => {
+        this.router.navigate(['/forums/posts']);
+      }, () => {
+        this.forumService.reloadPage = false;
+      });
+    }
   }
 
   getCategories() {

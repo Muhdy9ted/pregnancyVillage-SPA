@@ -322,19 +322,19 @@ nav {
 		padding: 0;
 		top: 0;
 
-		.bg-image {
-			position:absolute;
-			left:0;
-			right:0;
-			top:0;
-			bottom:0;
-			// background-image: url(../../../../assets/css/img/preg6.jpg);
-			background-image: url(../../../../assets/css/img/hero-image.jpg);
-			background-position: top center;
-			background-size: contain;
-			background-attachment:fixed;
-			background-repeat: no-repeat;
-		}
+		// .bg-image {
+		// 	position:absolute;
+		// 	left:0;
+		// 	right:0;
+		// 	top:0;
+		// 	bottom:0;
+		// 	// background-image: url(../../../../assets/css/img/preg6.jpg);
+		// 	background-image: url(../../../../assets/css/img/hero-image-mobile.jpg);
+		// 	background-position: top center;
+		// 	background-size: contain;
+		// 	background-attachment:fixed;
+		// 	background-repeat: no-repeat;
+		// }
 	
 		// .bg-image.overlay:after {
 		// 	content:"";
@@ -383,8 +383,8 @@ nav {
 	
 		#hero-image-contents{
 			position: relative;
-			top: 30%;
-			height:calc(100vh - 50%);
+			top: 60%;
+			height:calc(100vh - 90vh);
 			color: $white !important;
 			overflow: hidden;
 			z-index: 2;
@@ -406,7 +406,8 @@ nav {
 		.btn-primary {
 			position:relative;
 			border: 1px solid transparent;
-			color: $white;
+			background-color: $white !important;
+			color: $primary;
 			outline: none;
 			border-radius: 20px;
 			margin-top: 5px;
@@ -417,9 +418,9 @@ nav {
 		}
 
 		.btn-primary:hover {
-			background-color: $white !important;
+			background-color: $primary !important;
 			border: 1px solid $primary;
-			color: $primary;
+			color: $white;
 			width: 45%;
 			padding-right: 55px !important;
 			transition: all 0.3s;
@@ -430,7 +431,7 @@ nav {
 			content:"\f178";
 			font-family:FontAwesome;
 			position:absolute;
-			color: $primary;
+			color: $white;
 			width: 25px;
 			right: 10px;
 			text-align:center;
@@ -442,6 +443,81 @@ nav {
 		.btn-primary:hover:after{
 			opacity:1;
 			transition: 0.5s;
+		}
+	}
+
+	@include XS-SM {
+		.bg-image {
+			position:absolute;
+			left:0;
+			right:0;
+			top:0;
+			bottom:0;
+			// background-image: url(../../../../assets/css/img/preg6.jpg);
+			background-image: url(../../../../assets/css/img/hero-image-XS-SM.jpg);
+			background-position: top center;
+			background-size: contain;
+			background-attachment:fixed;
+			background-repeat: no-repeat;
+		}
+
+		#hero-image-contents{
+			position: relative;
+			top: 60%;
+			height:calc(100vh - 80vh);
+			color: $white !important;
+			overflow: hidden;
+			z-index: 2;
+		}
+	}
+
+	@include SM-LG {
+		.bg-image {
+			position:absolute;
+			left:0;
+			right:0;
+			top:0;
+			bottom:0;
+			// background-image: url(../../../../assets/css/img/preg6.jpg);
+			background-image: url(../../../../assets/css/img/hero-image-XS-SM.jpg);
+			background-position: top center;
+			background-size: contain;
+			background-attachment:fixed;
+			background-repeat: no-repeat;
+		}
+
+		#hero-image-contents{
+			position: relative;
+			top: 60%;
+			height:calc(100vh - 80vh);
+			color: $white !important;
+			overflow: hidden;
+			z-index: 2;
+		}
+	}
+
+	@include LG {
+		.bg-image {
+			position:absolute;
+			left:0;
+			right:0;
+			top:0;
+			bottom:0;
+			// background-image: url(../../../../assets/css/img/preg6.jpg);
+			background-image: url(../../../../assets/css/img/hero-image-LG.jpg);
+			background-position: top center;
+			background-size: contain;
+			background-attachment:fixed;
+			background-repeat: no-repeat;
+		}
+
+		#hero-image-contents{
+			position: relative;
+			top: 70%;
+			height:calc(100vh - 80vh);
+			color: $white !important;
+			overflow: hidden;
+			z-index: 2;
 		}
 	}
 
@@ -484,7 +560,7 @@ nav {
 
 #section-features{
 	
-	padding: 0 0;
+	padding: 80px 0;
 
 	h1 {
 		// font-size: 180%;
@@ -516,14 +592,25 @@ nav {
 		word-spacing: 2px;
 	}
 
+	hr {
+		display: block;
+		margin-top: 0.5em;
+		margin-bottom: 0.9em;
+		margin-left: auto;
+		margin-right: auto;
+		border-style: inset;
+		border-width: 2px;
+		background-color: $primary;
+	  }
+
 	.card{
 		border: none;
 		background-color: $bg-dark;
-		height: 33vh;
+		height: 45vh;
 		overflow-y: auto;
 
 		@include SM{
-			height: 48vh;
+			height: 58vh;
 		}
 
 		// @include LG {
@@ -534,6 +621,7 @@ nav {
 
 	.card-title {
 		font-weight: 400;
+		margin-bottom: 20px;
 	}
 
 	.card-text {
@@ -635,7 +723,7 @@ nav {
 
 	.card {
 		margin-bottom: 10px;
-		box-shadow: -1px 2px #b9b9b9;
+		// box-shadow: -1px 2px #b9b9b9;
 	
 	}
 
@@ -673,7 +761,7 @@ nav {
 		font-weight: 600;
 		color: $text-color;
 		text-decoration: none;
-		font-size: 1.3rem;
+		font-size: 1.1rem;
 	}
 
 	a:link, a:hover, a:active, a:focus {
@@ -699,11 +787,12 @@ nav {
 
 	tab .card {
 		width: 100%;
-		height: 170px !important;
-		height: 70vh;
+		// height: 170px !important;
+		height: 80vh;
+		background-color: $bg-dark;
 		border: 1px transparent !important;
-		box-shadow: -1px 2px #b9b9b9;
-		background-color: $white !important;
+		// box-shadow: -1px 2px #b9b9b9;
+		// background-color: $white !important;
 		margin-bottom: 10px;
 		padding-bottom: 10px;
 		// overflow-y: auto;

@@ -35,6 +35,7 @@ export class ForumService {
   categoryPosts: GetPost[] = [];
   updatePostDTO = new UpdatePost();
   createCategoryDTO = new CreateCategory();
+  reloadPage = false;
 
 
 

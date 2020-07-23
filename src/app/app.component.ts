@@ -1,6 +1,6 @@
 import { Component,  OnInit, OnDestroy  } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, Event, NavigationCancel, NavigationError, ActivatedRoute, Params } from '@angular/router';
-import * as AOS from 'aos';
+import AOS from 'aos';
 import { AuthService } from './_shared/services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 

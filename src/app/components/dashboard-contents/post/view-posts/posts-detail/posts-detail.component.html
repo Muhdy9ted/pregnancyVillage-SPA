@@ -23,10 +23,10 @@
                       
                         <p class="card-text detail py-5">{{post.description}}</p>
                         
-                        <div class="d-flex justify-content-end">
+                        <!-- <div class="d-flex justify-content-end">
                           <button type="button"  [disabled]="likedPost" (click) = "reaction()" class="btn btn-sm btn-outline-info px-3 mr-3" style=" border-radius: 15px;"> <span style="font-size: 1rem;"><i class="fas fa-thumbs-up"></i></span></button>
                           <button type="button"  [disabled]="!likedPost" (click) = "reaction()" class="btn btn-sm btn-outline-info px-3" style=" border-radius: 15px;"> <span style="font-size: 1rem;"><i class="fas fa-thumbs-down"></i></span></button>
-                        </div>
+                        </div> -->
                         <div class="d-flex justify-content-end mt-3">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" (click) = "updatePost()" class="btn btn-info">edit post  <span class="pl-2" style="font-size: 0.8rem;"><i class="far fa-edit"></i></span></button>
@@ -37,7 +37,7 @@
                         <div class="container-fluid col-12 comment-div pt-3">
                             <h5> Comment(s)</h5>
                             <app-comment-list  *ngFor="let comment of post.comment" [comment] = "comment"></app-comment-list>
-                            <app-comment></app-comment>
+                            <!-- <app-comment></app-comment> -->
                         </div>
                     </div>
                 </div>

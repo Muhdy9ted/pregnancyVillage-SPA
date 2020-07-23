@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ForumService } from 'src/app/_shared/services/forum.service';
-import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ActivatedRouteSnapshot, ActivatedRoute, Router } from '@angular/router';
 import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 import { Comment } from 'src/app/_shared/models/comment.model';
 import { GetComment } from 'src/app/_shared/models/get-comment.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-comment',
@@ -16,9 +17,13 @@ export class CommentComponent implements OnInit {
   @ViewChild('upload_file') upload_file: ElementRef;
   spin = false;
 
-  constructor( public forumService: ForumService, public route: ActivatedRoute, public alertify: AlertifyService) {}
+  constructor( public forumService: ForumService, public route: ActivatedRoute, public alertify: AlertifyService,
+               private router: Router, private location: Location) {}
 
   ngOnInit(): void {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
   }
 
   onSubmit() {
@@ -35,7 +40,13 @@ export class CommentComponent implements OnInit {
       // this.alertify.success(`Welcome back ${this.authService.decodedToken?.firstName}`);
       this.alertify.success('comment sent successfully');
       this.forumService.createCommentDto = new Comment();
-      this.upload_file.nativeElement.value = null;
+      this.forumService.reloadPage = true;
+      const postId = this.route.snapshot.params.postId;
+      this.router.navigateByUrl('/forums/posts/' + postId);
+      // this.router.navigateByUrl('/forums/posts/' + postId, {skipLocationChange: true}).then(() => {
+      //   this.router.navigate([decodeURI(this.location.path())]);
+      // });
+      // this.upload_file.nativeElement.value = null;
       // this.upload_file.innerHTML = null;
       // const formData = new FormData();
       // formData.delete();

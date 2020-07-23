@@ -13,7 +13,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
                 [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed"  
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#FFF;">
-                <span class="navbar-toggler-icon" style="text-decoration: none;"></span>
+                <span class="navbar-toggler-icon" style="text-decoration: none; border: none !important;"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="!isCollapsed" [isAnimated]="true">
@@ -56,7 +56,7 @@
                     </a>
                     <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed profile-btn" 
                         [class.btn-sm]="isCollapsed"  
-                        *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="['/' + userId, 'dashboard']" 
+                        *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="['/' + userId + '/dashboard']" 
                         style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
                     </a>
                     <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed" 
@@ -85,7 +85,7 @@
                 </div> -->
                 
             <div id="hero-image-contents">
-                <div class="container d-flex flex-column align-items-end">
+                <div class="container">
                     <!-- <h1 class="display-4 animate__animated animate__bounce mb-0 mb-md-3"><span style="color: #3f97e1;">Pregnancy</span> Village</h1>
                     <small class="small text-muted d-block d-md-none mt-0"><i>share with us</i></small> -->
                     <!-- <p class="animate__animated animate__backInLeft d-none d-md-block">
@@ -100,12 +100,12 @@
                         give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
                         kids and women stuffs.
                     </small><br> -->
-                    <a href="#forums" class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" 
+                    <a href="#forums" data-aos="fade-right" class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" 
                         *ngIf="true"  role="button">Forums
                     </a>
 
-                    <a class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block profile-btn" *ngIf="!authService.loggedIn()"
-                        style="cursor: pointer;" role="button" [routerLink]="['/' + userId, 'dashboard']" 
+                    <a class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block profile-btn"  data-aos="fade-left"  *ngIf="!authService.loggedIn()"
+                        style="cursor: pointer;" role="button" [routerLink]="['/' + userId + '/dashboard']" 
                         style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
                     </a>
                     
@@ -117,10 +117,10 @@
 
 <section>
     <div id="section-features">
-        <div class="container">
+        <div class="container-fluid px-5">
             <div class="row">
-                <div class="col-12">
-                    <div class="container">
+                <div class="col-12 mb-2">
+                    <div class="container-fluid">
                         <h1 class=""> Share your stories with &mdash; <span style="color: #3f97e1;">LOVE</span></h1>
                         <p class="mb-4 text-left">
                             Pregnancy village is Nigeria's first online community platform for pregnant women.
@@ -129,11 +129,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-sm-6 col-lg-3 mb-2">
-                    <div class="card">
+            <div class="row" style="overflow-x: hidden;">
+                <div class="col-12 col-sm-6 col-lg-3 mb-5">
+                    <div class="card shadow" data-aos="fade-right" data-aos-duration="500">
                         <div class="card-body">
-                          <h5 class="card-title text-capitalize">Forums  <i class="ml-1 fas fa-users icon-big"></i></h5>
+                          <h5 class="card-title text-capitalize">Forums  <i class="ml-5 fas fa-users icon-big"></i></h5>
+                          <hr>
                           <p class="card-text">Connect with other mothers and mothers-to-be on our pregnancy forum. 
                               Ask questions and share tips on getting pregnant, journey through pregnancy, 
                               delivery, parenting, feeding and baby care.
@@ -141,35 +142,40 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-12 col-sm-6 col-lg-3 mb-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-capitalize">Market  <i class="ml-1 fas fa-store-alt icon-big"></i></h5>
+
+                <div class="col-12 col-sm-6 col-lg-3 mb-5"  data-aos="fade-down" data-aos-duration="500">
+                    <div class="card shadow">
+                        <div class="card-body shake-trigger">
+                            <h5 class="card-title text-capitalize">Market Place <i class="ml-5 fas fa-store-alt icon-big"></i></h5>
+                            <hr>
                             <p class="card-text">Find the best product for you and your baby in our online shop.
                                 Become a vendor or buy pregnancy care products, maternity pillow, maternity lingerie,
                                  bedsheets, baby products et al, at the best price.
                             </p>
+                            <h3 class="text-center"><span class="badge badge-light text-center p-2 m-2" style="background-color: rgb(91, 226, 89); color: #fff;">Coming Soon</span></h3>
                         </div>
                     </div>
                 </div>
     
-                <div class="col-12 col-sm-6 col-lg-3 mb-2">
-                    <div class="card">
+                <div class="col-12 col-sm-6 col-lg-3 mb-5"  data-aos="fade-up" data-aos-duration="500">
+                    <div class="card shadow">
                         <div class="card-body">
-                          <h5 class="card-title text-capitalize">Consultancy <i class="fas fa-chalkboard-teacher ml-1 icon-big"></i></h5>
+                          <h5 class="card-title text-capitalize">Consultancy <i class="fas fa-chalkboard-teacher ml-5 icon-big"></i></h5>
+                          <hr>
                           <p class="card-text">Book a one-on-one consultation session with our in-house doctors, 
                               obstetrician and midwife who listens to your concerns,
                                answer your questions provide useful information and suggestions on healthy pregnancy practices.
                           </p>
+                          <h3 class="text-center"><span class="badge badge-light text-center p-2 m-2" style="background-color: rgb(91, 226, 89); color: #fff;">Coming Soon</span></h3>
                         </div>
                     </div>
                 </div>
     
-                <div class="col-12 col-sm-6 col-lg-3 mb-2">
-                    <div class="card">
+                <div class="col-12 col-sm-6 col-lg-3 mb-5"  data-aos="fade-left" data-aos-duration="500">
+                    <div class="card shadow">
                         <div class="card-body">
-                          <h5 class="card-title  text-capitalize">Contact  <i class="ml-1 far fa-id-card icon-big"></i></h5>
+                          <h5 class="card-title  text-capitalize">Contact  <i class="ml-5 far fa-id-card icon-big"></i></h5>
+                          <hr>
                           <p class="card-text">Hi, there. How may we help you?
                             For further inquiries, complaints or feedback. Kindly reach out to us and tell us how we can help you.
                           </p>
@@ -243,38 +249,31 @@
             </div>
         </div>
 
-        <div class="container-fluid mt-3" style="background-color: #fafafa;">    
+        <div class="container-fluid mt-3">    
             <div class="container">
                 <tabset class="member-tabset">
                     <!-- <div *ngFor="let post of categoryPosts"> -->
                         <tab *ngFor="let item of postsBycategory" heading="{{item.name}}" id="tab1">
                             <div class="row">
-                                <div class="col-12 col-md-6" *ngFor="let post of item.posts.slice(0,12)">
+                                <div class="col-12 col-md-6 col-lg-4 mb-5" *ngFor="let post of item.posts.slice(-12)">
                                     <div class="card">
-                                        <div class="row card-body forums-list" >
-                                            <div class="col-12 author">
-                                                <h6 class="card-text text-muted d-inline"> {{limitString(post.userId, 20)}}</h6> <p class=" d-inline-block ml-5 time">{{post.createdAt|timeago:true}}</p>
-                                            </div>
-                                            <div class="col-12 message">
-                                                <a [routerLink]="['/forums/posts', post.id]"><h5 class="card-title">{{limitString(post.topic, 20)}}</h5></a>
-                                                <p class="card-text d-sm-none d-md-block d-lg-none">
-                                                    {{limitString(post.description, 70)}}
-                                                </p>
-                                                <p class="card-text d-none d-sm-block d-md-none">
-                                                    {{limitString(post.description, 120)}}
-                                                </p>
-                                                <p class="card-text d-none d-lg-block">
-                                                    {{limitString(post.description, 150)}}
-                                                </p>
-                                            </div>
-                                            <!-- <div class="col-sm-2 icons">
-                                                <span style="font-size: 1em; color: #F29422;">
-                                                    <i class="far fa-comments"></i>
-                                                </span> <h6 class="card-text text-muted pl-1" style="display: inline-block;"> 3</h6>
-    
-                                            </div> -->
-                                        </div>   
-                                    </div>
+                                        <img *ngIf="post.upload_file" src="{{post.upload_file}}" class="img-fluid card-img-top">
+                                        <img  *ngIf="!post.upload_file" src="../../../../assets/images/dark-photo.png" class="img-fluid card-img-top">
+                                        <div class="card-body ">
+                                            <h6 class="card-text text-muted">By {{limitString(post.userId, 40)}}</h6> 
+                                            <p class="time"><i class="fas fa-clock mr-2 text-muted"></i>{{post.createdAt|timeago:true}}</p>
+                                            <a [routerLink]="['/forums/posts', post.id]"><h5 class="card-title">{{limitString(post.topic, 35)}}</h5></a>
+                                            <p class="card-text d-sm-none d-md-block d-lg-none">
+                                                {{limitString(post.description, 70)}}
+                                            </p>
+                                            <p class="card-text d-none d-sm-block d-md-none">
+                                                {{limitString(post.description, 120)}}
+                                            </p>
+                                            <p class="card-text d-none d-lg-block">
+                                                {{limitString(post.description, 150)}}
+                                            </p>
+                                        </div>
+                                      </div>
                                 </div>
                             </div>
                         </tab>
@@ -288,7 +287,7 @@
     </div>
 </section>
 
-<section class="bg-drk">
+<section class="bg-primary">
     <div id="contact-div" class="container text-white text-center py-5">
         <a name="contact"><p class="lead text-uppercase">Reach out to us, we await</p></a>
         <div class="row justify-content-center">
@@ -301,7 +300,7 @@
                         <textarea class="form-control" rows="3" placeholder="write us"></textarea>
                     </div>
                         <div class="input-group append">
-                            <button class="btn btn-primary" disabled>Send</button>
+                            <button class="btn btn-light" disabled>Send</button>
                         </div>
         
                 </form>

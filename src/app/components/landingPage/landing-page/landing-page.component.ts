@@ -39,6 +39,7 @@ export class LandingPageComponent implements OnInit {
       this.categoryPosts.forEach(element => {
         this.forumService.postsByCategory(element._id).subscribe((response: any) => {
           this.postsBycategory.push(response.data);
+          // console.log(response.data);
         });
       });
       // console.log(this.postsBycategory);

@@ -30,13 +30,9 @@ import { EditPostComponent } from './components/dashboard-contents/post/edit-pos
 
 
 const routes: Routes = [
-  {path: 'admin', loadChildren: () => import('./components/Admin-Module/admin.module').then(m => m.AdminModule)},
 
   // localhost:4200
   {path: '', component: LandingPageComponent, resolve: {categoryPosts: GetCategoriesPostsLPageResolver}},
-
-  // localhost:4200/admin #lazyloading admin module
-
 
   // localhost:4200/welcome
   {path: 'welcome', component: WelcomePageComponent},
@@ -49,7 +45,9 @@ const routes: Routes = [
 
   //  localhost:4200/category/id
   {path: 'category/:categoryId', component: PostByCategoryComponent, resolve: {catPosts: GetPostsByCategory}},
-  // {path: 'page-not-found', component: PageNotFoundComponent},
+
+  // localhost:4200/page-not-found
+  {path: 'page-not-found', component: PageNotFoundComponent},
 
   // localhost:4200/userid
   {path: ':userId', component: DashboardControllerComponent , runGuardsAndResolvers: 'always', canActivate: [AuthGuard], children: [
@@ -87,11 +85,16 @@ const routes: Routes = [
       {path: 'my-products', component: ViewProductsComponent}
     ]}
   ]},
-  {path: '**', redirectTo: 'page-not-found', pathMatch: 'full'},
+
+  // localhost:4200/admin #lazyloading admin module
+  { path: 'admin', loadChildren: () => import('./components/Admin-Module/admin.module').then(m => m.AdminModule)},
+
+  // localhost:4200/page-not-found
+  { path: '**', redirectTo: 'page-not-found', pathMatch: 'full'},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

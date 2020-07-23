@@ -32,6 +32,7 @@
     "animate.css": "^4.1.0",
     "aos": "^2.3.4",
     "bootstrap": "^4.5.0",
+    "csshake": "^1.5.3",
     "ng2-file-upload": "^1.4.0",
     "ngx-bootstrap": "^5.6.1",
     "ngx-pagination": "^5.0.0",
