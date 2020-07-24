@@ -1,10 +1,25 @@
 @import "../../../../scss/variables";
 
+
+section {
+    @include XG {
+        margin-bottom: -40px;
+    }
+
+    @include LG-XG {
+        margin-bottom: -50px;
+
+        .activities{
+            padding-bottom: 7vh;
+        }
+    }
+}
+
 #dashboard-profile {
 
     .dashboard {
         padding-top: 30px;
-        padding-bottom: 30px;
+        // padding-bottom: 30px;
         background-color: #fbfbf9;
         
         .heading {
@@ -15,13 +30,18 @@
         }
 
         .header-card {
-            background-color: #fbede3;
+            background-color: #fff;
         }
 
         .card-title {
             color: $primary;
             word-spacing: 2px;
             line-height: 150%;
+        }
+
+        .card-text {
+            word-spacing: 1px;
+            line-height: 160%;
         }
 
         .username {
@@ -34,7 +54,7 @@
 
     .profile {
         padding-top: 30px;
-        padding-bottom: 30px;
+        // padding-bottom: 30px;
 
         .card-profile {
             box-shadow: none;

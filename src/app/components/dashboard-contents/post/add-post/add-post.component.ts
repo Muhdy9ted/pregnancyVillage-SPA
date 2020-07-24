@@ -118,6 +118,7 @@ export class AddPostComponent implements OnInit {
     this.spin = true;
     this.forumService.createPost().subscribe((response: any) => {
       this.createdPost = response;
+      this.forumService.createPostDto = new Post();
       // console.log(this.createdPost);
     }, error => {
       this.spin = false;

@@ -7,19 +7,19 @@
 #hero-image-div{
 	position: relative;
 	width: 100%;
-	height:110vh;
+	height:111vh;
     padding: 0;
     margin-top: -2%;
 
     // top: -75px;
     
-    @include LG-XG {
-        height: 142vh;
-    }
+    // @include LG-XG {
+    //     height: 142vh;
+    // }
 
-    @include XG {
-        height: 113vh;
-    }
+    // @include XG {
+    //     height: 113vh;
+    // }
 }
 
 .bg-image {
@@ -43,7 +43,8 @@
 	right:0;
 	top:0;
 	bottom:0;
-	background-image: linear-gradient(to right, rgb(59, 52, 46) 0%, rgb(188, 149, 102) 100%);
+    // background-image: linear-gradient(to right, rgb(59, 52, 46) 0%, rgb(188, 149, 102) 100%);
+    background-image: linear-gradient(to right, rgb(128, 124, 121) 0%, #8cc3f0 100%);
 	opacity: 0.8;
 }
 

@@ -3,6 +3,7 @@ import { ForumService } from 'src/app/_shared/services/forum.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 import { AuthService } from 'src/app/_shared/services/auth.service';
+import { UpdatePost } from 'src/app/_shared/models/update-post.model';
 
 @Component({
   selector: 'app-edit-post',
@@ -43,6 +44,7 @@ export class EditPostComponent implements OnInit {
     }, () => {
       this.alertify.success('Post updated successfully');
       this.router.navigate(['/' + this.userId + '/posts/my-posts']);
+      this.forumService.updatePostDTO = new UpdatePost();
     });
   }
 }

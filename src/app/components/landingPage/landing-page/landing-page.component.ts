@@ -25,6 +25,7 @@ export class LandingPageComponent implements OnInit {
   posts: GetPost[];
   categoryPosts: Category[];
   postsBycategory: Category[] = [];
+  spin = false;
 
   constructor(public authService: AuthService, private route: Router, private router: ActivatedRoute, public forumService: ForumService,
               private alertify: AlertifyService) { }

@@ -14,6 +14,7 @@
                         <div class="col-sm-12">
                             <div class="container col-sm-7 mx-auto form-cont">
                                 <form class="form-style" id="postForm" #postForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                                    <h2 class="lead text-white text-center mb-1"> Create a new Post</h2> <hr>
                                     <div class="form-group">
                                       <label for="topic">Post's title</label>
                                       <input type="text" class="form-control" id="topic" placeholder="enter the title of your post here"  required name="topic" #topic="ngModel" minlength="10"
@@ -30,14 +31,14 @@
                                     </div>
                                     <div class="form-group">
                                       <label for="details">Post's write-up</label>
-                                      <textarea type="text" class="form-control" id="description" rows="3" placeholder="write your heart out!!!" required name="description" #description="ngModel" minlength="30"
+                                      <textarea type="text" class="form-control" id="description" rows="6" placeholder="write your heart out!!!" required name="description" #description="ngModel" minlength="30"
                                         [(ngModel)]="forumService.createPostDto.description"></textarea>
                                       <span class="text-warning text-sm-left"><p>post's write-up should be more than 30 characters</p></span>
                                     </div> 
 
                                         <div class="form-group">
-                                            <label for="upload">upload a File</label>
-                                            <input type="file" class="form-control-file" id="upload_file"  name="upload_file" #upload_file  (change)="handleFileInput($event.target.files)">
+                                            <label for="upload" >upload a Photo</label>
+                                            <input type="file" style="margin-top: -27px;" class="form-control-file" id="upload_file" name="upload_file" #upload_file  (change)="handleFileInput($event.target.files)">
                                         </div>
                                     <!-- <div class="form-group">
                                         <label for="upload">attach a File</label>
@@ -52,7 +53,7 @@
                                         </span>
                                     </div> -->
                                     <div class="form-group pb-1 row">
-                                        <button type="submit" [class.col-sm-3]="postForm.invalid" class="btn-ghost pr-1" [disabled]="postForm.invalid">Submit <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:20px"></i></button> 
+                                        <button type="submit" class="btn-primary pr-1 col-4" [disabled]="postForm.invalid">Submit <i *ngIf="spin" class="fa fa-spinner fa-spin" style="font-size:20px"></i></button> 
                                     </div>
                                 </form>
                             </div>

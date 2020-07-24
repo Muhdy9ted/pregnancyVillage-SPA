@@ -57,7 +57,7 @@
                     <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed profile-btn" 
                         [class.btn-sm]="isCollapsed"  
                         *ngIf="!isLoggedIn()" style="cursor: pointer;" role="button" [routerLink]="['/' + userId + '/dashboard']" 
-                        style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user"></i>
+                        style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user d-none d-sm-inline"></i>
                     </a>
                     <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed" 
                         [class.btn-sm]="isCollapsed" 
@@ -71,6 +71,7 @@
 
     <app-register *ngIf= "clickedSignUp" (closeModalClicked)="onSignupCloseModalClicked()"></app-register>
     <app-login-modal *ngIf= "clickedLogin" (closeModalClicked)="onSigninCloseModalClicked()"></app-login-modal>
+    <!-- <app-spinner *ngIf="spin"></app-spinner> -->
 
     <div id="hero-image-div" class="d-flex align-items-start">
         <div class="bg-image overlay">  

@@ -420,7 +420,7 @@ nav {
 		.btn-primary:hover {
 			background-color: $primary !important;
 			border: 1px solid $primary;
-			color: $white;
+			color: $white !important;
 			width: 45%;
 			padding-right: 55px !important;
 			transition: all 0.3s;
@@ -431,7 +431,7 @@ nav {
 			content:"\f178";
 			font-family:FontAwesome;
 			position:absolute;
-			color: $white;
+			color: $white !important;
 			width: 25px;
 			right: 10px;
 			text-align:center;

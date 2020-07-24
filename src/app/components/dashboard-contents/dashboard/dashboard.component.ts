@@ -55,6 +55,23 @@ ngOnInit(): void {
     this.postsCount = response.data.length;
   });
 
+  // forcing a page reload and hereby re-initializing the component
+  this.router.routeReuseStrategy.shouldReuseRoute = () => {
+    return false;
+  };
+
+  // on the the re-initialized component, the route data is stale,so i did another fresh call to the service and updated the post-variable
+  if (this.forumService.reloadPage) {
+    this.userService.userProfile().subscribe((response) => {
+      // console.log(response);
+      // tslint:disable-next-line: no-string-literal
+      this.userService.userProfileInfo = response['data'];
+    }, error => {
+      this.router.navigate(['/']);
+    }, () => {
+      this.forumService.reloadPage = false;
+    });
+  }
   // runs on ngoninit
 
 
@@ -134,9 +151,11 @@ onSubmit() {
     this.displayModal = false;
     this.editProfileForm.reset();
     this.alertify.success('Profile updated successfully');
-    this.router.navigate(['/' + this.authService.userID, 'dashboard']);
   }, error => {
     this.alertify.error(error);
+  }, () => {
+    this.forumService.reloadPage = true;
+    this.router.navigate(['/' + this.authService.userID, 'dashboard']);
   });
 
 }

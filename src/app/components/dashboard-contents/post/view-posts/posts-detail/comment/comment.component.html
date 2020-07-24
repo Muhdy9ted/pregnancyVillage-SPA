@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container mt-5">
         <div class="col-12">
-            <form class="form-style form-comment col-12 col-md-10" id="commentForm" #commentForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
-    
+            <form class="form-style form-comment col-12" id="commentForm" #commentForm ="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                <h2 class="lead text-black text-center mb-1"> Add a comment</h2> <hr>
+
                 <!-- <div class="form-group">
                     <label for="content">Reply</label>
                     <input type="text" class="form-control" id="content" placeholder="enter your reply"  required name="content" #content="ngModel" minlength="1"
@@ -9,9 +10,9 @@
                     <span class="text-warning text-sm-left"><p>post's title should be more than 10 characters</p></span>
                 </div> -->
                 <div class="form-group">
-                    <label for="content">Reply</label>
+                    <label for="content">Comment</label>
                     <textarea type="text" class="form-control" id="content" placeholder="enter your reply"  required name="content" #content="ngModel" minlength="1"
-                    [(ngModel)]="forumService.createCommentDto.content" rows="3"></textarea>
+                    [(ngModel)]="forumService.createCommentDto.content" rows="6"></textarea>
                   </div>
                 <!-- <div class="form-group">
                     <label for="upload">upload a File</label>

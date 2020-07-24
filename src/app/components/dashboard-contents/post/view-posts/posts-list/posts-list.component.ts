@@ -121,7 +121,7 @@ export class PostsListComponent implements OnInit {
     return title;
   }
 
-  limitForumpost(title, limit = 300) {
+  limitForumpost(title, limit = 100) {
     const newTitle = [];
     // check if the length of the title is greater than limit before we editl
     if (title.length > limit) {

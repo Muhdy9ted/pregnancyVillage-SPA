@@ -1,5 +1,9 @@
+@import "../../../../../scss/variables";
+
 #section-menu{
-	padding-top: 0;
+    padding-top: 0;
+    height: 110vh;
+
 }
 
 .container-fluid {
@@ -17,10 +21,27 @@
 #hero-image-div{
 	position: relative;
 	width: 100%;
-	height:100vh;
+	height:110vh;
 	padding: 0;
 	// top: -75px;
 }
+
+.btn-primary {
+    border-radius: 20px;
+    padding: 5px;
+    color: $white;
+}
+
+hr {
+    display: block;
+    // margin-top: 0.3rem;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    // background-color: $primary;
+  }
 
 .bg-image {
 	position:absolute;
@@ -52,7 +73,7 @@
 #hero-image-contents{
 	position: relative;
 	top: 3%;
-	height:calc(100vh - 20%);
+	height:calc(100vh);
 	color: #FFFFFF !important;
 	overflow: auto;
 	z-index: 1;
@@ -72,6 +93,12 @@
     font-size: 90%;
     font-weight: 600;
     text-transform: none;
+    // margin-bottom: 50px;
+}
+
+input{
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .form-style {
@@ -79,10 +106,12 @@
 }
 
 .text-warning {
-    color: rgb(188, 149, 102);
+    color: $white !important;
     text-transform: lowercase;
     font-size: 70%;
     font-weight: 500;
+    font-style: italic;
+    opacity: 0.8;
 }
 
 
@@ -92,7 +121,7 @@
     font-size: 70%;
     font-weight: 600;
     text-transform: none;
-	border-bottom: 3px solid rgb(206, 141, 62);
+	border-bottom: 2px solid $primary;
 	border-top: 0;
 	border-left: 0;
 	border-right: 0;
@@ -109,10 +138,10 @@
   ::placeholder {
     // color: #84BFBF;
     // opacity: 0.4;
-    font-size: 90%;
+    font-size: 0.8rem;
     font-style: italic;
-    color: rgb(34, 31, 31);
-    opacity: 0.8;
+    color: $text-color;
+    opacity: 0.9;
 }
 
 input.ng-touched.ng-invalid{

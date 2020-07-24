@@ -1,3 +1,5 @@
+@import "../../../../../../../../scss/variables";
+
 .col-sm-12 {
     padding-left: 0 !important;
     padding-right:  0 !important;
@@ -22,7 +24,7 @@ p{
     position: absolute;
     right: 5%;
     top: 7%;
-    color: rgb(240, 168, 81) !important;
+    color: $white !important;
     font-size: 70%;
 }
 
