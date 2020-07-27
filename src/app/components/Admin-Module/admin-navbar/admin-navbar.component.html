@@ -1,14 +1,14 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" #nav id="nav">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top shadow-lg" #nav id="nav">
         <div class="container-fluid" [class.nav-white]="isCollapsed">
             <a class="navbar-brand mr-auto animate__animated animate__rubberBand" routerLink= "/"> 
                 <img src="\assets\images\logo.png" alt="Pregnancy village logo" [class.logo]="!isCollapsed" [class.logoCollapsed]="isCollapsed"> 
             </a>
             
             <!-- testing purpose -->
-            <!-- <button type="button" class="badge">
+            <button type="button" class="badge">
                 <span class="text-white"> Notifications </span>
-            </button> -->
+            </button>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
                 [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed"  
@@ -19,15 +19,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="!isCollapsed" [isAnimated]="true">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" routerLink = "/admin/dashboard" [class.linkcolor]="isCollapsed">
-                            Dashboard
+                        <a class="nav-link" routerLink = "/" [class.linkcolor]="isCollapsed">
+                            Home
                         </a>
                     </li>
-                    <!-- <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+                    <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
                         <a class="nav-link" routerLink ="/forums/posts" [class.linkcolor]="isCollapsed">
                             Forums
                         </a>
-                    </li> -->
+                    </li>
                     <!-- <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
                         <a class="nav-link disabled" aria-disabled="true" routerLink = "/dashboard" [class.linkcolor]="isCollapsed">
                             Market
@@ -44,6 +44,7 @@
                         </a>
                     </li> -->
                 </ul>
+
 
                 <ul class="navbar-nav d-flex justify-content-end">
                     <a class="btn nav-link mr-auto mr-md-3 p-1 p-md-2 mt-3 px-lg-2 py-lg-1 mt-ml-0 btn-outline-primary btn-ghost-collapsed"
