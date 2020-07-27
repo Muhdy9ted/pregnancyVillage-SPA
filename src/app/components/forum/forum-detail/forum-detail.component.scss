@@ -1,8 +1,10 @@
 @import "../../../../scss/variables";
 
 #post {
-    padding: 80px 0;
-    margin-top: 40px;
+    // padding: 80px 0;
+    // margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 20px;
     background-color: #ecf0f1;
     border-top: solid 1px #e0e4e5;
     
@@ -12,7 +14,14 @@
     }
 
     .card-title {
-        text-transform: capitalize;
+        // text-transform: capitalize;
+        word-spacing: 1px;
+        line-height: 140%;
+    }
+
+    .card-text {
+        word-spacing: 1px;
+        line-height: 180%;
     }
 
     h1:after {
@@ -28,6 +37,17 @@
 		-webkit-transition:0.2s all;
 		transition:0.2s all;
     }
+
+    hr {
+        display: block;
+        // margin-top: 0.3rem;
+        margin-bottom: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+        // background-color: $primary;
+      }
     
     @include XS-SM {
         h1:after {

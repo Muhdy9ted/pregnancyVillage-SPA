@@ -84,7 +84,7 @@ html{
 tabset {
     background-color: transparent !important;
     padding: 10px;
-    border: 1px solid #ddd;
+    // border: 1px solid #ddd;
     padding: 10px;
     border-radius: 4px;
 }
@@ -107,8 +107,8 @@ tabset ul.nav.nav-tabs {
 tabset ul.nav.nav-tabs li{
     position: relative;
     top: 15px;
-    left: 35%;
-    transform: translate(-50%, -50%);
+    // left: 35%;
+    // transform: translate(-50%, -50%);
     font-size: 80%;
     font-weight: 600;
     text-transform: uppercase;

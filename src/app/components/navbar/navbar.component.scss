@@ -13,6 +13,9 @@ header{
  
 /*----------------------- Header css ends ----------------------*/
 
+.shadow-lg {
+    box-shadow: 0 1rem 3rem #92abc0 !important;
+}
 /* small screens */
 nav {
 	background-color: $primary !important;
@@ -66,7 +69,7 @@ nav {
 		.nav-link:hover, .nav-link:focus, .nav-link:active, .nav-link:visited{
 			color: $white;
 			transition: border 0.2s;
-			border-bottom: 2px solid $primary;
+			border-bottom: 2px solid $white;
 		}
 
 		.linkcolor{
@@ -76,7 +79,7 @@ nav {
 		.active {
 			color: $white;
 			transition: border 0.2s;
-			border-bottom: 2px solid $primary;
+			border-bottom: 2px solid $white;
 		}
 
 		.btn-outline-primary {

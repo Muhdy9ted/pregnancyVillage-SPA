@@ -1,27 +1,29 @@
 @import "../../../../scss/variables";
 
 
-section {
-    @include XG {
-        margin-bottom: -40px;
-    }
+// section {
+//     @include LG-XG {
 
-    @include LG-XG {
-        margin-bottom: -50px;
-
-        .activities{
-            padding-bottom: 7vh;
-        }
-    }
-}
+//         .dashboard{
+//             padding-bottom: 30vh;
+//         }
+//     }
+// }
 
 #dashboard-profile {
+
+    .cont-bottom {
+        @include LG{
+            margin-bottom: -25px;
+        }
+    }
 
     .dashboard {
         padding-top: 30px;
         // padding-bottom: 30px;
-        background-color: #fbfbf9;
-        
+        // background-color: #fbfbf9;
+        background-color: #ecf0f1;
+
         .heading {
             // font-size: 1.25rem;
             font-weight: 600;

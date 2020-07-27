@@ -34,7 +34,7 @@
                             </div>    
                         </div>
 
-                        <div class="container-fluid col-12 comment-div pt-3">
+                        <div class="container-fluid col-12 comment-div pt-3 my-3">
                             <h2 class="lead text-black text-center mb-1"> Comment(s)</h2> <hr>
 
                             <app-comment-list  *ngFor="let comment of post.comment" [comment] = "comment"></app-comment-list>
@@ -65,7 +65,7 @@
                     </div>
                   </div>
         
-                  <div class="col-12 sidebar order-0 d-lg-none">
+                  <div class="col-12 sidebar order-0 d-xl-none">
                     <div class="category">
                       <div class="card my-2">
                         <div class="card-body cat-header">
@@ -89,8 +89,11 @@
                               <div class="col-8 d-none d-sm-inline-block d-md-none">
                                 {{limitForumTitle(post.topic, 30)}}
                               </div>
-                              <div class="col-8 d-none d-md-inline-block">
+                              <div class="col-8 d-none d-md-inline-block d-lg-none">
                                 {{limitForumTitle(post.topic, 60)}}
+                              </div>
+                              <div class="col-8 d-none d-lg-inline-block">
+                                {{limitForumTitle(post.topic, 100)}}
                               </div>
                             </a>
                             </li>
@@ -100,7 +103,7 @@
                     </div>
                   </div>
 
-                  <div class="col-12 sidebar d-none d-lg-flex d-xl-none order-lg-2">
+                  <!-- <div class="col-12 sidebar d-none d-lg-flex d-xl-none order-lg-2">
                     <div class="category">
                       <div class="card my-2">
                         <div class="card-body cat-header">
@@ -118,11 +121,11 @@
                               <div class="col-4 d-inline-block" *ngIf="!post.upload_file">
                                 <img src="../../../assets/images/dark-photo.png" class="img-fluid">
                               </div>
-                              <div class="col-8 d-inline-block d-lg-flex d-xl-none">
+                              <div class="col-7 d-inline-block d-lg-flex d-xl-none">
                                 {{limitForumTitle(post.topic, 110)}}
                                 <!-- <div class="col-8 d-none d-md-inline-block">
                                   {{limitForumTitle(post.topic, 60)}}
-                                </div> -->
+                                </div>
                               </div>
                             </a>
                             </li>
@@ -130,7 +133,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
                   <div class="col-12 sidebar d-none d-lg-none d-xl-flex order-lg-2">
                     <div class="category">

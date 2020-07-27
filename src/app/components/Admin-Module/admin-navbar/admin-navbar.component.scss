@@ -1,4 +1,4 @@
-@import "../../../../scss/variables";
+@import "../../../scss/variables";
 .btn-primary {
 	background-color: $primary !important;
 }
@@ -13,14 +13,12 @@ header{
  
 /*----------------------- Header css ends ----------------------*/
 
-/*----------------------- Navbar css starts ----------------------*/
-.navbar-fixed-top {
-	position:fixed !important;
+.shadow-lg {
+    box-shadow: 0 1rem 3rem #92abc0 !important;
 }
-
 /* small screens */
 nav {
-	background-color: $primary;
+	background-color: $primary !important;
 	@include XS {
 		position: relative;
 		top: 0;
@@ -71,7 +69,7 @@ nav {
 		.nav-link:hover, .nav-link:focus, .nav-link:active, .nav-link:visited{
 			color: $white;
 			transition: border 0.2s;
-			border-bottom: 2px solid $primary;
+			border-bottom: 2px solid $white;
 		}
 
 		.linkcolor{
@@ -81,17 +79,27 @@ nav {
 		.active {
 			color: $white;
 			transition: border 0.2s;
-			border-bottom: 2px solid $primary;
+			border-bottom: 2px solid $white;
 		}
 
 		.btn-outline-primary {
-			color: $primary;
+			color: white;
 			outline: none;
-			border-color: $primary !important;
+			border-color: white !important;
+
+			@include XS-LG{
+				color: $primary;
+				outline: none;
+				border-color: $primary !important;
+			}
 		} 
 
 		.btn-outline-primary:hover {
-			background-color: $primary;
+			background-color: white;
+
+			@include XS-LG{
+				background-color: white;
+			}
 
 		} 
 			
@@ -106,7 +114,7 @@ nav {
 		}
 
 		.btn-ghost-collapsed:hover{
-			color: $white;
+			color: $primary;
 			width: 35%;
 			padding-right: 45px !important;
 			transition: all 0.3s;
@@ -120,7 +128,7 @@ nav {
 			width: 25px;
 			right: 10px;
 			text-align:center;
-			color: $white;
+			color: $primary;
 			opacity:0;
 			-webkit-transition:0.2s all;
 			transition:0.2s all;

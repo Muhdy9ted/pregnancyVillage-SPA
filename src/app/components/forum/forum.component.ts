@@ -17,6 +17,8 @@ export class ForumComponent implements OnInit {
   trendingPosts: GetPost[];
   totalPosts;
   p = 1;
+  leadingPost = [];
+  mostCommentPost = [];
 
   constructor( private forumService: ForumService, private route: ActivatedRoute) { }
 
@@ -37,6 +39,7 @@ export class ForumComponent implements OnInit {
     this.getLatestPosts();
     this.getCategories();
     this.getTrendingPosts();
+    this.getLeadingPosts();
   }
 
   getCategories() {
@@ -58,6 +61,24 @@ export class ForumComponent implements OnInit {
       // console.log(this.posts);
       this.totalPosts = this.posts.length;
     // });
+  }
+
+  getLeadingPosts() {
+    const arrayPost = [];
+    for (const post of this.posts) {
+      if (post.upload_file) {
+        arrayPost.push(post);
+      }
+    }
+    console.log(arrayPost);
+    this.leadingPost = arrayPost.sort((a, b) => {
+      return b.likes - a.likes;
+    });
+    this.mostCommentPost = arrayPost.sort((a, b) => {
+      return b.totalCommentCount - a.totalCommentCount;
+    });
+    console.log(this.leadingPost);
+    console.log(this.mostCommentPost);
   }
 
   getTrendingPosts() {
@@ -100,7 +121,7 @@ export class ForumComponent implements OnInit {
     return title;
   }
 
-  limitForumpost(title, limit = 300) {
+  limitForumpost(title, limit = 100) {
     const newTitle = [];
     // check if the length of the title is greater than limit before we editl
     if (title.length > limit) {
