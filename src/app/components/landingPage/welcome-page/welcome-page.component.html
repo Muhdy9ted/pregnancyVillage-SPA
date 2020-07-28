@@ -85,33 +85,33 @@
                     </div>         
                 </div> -->
                 
-            <div id="hero-image-contents">
-                <div class="container">
-                    <!-- <h1 class="display-4 animate__animated animate__bounce mb-0 mb-md-3"><span style="color: #3f97e1;">Pregnancy</span> Village</h1>
-                    <small class="small text-muted d-block d-md-none mt-0"><i>share with us</i></small> -->
-                    <!-- <p class="animate__animated animate__backInLeft d-none d-md-block">
-                        Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
-                        The platform allows women from anywhere share their experience during pregnancy,<br> 
-                        give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
-                        kids and women stuffs.
-                    </p>
-                    <small class="animate__animated animate__backInLeft d-md-none">
-                        Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
-                        The platform allows women from anywhere share their experience during pregnancy,<br> 
-                        give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
-                        kids and women stuffs.
-                    </small><br> -->
-                    <a href="#forums" data-aos="fade-right" class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" 
-                        *ngIf="true"  role="button">Forums
-                    </a>
-
-                    <a class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block profil-btn d-lg-none"  data-aos="fade-left"  *ngIf="!authService.loggedIn()"
-                        style="cursor: pointer;" role="button" [routerLink]="['/' + userId + '/dashboard']" 
-                        style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user d-none d-md-inline"></i>
-                    </a>
-                    
+                <div id="hero-image-contents">
+                    <div class="container">
+                        <h1 class="display-4 animate__animated animate__bounce mb-0 mb-3"> <span> Pregnancy </span> Village</h1>
+                        <!-- <small class="small text-muted d-block d-md-none mt-0"><i>share with us</i></small> -->
+                        <p class="animate__animated animate__backInLeft d-none d-md-block">
+                            Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
+                            The platform allows women from anywhere share their experience during pregnancy,<br> 
+                            get access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
+                            kids and women stuffs.
+                        </p>
+                        <small class="animate__animated animate__backInLeft d-md-none">
+                            Pregnancy village is Nigeria's first online community platform for pregnant women.
+                            The platform allows women from anywhere share their experience during pregnancy,
+                            get access to doctors and specialist, and a market place to buy and sell babies stuffs, 
+                            kids and women stuffs.
+                        </small><br>
+                        <a href="#forums" data-aos="fade-right" class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" 
+                            *ngIf="true"  role="button">Forums
+                        </a>
+    
+                        <a class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block profil-btn d-lg-none"  data-aos="fade-left"  *ngIf="!authService.loggedIn()"
+                            style="cursor: pointer;" role="button" [routerLink]="['/' + userId + '/dashboard']" 
+                            style="text-transform: capitalize;">{{authService.decodedToken?.firstName}} <i class="fas fa-user d-none d-md-inline"></i>
+                        </a>
+                        
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </header>

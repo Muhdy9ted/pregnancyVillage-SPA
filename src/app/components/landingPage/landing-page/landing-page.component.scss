@@ -462,6 +462,14 @@ nav {
 		}
 	}
 
+/* 
+$widthXS: 1px;
+$widthSM: 576px;
+$widthMD: 768px;
+$widthLG: 992px;
+$widthXG: 1200px;
+*/
+
 	@include XS-SM {
 		.bg-image {
 			position:absolute;
@@ -470,24 +478,24 @@ nav {
 			top:0;
 			bottom:0;
 			// background-image: url(../../../../assets/css/img/preg6.jpg);
-			background-image: url(../../../../assets/css/img/hero-image-XS-SM.jpg);
+			background-image: url(../../../../assets/css/img/hero-image-4032.jpg);
 			background-position: top center;
-			background-size: contain;
+			background-size: cover;
 			background-attachment:fixed;
 			background-repeat: no-repeat;
 		}
 
 		#hero-image-contents{
 			position: relative;
-			top: 60%;
-			height:calc(100vh - 80vh);
+			top: 30%;
+			height:calc(100vh - 70px);
 			color: $white !important;
 			overflow: hidden;
 			z-index: 2;
 		}
 	}
 
-	@include SM-LG {
+	@include SM-MD {
 		.bg-image {
 			position:absolute;
 			left:0;
@@ -495,17 +503,42 @@ nav {
 			top:0;
 			bottom:0;
 			// background-image: url(../../../../assets/css/img/preg6.jpg);
-			background-image: url(../../../../assets/css/img/hero-image-SM-MD.jpg);
+			background-image: url(../../../../assets/css/img/hero-image-4032.jpg);
 			background-position: top center;
-			background-size: contain;
+			background-size: cover;
 			background-attachment:fixed;
 			background-repeat: no-repeat;
 		}
 
 		#hero-image-contents{
 			position: relative;
-			top: 60%;
-			height:calc(100vh - 80vh);
+			top: 30%;
+			height:calc(100vh - 70px);
+			color: $white !important;
+			overflow: hidden;
+			z-index: 2;
+		}
+	}
+
+	@include MD-LG {
+		.bg-image {
+			position:absolute;
+			left:0;
+			right:0;
+			top:0;
+			bottom:0;
+			// background-image: url(../../../../assets/css/img/preg6.jpg);
+			background-image: url(../../../../assets/css/img/hero-image-4032.jpg);
+			background-position: top center;
+			background-size: cover;
+			background-attachment:fixed;
+			background-repeat: no-repeat;
+		}
+
+		#hero-image-contents{
+			position: relative;
+			top: 30%;
+			height:calc(100vh - 70px);
 			color: $white !important;
 			overflow: hidden;
 			z-index: 2;
@@ -520,26 +553,26 @@ nav {
 			top:0;
 			bottom:0;
 			// background-image: url(../../../../assets/css/img/preg6.jpg);
-			background-image: url(../../../../assets/css/img/hero-image-LG.jpg);
-			background-position: top center;
-			background-size: contain;
+			background-image: url(../../../../assets/css/img/hero-image-4032.jpg);
+			background-position: center center;
+			background-size: cover;
 			background-attachment:fixed;
 			background-repeat: no-repeat;
 		}
 
 		#hero-image-contents{
 			position: relative;
-			top: 70%;
-			height:calc(100vh - 80vh);
+			top: 30%;
+			height:calc(100vh - 70px);
 			color: $white !important;
 			overflow: hidden;
 			z-index: 2;
 		}
 	}
 
-	@include XS-LG {
+	@include XS {
 		position: relative;
-		height:calc(100vh - 100px) !important;
+		height:calc(100vh - 50px) !important;
 		overflow: hidden;
 
 		.btn-primary.profile-btn:hover{
@@ -575,8 +608,11 @@ nav {
 /*----------------------- Section-features css starts ----------------------*/
 
 #section-features{
-	
-	padding: 80px 0 20px 0;
+		padding: 50px 0 20px 0;
+
+		// @include XS-SM {
+		// 	padding-top: 0;
+		// }
 
 
 	h1 {

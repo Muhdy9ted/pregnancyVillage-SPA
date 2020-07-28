@@ -6,9 +6,9 @@
             </a>
             
             <!-- testing purpose -->
-            <!-- <button type="button" class="badge">
+            <button type="button" class="badge">
                 <span class="text-white"> Notifications </span>
-            </button> -->
+            </button>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
                 [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed"  
@@ -87,20 +87,20 @@
                 
             <div id="hero-image-contents">
                 <div class="container">
-                    <!-- <h1 class="display-4 animate__animated animate__bounce mb-0 mb-md-3"><span style="color: #3f97e1;">Pregnancy</span> Village</h1>
-                    <small class="small text-muted d-block d-md-none mt-0"><i>share with us</i></small> -->
-                    <!-- <p class="animate__animated animate__backInLeft d-none d-md-block">
+                    <h1 class="display-4 animate__animated animate__bounce mb-0 mb-3"> <span> Pregnancy </span> Village</h1>
+                    <!-- <small class="small text-muted d-block d-md-none mt-0"><i>share with us</i></small> -->
+                    <p class="animate__animated animate__backInLeft d-none d-md-block">
                         Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
                         The platform allows women from anywhere share their experience during pregnancy,<br> 
-                        give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
+                        get access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
                         kids and women stuffs.
                     </p>
                     <small class="animate__animated animate__backInLeft d-md-none">
-                        Pregnancy village is Nigeria's first online community platform for pregnant women.<br>
-                        The platform allows women from anywhere share their experience during pregnancy,<br> 
-                        give access to doctors and specialist, and a market place to buy and sell babies stuffs,<br> 
+                        Pregnancy village is Nigeria's first online community platform for pregnant women.
+                        The platform allows women from anywhere share their experience during pregnancy,
+                        get access to doctors and specialist, and a market place to buy and sell babies stuffs, 
                         kids and women stuffs.
-                    </small><br> -->
+                    </small><br>
                     <a href="#forums" data-aos="fade-right" class="btn btn-primary nav-link btn-sm mr-md-3 mr-2 p-2 py-md-2 mt-3 d-inline-block" 
                         *ngIf="true"  role="button">Forums
                     </a>
@@ -251,13 +251,13 @@
             </div>
         </div>
 
-        <div class="container-fluid">    
+        <div class="container-fluid" style="background-color: #e8e6e6;">    
             <div class="container">
                 <tabset class="member-tabset">
                     <!-- <div *ngFor="let post of categoryPosts"> -->
                         <tab *ngFor="let item of postsBycategory" heading="{{item.name}}" id="tab1"><hr>
                             <div class="row mt-5">
-                                <div class="col-12 col-lg-8 mx-lg-auto mb-3" *ngFor="let post of item.posts.slice(-12)" style="background-color: #e8e6e6;">
+                                <div class="col-12 col-lg-8 mb-3" *ngFor="let post of item.posts.slice(-12)" style="background-color: #fff">
                                     <!-- <div class="card">
                                         <img *ngIf="post.upload_file" src="{{post.upload_file}}" class="img-fluid card-img-top">
                                         <img  *ngIf="!post.upload_file" src="../../../../assets/images/dark-photo.png" class="img-fluid card-img-top">
@@ -296,9 +296,9 @@
                                           
                                           <div class="col-8">
                                             <!-- <a [routerLink]="['/forums/posts/', post.id]"><h5 class="card-title text-muted pt-2">{{limitForumTitle(post.topic)}}</h5></a> -->
-                                            <a [routerLink]="['/' + userId,'posts','my-posts', post.id]"><h5 class="d-sm-none card-title text-muted pt-2">{{limitString(post.topic, 30)}}</h5></a>
-                                            <a [routerLink]="['/' + userId,'posts','my-posts', post.id]"><h5 class="d-none d-sm-block d-lg-none card-title text-muted pt-2">{{limitString(post.topic, 60)}}</h5></a>
-                                            <a [routerLink]="['/' + userId,'posts','my-posts', post.id]"><h5 class="d-none d-lg-block card-title text-muted pt-2">{{limitString(post.topic, 90)}}</h5></a>
+                                            <a [routerLink]="['/forums/posts/', post.id]"><h5 class="d-sm-none card-title text-muted pt-2">{{limitString(post.topic, 30)}}</h5></a>
+                                            <a [routerLink]="['/forums/posts/', post.id]"><h5 class="d-none d-sm-block d-lg-none card-title text-muted pt-2">{{limitString(post.topic, 60)}}</h5></a>
+                                            <a [routerLink]="['/forums/posts/', post.id]"><h5 class="d-none d-lg-block card-title text-muted pt-2">{{limitString(post.topic, 90)}}</h5></a>
 
                                             <p class="time"><i class="fas fa-clock mr-2 text-muted"></i>{{post.createdAt|timeago:true}}</p>
 
