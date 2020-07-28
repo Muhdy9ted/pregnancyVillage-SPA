@@ -35,6 +35,27 @@ export class CategoriesComponent implements OnInit {
       });
     });
     // console.log(this.postsBycategory);
+
+
+      // forcing a page reload and hereby re-initializing the component
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+        return false;
+      };
+
+      // on the the re-initialized component, the route data is stale,so
+    if (this.forumService.reloadPage) {
+        this.forumService.getCategories().subscribe((response) => {
+          // console.log(response);
+          // tslint:disable-next-line: no-string-literal
+          // console.log(response);
+          // tslint:disable-next-line: no-string-literal
+          this.categories = response['data'];
+          }, error => {
+          this.router.navigate(['/admin/categories']);
+        }, () => {
+          this.forumService.reloadPage = false;
+        });
+      }
   }
 
   showDisplayModal1() {
@@ -67,6 +88,9 @@ export class CategoriesComponent implements OnInit {
     }, () => {
       this.alertify.success('new Category created successfully');
       this.displayModal1 = false;
+      this.forumService.reloadPage = true;
+      // this.router.navigateByUrl('/admin/users-list');
+      // this.router.navigate(['/admin/posts']);
       this.router.navigate(['/admin/categories']);
     });
   }
@@ -82,9 +106,12 @@ export class CategoriesComponent implements OnInit {
       this.spin = false;
       // console.log(error);
       this.alertify.error('the category wasn\'t update, please retry!');
+      this.forumService.reloadPage = true;
+      this.router.navigate(['/admin/categories']);
     }, () => {
       this.alertify.success('Category updated successfully');
       this.displayModal2 = false;
+      this.forumService.reloadPage = true;
       this.router.navigate(['/admin/categories']);
     });
   }

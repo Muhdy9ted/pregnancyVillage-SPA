@@ -10,7 +10,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent  implements OnInit,  OnDestroy {
+export class AppComponent  implements OnInit {
   title = 'pregnancyvillage-front';
   jwtHelper = new JwtHelperService();
   showSpinner = false;
@@ -28,13 +28,13 @@ export class AppComponent  implements OnInit,  OnDestroy {
       }
     });
 
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.mySubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-         // Trick the Router into believing it's last link wasn't previously loaded
-         this.router.navigated = false;
-      }
-    });
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    // this.mySubscription = this.router.events.subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //      // Trick the Router into believing it's last link wasn't previously loaded
+    //      this.router.navigated = false;
+    //   }
+    // });
 
   }
 
@@ -54,9 +54,9 @@ export class AppComponent  implements OnInit,  OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    if (this.mySubscription) {
-      this.mySubscription.unsubscribe();
-    }
-  }
+  // ngOnDestroy() {
+  //   if (this.mySubscription) {
+  //     this.mySubscription.unsubscribe();
+  //   }
+  // }
 }
