@@ -23,6 +23,24 @@ export class UsersComponent implements OnInit {
       this.users = data.users;
       // console.log(this.users);
     });
+
+     // forcing a page reload and hereby re-initializing the component
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+
+    // on the the re-initialized component, the route data is stale,so i did another fresh call to the service and updated the post-variable
+    if (this.userService.reloadPage) {
+      this.userService.listUsers().subscribe((response) => {
+        // console.log(response);
+        // tslint:disable-next-line: no-string-literal
+        this.users = response;
+      }, error => {
+        this.router.navigate(['/admin/users-list']);
+      }, () => {
+        this.userService.reloadPage = false;
+      });
+    }
   }
 
   showInfo(user: UserCred) {
@@ -43,7 +61,9 @@ export class UsersComponent implements OnInit {
         // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         // this.router.onSameUrlNavigation = 'reload';
         // this.router.navigate(['/admin/users-list']);
-        window.location.reload();
+        // window.location.reload();
+        this.userService.reloadPage = true;
+        this.router.navigateByUrl('/admin/users-list');
         // this.router.navigate([this.route.url]);
       });
     }
@@ -62,7 +82,9 @@ export class UsersComponent implements OnInit {
         // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         // this.router.onSameUrlNavigation = 'reload';
         // this.router.navigate(['/admin/users-list']);
-        window.location.reload();
+        // window.location.reload();
+        this.userService.reloadPage = true;
+        this.router.navigateByUrl('/admin/users-list');
         // this.router.navigate([this.route.url]);
       });
     }

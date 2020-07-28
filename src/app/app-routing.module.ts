@@ -34,6 +34,9 @@ const routes: Routes = [
   // localhost:4200
   {path: '', component: LandingPageComponent, resolve: {categoryPosts: GetCategoriesPostsLPageResolver}},
 
+  // localhost:4200/admin #lazyloading admin module
+  { path: 'admin', loadChildren: () => import('./components/Admin-Module/admin.module').then(m => m.AdminModule)},
+
   // localhost:4200/welcome
   {path: 'welcome', component: WelcomePageComponent},
 
@@ -85,9 +88,6 @@ const routes: Routes = [
       {path: 'my-products', component: ViewProductsComponent}
     ]}
   ]},
-
-  // localhost:4200/admin #lazyloading admin module
-  { path: 'admin', loadChildren: () => import('./components/Admin-Module/admin.module').then(m => m.AdminModule)},
 
   // localhost:4200/page-not-found
   { path: '**', redirectTo: 'page-not-found', pathMatch: 'full'},

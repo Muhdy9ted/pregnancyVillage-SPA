@@ -17,6 +17,8 @@ export class UserService {
 
   baseURL = environment.apiUrl; // 'https://pregnancy-village.herokuapp.com/v1/forum/'
   userProfileInfo: UserProfile = new UserProfile();
+  reloadPage = false;
+
 
   constructor(public http: HttpClient) { }
 
