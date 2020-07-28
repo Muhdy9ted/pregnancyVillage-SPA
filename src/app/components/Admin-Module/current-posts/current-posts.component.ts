@@ -24,6 +24,24 @@ export class CurrentPostsComponent implements OnInit {
       this.posts = data.posts.data;
       // console.log(this.posts);
     });
+
+     // forcing a page reload and hereby re-initializing the component
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+
+    // on the the re-initialized component, the route data is stale,so i did another fresh call to the service and updated the post-variable
+    if (this.forumService.reloadPage) {
+      this.forumService.getPosts().subscribe((response) => {
+        // console.log(response);
+        // tslint:disable-next-line: no-string-literal
+        this.posts = response['data'];
+      }, error => {
+        this.router.navigate(['/admin/posts']);
+      }, () => {
+        this.forumService.reloadPage = false;
+      });
+    }
   }
 
   showInfo(post: GetPost) {
@@ -41,8 +59,10 @@ export class CurrentPostsComponent implements OnInit {
         // console.log(error);
         this.alertify.error('error approving the post, please retry');
       }, () => {
-        // this.router.navigate(['/admin/posts']);
-        window.location.reload();
+        this.forumService.reloadPage = true;
+        // this.router.navigateByUrl('/admin/users-list');
+        this.router.navigate(['/admin/posts']);
+        // window.location.reload();
 
       });
     }
@@ -57,8 +77,10 @@ export class CurrentPostsComponent implements OnInit {
         // console.log(error);
         this.alertify.error('error declining the post, please retry');
       }, () => {
-        // this.router.navigate(['/admin/posts']);
-        window.location.reload();
+        this.forumService.reloadPage = true;
+        // this.router.navigateByUrl('/admin/users-list');
+        this.router.navigate(['/admin/posts']);
+        // window.location.reload();
       });
     }
   }

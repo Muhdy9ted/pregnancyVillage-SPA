@@ -4,7 +4,7 @@
     background-color: #bebcbc;
     
     .body-container {
-        padding-top: 100px;
+        padding-top: 50px;
     }
 
 
@@ -89,7 +89,7 @@
     }
     
     .text-warning {
-        color: black;
+        color: $text-color !important;
         text-transform: lowercase;
         font-size: 70%;
         font-weight: 500;
@@ -165,8 +165,8 @@
         padding-right: 20px !important;
         padding-left: 20px !important;
         background-color: transparent !important;
-        border: 1px solid #F29422;
-        color: #F29422;
+        border: 1px solid $primary;
+        color: $primary;
         border-radius: 40px;
         margin-top: 5px;
         -webkit-transition:0.2s all;

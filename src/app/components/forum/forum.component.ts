@@ -77,8 +77,8 @@ export class ForumComponent implements OnInit {
     this.mostCommentPost = arrayPost.sort((a, b) => {
       return b.totalCommentCount - a.totalCommentCount;
     });
-    console.log(this.leadingPost);
-    console.log(this.mostCommentPost);
+    // console.log(this.leadingPost);
+    // console.log(this.mostCommentPost);
   }
 
   getTrendingPosts() {
