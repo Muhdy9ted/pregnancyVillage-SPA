@@ -148,11 +148,6 @@ nav {
 		}
 		
 		.btn-primary{
-			// padding-top:7px !important;
-			// padding-bottom:5px !important;
-			// padding-right: 20px !important;
-			// padding-left: 20px !important;
-			// background-color: transparent !important;
 			border: 1px solid $primary;
 			color: $white;
 			border-radius: 40px;
@@ -163,9 +158,6 @@ nav {
 		}
 
 		.btn-ghost:hover{
-			// background-color:#fff;
-			// border: 1px solid #FF6700;
-			// color:#FF6700;
 			padding-right: 45px !important;
 		}
 		
@@ -198,7 +190,6 @@ nav {
 			padding-right: 70px !important;
 
 		}
-		// background-color: #5b5b5b;	
 
 		.nav-link:hover {
 			border-bottom: none;
@@ -217,8 +208,6 @@ nav {
 			padding-left: 8px;
 			margin-top: -10px;
 			padding-top: 9px;
-			// margin-right: -15px !important;
-			// padding-right: 25px;
 		}
 
 		.btn-ghost-collapsed.profile-btn{
@@ -253,8 +242,6 @@ nav {
 			padding-left: 8px;
 			margin-top: -10px;
 			padding-top: 9px;
-			// margin-right: -15px !important;
-			// padding-right: 25px;
 		}
 
 		.logo {
@@ -262,11 +249,7 @@ nav {
 			width: auto;
 		}
 
-		// .active {
-		// 	border-bottom: none;
-		// }
-
-		
+	
 		.btn-ghost-collapsed.profile-btn{
 			width: 25% !important;
 		}
@@ -299,28 +282,14 @@ nav {
 		}
 
 		.btn-ghost-collapsed{
-			// position:relative;
-			// border-radius: 20px;
 			margin-top: 0;
 			min-width: 60% ;
-			// padding-bottom: 0 !important;
-			// padding-top: 0 !important;
-
-		// 	height: auto;
-		// 	-webkit-transition:0.2s all;
-		// 	transition:0.2s all;
 		}
 	
 		.btn-ghost-collapsed:hover{
-			// color: $white;
 			width: 55% ;
 			padding-right: 65px;
-			// transition: all 0.3s;
 		}
-
-		// .active {
-		// 	border-bottom: none;
-		// }
 
 	}
 }
@@ -338,50 +307,7 @@ nav {
 		padding: 0;
 		top: 0;
 
-		// .bg-image {
-		// 	position:absolute;
-		// 	left:0;
-		// 	right:0;
-		// 	top:0;
-		// 	bottom:0;
-		// 	// background-image: url(../../../../assets/css/img/preg6.jpg);
-		// 	background-image: url(../../../../assets/css/img/hero-image-mobile.jpg);
-		// 	background-position: top center;
-		// 	background-size: contain;
-		// 	background-attachment:fixed;
-		// 	background-repeat: no-repeat;
-		// }
-	
-		// .bg-image.overlay:after {
-		// 	content:"";
-		// 	position:absolute;
-		// 	left:0;
-		// 	right:0;
-		// 	top:0;
-		// 	bottom:0;
-		// 	background-image: linear-gradient(to right, #292929 0%, #332f2f 100%);
-		// 	// background-image: linear-gradient(to right, #3f97e1 0%, #3f97e1 100%);
-		// 	opacity: 0.8;
-		// 	z-index: 1;
-		// }
-
-		// #hero-image-ad-contents {
-		// 	position: relative;
-		// 	top: 5%;
-		// 	overflow: hidden;
-		// 	z-index: 2;
-
-		// 	.card{
-		// 		height: 13vh;
-		// 		width: auto;
-		// 	}
-			
-		// 	.card-body {
-		// 		padding: 0;
-		// 	}
-		// }
-
-		#hero-image-ad-contents {
+			#hero-image-ad-contents {
 			position: relative;
 			top: 80px;
 			overflow: hidden;
@@ -461,14 +387,6 @@ nav {
 			transition: 0.5s;
 		}
 	}
-
-/* 
-$widthXS: 1px;
-$widthSM: 576px;
-$widthMD: 768px;
-$widthLG: 992px;
-$widthXG: 1200px;
-*/
 
 	@include XS-SM {
 		.bg-image {
@@ -610,11 +528,6 @@ $widthXG: 1200px;
 #section-features{
 		padding: 50px 0 20px 0;
 
-		// @include XS-SM {
-		// 	padding-top: 0;
-		// }
-
-
 	h1 {
 		// font-size: 180%;
 		font-weight: 300;
@@ -665,11 +578,6 @@ $widthXG: 1200px;
 		@include SM{
 			height: 58vh;
 		}
-
-		// @include LG {
-		// 	height: 50vh;
-		// }
-	
 	}
 
 	.card-title {
@@ -681,7 +589,6 @@ $widthXG: 1200px;
 		font-size: 0.9rem;
 		line-height: 150%;
 		word-spacing: 2px;
-		// letter-spacing: 1px;
 	}
 
 	.icon-big{
@@ -689,18 +596,9 @@ $widthXG: 1200px;
 		display: inline-block;
 		color: $primary;
 		margin-bottom: 5px;
-		// text-align: center;
 	}
 
 }
-
-// @media (max-width: 575.9px) {
-// 	#section-features {
-// 		// padding: 40px 0 10px;
-// 	}
-	
-
-// }
 
 /*----------------------- Section-features css ends ----------------------*/
 
@@ -736,12 +634,6 @@ $widthXG: 1200px;
 		background-color: $black;
 	}
 
-	// .figure {
-	// 	width: 100%;
-	// 	background-color: $black;
-	// 	padding-bottom: 3vh;
-	// }
-
 	figure img{
 		width: 100%;
 		height: auto;
@@ -776,12 +668,10 @@ $widthXG: 1200px;
 
 	.card {
 		margin-bottom: 10px;
-		// box-shadow: -1px 2px #b9b9b9;
 	
 	}
 
 	h1 {
-		// font-size: 180%;
 		font-weight: 300;
 		text-transform: uppercase;
 		letter-spacing: 1px;
@@ -795,8 +685,6 @@ $widthXG: 1200px;
 		height: 2px;
 		background-color: $primary;
 		content: " ";
-		// font-family:"Font Awesome 5 Free";
-		// position:absolute;
 		width: 100px;
 		margin: 0 auto;
 		margin-top: 20px;
@@ -845,11 +733,8 @@ $widthXG: 1200px;
 		height: 80vh;
 		background-color: $bg-dark;
 		border: 1px transparent !important;
-		// box-shadow: -1px 2px #b9b9b9;
-		// background-color: $white !important;
 		margin-bottom: 10px;
 		padding-bottom: 10px;
-		// overflow-y: auto;
 
 		@include XS-MD {
 			height: 200vh;
@@ -899,13 +784,6 @@ $widthXG: 1200px;
 	}
 }
 
-
-// @media (max-width: 991.9px) {
-// 	#section-tabset {
-// 		padding: 80px 20px;
-// 		overflow: hidden;
-// 	}
-// }
 /*----------------------- Section-tabset css ends ----------------------*/
 
 /*----------------------- contact-div css starts ----------------------*/
@@ -924,54 +802,6 @@ $widthXG: 1200px;
 	border-color: $primary;
 }
 /*----------------------- contact-div css ends ----------------------*/
-
-
-// .show-modal{
-//     opacity: 1;
-//     z-index: 2;
-// 	animation: show .8s ease-in-out both;
-
-//     transform: scale(1);
-// }
-
-// .hide-modal{
-// 	z-index: -1;
-// 	opacity: 0;
-// 	animation: hide .25s ease-in-out;
-// 	transform: scale(0);
-// }
-
-// @keyframes show{
-//     0%{
-//         transform: scale(0);
-//         opacity: 0;
-//         z-index: -1;
-//     }
-// 	75%{
-// 		transform: scale(0.5);
-//         opacity: 0;
-// 		z-index: 1;
-// 	}
-// 	100%{
-//         transform: scale(1);
-//         opacity: 1;
-//         z-index: 2;
-//     }
-// }
-
-// @keyframes hide{
-//     from{
-// 		z-index: 2;
-// 		transform: scale(1);
-// 		opacity: 0;
-//     }
-// 	to{
-// 		z-index: -1;
-//         transform: scale(0);
-//         opacity: 0;
-       
-//     }
-// }
 
 .border-primary {
 	border-color:  $white !important;
