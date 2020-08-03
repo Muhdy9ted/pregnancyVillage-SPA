@@ -139,11 +139,6 @@ nav {
 		}
 		
 		.btn-primary{
-			// padding-top:7px !important;
-			// padding-bottom:5px !important;
-			// padding-right: 20px !important;
-			// padding-left: 20px !important;
-			// background-color: transparent !important;
 			border: 1px solid $primary;
 			color: $white;
 			border-radius: 40px;
@@ -154,9 +149,6 @@ nav {
 		}
 
 		.btn-ghost:hover{
-			// background-color:#fff;
-			// border: 1px solid #FF6700;
-			// color:#FF6700;
 			padding-right: 45px !important;
 		}
 		
@@ -208,8 +200,6 @@ nav {
 			padding-left: 8px;
 			margin-top: -10px;
 			padding-top: 9px;
-			// margin-right: -15px !important;
-			// padding-right: 25px;
 		}
 
 		.btn-ghost-collapsed.profile-btn{
@@ -244,18 +234,12 @@ nav {
 			padding-left: 8px;
 			margin-top: -10px;
 			padding-top: 9px;
-			// margin-right: -15px !important;
-			// padding-right: 25px;
 		}
 
 		.logo {
 			height: 60px;
 			width: auto;
 		}
-
-		// .active {
-		// 	border-bottom: none;
-		// }
 
 		
 		.btn-ghost-collapsed.profile-btn{
@@ -290,29 +274,14 @@ nav {
 		}
 
 		.btn-ghost-collapsed{
-			// position:relative;
-			// border-radius: 20px;
 			margin-top: 0;
 			min-width: 60% ;
-			// padding-bottom: 0 !important;
-			// padding-top: 0 !important;
-
-		// 	height: auto;
-		// 	-webkit-transition:0.2s all;
-		// 	transition:0.2s all;
 		}
 	
 		.btn-ghost-collapsed:hover{
-			// color: $white;
 			width: 55% ;
 			padding-right: 65px;
-			// transition: all 0.3s;
 		}
-
-		// .active {
-		// 	border-bottom: none;
-		// }
-
 	}
 }
 
@@ -329,48 +298,6 @@ nav {
 		padding: 0;
 		top: 0;
 
-		// .bg-image {
-		// 	position:absolute;
-		// 	left:0;
-		// 	right:0;
-		// 	top:0;
-		// 	bottom:0;
-		// 	// background-image: url(../../../../assets/css/img/preg6.jpg);
-		// 	background-image: url(../../../../assets/css/img/hero-image-mobile.jpg);
-		// 	background-position: top center;
-		// 	background-size: contain;
-		// 	background-attachment:fixed;
-		// 	background-repeat: no-repeat;
-		// }
-	
-		// .bg-image.overlay:after {
-		// 	content:"";
-		// 	position:absolute;
-		// 	left:0;
-		// 	right:0;
-		// 	top:0;
-		// 	bottom:0;
-		// 	background-image: linear-gradient(to right, #292929 0%, #332f2f 100%);
-		// 	// background-image: linear-gradient(to right, #3f97e1 0%, #3f97e1 100%);
-		// 	opacity: 0.8;
-		// 	z-index: 1;
-		// }
-
-		// #hero-image-ad-contents {
-		// 	position: relative;
-		// 	top: 5%;
-		// 	overflow: hidden;
-		// 	z-index: 2;
-
-		// 	.card{
-		// 		height: 13vh;
-		// 		width: auto;
-		// 	}
-			
-		// 	.card-body {
-		// 		padding: 0;
-		// 	}
-		// }
 
 		#hero-image-ad-contents {
 			position: relative;
@@ -453,13 +380,6 @@ nav {
 		}
 	}
 
-/* 
-$widthXS: 1px;
-$widthSM: 576px;
-$widthMD: 768px;
-$widthLG: 992px;
-$widthXG: 1200px;
-*/
 
 	@include XS-SM {
 		.bg-image {
@@ -644,11 +564,6 @@ $widthXG: 1200px;
 }
 
 .btn-primary{
-	// padding-top:7px !important;
-	// padding-bottom:5px !important;
-	// padding-right: 20px !important;
-	// padding-left: 20px !important;
-	// background-color: transparent !important;
 	border: 1px solid $primary;
 	color: $white;
 	border-radius: 40px;
@@ -659,9 +574,6 @@ $widthXG: 1200px;
 }
 
 .btn-ghost:hover{
-	// background-color:#fff;
-	// border: 1px solid #FF6700;
-	// color:#FF6700;
 	padding-right: 45px !important;
 }
 
