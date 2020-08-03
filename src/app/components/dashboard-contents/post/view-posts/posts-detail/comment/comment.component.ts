@@ -34,7 +34,7 @@ export class CommentComponent implements OnInit {
       // console.log(response);
     }, error => {
       this.spin = false;
-      this.alertify.message('unable to post your comment, please Login and try again');
+      this.alertify.error('unable to post your comment, please Login and try again');
       // console.log(error);
     }, () => {
       // this.alertify.success(`Welcome back ${this.authService.decodedToken?.firstName}`);
