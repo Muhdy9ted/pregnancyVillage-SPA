@@ -132,7 +132,7 @@ export class AddPostComponent implements OnInit {
   handleFileInput(files: FileList) {
     // this.forumService.createCommentDto.comment_upload_file = files.item(0);
     this.forumService.createPostDto.upload_file = files.item(0);
-    console.log(this.forumService.createPostDto);
+    // console.log(this.forumService.createPostDto);
   }
 
 }
