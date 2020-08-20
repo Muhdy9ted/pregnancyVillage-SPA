@@ -397,10 +397,12 @@ nav {
 			bottom:0;
 			// background-image: url(../../../../assets/css/img/preg6.jpg);
 			background-image: url(../../../../assets/css/img/hero-image-4032.jpg);
-			background-position: top center;
+			background-position: center;
 			background-size: cover;
 			background-attachment:fixed;
 			background-repeat: no-repeat;
+			min-width: 100%;
+			min-height: 100%;
 		}
 
 		#hero-image-contents{
@@ -426,6 +428,8 @@ nav {
 			background-size: cover;
 			background-attachment:fixed;
 			background-repeat: no-repeat;
+			min-width: 100%;
+			min-height: 100%;
 		}
 
 		#hero-image-contents{
@@ -451,6 +455,8 @@ nav {
 			background-size: cover;
 			background-attachment:fixed;
 			background-repeat: no-repeat;
+			min-width: 100%;
+			min-height: 100%;
 		}
 
 		#hero-image-contents{
@@ -476,6 +482,8 @@ nav {
 			background-size: cover;
 			background-attachment:fixed;
 			background-repeat: no-repeat;
+			min-width: 100%;
+			min-height: 100%;
 		}
 
 		#hero-image-contents{
