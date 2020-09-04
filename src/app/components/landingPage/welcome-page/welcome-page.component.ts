@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_shared/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ForumService } from 'src/app/_shared/services/forum.service';
+import { AlertifyService } from 'src/app/_shared/services/alertify.service';
 
 @Component({
   selector: 'app-welcome-page',
@@ -21,7 +22,8 @@ export class WelcomePageComponent implements OnInit {
   // categoryPosts: Category[];
   // postsBycategory: Category[] = [];
 
-  constructor(public authService: AuthService, private route: Router, private router: ActivatedRoute, public forumService: ForumService) { }
+  constructor(public authService: AuthService, private route: Router, private router: ActivatedRoute, public forumService: ForumService,
+              private alertify: AlertifyService) { }
 
   ngOnInit(): void {
     this.confirmationToken();
@@ -31,7 +33,11 @@ export class WelcomePageComponent implements OnInit {
   confirmationToken() {
     this.authService.confirmationToken(this.router.snapshot.params.token).subscribe((response) => {
       console.log(response);
-    });
+    }, error => {
+      if (error) {
+        console.log(error);
+        this.alertify.error(error.msg);
+    }});
   }
 
   showModalDialog() {
