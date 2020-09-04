@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'admin', loadChildren: () => import('./components/Admin-Module/admin.module').then(m => m.AdminModule)},
 
   // localhost:4200/welcome
-  {path: 'welcome', component: WelcomePageComponent},
+  {path: 'confirmation/:token', component: WelcomePageComponent},
 
   // localhost:4200/forums/posts
   {path: 'forums/posts', component: ForumComponent, resolve: {posts: GetForumPostsResolver}},

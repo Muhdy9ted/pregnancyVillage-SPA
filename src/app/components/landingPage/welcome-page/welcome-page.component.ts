@@ -24,7 +24,14 @@ export class WelcomePageComponent implements OnInit {
   constructor(public authService: AuthService, private route: Router, private router: ActivatedRoute, public forumService: ForumService) { }
 
   ngOnInit(): void {
+    this.confirmationToken();
     this.showModalDialog();
+  }
+
+  confirmationToken() {
+    this.authService.confirmationToken(this.router.snapshot.params.token).subscribe((response) => {
+      console.log(response);
+    });
   }
 
   showModalDialog() {
