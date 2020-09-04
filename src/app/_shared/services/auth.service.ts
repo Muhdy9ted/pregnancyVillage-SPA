@@ -92,7 +92,7 @@ export class AuthService {
     return this.http.post(this.baseURL + 'resend', {email: this.registeredEmail});
   }
 
-  confirmationToken(token :any) {
+  confirmationToken(token :string) {
     return this.http.post(this.baseURL + 'confirmation', token);
   }
 
