@@ -93,7 +93,13 @@ export class AuthService {
   }
 
   confirmationToken(token :string) {
-    return this.http.post(this.baseURL + 'confirmation', token);
+    console.log(token);
+    console.log(typeof token);
+
+    console.log(JSON.stringify(token));
+    console.log(typeof JSON.stringify(token));
+
+    return this.http.post(this.baseURL + 'confirmation', JSON.stringify(token));
   }
 
 }
