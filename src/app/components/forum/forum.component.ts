@@ -70,7 +70,7 @@ export class ForumComponent implements OnInit {
         arrayPost.push(post);
       }
     }
-    console.log(arrayPost);
+    // console.log(arrayPost);
     this.leadingPost = arrayPost.sort((a, b) => {
       return b.likes - a.likes;
     });

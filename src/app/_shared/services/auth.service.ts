@@ -44,7 +44,7 @@ export class AuthService {
 
   loginModal() {
     return  this.http.post(this.baseURL + 'login', this.formDataLogin, httpOptions).pipe(map((response: any) => {
-      console.log(response);
+      // console.log(response);
       const userResponse = response;
       if (userResponse) {
         localStorage.setItem('preg_token', response.data.tokenData.token);
@@ -90,6 +90,10 @@ export class AuthService {
   resendMail() {
     // console.log(this.registeredEmail);
     return this.http.post(this.baseURL + 'resend', {email: this.registeredEmail});
+  }
+
+  confirmationToken(token :any) {
+    return this.http.post(this.baseURL + 'confirmation', token);
   }
 
 }

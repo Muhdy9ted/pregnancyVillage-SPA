@@ -16,7 +16,7 @@ export class GetProfileInfoResolver implements Resolve<GetPost> {
     resolve(route: ActivatedRouteSnapshot): Observable<GetPost> {
         return this.userService.userProfile().pipe(
             catchError(error => {
-                this.alertify.message('error retrieving data, please retry!');
+                this.alertify.error('error retrieving data, please retry!');
                 this.router.navigate(['/forums/posts']);
                 return of(null);
             })
