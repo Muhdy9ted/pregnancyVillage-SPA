@@ -116,13 +116,13 @@
     </div>
 </header>
 <p-dialog class="d-none d-md-block" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-    <p class="lead my-3">Your account has been activated, please sign-in to continue</p>
+    <p class="lead my-3">{{message}}</p>
     <p-footer>
         <button type="button" class="btn btn-primary"  (click)="onLoginClicked()">Sign in</button>
     </p-footer>
 </p-dialog>
 <p-dialog class="d-block d-md-none" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-    <p class="lead my-3">Your account has been activated, please sign-in to continue</p>
+    <p class="lead my-3">{{message}}</p>
     <p-footer>
         <button type="button" class="btn btn-primary"  (click)="onLoginClicked()">Sign in</button>
     </p-footer>
