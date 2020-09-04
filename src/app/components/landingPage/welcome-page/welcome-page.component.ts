@@ -18,6 +18,7 @@ export class WelcomePageComponent implements OnInit {
   topics: [];
   post: any;
   displayModal: boolean;
+  message: string;
   // posts: GetPost[];
   // categoryPosts: Category[];
   // postsBycategory: Category[] = [];
@@ -32,11 +33,11 @@ export class WelcomePageComponent implements OnInit {
 
   confirmationToken() {
     this.authService.confirmationToken(this.router.snapshot.params.token).subscribe((response) => {
-      console.log(response);
+      this.message = "Your account has been activated, please sign-in to continue";
     }, error => {
       if (error) {
-        console.log(error);
-        this.alertify.error(error.msg);
+        this.message = error;
+        // this.alertify.error(error);
     }});
   }
 
