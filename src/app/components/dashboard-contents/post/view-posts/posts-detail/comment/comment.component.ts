@@ -40,7 +40,7 @@ export class CommentComponent implements OnInit {
       // this.alertify.success(`Welcome back ${this.authService.decodedToken?.firstName}`);
       this.alertify.success('comment sent successfully');
       this.forumService.createCommentDto = new Comment();
-      this.forumService.reloadPage = true;
+      this.forumService.reloadPage = true; 
       const postId = this.route.snapshot.params.postId;
       this.router.navigateByUrl('/forums/posts/' + postId);
       // this.router.navigateByUrl('/forums/posts/' + postId, {skipLocationChange: true}).then(() => {
@@ -57,6 +57,8 @@ export class CommentComponent implements OnInit {
   }
 
   handleFileInput(files: FileList) {
+    // this.forumService.createCommentDto.comment_upload_file = files.item(0);
     this.forumService.createCommentDto.comment_upload_file = files.item(0);
+    // console.log(this.forumService.createPostDto);
   }
 }

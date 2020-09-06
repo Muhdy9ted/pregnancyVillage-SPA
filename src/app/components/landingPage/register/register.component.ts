@@ -71,10 +71,11 @@ export class RegisterComponent implements OnInit {
         });
       }
     } else {
-      if (this.registerForm.valid) {
+      if (this.registerForm.valid || this.registerForm.invalid) {
         this.spin = true;
         // this.user = Object.assign({}, this.registerForm.value);
-        this.authService.resendMail().subscribe((response: any)  => {
+        this.user = Object.assign({}, this.registerForm.value);
+        this.authService.resendMail(this.user).subscribe((response: any)  => {
           // console.log(response);
           this.onCloseModal();
           // this.registerFormRef.reset();
@@ -116,10 +117,10 @@ export class RegisterComponent implements OnInit {
     this.displayModal = true;
   }
 
-  onResendMailClicked() {
-    this.authService.resendMail().subscribe((response: any) => {
-      // console.log(response);
-    });
-    this.route.navigate(['/']);
-  }
+  // onResendMailClicked() {
+  //   this.authService.resendMail().subscribe((response: any) => {
+  //     // console.log(response);
+  //   });
+  //   this.route.navigate(['/']);
+  // }
 }

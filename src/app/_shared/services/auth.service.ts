@@ -31,6 +31,8 @@ export class AuthService {
   userID = '';
   // userIdURL = '';
   registeredEmail;
+  confirmationTokenError = false;
+  confrimationTokenErrorMsg: string;
 
 
 
@@ -87,9 +89,9 @@ export class AuthService {
     localStorage.removeItem('preg_token');
   }
 
-  resendMail() {
+  resendMail(user: RegisterUserDto) {
     // console.log(this.registeredEmail);
-    return this.http.post(this.baseURL + 'resend', {email: this.registeredEmail});
+    return this.http.post(this.baseURL + 'resend', {email: user.email});
   }
 
   confirmationToken(token :string) {
