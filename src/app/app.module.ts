@@ -62,6 +62,7 @@ import { SpinnerOverlayWrapperComponent } from './components/spinners/spinner-ov
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RightSideBarComponent } from './components/right-side-bar/right-side-bar.component';
 import { EditPostComponent } from './components/dashboard-contents/post/edit-post/edit-post.component';
+import { ConfirmationTokenResolver } from './_shared/resolvers/confrimationToken.resolver';
 
 export function tokenGetter() {
   return (localStorage.getItem('preg_token'));
@@ -132,7 +133,7 @@ export function tokenGetter() {
     })
   ],
   providers: [ErrorInterceptorProvider, GetPostsResolver, GetPostResolver, GetProfileInfoResolver,
-     GetCategoriesPostsLPageResolver, GetForumPostsResolver, GetPostForumResolver, GetPostsByCategory,  PreventUnsavedChanges],
+     GetCategoriesPostsLPageResolver, GetForumPostsResolver, GetPostForumResolver, GetPostsByCategory, ConfirmationTokenResolver,  PreventUnsavedChanges],
   bootstrap: [AppComponent]
 
 })

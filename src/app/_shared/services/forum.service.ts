@@ -98,7 +98,12 @@ export class ForumService {
   }
 
   createComment() {
-    return this.http.post(this.baseURL + 'comment',  this.createCommentDto); // reactions
+    const formData = new FormData();
+    formData.append('forum_id', this.createCommentDto.forum_id);
+    formData.append('content', this.createCommentDto.content);
+    formData.append('reactions', String(this.createCommentDto.reactions));
+    formData.append('comment_upload_file', this.createCommentDto.comment_upload_file);
+    return this.http.post(this.baseURL + 'comment',  formData); // reactions
   }
 
   createCategory() {

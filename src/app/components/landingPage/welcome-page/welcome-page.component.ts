@@ -27,7 +27,18 @@ export class WelcomePageComponent implements OnInit {
               private alertify: AlertifyService) { }
 
   ngOnInit(): void {
-    this.confirmationToken();
+    this.router.data.subscribe(data => {
+      this.message =  "Your account has been activated, please sign-in to continue";
+      if (this.authService.confirmationTokenError){
+        this.message = this.authService.confrimationTokenErrorMsg;
+      }
+      console.log(data);
+    // }, error ={
+    //   if (error) {
+    //     this.message = error;
+    //   }
+    })
+    // this.confirmationToken();
     this.showModalDialog();
   }
 

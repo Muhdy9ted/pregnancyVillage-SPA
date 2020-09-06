@@ -42,7 +42,7 @@ export class LoginModalComponent implements OnInit {
         this.errorMessage1 = error;
       }, () => {
         this.alertify.success(`Welcome back ${this.authService.decodedToken?.firstName}`);
-        // this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
       });
     } else {
       this.authService.forgotPassword().subscribe((response) => {

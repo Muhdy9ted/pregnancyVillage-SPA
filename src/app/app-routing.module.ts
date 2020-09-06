@@ -27,6 +27,7 @@ import { PreventUnsavedChanges } from './_shared/guards/prevent-unsaved-changes.
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { GetProfileInfoResolver } from './_shared/resolvers/getProfile-info.resolver';
 import { EditPostComponent } from './components/dashboard-contents/post/edit-post/edit-post.component';
+import { ConfirmationTokenResolver } from './_shared/resolvers/confrimationToken.resolver';
 
 
 const routes: Routes = [
@@ -38,7 +39,7 @@ const routes: Routes = [
   { path: 'admin', loadChildren: () => import('./components/Admin-Module/admin.module').then(m => m.AdminModule)},
 
   // localhost:4200/welcome
-  {path: 'confirmation/:token', component: WelcomePageComponent},
+  {path: 'confirmation/:token', component: WelcomePageComponent, resolve: {token: ConfirmationTokenResolver}},
 
   // localhost:4200/forums/posts
   {path: 'forums/posts', component: ForumComponent, resolve: {posts: GetForumPostsResolver}},
