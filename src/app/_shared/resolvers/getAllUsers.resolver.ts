@@ -15,7 +15,7 @@ export class GetAllUsersResolver implements Resolve<UserCred[]> {
         return this.userService.listUsers().pipe(
             catchError(error => {
                 console.log(error);
-                this.alertify.message('problem retrieving data, please retry!');
+                this.alertify.error('problem retrieving data, please retry!');
                 this.router.navigate(['/admin/dashboard']);
                 return of(null);
             })

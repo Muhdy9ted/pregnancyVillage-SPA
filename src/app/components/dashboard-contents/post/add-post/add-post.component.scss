@@ -167,6 +167,10 @@ textarea.ng-valid{
     border-color: #28a745;
 }
 
+quill-editor.ng-valid{
+    border-color: #28a745;
+}
+
 .green-icon{
     color: #FFFFFF;
 }
@@ -196,3 +200,4 @@ textarea.ng-valid{
 :disabled{
     cursor: default;
 }
+

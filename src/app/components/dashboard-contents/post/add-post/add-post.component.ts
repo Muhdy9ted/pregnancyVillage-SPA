@@ -24,7 +24,13 @@ export class AddPostComponent implements OnInit {
   uploader: FileUploader;
   selectedFile = null;
   selectedCategory = null;
-  userId = this.authService.userID;
+  userId = this.authService.userID; 
+  
+  editorStyle = {
+     height: '200px',
+     backgroundColor: 'white',
+     color: 'black'
+    };
 
 
   constructor(public forumService: ForumService, private router: Router, private alertify: AlertifyService,

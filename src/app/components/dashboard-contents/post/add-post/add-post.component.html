@@ -29,12 +29,27 @@
 
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                       <label for="details">Post's write-up</label>
                                       <textarea type="text" class="form-control" id="description" rows="6" placeholder="write your heart out!!!" required name="description" #description="ngModel" minlength="30"
                                         [(ngModel)]="forumService.createPostDto.description"></textarea>
                                       <span class="text-warning text-sm-left"><p>post's write-up should be more than 30 characters</p></span>
+                                    </div>  -->
+
+                                    <div class="form-group">
+                                        <label for="details">Post's write-up</label>
+                                        <quill-editor [styles]="editorStyle" id="description" placeholder="write your heart out!!!" required name="description" #description="ngModel" minlength="30"
+                                          [(ngModel)]="forumService.createPostDto.description"></quill-editor>
+                                        <span class="text-warning text-sm-left"><p>post's write-up should be more than 30 characters</p></span>
                                     </div> 
+
+                                    <!-- <quill-editor [styles]="editorStyle" placeholder="Enter Text" [modules]="config" required>
+                                    </quill-editor> -->
+
+                                    <!-- <div class="form-group">
+                                        <label for="details">Post's write-up</label>
+                                        <span class="text-warning text-sm-left"><p>post's write-up should be more than 30 characters</p></span>
+                                      </div>  -->
 
                                         <div class="form-group">
                                             <label for="upload" >upload a Photo</label>
