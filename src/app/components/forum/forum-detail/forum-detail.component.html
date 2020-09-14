@@ -19,7 +19,7 @@
                         <small class="text-muted"> Comment: <span class="">  {{post.comment.length}} <i>comment(s)</i></span> </small><br/>
                         <small class="text-muted"> Likes: <span class=""> {{post.likes}} <i>like(s)</i> </span> </small><br/>
                         
-                        <p class="card-text detail py-5">{{post.description}}</p>
+                        <p class="card-text detail py-5" [innerHTML]="post.description"></p>
                         
                         <div class="d-flex justify-content-end my-3">
                           <button type="button"  [disabled]="likedPost" (click) = "reaction()" class="btn btn-info px-3 mr-3" style=" border-radius: 15px;"> <span style="font-size: 1rem;"><i class="fas fa-thumbs-up"></i></span></button>

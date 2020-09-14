@@ -45,8 +45,10 @@
                     <!-- <a [routerLink]="['/forums/posts/', post.id]"><h5 class="card-title text-muted pt-2">{{limitForumTitle(post.topic)}}</h5></a> -->
                     <a [routerLink]="['/' + userId,'posts','my-posts', post.id]"><h5 class="card-title text-muted pt-2">{{limitForumTitle(post.topic)}}</h5></a>
 
-                    <p class="card-text lead d-sm-none pb-1">{{limitForumpost(post.description, 40)}}</p>
-                    <p class="card-text lead d-none d-sm-block pb-1">{{limitForumpost(post.description)}}</p>
+                    <!-- <p class="card-text lead d-sm-none pb-1">{{limitForumpost(post.description, 40)}}</p> -->
+                    <p class="card-text lead d-sm-none pb-1" [innerHTML]="limitForumpost(post.description)"></p>
+
+                    <p class="card-text lead d-none d-sm-block pb-1" [innerHTML]="limitForumpost(post.description)"></p>
 
 
                         <!-- <ul class="list-group list-group-horizontal-sm">

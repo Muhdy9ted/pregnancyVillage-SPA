@@ -10,5 +10,5 @@ export class GetComment {
     public __v: number;
     // tslint:disable-next-line: variable-name
     public _id: string;
-    comment_img: any;
+    comment_upload_file: any;
 }

@@ -15,7 +15,7 @@ export class GetPostsAdminResolver implements Resolve<GetPost[]> {
     resolve(): Observable<GetPost[]> {
         return this.forumService.getPosts().pipe(
             catchError(error => {
-                this.alertify.message('problem retrieving data');
+                this.alertify.error('problem retrieving data');
                 this.router.navigate(['/admin/dashboard']);
                 return of(null);
             })

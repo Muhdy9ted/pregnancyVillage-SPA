@@ -38,7 +38,7 @@ export class CommentComponent implements OnInit {
       // console.log(error);
     }, () => {
       // this.alertify.success(`Welcome back ${this.authService.decodedToken?.firstName}`);
-      this.alertify.success('comment sent successfully');
+      this.alertify.success('comment added successfully');
       this.forumService.createCommentDto = new Comment();
       this.forumService.reloadPage = true; 
       const postId = this.route.snapshot.params.postId;

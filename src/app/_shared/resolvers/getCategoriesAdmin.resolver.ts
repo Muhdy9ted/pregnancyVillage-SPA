@@ -15,7 +15,7 @@ export class GetCategoriesAdminResolver implements Resolve<Category[]> {
         return this.forumService.getCategories().pipe(
             catchError(error => {
                 // console.log(error);
-                this.alertify.message('error retrieving data, please refresh!');
+                this.alertify.error('error retrieving data, please refresh!');
                 this.router.navigate(['/admin/dashboard']);
                 return of(null);
             })

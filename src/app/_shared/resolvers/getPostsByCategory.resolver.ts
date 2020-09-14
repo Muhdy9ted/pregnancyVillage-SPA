@@ -14,7 +14,7 @@ export class GetPostsByCategory implements Resolve<Category> {
     resolve(route: ActivatedRouteSnapshot): Observable<Category> {
         return this.forumService.postsByCategory(route.params.categoryId).pipe(
             catchError(error => {
-                this.alertify.message('problem retrieving data');
+                this.alertify.error('problem retrieving data');
                 this.router.navigate(['/']);
                 return of(null);
             })

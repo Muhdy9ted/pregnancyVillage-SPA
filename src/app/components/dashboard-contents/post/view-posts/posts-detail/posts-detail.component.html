@@ -21,7 +21,7 @@
 
 
                       
-                        <p class="card-text detail py-5">{{post.description}}</p>
+                        <p class="card-text detail py-5" [innerHTML]="post.description"></p>
                         
                         <!-- <div class="d-flex justify-content-end">
                           <button type="button"  [disabled]="likedPost" (click) = "reaction()" class="btn btn-sm btn-outline-info px-3 mr-3" style=" border-radius: 15px;"> <span style="font-size: 1rem;"><i class="fas fa-thumbs-up"></i></span></button>

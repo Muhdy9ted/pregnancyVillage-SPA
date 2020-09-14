@@ -16,7 +16,7 @@ export class GetCategoriesPostsLPageResolver implements Resolve<Category[]> {
         return this.forumService.getPostsForLandingPage().pipe(
             catchError(error => {
                 // console.log(error);
-                this.alertify.message('error retrieving data, please refresh!');
+                this.alertify.error('error retrieving data, please refresh!');
                 // this.router.navigate(['/']);
                 return of(null);
             })

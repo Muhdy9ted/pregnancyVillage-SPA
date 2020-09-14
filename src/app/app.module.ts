@@ -13,6 +13,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TimeagoModule } from 'ngx-timeago';
+import { QuillModule } from 'ngx-quill';
 
 
 
@@ -105,6 +106,7 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
+    QuillModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
